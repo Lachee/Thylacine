@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DiscordSharp.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,8 @@ namespace DiscordSharp.Models
             byte[] bytes = Convert.FromBase64String(image);
 
             System.IO.File.WriteAllBytes(file, bytes);
+
+            throw new ImageSizeException(10, 100, 128, 128);
         }
         public string DiscordImageEncode(string file)
         {
