@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6AD9972C-8BAD-40DB-8632-2BEEEF8B7BF3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DiscordSharp</RootNamespace>
+    <AssemblyName>DiscordSharp</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="websocket-sharp, Version=1.0.2.59611, Culture=neutral, PublicKeyToken=5660b08a1845a91e, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebSocketSharp.1.0.3-rc11\lib\websocket-sharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DiscordBot.cs" />
+    <Compile Include="Event\ChannelEvent.cs" />
+    <Compile Include="Event\GuildEvent.cs" />
+    <Compile Include="Event\MemberEvent.cs" />
+    <Compile Include="Event\MessageEvent.cs" />
+    <Compile Include="Event\PresenceEvent.cs" />
+    <Compile Include="Event\ReadyEvent.cs" />
+    <Compile Include="Event\RoleEvent.cs" />
+    <Compile Include="Event\UserEvent.cs" />
+    <Compile Include="Gateway\GatewayEndpoint.cs" />
+    <Compile Include="Gateway\Payload\Dispatch.cs" />
+    <Compile Include="Gateway\OpCodes.cs" />
+    <Compile Include="Gateway\Payload\EventPayload.cs" />
+    <Compile Include="Gateway\Payload\HeartbeatPayload.cs" />
+    <Compile Include="Gateway\Payload\HelloPayload.cs" />
+    <Compile Include="Gateway\Payload\IdentifyPayload.cs" />
+    <Compile Include="Helper\Converters.cs" />
+    <Compile Include="Helper\ExtendedStringBuilder.cs" />
+    <Compile Include="Helper\Loggers.cs" />
+    <Compile Include="Models\Attachment.cs" />
+    <Compile Include="Models\DMChannel.cs" />
+    <Compile Include="Models\Embed.cs" />
+    <Compile Include="Models\Event\GuildEvent.cs" />
+    <Compile Include="Models\Event\GuildMemberEvent.cs" />
+    <Compile Include="Models\Event\GuildRoleEvent.cs" />
+    <Compile Include="Models\Event\MessageEvent.cs" />
+    <Compile Include="Models\Event\ReadyEvent.cs" />
+    <Compile Include="Models\Event\TypingStartEvent.cs" />
+    <Compile Include="Models\Event\VoiceServerUpdateEvent.cs" />
+    <Compile Include="Models\Guild.cs" />
+    <Compile Include="Models\Channel.cs" />
+    <Compile Include="Models\GuildMember.cs" />
+    <Compile Include="Models\Invite.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Overwrite.cs" />
+    <Compile Include="Models\Permission.cs" />
+    <Compile Include="Models\Presence.cs" />
+    <Compile Include="Models\Reaction.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\VoiceState.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rest\DiscordRestException.cs" />
+    <Compile Include="Rest\Extensions\DiscordAuthenticator.cs" />
+    <Compile Include="Rest\Extensions\NewtonsoftSerializer.cs" />
+    <Compile Include="Rest\Payloads\GatewayRequest.cs" />
+    <Compile Include="Rest\Payloads\CreateInvite.cs" />
+    <Compile Include="Rest\Payloads\CreateMessage.cs" />
+    <Compile Include="Rest\Payloads\CreateReaction.cs" />
+    <Compile Include="Rest\Payloads\DeleteChannel.cs" />
+    <Compile Include="Rest\Payloads\PinnedChannelMessage.cs" />
+    <Compile Include="Rest\Payloads\TriggerTypingIndicator.cs" />
+    <Compile Include="Rest\Payloads\DeleteReactions.cs" />
+    <Compile Include="Rest\Payloads\DeleteMessage.cs" />
+    <Compile Include="Rest\Payloads\DeleteChannelPermission.cs" />
+    <Compile Include="Rest\Payloads\EditChannelPermissions.cs" />
+    <Compile Include="Rest\Payloads\EditMessage.cs" />
+    <Compile Include="Rest\Payloads\IRestRequest.cs" />
+    <Compile Include="Rest\Payloads\ModifyChannel.cs" />
+    <Compile Include="Rest\Rest.cs" />
+    <Compile Include="Gateway\Gateway.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
