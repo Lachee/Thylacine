@@ -147,13 +147,7 @@ namespace Thylacine.Models
                 Embed = embed,
                 TTS = tts
             });
-
-            if (msg == null)
-            {
-                Console.WriteLine("Something done fucked up!");
-                return null;
-            }
-
+            
             msg.Discord = Discord;
             return msg;
         }
@@ -167,7 +161,34 @@ namespace Thylacine.Models
         /// <returns></returns>
         public Message SendMessage(MessageBuilder builder, bool tts = false, Embed embed = null)
         {
-            return this.SendMessage(builder.ToString(), tts, embed);
+            Message message = this.SendMessage(builder.ToString(), tts, embed);
+            message.Discord = this.Discord;
+            return message;
+        }
+        #endregion
+
+        #region Webhook Management
+        public Webhook CreateWebhook(string name, Avatar avatar)
+        {
+            if (Discord == null) return null;
+
+            Webhook hook = Discord.Rest.SendPayload<Webhook>(new Rest.Payloads.CreateWebhook()
+            {
+                ChannelID = this.ID,
+                Name = name,
+                Avatar = avatar
+            });
+            hook.Discord = this.Discord;
+
+            return hook;
+        }
+        public List<Webhook> FetchWebhooks()
+        {
+            if (Discord == null) return null;
+            List<Webhook> hooks = Discord.Rest.SendPayload<List<Webhook>>(new Rest.Payloads.GetWebhooks() { ScopeID = this.ID, Scope = "channels" });
+            foreach (Webhook h in hooks) h.Discord = Discord;
+
+            return hooks;
         }
         #endregion
 

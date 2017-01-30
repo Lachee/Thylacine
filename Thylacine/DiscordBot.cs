@@ -488,6 +488,7 @@ namespace Thylacine
             }
         }
 
+        #region Guilds
         public Guild GetGuild(ulong guildID)
         {
             Guild g;
@@ -516,7 +517,9 @@ namespace Thylacine
 
             return guilds;
         }
+        #endregion
 
+        #region channels
         public Channel GetChannel(ulong channelID)
         {
             foreach (Guild g in _guilds.Values)
@@ -527,5 +530,29 @@ namespace Thylacine
 
             return null;
         }
+        #endregion
+
+        #region Webhooks
+        /// <summary>
+        ///  Returns the new webhook object for the given id.
+        /// </summary>
+        /// <param name="webhookID"></param>
+        /// <returns></returns>
+        public Webhook FetchWebhook(ulong webhookID) { return FetchWebhook(webhookID, null);  }
+
+        /// <summary>
+        ///  Returns the new webhook object for the given id.
+        /// </summary>
+        /// <param name="webhookID"></param>
+        /// <returns></returns>
+        public Webhook FetchWebhook(ulong webhookID, string token)
+        {
+            Webhook hook = Rest.SendPayload<Webhook>(new Rest.Payloads.GetWebhook() { WebhookID = webhookID, Token = token });
+            hook.Discord = this;
+            return hook;
+        }
+
+
+        #endregion
     }
 }

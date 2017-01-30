@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Thylacine.Models;
 
 namespace Thylacine.Helper
 {
@@ -28,6 +29,12 @@ namespace Thylacine.Helper
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
+            if (value == null)
+            {
+                writer.WriteNull();
+                return;
+            }
+
             double time = (TimeZoneInfo.ConvertTimeToUtc((DateTime)value) - new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc)).TotalSeconds;
             int seconds = (int) Math.Round(time);
             writer.WriteValue(time.ToString(CultureInfo.InvariantCulture));
@@ -45,7 +52,13 @@ namespace Thylacine.Helper
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        { 
+        {
+            if (value == null)
+            {
+                writer.WriteNull();
+                return;
+            }
+
             writer.WriteValue(((ulong)value).ToString(CultureInfo.InvariantCulture));
         }
     }
@@ -79,6 +92,28 @@ namespace Thylacine.Helper
                     writer.WriteValue(a[i].ToString(CultureInfo.InvariantCulture));
                 writer.WriteEndArray();
             }
+        }
+    }
+
+    public class AvatarConverter : JsonConverter
+    {
+        public override bool CanConvert(Type objectType) => objectType == typeof(Avatar);
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            if (reader.Value == null) return null;
+
+            string hash = (string)reader.Value;
+            return new Avatar(hash);
+        }
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            if (value == null)
+            {
+                writer.WriteNull();
+                return;
+            }
+
+            writer.WriteValue(((Avatar)value).DiscordHash);
         }
     }
 }

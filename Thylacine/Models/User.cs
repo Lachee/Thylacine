@@ -30,7 +30,7 @@ namespace Thylacine.Models
         public string Discriminator { get; internal set; }
 
         [JsonProperty("avatar")]
-        public string Avatar { get; internal set; }
+        public Avatar Avatar { get; internal set; }
 
         [JsonProperty("bot")]
         public bool IsBot { get; internal set; }

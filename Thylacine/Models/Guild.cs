@@ -11,7 +11,7 @@ namespace Thylacine.Models
     [JsonObject(MemberSerialization.OptIn)]
     public class Guild
     {
-        public DiscordBot Discord { get; set; }
+        public DiscordBot Discord { get; internal set; }
 
         #region Json Properties
         [JsonProperty("id"), JsonConverter(typeof(SnowflakeConverter))]
@@ -190,6 +190,14 @@ namespace Thylacine.Models
         #endregion
 
         #region Misc
+
+        public List<Webhook> FetchWebhooks()
+        {
+            if (Discord == null) return null;
+            List<Webhook> hooks = Discord.Rest.SendPayload<List<Webhook>>(new Rest.Payloads.GetWebhooks() { ScopeID = this.ID, Scope = "guilds" });
+            foreach (Webhook h in hooks) h.Discord = Discord;
+            return hooks;
+        }
 
         internal void UpdateGuild(Guild g, DiscordBot discord)
         {

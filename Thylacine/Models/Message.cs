@@ -85,7 +85,7 @@ namespace Thylacine.Models
     [JsonObject(MemberSerialization.OptIn)]
     public class Message
     {
-        public DiscordBot Discord { get; set; }
+        public DiscordBot Discord { get; internal set; }
 
         [JsonProperty("id"), JsonConverter(typeof(SnowflakeConverter))]
         public ulong ID { get; internal set; }
