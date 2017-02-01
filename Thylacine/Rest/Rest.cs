@@ -12,9 +12,11 @@ using Thylacine.Models;
 using RestSharp.Newtonsoft.Json;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Thylacine.Exceptions;
 
 namespace Thylacine.Rest
 {
+    //TODO: Make a IRestClient interface to allow modulation
     public class RestClient
     {
         private RestSharp.RestClient client;
@@ -71,7 +73,7 @@ namespace Thylacine.Rest
         /// <returns></returns>
         public T SendPayload<T>(IRestPayload payload) where T : new()
         {
-            IRestResponse response = Send(payload.Request, payload.Method, payload.Payload);
+            IRestResponse response = Send(payload.Request, payload.Method, payload.Payload);            
             return JsonConvert.DeserializeObject<T>(response.Content);
         }
 

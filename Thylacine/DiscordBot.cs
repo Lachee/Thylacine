@@ -274,9 +274,9 @@ namespace Thylacine
 
         private void OnDispatchEvent(object sender, DispatchEventArgs args)
         {
+            //Console.WriteLine("Event: {0}", args.Type);
             switch (args.Type)
-            {
-                
+            {                
                 case "READY":
                     HandleReadyEvent(args.Payload.ToObject<ReadyEvent>());
                     break;

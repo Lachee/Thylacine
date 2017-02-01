@@ -20,6 +20,28 @@ namespace Thylacine.Models
 
         [JsonProperty("channel")]
         public InviteChannel Channel { get; internal set; }
+
+        [JsonProperty("inviter")]
+        public User Inviter { get; internal set; }
+
+        [JsonProperty("uses")]
+        public int Uses { get; internal set; }
+
+        [JsonProperty("max_uses")]
+        public int MaxUsers { get; internal set; }
+
+        [JsonProperty("max_age")]
+        public int MaxAge { get; internal set; }
+
+        [JsonProperty("temporary")]
+        public bool Temporary { get; internal set; }
+
+        [JsonProperty("created_at"), JsonConverter(typeof(TimestampConverter))]
+        public DateTime CreatedAt { get; internal set; }
+
+        [JsonProperty("revoked")]
+        public bool Revoked { get; internal set; }
+
     }
 
     public class InviteGuild

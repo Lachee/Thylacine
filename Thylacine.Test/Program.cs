@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Thylacine.Helper;
 
 namespace Thylacine.Test
 {
@@ -37,7 +38,7 @@ namespace Thylacine.Test
                 {
                     string message = Console.ReadLine();
                     if (message == "exit") break;
-
+                  
                     var channels = bot.GetGuilds().First().Channels.Where(c => c.Type == Models.ChannelType.Text).ToArray();
 
                     Console.WriteLine("Text Channels:");
@@ -45,6 +46,13 @@ namespace Thylacine.Test
                         Console.WriteLine("Channel: " + c.Name);
 
                     var channel = channels.Length > 1 ? channels[1] : channels[0];
+
+                    if (message == "test")
+                    {
+                        Invite invite = channel.CreateInvite(60, 1, true, true);
+                        continue;
+                    }
+
 
                     Console.WriteLine("Sending '" + message + "' to channel '" + (channel?.Name ?? "nothing") + "'");
                     Message msg = channel.SendMessage(message);

@@ -30,7 +30,7 @@ namespace Thylacine.Models
         public string Discriminator { get; internal set; }
 
         [JsonProperty("avatar")]
-        public Avatar Avatar { get; internal set; }
+        public string AvatarHash { get; internal set; }
 
         [JsonProperty("bot")]
         public bool IsBot { get; internal set; }
@@ -50,7 +50,8 @@ namespace Thylacine.Models
         {
             this.Username = pu.Username ?? this.Username;
             this.Discriminator = pu.Discriminator ?? this.Discriminator;
-            this.Avatar = pu.Avatar ?? this.Avatar;
+            this.AvatarHash = pu.Avatar ?? this.AvatarHash;
+
             this.IsBot = pu.Bot ?? this.IsBot;
             this.MFAEnabled = pu.MFAEnabled ?? this.MFAEnabled;
             this.Verified = pu.Verified ?? this.Verified;

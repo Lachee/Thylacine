@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Thylacine.Exceptions;
 
 namespace Thylacine.Models
 {
@@ -45,7 +46,7 @@ namespace Thylacine.Models
         /// </summary>
         public void ApplyModifications()
         {
-            if (Discord == null) return;
+            if (Discord == null) throw new DiscordMissingException();
             Discord.Rest.SendPayload(new Rest.Payloads.ModifyChannel(this));
         }
 
@@ -53,7 +54,7 @@ namespace Thylacine.Models
         public void SetPermission(Overwrite permission, Permission allow, Permission deny, OverwriteType type) { this.SetPermission(permission.ID, permission.Allow, permission.Deny, permission.Type); }
         public void SetPermission(ulong permissionID, Permission allow, Permission deny, OverwriteType type)
         {
-            if (Discord == null) return;
+            if (Discord == null) throw new DiscordMissingException();
             Discord.Rest.SendPayload(new Rest.Payloads.EditChannelPermissions()
             {
                 ChannelID = this.ID,
@@ -88,7 +89,7 @@ namespace Thylacine.Models
         /// <param name="permissionID"></param>
         public void DeletePermission(ulong permissionID)
         {
-            if (Discord == null) return;
+            if (Discord == null) throw new DiscordMissingException();
             Discord.Rest.SendPayload(new Rest.Payloads.DeleteChannelPermission()
             {
                 ChannelID = this.ID,
@@ -101,7 +102,7 @@ namespace Thylacine.Models
         /// </summary>
         public void DeleteChannel()
         {
-            if (Discord == null) return;
+            if (Discord == null) throw new DiscordMissingException();
             Discord.Rest.SendPayload(new Rest.Payloads.DeleteChannel(this));
         }
 
@@ -114,7 +115,7 @@ namespace Thylacine.Models
         /// <param name="unique">if true, don't try to reuse a similar invite (useful for creating many unique one time use invites)</param>
         public Invite CreateInvite(int lifetime = 86400, int uses = 0, bool temporary = false, bool unique = false)
         {
-            if (Discord == null) return null;
+            if (Discord == null) throw new DiscordMissingException();
             return Discord.Rest.SendPayload<Invite>(new Rest.Payloads.CreateInvite()
             {
                 ChannelID = this.ID, 
@@ -123,6 +124,16 @@ namespace Thylacine.Models
                 Temporary = temporary,
                 Unique = unique
             });
+        }
+
+        /// <summary>
+        /// Returns a list of invites for the channel
+        /// </summary>
+        /// <returns></returns>
+        public List<Invite> FetchChannelInvites()
+        {
+            if (Discord == null) throw new DiscordMissingException();
+            return Discord.Rest.SendPayload<List<Invite>>(new Rest.Payloads.GetInvites() { ChannelID = this.ID });
         }
 
         #endregion
@@ -137,7 +148,7 @@ namespace Thylacine.Models
         /// <returns></returns>
         public Message SendMessage(string message, bool tts = false, Embed embed = null)
         {
-            if (Discord == null) return null;
+            if (Discord == null) throw new DiscordMissingException();
             if (message.Length >= 2000) return null;
 
             Message msg = Discord.Rest.SendPayload<Message>(new Rest.Payloads.CreateMessagePayload()
@@ -165,12 +176,64 @@ namespace Thylacine.Models
             message.Discord = this.Discord;
             return message;
         }
+
+        /// <summary>
+        /// Returns the messages for a channel. If operating on a guild channel, this endpoint requires the 'READ_MESSAGES' permission to be present on the current user
+        /// </summary>
+        /// <param name="around">get messages around this message ID</param>
+        /// <param name="before">	get messages before this message ID</param>
+        /// <param name="after">get messages after this message ID</param>
+        /// <param name="limit">max number of messages to return (1-100)</param>
+        /// <returns></returns>
+        public List<Message> FetchMessages(ulong? around = null, ulong? before = null, ulong? after = null, int limit = 50)
+        {
+            if (Discord == null) throw new DiscordMissingException();
+
+            //Clamp the limit
+            limit = limit < 1 ? 1 : (limit > 100 ? 100 : limit);
+
+            //Send the request
+            return Discord.Rest.SendPayload<List<Message>>(new Rest.Payloads.GetMessages()
+            {
+                ChannelID = ID,
+                Around = around,
+                Before = before,
+                After = after,
+                Limit = limit
+            });
+        }
+
+        /// <summary>
+        /// Returns a specific message in the channel. If operating on a guild channel, this endpoints requires the 'READ_MESSAGE_HISTORY' permission to be present on the current user.
+        /// </summary>
+        /// <param name="messageID"></param>
+        /// <returns></returns>
+        public Message FetchMessage(ulong messageID)
+        {
+            if (Discord == null) throw new DiscordMissingException();
+            return Discord.Rest.SendPayload<Message>(new Rest.Payloads.GetMessage()
+            {
+                ChannelID = ID,
+                MessageID = messageID
+            });
+        }
+
+        /// <summary>
+        /// Returns all pinned messages in the channel
+        /// </summary>
+        /// <returns></returns>
+        public List<Message> FetchPinnedMessages()
+        {
+            if (Discord == null) throw new DiscordMissingException();
+            return Discord.Rest.SendPayload<List<Message>>(new Rest.Payloads.GetPinnedMessages() { ChannelID = ID });
+        }
+
         #endregion
 
         #region Webhook Management
         public Webhook CreateWebhook(string name, Avatar avatar)
         {
-            if (Discord == null) return null;
+            if (Discord == null) throw new DiscordMissingException();
 
             Webhook hook = Discord.Rest.SendPayload<Webhook>(new Rest.Payloads.CreateWebhook()
             {
@@ -184,7 +247,7 @@ namespace Thylacine.Models
         }
         public List<Webhook> FetchWebhooks()
         {
-            if (Discord == null) return null;
+            if (Discord == null) throw new DiscordMissingException();
             List<Webhook> hooks = Discord.Rest.SendPayload<List<Webhook>>(new Rest.Payloads.GetWebhooks() { ScopeID = this.ID, Scope = "channels" });
             foreach (Webhook h in hooks) h.Discord = Discord;
 
@@ -198,7 +261,7 @@ namespace Thylacine.Models
         /// </summary>
         public void ShowTyping()
         {
-            if (Discord == null) return;
+            if (Discord == null) throw new DiscordMissingException();
             Discord.Rest.SendPayload(new Rest.Payloads.TriggerTypingIndicator() { ChannelID = this.ID });
         }
     }

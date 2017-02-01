@@ -35,6 +35,8 @@ namespace Thylacine.Models
         [JsonProperty("token")]
         public string Token { get; internal set; }
 
+        //TODO: Implement Discord Exeption
+
         /// <summary>
         /// Modify a webhook
         /// </summary>
