@@ -5,15 +5,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Thylacine.Exceptions;
 
 namespace Thylacine.Models
 {
     public class Role
     {
+        public Guild Guild { get; internal set; }
+        public DiscordBot Discord { get { return Guild?.Discord; } }
+
         public string MentionTag { get { return "<@&" + this.ID + ">"; } }
 
         [JsonProperty("id"), JsonConverter(typeof(SnowflakeConverter))]
-        public ulong ID { get; set; }
+        public ulong ID { get; internal set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -35,5 +39,28 @@ namespace Thylacine.Models
 
         [JsonProperty("mentionable")]
         public bool Mentionable { get; set; }
+
+
+
+        /// <summary>
+        /// Modify a guild role. Requires the 'MANAGE_ROLES' permission.
+        /// </summary>
+        /// <param name="r"></param>
+        /// <returns></returns>
+        public void ApplyModifications()
+        {
+            if (Discord == null) throw new DiscordMissingException();
+            Discord.Rest.SendPayload<Role>(new Rest.Payloads.ModifyGuildRole(this.Guild, this));
+            Guild.UpdateRole(this);
+        }
+
+        /// <summary>
+        /// Delete a guild role. Requires the 'MANAGE_ROLES' permission. 
+        /// </summary>
+        public void Delete()
+        {
+            if (Discord == null) throw new DiscordMissingException();
+            Discord.Rest.SendPayload(new Rest.Payloads.DeleteGuildRole(this));
+        }
     }
 }

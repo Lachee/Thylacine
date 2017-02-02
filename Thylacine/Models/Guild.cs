@@ -61,7 +61,11 @@ namespace Thylacine.Models
             internal set
             {
                 _roles = new Dictionary<ulong, Role>();
-                foreach (var r in value) _roles.Add(r.ID, r);
+                foreach (var r in value)
+                {
+                    r.Guild = this;
+                    _roles.Add(r.ID, r);
+                }
             }
         }
 
@@ -186,6 +190,7 @@ namespace Thylacine.Models
         internal void UpdateRole(Role r)
         {
             _roles[r.ID] = r;
+            _roles[r.ID].Guild = this;
         }
         internal void RemoveRole(ulong r)
         {
@@ -195,13 +200,20 @@ namespace Thylacine.Models
         public Role GetRole(ulong id) { return _roles[id]; }
         public bool HasRole(ulong id) { return _roles.ContainsKey(id); }
 
+        /// <summary>
+        /// Create a new role for the guild. Requires the 'MANAGE_ROLES' permission. ID is ignored.
+        /// </summary>
+        /// <param name="r"></param>
+        /// <returns></returns>
         public Role CreateRole(Role r)
         {
             if (Discord == null) throw new DiscordMissingException();
-            Role createdRole = Discord.Rest.SendPayload<Role>(new Rest.Payloads.CreateGuildRole(this, r));
-            UpdateRole(createdRole);
-            return createdRole;
+            Role role = Discord.Rest.SendPayload<Role>(new Rest.Payloads.CreateGuildRole(this, r));
+            UpdateRole(role);
+
+            return role;
         }
+        
         #endregion
 
         #region Member Management
@@ -239,6 +251,20 @@ namespace Thylacine.Models
 
         public GuildMember GetMember(ulong id) { return _guildmembers[id]; }
         public bool HasMember(ulong id) { return _guildmembers.ContainsKey(id); }
+
+        /// <summary>
+        /// Returns the number indicating how many members would be removed in a prune operation.
+        /// </summary>
+        /// <param name="days"></param>
+        /// <returns></returns>
+        public int FetchPruneCount(int days)
+        {
+            if (Discord == null) throw new DiscordMissingException();
+            if (days < 1) throw new ArgumentException("Days must be 1 or more.");
+
+            //TODO: Finish this method
+            throw new NotImplementedException();
+        }
 
         #endregion
 
@@ -388,6 +414,12 @@ namespace Thylacine.Models
 
         [JsonProperty("splash")]
         public Avatar Splash { get; set; }
+    }
+
+    internal struct PruneResult
+    {
+        [JsonProperty("pruned")]
+        public int Count { get; set; }
     }
 }
 
