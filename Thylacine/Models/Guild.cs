@@ -316,6 +316,16 @@ namespace Thylacine.Models
         #region Misc
 
         /// <summary>
+        /// Returns a list of invites for the guild. Requires the 'MANAGE_GUILD' permission.
+        /// </summary>
+        /// <returns></returns>
+        public List<Invite> FetchInvites()
+        {
+            if (Discord == null) throw new DiscordMissingException();
+            return Discord.Rest.SendPayload<List<Invite>>(new Rest.Payloads.GetGuildInvites(this));
+        }
+
+        /// <summary>
         /// Fetches webhooks for this guild.
         /// </summary>
         /// <returns></returns>

@@ -130,10 +130,10 @@ namespace Thylacine.Models
         /// Returns a list of invites for the channel
         /// </summary>
         /// <returns></returns>
-        public List<Invite> FetchChannelInvites()
+        public List<Invite> FetchInvites()
         {
             if (Discord == null) throw new DiscordMissingException();
-            return Discord.Rest.SendPayload<List<Invite>>(new Rest.Payloads.GetInvites() { ChannelID = this.ID });
+            return Discord.Rest.SendPayload<List<Invite>>(new Rest.Payloads.GetChannelInvites() { ChannelID = this.ID });
         }
 
         #endregion
