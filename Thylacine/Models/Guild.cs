@@ -252,18 +252,39 @@ namespace Thylacine.Models
         public GuildMember GetMember(ulong id) { return _guildmembers[id]; }
         public bool HasMember(ulong id) { return _guildmembers.ContainsKey(id); }
 
+
+        internal struct PruneResult
+        {
+            [JsonProperty("pruned")]
+            public int Count { get; set; }
+        }
+
         /// <summary>
         /// Returns the number indicating how many members would be removed in a prune operation.
         /// </summary>
-        /// <param name="days"></param>
+        /// <param name="days">Number of days to count prune for (1 or more)</param>
         /// <returns></returns>
         public int FetchPruneCount(int days)
         {
             if (Discord == null) throw new DiscordMissingException();
             if (days < 1) throw new ArgumentException("Days must be 1 or more.");
 
-            //TODO: Finish this method
-            throw new NotImplementedException();
+            PruneResult result = Discord.Rest.SendPayload<PruneResult>(new Rest.Payloads.GetGuildPruneCount(this, days));
+            return result.Count;
+        }
+
+        /// <summary>
+        /// Begin a prune operation. Requires the 'KICK_MEMBERS' permission. Returns number of members that were removed in the prune operation.
+        /// </summary>
+        /// <param name="days">Number of days to count prune for (1 or more)</param>
+        /// <returns></returns>
+        public int Prune(int days)
+        {
+            if (Discord == null) throw new DiscordMissingException();
+            if (days < 1) throw new ArgumentException("Days must be 1 or more.");
+
+            PruneResult result = Discord.Rest.SendPayload<PruneResult>(new Rest.Payloads.BeginGuildPrune(this, days));
+            return result.Count;
         }
 
         #endregion
@@ -416,10 +437,5 @@ namespace Thylacine.Models
         public Avatar Splash { get; set; }
     }
 
-    internal struct PruneResult
-    {
-        [JsonProperty("pruned")]
-        public int Count { get; set; }
-    }
 }
 
