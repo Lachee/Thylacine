@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Thylacine.Exceptions;
 
 namespace Thylacine.Models
 {
@@ -64,7 +65,7 @@ namespace Thylacine.Models
             }
         }
 
-            [JsonProperty("emojis")]
+        [JsonProperty("emojis")]
         public Emoji[] Emojis { get; internal set; }
 
         [JsonProperty("features")]
@@ -74,7 +75,7 @@ namespace Thylacine.Models
         public int MFALevel { get; internal set; }
 
         [JsonProperty("member_count")]
-        public int MemberCount { get; internal set;  }
+        public int MemberCount { get; internal set; }
 
         [JsonProperty("joined_at")]
         public object JoinedAt { get; internal set; }
@@ -129,14 +130,56 @@ namespace Thylacine.Models
         private Dictionary<ulong, Channel> _channels = new Dictionary<ulong, Channel>();
 
         /// <summary>Does the inital mapping of the presences</summary>
-        internal void SyncronizePresence()  { foreach (Presence p in Presences) UpdateMemberPresence(p);  }
-     
+        internal void SyncronizePresence() { foreach (Presence p in Presences) UpdateMemberPresence(p); }
+
         #region Channel Management
         internal void UpdateChannel(Channel c) { _channels[c.ID] = c; }
         internal void RemoveChannel(Channel c) { _channels.Remove(c.ID); }
 
         public Channel GetChannel(ulong id) { return _channels[id]; }
         public bool HasChannel(ulong id) { return _channels.ContainsKey(id); }
+
+        /// <summary>
+        /// Creates a new text channel in the guild. Requires the 'MANAGE_CHANNELS' permission. 
+        /// </summary>
+        /// <param name="name">Name of the channel. Between 2 and 100 characters long.</param>
+        /// <param name="permissions">The channel's permission overwrites.</param>
+        /// <returns></returns>
+        public Channel CreateTextChannel(string name, Overwrite[] permissions)
+        {
+            if (name.Length < 2 || name.Length > 100) throw new ArgumentException("Channel name must be greater than 2 characters and less than 100. A length of " + name.Length + " was given.");
+            return CreateChannel(name, ChannelType.Text, null, null, permissions);
+        }
+
+        /// <summary>
+        /// Creates a new voice channel in the guild. Requires the 'MANAGE_CHANNELS' permission. 
+        /// </summary>
+        /// <param name="name">Name of the channel. Between 2 and 100 characters long.</param>
+        /// <param name="bitrate">The bitrate of the voice channel</param>
+        /// <param name="userlimit">The user limit of the voice channel</param>
+        /// <param name="permissions">The channel's permission overwrites.</param>
+        /// <returns></returns>
+        public Channel CreateVoiceChannel(string name, int bitrate, int userlimit, Overwrite[] permissions)
+        {
+            if (name.Length < 2 || name.Length > 100) throw new ArgumentException("Channel name must be greater than 2 characters and less than 100. A length of " + name.Length + " was given.");
+            return CreateChannel(name, ChannelType.Voice, bitrate, userlimit, permissions);
+        }
+        internal Channel CreateChannel(string name, ChannelType type, int? bitrate, int? userlimit, Overwrite[] permissions)
+        {
+            if (name.Length < 2 || name.Length > 100) throw new ArgumentException("Channel name must be greater than 2 characters and less than 100. A length of " + name.Length + " was given.");
+            Channel c = Discord.Rest.SendPayload<Channel>(new Rest.Payloads.CreateChannel()
+            {
+                GuildID = ID,
+                Name = name,
+                Type = type,
+                Bitrate = bitrate,
+                UserLimit = userlimit,
+                Permissions = permissions
+            });
+
+            c.Guild = this;
+            return c;
+        }
         #endregion
 
         #region Role Management        
@@ -148,23 +191,32 @@ namespace Thylacine.Models
         {
             _roles.Remove(r);
         }
-        
+
         public Role GetRole(ulong id) { return _roles[id]; }
         public bool HasRole(ulong id) { return _roles.ContainsKey(id); }
+
+        public Role CreateRole(Role r)
+        {
+            if (Discord == null) throw new DiscordMissingException();
+            Role createdRole = Discord.Rest.SendPayload<Role>(new Rest.Payloads.CreateGuildRole(this, r));
+            UpdateRole(createdRole);
+            return createdRole;
+        }
         #endregion
 
         #region Member Management
         internal void UpdateMember(GuildMember m)
         {
             _guildmembers[m.User.ID] = m;
-            _guildmembers[m.User.ID].Discord = this.Discord;
+            _guildmembers[m.User.ID].Guild = this;
             _guildmembers[m.User.ID].User.GuildID = this.ID;
+            _guildmembers[m.User.ID].UpdateRoles(this);
         }
         internal void RemoveMember(ulong id)
         {
             _guildmembers.Remove(id);
         }
-        
+
         /// <summary>Update the presence of a user in this guild</summary>
         internal void UpdateMemberPresence(Presence p)
         {
@@ -176,7 +228,7 @@ namespace Thylacine.Models
             if (!_guildmembers.TryGetValue(p.Updates.ID, out member)) return;
 
             //Update them
-            member.Discord = this.Discord;
+            member.Guild = this;
             member.UpdatePresence(p);
         }
         internal void UpdateUser(User u)
@@ -187,18 +239,76 @@ namespace Thylacine.Models
 
         public GuildMember GetMember(ulong id) { return _guildmembers[id]; }
         public bool HasMember(ulong id) { return _guildmembers.ContainsKey(id); }
+
+        #endregion
+
+        #region Ban Management
+
+        /// <summary>
+        /// Returns a list of user objects that are banned from this guild. Requires the 'BAN_MEMBERS' permission.
+        /// </summary>
+        /// <returns></returns>
+        public List<User> FetchBans()
+        {
+            if (Discord == null) throw new DiscordMissingException();
+            return Discord.Rest.SendPayload<List<User>>(new Rest.Payloads.GetGuildBans(this));
+        }
+
+        /// <summary>
+        /// Remove the ban for a user. Requires the 'BAN_MEMBERS' permissions.
+        /// </summary>
+        /// <param name="user"></param>
+        public void RemoveBan(User user)
+        {
+            if (Discord == null) throw new DiscordMissingException();
+            Discord.Rest.SendPayload(new Rest.Payloads.RemoveGuildBan() { GuildID = ID, UserID = user.ID });
+        }
+
         #endregion
 
         #region Misc
 
+        /// <summary>
+        /// Fetches webhooks for this guild.
+        /// </summary>
+        /// <returns></returns>
         public List<Webhook> FetchWebhooks()
         {
-            if (Discord == null) return null;
+            if (Discord == null) throw new DiscordMissingException();
             List<Webhook> hooks = Discord.Rest.SendPayload<List<Webhook>>(new Rest.Payloads.GetWebhooks() { ScopeID = this.ID, Scope = "guilds" });
             foreach (Webhook h in hooks) h.Discord = Discord;
             return hooks;
         }
 
+        /// <summary>
+        /// Modifies the guilds settings
+        /// </summary>
+        public void ApplyModifications(GuildModification modification)
+        {
+            if (Discord == null) throw new DiscordMissingException();
+            Guild g = Discord.Rest.SendPayload<Guild>(new Rest.Payloads.ModifyGuild(this, modification));
+            UpdateGuild(g, Discord);
+        }
+
+        /// <summary>
+        /// Modifies the nickname of the current user in the guild. Requires CHANGE_NICKNAME permission.
+        /// </summary>
+        /// <param name="nickname"></param>
+        public void SetNickname(string nickname)
+        {
+            if (Discord == null) throw new DiscordMissingException();
+            Discord.Rest.SendPayload(new Rest.Payloads.ModifyGuildNickname() { GuildID = ID, Nickname = nickname });
+        }
+
+        /// <summary>
+        /// Delete a guild permanently. User must be owner.
+        /// </summary>
+        public void DeleteGuild()
+        {
+            if (Discord == null) throw new DiscordMissingException();
+            Discord.Rest.SendPayload(new Rest.Payloads.DeleteGuild(this));
+        }
+        
         internal void UpdateGuild(Guild g, DiscordBot discord)
         {
             this.Discord = discord;
@@ -221,8 +331,8 @@ namespace Thylacine.Models
 
             SyncronizePresence();
         }
-
         #endregion
+        
     }
     public class UnavailableGuild
     {
@@ -248,9 +358,36 @@ namespace Thylacine.Models
 
         [JsonProperty("owner")]
         public bool IsOwner { get; set; }
-        
+
         [JsonProperty("permissions")]
-        public Permission Permissions { get; set; } 
+        public Permission Permissions { get; set; }
+    }
+
+    public struct GuildModification {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("region")]
+        public string Region { get; set; }
+        
+        [JsonProperty("verification_level")]
+        public int? VerificationLevel { get; set; }
+        [JsonProperty("default_message_notifications")]
+        public int? DefaultMessageNotifications { get; set; }
+
+        [JsonProperty("afk_channel_id"), JsonConverter(typeof(SnowflakeConverter))]
+        public ulong? AFKChannelID { get; set; }
+        [JsonProperty("afk_timeout")]
+        public int? AFKTimeout { get; set; }
+
+        [JsonProperty("owner_id"), JsonConverter(typeof(SnowflakeConverter))]
+        public ulong? OwnerID { get; set; }
+
+        [JsonProperty("icon")]
+        public Avatar Icon { get; set; }
+
+        [JsonProperty("splash")]
+        public Avatar Splash { get; set; }
     }
 }
 
