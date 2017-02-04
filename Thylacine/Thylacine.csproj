@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Thylacine.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -102,11 +103,26 @@
     <Compile Include="Exceptions\DiscordRestException.cs" />
     <Compile Include="Rest\Extensions\DiscordAuthenticator.cs" />
     <Compile Include="Rest\Extensions\NewtonsoftSerializer.cs" />
+    <Compile Include="Rest\Payloads\CreateChannel.cs" />
+    <Compile Include="Rest\Payloads\AddGuildMemberRole.cs" />
+    <Compile Include="Rest\Payloads\BeginGuildPrune.cs" />
+    <Compile Include="Rest\Payloads\GetGuildPruneCount.cs" />
+    <Compile Include="Rest\Payloads\DeleteGuildRole.cs" />
+    <Compile Include="Rest\Payloads\ModifyGuildRole.cs" />
+    <Compile Include="Rest\Payloads\CreateGuildRole.cs" />
+    <Compile Include="Rest\Payloads\GetGuildBans.cs" />
+    <Compile Include="Rest\Payloads\RemoveGuildBan.cs" />
+    <Compile Include="Rest\Payloads\DeleteGuild.cs" />
     <Compile Include="Rest\Payloads\GetInvites.cs" />
     <Compile Include="Rest\Payloads\GetReactions.cs" />
     <Compile Include="Rest\Payloads\ExecuteWebhook.cs" />
     <Compile Include="Rest\Payloads\DeleteWebhook.cs" />
     <Compile Include="Rest\Payloads\GetMessages.cs" />
+    <Compile Include="Rest\Payloads\CreateGuildBan.cs" />
+    <Compile Include="Rest\Payloads\RemoveGuildMember.cs" />
+    <Compile Include="Rest\Payloads\ModifyGuildNickname.cs" />
+    <Compile Include="Rest\Payloads\ModifyGuildMember.cs" />
+    <Compile Include="Rest\Payloads\ModifyGuild.cs" />
     <Compile Include="Rest\Payloads\ModifyWebhook.cs" />
     <Compile Include="Rest\Payloads\GetWebhooks.cs" />
     <Compile Include="Rest\Payloads\CreateWebhook.cs" />
