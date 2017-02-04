@@ -1,0 +1,1204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Id="83b55118-b753-417f-bdb1-93c23c0ef4f2" Title="Namespaces" Url="html/R_Project_Documentation_for_the_Thylacine_Discord_Library.htm">
+    <HelpTOCNode Id="06cec839-f601-4d43-9a37-d1c1d6b89ff2" Title="RestSharp.Newtonsoft.Json" Url="html/N_RestSharp_Newtonsoft_Json.htm">
+      <HelpTOCNode Id="697516a7-9bab-489c-a619-b129fc5cb514" Title="NewtonsoftJsonSerializer Class" Url="html/T_RestSharp_Newtonsoft_Json_NewtonsoftJsonSerializer.htm">
+        <HelpTOCNode Id="d0e0ee18-85c4-4482-8d5c-29008860ec2a" Title="NewtonsoftJsonSerializer Constructor " Url="html/Overload_RestSharp_Newtonsoft_Json_NewtonsoftJsonSerializer__ctor.htm">
+          <HelpTOCNode Title="NewtonsoftJsonSerializer Constructor " Url="html/M_RestSharp_Newtonsoft_Json_NewtonsoftJsonSerializer__ctor.htm" />
+          <HelpTOCNode Title="NewtonsoftJsonSerializer Constructor (JsonSerializer)" Url="html/M_RestSharp_Newtonsoft_Json_NewtonsoftJsonSerializer__ctor_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="ff1639e5-30a9-4d45-aff1-c131a2397e56" Title="NewtonsoftJsonSerializer Properties" Url="html/Properties_T_RestSharp_Newtonsoft_Json_NewtonsoftJsonSerializer.htm">
+          <HelpTOCNode Title="ContentType Property " Url="html/P_RestSharp_Newtonsoft_Json_NewtonsoftJsonSerializer_ContentType.htm" />
+          <HelpTOCNode Title="DateFormat Property " Url="html/P_RestSharp_Newtonsoft_Json_NewtonsoftJsonSerializer_DateFormat.htm" />
+          <HelpTOCNode Title="Namespace Property " Url="html/P_RestSharp_Newtonsoft_Json_NewtonsoftJsonSerializer_Namespace.htm" />
+          <HelpTOCNode Title="RootElement Property " Url="html/P_RestSharp_Newtonsoft_Json_NewtonsoftJsonSerializer_RootElement.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="e08f0056-012a-4dd3-b24d-9f6160f325f0" Title="NewtonsoftJsonSerializer Methods" Url="html/Methods_T_RestSharp_Newtonsoft_Json_NewtonsoftJsonSerializer.htm">
+          <HelpTOCNode Title="Serialize Method " Url="html/M_RestSharp_Newtonsoft_Json_NewtonsoftJsonSerializer_Serialize.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="2c9061b3-c03e-4558-9f8c-9ddc1c547501" Title="Thylacine" Url="html/N_Thylacine.htm">
+      <HelpTOCNode Id="2ac62ac4-c6d1-475f-a0f4-21654ed8323c" Title="DiscordBot Class" Url="html/T_Thylacine_DiscordBot.htm">
+        <HelpTOCNode Title="DiscordBot Constructor " Url="html/M_Thylacine_DiscordBot__ctor.htm" />
+        <HelpTOCNode Id="333a216f-7a45-41e9-b118-fdfbdd4ba2b0" Title="DiscordBot Properties" Url="html/Properties_T_Thylacine_DiscordBot.htm">
+          <HelpTOCNode Title="Gateway Property " Url="html/P_Thylacine_DiscordBot_Gateway.htm" />
+          <HelpTOCNode Title="PrivateChannels Property " Url="html/P_Thylacine_DiscordBot_PrivateChannels.htm" />
+          <HelpTOCNode Title="Rest Property " Url="html/P_Thylacine_DiscordBot_Rest.htm" />
+          <HelpTOCNode Title="Session Property " Url="html/P_Thylacine_DiscordBot_Session.htm" />
+          <HelpTOCNode Title="User Property " Url="html/P_Thylacine_DiscordBot_User.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="8918ca4e-d3f4-4ee6-890a-e96f89b6fd67" Title="DiscordBot Methods" Url="html/Methods_T_Thylacine_DiscordBot.htm">
+          <HelpTOCNode Title="Connect Method " Url="html/M_Thylacine_DiscordBot_Connect.htm" />
+          <HelpTOCNode Id="36166cb4-b05c-487c-b26b-5bb03b96d90a" Title="FetchWebhook Method " Url="html/Overload_Thylacine_DiscordBot_FetchWebhook.htm">
+            <HelpTOCNode Title="FetchWebhook Method (UInt64)" Url="html/M_Thylacine_DiscordBot_FetchWebhook.htm" />
+            <HelpTOCNode Title="FetchWebhook Method (UInt64, String)" Url="html/M_Thylacine_DiscordBot_FetchWebhook_1.htm" />
+          </HelpTOCNode>
+          <HelpTOCNode Title="GetChannel Method " Url="html/M_Thylacine_DiscordBot_GetChannel.htm" />
+          <HelpTOCNode Title="GetChannelGuild Method " Url="html/M_Thylacine_DiscordBot_GetChannelGuild.htm" />
+          <HelpTOCNode Title="GetGuild Method " Url="html/M_Thylacine_DiscordBot_GetGuild.htm" />
+          <HelpTOCNode Title="GetGuilds Method " Url="html/M_Thylacine_DiscordBot_GetGuilds.htm" />
+          <HelpTOCNode Title="GetUserGuilds Method " Url="html/M_Thylacine_DiscordBot_GetUserGuilds.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="4ab7c17f-7a88-4646-85f4-a59b60ed8856" Title="DiscordBot Events" Url="html/Events_T_Thylacine_DiscordBot.htm">
+          <HelpTOCNode Title="OnChannelCreate Event" Url="html/E_Thylacine_DiscordBot_OnChannelCreate.htm" />
+          <HelpTOCNode Title="OnChannelRemove Event" Url="html/E_Thylacine_DiscordBot_OnChannelRemove.htm" />
+          <HelpTOCNode Title="OnChannelUpdate Event" Url="html/E_Thylacine_DiscordBot_OnChannelUpdate.htm" />
+          <HelpTOCNode Title="OnDiscordReady Event" Url="html/E_Thylacine_DiscordBot_OnDiscordReady.htm" />
+          <HelpTOCNode Title="OnDMCreate Event" Url="html/E_Thylacine_DiscordBot_OnDMCreate.htm" />
+          <HelpTOCNode Title="OnDMRemove Event" Url="html/E_Thylacine_DiscordBot_OnDMRemove.htm" />
+          <HelpTOCNode Title="OnEmojisUpdate Event" Url="html/E_Thylacine_DiscordBot_OnEmojisUpdate.htm" />
+          <HelpTOCNode Title="OnGuildCreate Event" Url="html/E_Thylacine_DiscordBot_OnGuildCreate.htm" />
+          <HelpTOCNode Title="OnGuildRemove Event" Url="html/E_Thylacine_DiscordBot_OnGuildRemove.htm" />
+          <HelpTOCNode Title="OnGuildUpdate Event" Url="html/E_Thylacine_DiscordBot_OnGuildUpdate.htm" />
+          <HelpTOCNode Title="OnIntergrationsUpdate Event" Url="html/E_Thylacine_DiscordBot_OnIntergrationsUpdate.htm" />
+          <HelpTOCNode Title="OnMemberBanned Event" Url="html/E_Thylacine_DiscordBot_OnMemberBanned.htm" />
+          <HelpTOCNode Title="OnMemberCreate Event" Url="html/E_Thylacine_DiscordBot_OnMemberCreate.htm" />
+          <HelpTOCNode Title="OnMemberRemove Event" Url="html/E_Thylacine_DiscordBot_OnMemberRemove.htm" />
+          <HelpTOCNode Title="OnMembersChunk Event" Url="html/E_Thylacine_DiscordBot_OnMembersChunk.htm" />
+          <HelpTOCNode Title="OnMemberUnbanned Event" Url="html/E_Thylacine_DiscordBot_OnMemberUnbanned.htm" />
+          <HelpTOCNode Title="OnMemberUpdate Event" Url="html/E_Thylacine_DiscordBot_OnMemberUpdate.htm" />
+          <HelpTOCNode Title="OnMessageBulkRemove Event" Url="html/E_Thylacine_DiscordBot_OnMessageBulkRemove.htm" />
+          <HelpTOCNode Title="OnMessageCreate Event" Url="html/E_Thylacine_DiscordBot_OnMessageCreate.htm" />
+          <HelpTOCNode Title="OnMessageRemove Event" Url="html/E_Thylacine_DiscordBot_OnMessageRemove.htm" />
+          <HelpTOCNode Title="OnMessageUpdate Event" Url="html/E_Thylacine_DiscordBot_OnMessageUpdate.htm" />
+          <HelpTOCNode Title="OnPresenceUpdate Event" Url="html/E_Thylacine_DiscordBot_OnPresenceUpdate.htm" />
+          <HelpTOCNode Title="OnRoleCreate Event" Url="html/E_Thylacine_DiscordBot_OnRoleCreate.htm" />
+          <HelpTOCNode Title="OnRoleRemove Event" Url="html/E_Thylacine_DiscordBot_OnRoleRemove.htm" />
+          <HelpTOCNode Title="OnRoleUpdate Event" Url="html/E_Thylacine_DiscordBot_OnRoleUpdate.htm" />
+          <HelpTOCNode Title="OnTyping Event" Url="html/E_Thylacine_DiscordBot_OnTyping.htm" />
+          <HelpTOCNode Title="OnUserUpdate Event" Url="html/E_Thylacine_DiscordBot_OnUserUpdate.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="4a173a05-0a51-4be6-9a24-1ade91adb44b" Title="Thylacine.Event" Url="html/N_Thylacine_Event.htm">
+      <HelpTOCNode Title="ChannelEvent Delegate" Url="html/T_Thylacine_Event_ChannelEvent.htm" />
+      <HelpTOCNode Id="d53b8e61-5b77-4272-bfaa-9eb6ec42c801" Title="ChannelEventArgs Class" Url="html/T_Thylacine_Event_ChannelEventArgs.htm">
+        <HelpTOCNode Id="589d0e80-fa31-4011-8e45-1e7370bbdba4" Title="ChannelEventArgs Properties" Url="html/Properties_T_Thylacine_Event_ChannelEventArgs.htm">
+          <HelpTOCNode Title="Channel Property " Url="html/P_Thylacine_Event_ChannelEventArgs_Channel.htm" />
+          <HelpTOCNode Title="Guild Property " Url="html/P_Thylacine_Event_ChannelEventArgs_Guild.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="ChannelEventArgs Methods" Url="html/Methods_T_Thylacine_Event_ChannelEventArgs.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="DiscordReadyEvent Delegate" Url="html/T_Thylacine_Event_DiscordReadyEvent.htm" />
+      <HelpTOCNode Id="bbfd614a-fd3c-430b-8929-c708dbe6874c" Title="DiscordReadyEventArgs Class" Url="html/T_Thylacine_Event_DiscordReadyEventArgs.htm">
+        <HelpTOCNode Id="dc0b0de4-0d73-4c17-8a04-e283c2cc32ba" Title="DiscordReadyEventArgs Properties" Url="html/Properties_T_Thylacine_Event_DiscordReadyEventArgs.htm">
+          <HelpTOCNode Title="Bot Property " Url="html/P_Thylacine_Event_DiscordReadyEventArgs_Bot.htm" />
+          <HelpTOCNode Title="Session Property " Url="html/P_Thylacine_Event_DiscordReadyEventArgs_Session.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="DiscordReadyEventArgs Methods" Url="html/Methods_T_Thylacine_Event_DiscordReadyEventArgs.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="DMCreateEvent Delegate" Url="html/T_Thylacine_Event_DMCreateEvent.htm" />
+      <HelpTOCNode Id="6102ba08-bf5a-426e-a07f-d0f63f1e1f81" Title="DMCreateEventArgs Class" Url="html/T_Thylacine_Event_DMCreateEventArgs.htm">
+        <HelpTOCNode Id="2bc4c454-0751-489f-9b7c-989de291bcf6" Title="DMCreateEventArgs Properties" Url="html/Properties_T_Thylacine_Event_DMCreateEventArgs.htm">
+          <HelpTOCNode Title="Channel Property " Url="html/P_Thylacine_Event_DMCreateEventArgs_Channel.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="DMCreateEventArgs Methods" Url="html/Methods_T_Thylacine_Event_DMCreateEventArgs.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="GuildBanEvent Delegate" Url="html/T_Thylacine_Event_GuildBanEvent.htm" />
+      <HelpTOCNode Id="96fe9f64-0304-4d99-a45c-15fadac49fd7" Title="GuildBanEventArgs Class" Url="html/T_Thylacine_Event_GuildBanEventArgs.htm">
+        <HelpTOCNode Id="236508c0-c026-44a2-b073-924ad07d6d05" Title="GuildBanEventArgs Properties" Url="html/Properties_T_Thylacine_Event_GuildBanEventArgs.htm">
+          <HelpTOCNode Title="Guild Property " Url="html/P_Thylacine_Event_GuildBanEventArgs_Guild.htm" />
+          <HelpTOCNode Title="User Property " Url="html/P_Thylacine_Event_GuildBanEventArgs_User.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="GuildBanEventArgs Methods" Url="html/Methods_T_Thylacine_Event_GuildBanEventArgs.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="GuildEvent Delegate" Url="html/T_Thylacine_Event_GuildEvent.htm" />
+      <HelpTOCNode Id="4b052a52-b13e-495e-bb94-59d141b45604" Title="GuildEventArgs Class" Url="html/T_Thylacine_Event_GuildEventArgs.htm">
+        <HelpTOCNode Id="b6cc02d3-3816-4bb0-bb24-77aad2dccd8f" Title="GuildEventArgs Properties" Url="html/Properties_T_Thylacine_Event_GuildEventArgs.htm">
+          <HelpTOCNode Title="Guild Property " Url="html/P_Thylacine_Event_GuildEventArgs_Guild.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="GuildEventArgs Methods" Url="html/Methods_T_Thylacine_Event_GuildEventArgs.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="GuildMemberEvent Delegate" Url="html/T_Thylacine_Event_GuildMemberEvent.htm" />
+      <HelpTOCNode Id="482fd2f1-bca5-4e20-8d0e-c8768179e98e" Title="GuildMemberEventArgs Class" Url="html/T_Thylacine_Event_GuildMemberEventArgs.htm">
+        <HelpTOCNode Id="d1f3e913-b712-45d4-8bc5-099fd496d46f" Title="GuildMemberEventArgs Properties" Url="html/Properties_T_Thylacine_Event_GuildMemberEventArgs.htm">
+          <HelpTOCNode Title="Guild Property " Url="html/P_Thylacine_Event_GuildMemberEventArgs_Guild.htm" />
+          <HelpTOCNode Title="Member Property " Url="html/P_Thylacine_Event_GuildMemberEventArgs_Member.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="GuildMemberEventArgs Methods" Url="html/Methods_T_Thylacine_Event_GuildMemberEventArgs.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MessageBulkDeleteEvent Delegate" Url="html/T_Thylacine_Event_MessageBulkDeleteEvent.htm" />
+      <HelpTOCNode Id="6e3e97b3-148a-4203-b985-5abcb864c873" Title="MessageBulkDeleteEventArgs Class" Url="html/T_Thylacine_Event_MessageBulkDeleteEventArgs.htm">
+        <HelpTOCNode Id="827cf742-4859-4d0c-916e-36a87b0a0b28" Title="MessageBulkDeleteEventArgs Properties" Url="html/Properties_T_Thylacine_Event_MessageBulkDeleteEventArgs.htm">
+          <HelpTOCNode Title="ChannelID Property " Url="html/P_Thylacine_Event_MessageBulkDeleteEventArgs_ChannelID.htm" />
+          <HelpTOCNode Title="Guild Property " Url="html/P_Thylacine_Event_MessageBulkDeleteEventArgs_Guild.htm" />
+          <HelpTOCNode Title="MessageIDs Property " Url="html/P_Thylacine_Event_MessageBulkDeleteEventArgs_MessageIDs.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="MessageBulkDeleteEventArgs Methods" Url="html/Methods_T_Thylacine_Event_MessageBulkDeleteEventArgs.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MessageDeleteEvent Delegate" Url="html/T_Thylacine_Event_MessageDeleteEvent.htm" />
+      <HelpTOCNode Id="8f371cf7-befb-4e2f-a672-68a82422fabc" Title="MessageDeleteEventArgs Class" Url="html/T_Thylacine_Event_MessageDeleteEventArgs.htm">
+        <HelpTOCNode Id="12d20557-2d94-41dc-8c0c-234f67a41b2f" Title="MessageDeleteEventArgs Properties" Url="html/Properties_T_Thylacine_Event_MessageDeleteEventArgs.htm">
+          <HelpTOCNode Title="ChannelID Property " Url="html/P_Thylacine_Event_MessageDeleteEventArgs_ChannelID.htm" />
+          <HelpTOCNode Title="Guild Property " Url="html/P_Thylacine_Event_MessageDeleteEventArgs_Guild.htm" />
+          <HelpTOCNode Title="MessageID Property " Url="html/P_Thylacine_Event_MessageDeleteEventArgs_MessageID.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="MessageDeleteEventArgs Methods" Url="html/Methods_T_Thylacine_Event_MessageDeleteEventArgs.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MessageEvent Delegate" Url="html/T_Thylacine_Event_MessageEvent.htm" />
+      <HelpTOCNode Id="8f53b01f-5451-41f1-b73a-44797e6c3310" Title="MessageEventArgs Class" Url="html/T_Thylacine_Event_MessageEventArgs.htm">
+        <HelpTOCNode Id="cbb7cafb-93c8-433c-8745-ede1bc2bfe4e" Title="MessageEventArgs Properties" Url="html/Properties_T_Thylacine_Event_MessageEventArgs.htm">
+          <HelpTOCNode Title="Guild Property " Url="html/P_Thylacine_Event_MessageEventArgs_Guild.htm" />
+          <HelpTOCNode Title="Message Property " Url="html/P_Thylacine_Event_MessageEventArgs_Message.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="MessageEventArgs Methods" Url="html/Methods_T_Thylacine_Event_MessageEventArgs.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="PresenceEvent Delegate" Url="html/T_Thylacine_Event_PresenceEvent.htm" />
+      <HelpTOCNode Id="eef79523-f35f-4232-9706-8c9aeb2425d8" Title="PresenceEventArgs Class" Url="html/T_Thylacine_Event_PresenceEventArgs.htm">
+        <HelpTOCNode Id="95ef9c02-d984-4b0c-b8a2-ff092bed31cf" Title="PresenceEventArgs Properties" Url="html/Properties_T_Thylacine_Event_PresenceEventArgs.htm">
+          <HelpTOCNode Title="Guild Property " Url="html/P_Thylacine_Event_PresenceEventArgs_Guild.htm" />
+          <HelpTOCNode Title="Member Property " Url="html/P_Thylacine_Event_PresenceEventArgs_Member.htm" />
+          <HelpTOCNode Title="Presence Property " Url="html/P_Thylacine_Event_PresenceEventArgs_Presence.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="PresenceEventArgs Methods" Url="html/Methods_T_Thylacine_Event_PresenceEventArgs.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="RoleEvent Delegate" Url="html/T_Thylacine_Event_RoleEvent.htm" />
+      <HelpTOCNode Id="312788dc-da4d-4503-af04-8ff728cfd5a3" Title="RoleEventArgs Class" Url="html/T_Thylacine_Event_RoleEventArgs.htm">
+        <HelpTOCNode Id="d06c9c02-6b53-4bec-9832-e6d30e4e28d9" Title="RoleEventArgs Properties" Url="html/Properties_T_Thylacine_Event_RoleEventArgs.htm">
+          <HelpTOCNode Title="Guild Property " Url="html/P_Thylacine_Event_RoleEventArgs_Guild.htm" />
+          <HelpTOCNode Title="Role Property " Url="html/P_Thylacine_Event_RoleEventArgs_Role.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="RoleEventArgs Methods" Url="html/Methods_T_Thylacine_Event_RoleEventArgs.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="TypingEvent Delegate" Url="html/T_Thylacine_Event_TypingEvent.htm" />
+      <HelpTOCNode Id="6905bfc3-411c-4838-a452-f1cc84996c8f" Title="TypingEventArgs Class" Url="html/T_Thylacine_Event_TypingEventArgs.htm">
+        <HelpTOCNode Id="4ea51eaa-d55e-43fc-9977-31751ad42f20" Title="TypingEventArgs Properties" Url="html/Properties_T_Thylacine_Event_TypingEventArgs.htm">
+          <HelpTOCNode Title="Channel Property " Url="html/P_Thylacine_Event_TypingEventArgs_Channel.htm" />
+          <HelpTOCNode Title="Guild Property " Url="html/P_Thylacine_Event_TypingEventArgs_Guild.htm" />
+          <HelpTOCNode Title="StartTime Property " Url="html/P_Thylacine_Event_TypingEventArgs_StartTime.htm" />
+          <HelpTOCNode Title="User Property " Url="html/P_Thylacine_Event_TypingEventArgs_User.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="TypingEventArgs Methods" Url="html/Methods_T_Thylacine_Event_TypingEventArgs.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="UserEvent Delegate" Url="html/T_Thylacine_Event_UserEvent.htm" />
+      <HelpTOCNode Id="6acb96a5-32e3-4a82-ad14-797c24e6ec68" Title="UserEventArgs Class" Url="html/T_Thylacine_Event_UserEventArgs.htm">
+        <HelpTOCNode Id="475f34ff-1c1b-4919-a8da-43658d753231" Title="UserEventArgs Properties" Url="html/Properties_T_Thylacine_Event_UserEventArgs.htm">
+          <HelpTOCNode Title="User Property " Url="html/P_Thylacine_Event_UserEventArgs_User.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="UserEventArgs Methods" Url="html/Methods_T_Thylacine_Event_UserEventArgs.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="71110a44-6725-4e46-b2b8-040e7ace96e6" Title="Thylacine.Exceptions" Url="html/N_Thylacine_Exceptions.htm">
+      <HelpTOCNode Id="872f3734-7215-4ddd-9e23-e7642b3b8a47" Title="DiscordMissingException Class" Url="html/T_Thylacine_Exceptions_DiscordMissingException.htm">
+        <HelpTOCNode Title="DiscordMissingException Properties" Url="html/Properties_T_Thylacine_Exceptions_DiscordMissingException.htm" />
+        <HelpTOCNode Title="DiscordMissingException Methods" Url="html/Methods_T_Thylacine_Exceptions_DiscordMissingException.htm" />
+        <HelpTOCNode Title="DiscordMissingException Events" Url="html/Events_T_Thylacine_Exceptions_DiscordMissingException.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="978ecfaa-cb83-4a8a-b4f0-f6005ca2d7b4" Title="DiscordRestException Class" Url="html/T_Thylacine_Exceptions_DiscordRestException.htm">
+        <HelpTOCNode Id="f3ba1397-b8fc-40d7-8e0c-3bb966b2e6cc" Title="DiscordRestException Properties" Url="html/Properties_T_Thylacine_Exceptions_DiscordRestException.htm">
+          <HelpTOCNode Title="Code Property " Url="html/P_Thylacine_Exceptions_DiscordRestException_Code.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="DiscordRestException Methods" Url="html/Methods_T_Thylacine_Exceptions_DiscordRestException.htm" />
+        <HelpTOCNode Title="DiscordRestException Events" Url="html/Events_T_Thylacine_Exceptions_DiscordRestException.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="2e55b0a6-0882-4b30-b40a-d0ca3c40d084" Title="ImageSizeException Class" Url="html/T_Thylacine_Exceptions_ImageSizeException.htm">
+        <HelpTOCNode Id="a584bd0b-0786-4cb3-b58f-3a20ea8b6448" Title="ImageSizeException Properties" Url="html/Properties_T_Thylacine_Exceptions_ImageSizeException.htm">
+          <HelpTOCNode Title="ExpectedHeight Property " Url="html/P_Thylacine_Exceptions_ImageSizeException_ExpectedHeight.htm" />
+          <HelpTOCNode Title="ExpectedWidth Property " Url="html/P_Thylacine_Exceptions_ImageSizeException_ExpectedWidth.htm" />
+          <HelpTOCNode Title="Height Property " Url="html/P_Thylacine_Exceptions_ImageSizeException_Height.htm" />
+          <HelpTOCNode Title="Width Property " Url="html/P_Thylacine_Exceptions_ImageSizeException_Width.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="ImageSizeException Methods" Url="html/Methods_T_Thylacine_Exceptions_ImageSizeException.htm" />
+        <HelpTOCNode Title="ImageSizeException Events" Url="html/Events_T_Thylacine_Exceptions_ImageSizeException.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="0b8c631c-84cf-4f92-8a7d-097ff93f2bea" Title="Thylacine.Gateway" Url="html/N_Thylacine_Gateway.htm">
+      <HelpTOCNode Title="DispatchEvent Delegate" Url="html/T_Thylacine_Gateway_DispatchEvent.htm" />
+      <HelpTOCNode Id="dfa2a454-e5f4-4013-9541-f5b39322063b" Title="DispatchEventArgs Class" Url="html/T_Thylacine_Gateway_DispatchEventArgs.htm">
+        <HelpTOCNode Title="DispatchEventArgs Constructor " Url="html/M_Thylacine_Gateway_DispatchEventArgs__ctor.htm" />
+        <HelpTOCNode Id="4f1b3008-e1db-4eed-8da8-68c759d9075f" Title="DispatchEventArgs Properties" Url="html/Properties_T_Thylacine_Gateway_DispatchEventArgs.htm">
+          <HelpTOCNode Title="Payload Property " Url="html/P_Thylacine_Gateway_DispatchEventArgs_Payload.htm" />
+          <HelpTOCNode Title="Type Property " Url="html/P_Thylacine_Gateway_DispatchEventArgs_Type.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="DispatchEventArgs Methods" Url="html/Methods_T_Thylacine_Gateway_DispatchEventArgs.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="632ea3d3-d0c7-4736-b100-f59395a8d46e" Title="GatewayEndpoint Class" Url="html/T_Thylacine_Gateway_GatewayEndpoint.htm">
+        <HelpTOCNode Title="GatewayEndpoint Constructor " Url="html/M_Thylacine_Gateway_GatewayEndpoint__ctor.htm" />
+        <HelpTOCNode Id="bd9b918e-4e05-4ef1-bb63-78b4ed63243d" Title="GatewayEndpoint Properties" Url="html/Properties_T_Thylacine_Gateway_GatewayEndpoint.htm">
+          <HelpTOCNode Title="ShardCount Property " Url="html/P_Thylacine_Gateway_GatewayEndpoint_ShardCount.htm" />
+          <HelpTOCNode Title="Url Property " Url="html/P_Thylacine_Gateway_GatewayEndpoint_Url.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="GatewayEndpoint Methods" Url="html/Methods_T_Thylacine_Gateway_GatewayEndpoint.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="52f8a25b-1645-46e0-8bfd-d1e8eceb34f6" Title="GatewaySocket Class" Url="html/T_Thylacine_Gateway_GatewaySocket.htm">
+        <HelpTOCNode Title="GatewaySocket Constructor " Url="html/M_Thylacine_Gateway_GatewaySocket__ctor.htm" />
+        <HelpTOCNode Id="d338bd1d-2963-4c3a-aec6-1db1eae50267" Title="GatewaySocket Properties" Url="html/Properties_T_Thylacine_Gateway_GatewaySocket.htm">
+          <HelpTOCNode Title="Connected Property " Url="html/P_Thylacine_Gateway_GatewaySocket_Connected.htm" />
+          <HelpTOCNode Title="Endpoint Property " Url="html/P_Thylacine_Gateway_GatewaySocket_Endpoint.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="e344d9e9-fb3b-48b4-a1a5-8a08b90f15b3" Title="GatewaySocket Methods" Url="html/Methods_T_Thylacine_Gateway_GatewaySocket.htm">
+          <HelpTOCNode Title="Connect Method " Url="html/M_Thylacine_Gateway_GatewaySocket_Connect.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="4e3a914f-c63e-4636-a652-00537031c05a" Title="GatewaySocket Events" Url="html/Events_T_Thylacine_Gateway_GatewaySocket.htm">
+          <HelpTOCNode Title="OnDispatchEvent Event" Url="html/E_Thylacine_Gateway_GatewaySocket_OnDispatchEvent.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Title="OpCode Enumeration" Url="html/T_Thylacine_Gateway_OpCode.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="c28e987a-23f5-4fa9-84e2-963b198caad0" Title="Thylacine.Gateway.Payload" Url="html/N_Thylacine_Gateway_Payload.htm">
+      <HelpTOCNode Id="759f762f-36bc-4cb4-9fde-e872a0b0bacb" Title="HelloPayload Class" Url="html/T_Thylacine_Gateway_Payload_HelloPayload.htm">
+        <HelpTOCNode Title="HelloPayload Constructor " Url="html/M_Thylacine_Gateway_Payload_HelloPayload__ctor.htm" />
+        <HelpTOCNode Id="6d4bc3ae-f624-4a0b-ba8a-eddb4dcbe382" Title="HelloPayload Properties" Url="html/Properties_T_Thylacine_Gateway_Payload_HelloPayload.htm">
+          <HelpTOCNode Title="HeartbeatInterval Property " Url="html/P_Thylacine_Gateway_Payload_HelloPayload_HeartbeatInterval.htm" />
+          <HelpTOCNode Title="Trace Property " Url="html/P_Thylacine_Gateway_Payload_HelloPayload_Trace.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="HelloPayload Methods" Url="html/Methods_T_Thylacine_Gateway_Payload_HelloPayload.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="fa2bbcef-6b7a-4cd3-afc5-0b5f66335917" Title="Thylacine.Helper" Url="html/N_Thylacine_Helper.htm">
+      <HelpTOCNode Id="fe4de78c-72c0-46d8-88b6-3a1cffe085bf" Title="AvatarConverter Class" Url="html/T_Thylacine_Helper_AvatarConverter.htm">
+        <HelpTOCNode Title="AvatarConverter Constructor " Url="html/M_Thylacine_Helper_AvatarConverter__ctor.htm" />
+        <HelpTOCNode Title="AvatarConverter Properties" Url="html/Properties_T_Thylacine_Helper_AvatarConverter.htm" />
+        <HelpTOCNode Id="8397bff0-7d14-474e-8f7b-41da71f0e69c" Title="AvatarConverter Methods" Url="html/Methods_T_Thylacine_Helper_AvatarConverter.htm">
+          <HelpTOCNode Title="CanConvert Method " Url="html/M_Thylacine_Helper_AvatarConverter_CanConvert.htm" />
+          <HelpTOCNode Title="ReadJson Method " Url="html/M_Thylacine_Helper_AvatarConverter_ReadJson.htm" />
+          <HelpTOCNode Title="WriteJson Method " Url="html/M_Thylacine_Helper_AvatarConverter_WriteJson.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="6918ad78-3377-4877-a9f0-d0718e2a954e" Title="ExtendedStringBuilder Class" Url="html/T_Thylacine_Helper_ExtendedStringBuilder.htm">
+        <HelpTOCNode Id="9b25b7d0-e4a0-40f0-91ee-372ffb810d40" Title="ExtendedStringBuilder Constructor " Url="html/Overload_Thylacine_Helper_ExtendedStringBuilder__ctor.htm">
+          <HelpTOCNode Title="ExtendedStringBuilder Constructor " Url="html/M_Thylacine_Helper_ExtendedStringBuilder__ctor.htm" />
+          <HelpTOCNode Title="ExtendedStringBuilder Constructor (Int32)" Url="html/M_Thylacine_Helper_ExtendedStringBuilder__ctor_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="0e5a2c0a-26b5-4e8c-929b-fe21897b9564" Title="ExtendedStringBuilder Properties" Url="html/Properties_T_Thylacine_Helper_ExtendedStringBuilder.htm">
+          <HelpTOCNode Title="CurrentString Property " Url="html/P_Thylacine_Helper_ExtendedStringBuilder_CurrentString.htm" />
+          <HelpTOCNode Title="Length Property " Url="html/P_Thylacine_Helper_ExtendedStringBuilder_Length.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="61630eed-b0ae-4289-bfac-f01467ae83d8" Title="ExtendedStringBuilder Methods" Url="html/Methods_T_Thylacine_Helper_ExtendedStringBuilder.htm">
+          <HelpTOCNode Id="2c318dd3-9caf-4a6d-a61a-872012d47c55" Title="Append Method " Url="html/Overload_Thylacine_Helper_ExtendedStringBuilder_Append.htm">
+            <HelpTOCNode Title="Append Method (Char)" Url="html/M_Thylacine_Helper_ExtendedStringBuilder_Append.htm" />
+            <HelpTOCNode Title="Append Method (Object)" Url="html/M_Thylacine_Helper_ExtendedStringBuilder_Append_1.htm" />
+            <HelpTOCNode Title="Append Method (String)" Url="html/M_Thylacine_Helper_ExtendedStringBuilder_Append_2.htm" />
+          </HelpTOCNode>
+          <HelpTOCNode Id="716fcf23-b7b5-4c1c-ac2d-47b0ea2f4351" Title="ToString Method " Url="html/Overload_Thylacine_Helper_ExtendedStringBuilder_ToString.htm">
+            <HelpTOCNode Title="ToString Method " Url="html/M_Thylacine_Helper_ExtendedStringBuilder_ToString.htm" />
+            <HelpTOCNode Title="ToString Method (Int32, Int32)" Url="html/M_Thylacine_Helper_ExtendedStringBuilder_ToString_1.htm" />
+          </HelpTOCNode>
+        </HelpTOCNode>
+        <HelpTOCNode Id="8e5a6518-b705-4022-b92c-3feb3b65d020" Title="ExtendedStringBuilder Operators and Type Conversions" Url="html/Operators_T_Thylacine_Helper_ExtendedStringBuilder.htm">
+          <HelpTOCNode Id="82f87fc8-d319-488a-8578-d11636129d05" Title="Addition Operator " Url="html/Overload_Thylacine_Helper_ExtendedStringBuilder_op_Addition.htm">
+            <HelpTOCNode Title="Addition Operator (ExtendedStringBuilder, Char)" Url="html/M_Thylacine_Helper_ExtendedStringBuilder_op_Addition.htm" />
+            <HelpTOCNode Title="Addition Operator (ExtendedStringBuilder, Object)" Url="html/M_Thylacine_Helper_ExtendedStringBuilder_op_Addition_1.htm" />
+            <HelpTOCNode Title="Addition Operator (ExtendedStringBuilder, String)" Url="html/M_Thylacine_Helper_ExtendedStringBuilder_op_Addition_2.htm" />
+          </HelpTOCNode>
+          <HelpTOCNode Title="Implicit Conversion (ExtendedStringBuilder to String)" Url="html/M_Thylacine_Helper_ExtendedStringBuilder_op_Implicit.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="b9a9d177-3dcf-48a7-b495-7fc534921a49" Title="ExtendedStringBuilder Fields" Url="html/Fields_T_Thylacine_Helper_ExtendedStringBuilder.htm">
+          <HelpTOCNode Title="_stringBuilder Field" Url="html/F_Thylacine_Helper_ExtendedStringBuilder__stringBuilder.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="4670b26b-b0cc-48ac-86fc-8585ebc6862b" Title="MessageBuilder Class" Url="html/T_Thylacine_Helper_MessageBuilder.htm">
+        <HelpTOCNode Title="MessageBuilder Constructor " Url="html/M_Thylacine_Helper_MessageBuilder__ctor.htm" />
+        <HelpTOCNode Id="1c26095b-8757-46bf-85ce-f3129e6b852f" Title="MessageBuilder Properties" Url="html/Properties_T_Thylacine_Helper_MessageBuilder.htm">
+          <HelpTOCNode Title="CurrentString Property " Url="html/P_Thylacine_Helper_MessageBuilder_CurrentString.htm" />
+          <HelpTOCNode Title="Length Property " Url="html/P_Thylacine_Helper_MessageBuilder_Length.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="3d5c3027-0b19-49e3-8ee3-b67590cba98e" Title="MessageBuilder Methods" Url="html/Methods_T_Thylacine_Helper_MessageBuilder.htm">
+          <HelpTOCNode Id="f4763e30-f0b2-4cec-ac61-72d691ce264b" Title="Append Method " Url="html/Overload_Thylacine_Helper_MessageBuilder_Append.htm">
+            <HelpTOCNode Title="Append Method (Char)" Url="html/M_Thylacine_Helper_MessageBuilder_Append.htm" />
+            <HelpTOCNode Title="Append Method (Object)" Url="html/M_Thylacine_Helper_MessageBuilder_Append_1.htm" />
+            <HelpTOCNode Title="Append Method (String)" Url="html/M_Thylacine_Helper_MessageBuilder_Append_2.htm" />
+            <HelpTOCNode Title="Append Method (Channel)" Url="html/M_Thylacine_Helper_MessageBuilder_Append_3.htm" />
+            <HelpTOCNode Title="Append Method (Emoji)" Url="html/M_Thylacine_Helper_MessageBuilder_Append_4.htm" />
+            <HelpTOCNode Title="Append Method (Guild)" Url="html/M_Thylacine_Helper_MessageBuilder_Append_5.htm" />
+            <HelpTOCNode Title="Append Method (Message)" Url="html/M_Thylacine_Helper_MessageBuilder_Append_6.htm" />
+            <HelpTOCNode Title="Append Method (Role)" Url="html/M_Thylacine_Helper_MessageBuilder_Append_7.htm" />
+            <HelpTOCNode Title="Append Method (User)" Url="html/M_Thylacine_Helper_MessageBuilder_Append_8.htm" />
+          </HelpTOCNode>
+          <HelpTOCNode Id="482e2eb0-59e5-4ca5-91cf-be204292ba3a" Title="ToString Method " Url="html/Overload_Thylacine_Helper_MessageBuilder_ToString.htm">
+            <HelpTOCNode Title="ToString Method " Url="html/M_Thylacine_Helper_MessageBuilder_ToString.htm" />
+            <HelpTOCNode Title="ToString Method (Int32, Int32)" Url="html/M_Thylacine_Helper_MessageBuilder_ToString_1.htm" />
+          </HelpTOCNode>
+        </HelpTOCNode>
+        <HelpTOCNode Id="f15fa97f-a852-4df9-b1bd-a108db4b5f68" Title="MessageBuilder Operators and Type Conversions" Url="html/Operators_T_Thylacine_Helper_MessageBuilder.htm">
+          <HelpTOCNode Id="f24f3d62-1642-48b1-999c-62353fade794" Title="Addition Operator " Url="html/Overload_Thylacine_Helper_MessageBuilder_op_Addition.htm">
+            <HelpTOCNode Title="Addition Operator (MessageBuilder, Char)" Url="html/M_Thylacine_Helper_MessageBuilder_op_Addition.htm" />
+            <HelpTOCNode Title="Addition Operator (MessageBuilder, Object)" Url="html/M_Thylacine_Helper_MessageBuilder_op_Addition_1.htm" />
+            <HelpTOCNode Title="Addition Operator (MessageBuilder, String)" Url="html/M_Thylacine_Helper_MessageBuilder_op_Addition_2.htm" />
+          </HelpTOCNode>
+          <HelpTOCNode Title="Implicit Conversion (MessageBuilder to String)" Url="html/M_Thylacine_Helper_MessageBuilder_op_Implicit.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="983dd7d2-56f8-4f1b-9723-619b081c160b" Title="MessageBuilder Fields" Url="html/Fields_T_Thylacine_Helper_MessageBuilder.htm">
+          <HelpTOCNode Title="_stringBuilder Field" Url="html/F_Thylacine_Helper_MessageBuilder__stringBuilder.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="a5093399-04a6-409c-9928-0b6a936b19d1" Title="ObjectDumper Class" Url="html/T_Thylacine_Helper_ObjectDumper.htm">
+        <HelpTOCNode Id="02649a76-c764-49b2-a694-e9d301a0a2e6" Title="ObjectDumper Methods" Url="html/Methods_T_Thylacine_Helper_ObjectDumper.htm">
+          <HelpTOCNode Id="402b61b1-d654-4036-b3c6-cff55d2828e3" Title="Dump Method " Url="html/Overload_Thylacine_Helper_ObjectDumper_Dump.htm">
+            <HelpTOCNode Title="Dump Method (Object)" Url="html/M_Thylacine_Helper_ObjectDumper_Dump.htm" />
+            <HelpTOCNode Title="Dump Method (Object, Int32)" Url="html/M_Thylacine_Helper_ObjectDumper_Dump_1.htm" />
+          </HelpTOCNode>
+          <HelpTOCNode Title="DumpJson Method " Url="html/M_Thylacine_Helper_ObjectDumper_DumpJson.htm" />
+          <HelpTOCNode Title="DumpXML Method " Url="html/M_Thylacine_Helper_ObjectDumper_DumpXML.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="fb83c1a4-0fa7-4134-bb70-40a0739f9867" Title="SnowflakeArrayConverter Class" Url="html/T_Thylacine_Helper_SnowflakeArrayConverter.htm">
+        <HelpTOCNode Title="SnowflakeArrayConverter Constructor " Url="html/M_Thylacine_Helper_SnowflakeArrayConverter__ctor.htm" />
+        <HelpTOCNode Title="SnowflakeArrayConverter Properties" Url="html/Properties_T_Thylacine_Helper_SnowflakeArrayConverter.htm" />
+        <HelpTOCNode Id="c9114b7f-fb08-4e7c-9853-75e40da398f6" Title="SnowflakeArrayConverter Methods" Url="html/Methods_T_Thylacine_Helper_SnowflakeArrayConverter.htm">
+          <HelpTOCNode Title="CanConvert Method " Url="html/M_Thylacine_Helper_SnowflakeArrayConverter_CanConvert.htm" />
+          <HelpTOCNode Title="ReadJson Method " Url="html/M_Thylacine_Helper_SnowflakeArrayConverter_ReadJson.htm" />
+          <HelpTOCNode Title="WriteJson Method " Url="html/M_Thylacine_Helper_SnowflakeArrayConverter_WriteJson.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="94eef5c4-20c6-4f95-8a45-cdc56449b62e" Title="SnowflakeConverter Class" Url="html/T_Thylacine_Helper_SnowflakeConverter.htm">
+        <HelpTOCNode Title="SnowflakeConverter Constructor " Url="html/M_Thylacine_Helper_SnowflakeConverter__ctor.htm" />
+        <HelpTOCNode Title="SnowflakeConverter Properties" Url="html/Properties_T_Thylacine_Helper_SnowflakeConverter.htm" />
+        <HelpTOCNode Id="bff53030-4bf5-4be4-85db-880217a2bb82" Title="SnowflakeConverter Methods" Url="html/Methods_T_Thylacine_Helper_SnowflakeConverter.htm">
+          <HelpTOCNode Title="CanConvert Method " Url="html/M_Thylacine_Helper_SnowflakeConverter_CanConvert.htm" />
+          <HelpTOCNode Title="ReadJson Method " Url="html/M_Thylacine_Helper_SnowflakeConverter_ReadJson.htm" />
+          <HelpTOCNode Title="WriteJson Method " Url="html/M_Thylacine_Helper_SnowflakeConverter_WriteJson.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="7097f07e-3cfe-49c3-ad7c-688598e79774" Title="TimestampConverter Class" Url="html/T_Thylacine_Helper_TimestampConverter.htm">
+        <HelpTOCNode Title="TimestampConverter Constructor " Url="html/M_Thylacine_Helper_TimestampConverter__ctor.htm" />
+        <HelpTOCNode Title="TimestampConverter Properties" Url="html/Properties_T_Thylacine_Helper_TimestampConverter.htm" />
+        <HelpTOCNode Id="19f53bc5-7528-4429-9711-433e1e65af9a" Title="TimestampConverter Methods" Url="html/Methods_T_Thylacine_Helper_TimestampConverter.htm">
+          <HelpTOCNode Title="CanConvert Method " Url="html/M_Thylacine_Helper_TimestampConverter_CanConvert.htm" />
+          <HelpTOCNode Title="ReadJson Method " Url="html/M_Thylacine_Helper_TimestampConverter_ReadJson.htm" />
+          <HelpTOCNode Title="WriteJson Method " Url="html/M_Thylacine_Helper_TimestampConverter_WriteJson.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="eee05d3d-a3e4-4c47-b73e-e9e0cfcc3b93" Title="Thylacine.Models" Url="html/N_Thylacine_Models.htm">
+      <HelpTOCNode Id="99edfdad-01d4-42ad-9d13-ac4c376e4f7f" Title="Attachment Class" Url="html/T_Thylacine_Models_Attachment.htm">
+        <HelpTOCNode Title="Attachment Constructor " Url="html/M_Thylacine_Models_Attachment__ctor.htm" />
+        <HelpTOCNode Id="57ff63c7-15db-4b69-9928-2e36c4db5e95" Title="Attachment Properties" Url="html/Properties_T_Thylacine_Models_Attachment.htm">
+          <HelpTOCNode Title="Filename Property " Url="html/P_Thylacine_Models_Attachment_Filename.htm" />
+          <HelpTOCNode Title="Height Property " Url="html/P_Thylacine_Models_Attachment_Height.htm" />
+          <HelpTOCNode Title="ID Property " Url="html/P_Thylacine_Models_Attachment_ID.htm" />
+          <HelpTOCNode Title="ProxyURL Property " Url="html/P_Thylacine_Models_Attachment_ProxyURL.htm" />
+          <HelpTOCNode Title="Size Property " Url="html/P_Thylacine_Models_Attachment_Size.htm" />
+          <HelpTOCNode Title="URL Property " Url="html/P_Thylacine_Models_Attachment_URL.htm" />
+          <HelpTOCNode Title="Width Property " Url="html/P_Thylacine_Models_Attachment_Width.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="Attachment Methods" Url="html/Methods_T_Thylacine_Models_Attachment.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="79e13091-f502-488a-9bda-594f1d89e0ea" Title="Avatar Class" Url="html/T_Thylacine_Models_Avatar.htm">
+        <HelpTOCNode Id="6507d632-e338-4ace-87a5-20754f1822d4" Title="Avatar Constructor " Url="html/Overload_Thylacine_Models_Avatar__ctor.htm">
+          <HelpTOCNode Title="Avatar Constructor (Byte[])" Url="html/M_Thylacine_Models_Avatar__ctor.htm" />
+          <HelpTOCNode Title="Avatar Constructor (String)" Url="html/M_Thylacine_Models_Avatar__ctor_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="61c104ed-a4c0-4531-abc4-5e18cdfdebf7" Title="Avatar Properties" Url="html/Properties_T_Thylacine_Models_Avatar.htm">
+          <HelpTOCNode Title="DiscordHash Property " Url="html/P_Thylacine_Models_Avatar_DiscordHash.htm" />
+          <HelpTOCNode Title="ImageBytes Property " Url="html/P_Thylacine_Models_Avatar_ImageBytes.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="f70b08c6-8063-41ce-9643-0f42c1d6237e" Title="Avatar Methods" Url="html/Methods_T_Thylacine_Models_Avatar.htm">
+          <HelpTOCNode Title="FromFile Method " Url="html/M_Thylacine_Models_Avatar_FromFile.htm" />
+          <HelpTOCNode Title="ToFile Method " Url="html/M_Thylacine_Models_Avatar_ToFile.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="82de84ec-238a-43c3-8343-8468ad8b4bcd" Title="BulkMessages Class" Url="html/T_Thylacine_Models_BulkMessages.htm">
+        <HelpTOCNode Id="992d5bc6-a134-4c7d-8334-3ed2b0f4d193" Title="BulkMessages Methods" Url="html/Methods_T_Thylacine_Models_BulkMessages.htm">
+          <HelpTOCNode Id="80227f11-2788-4d57-a8d5-6dcf3c91501e" Title="DeleteMessages Method " Url="html/Overload_Thylacine_Models_BulkMessages_DeleteMessages.htm">
+            <HelpTOCNode Title="DeleteMessages Method (Message[])" Url="html/M_Thylacine_Models_BulkMessages_DeleteMessages.htm" />
+            <HelpTOCNode Title="DeleteMessages Method (Message[], DiscordBot)" Url="html/M_Thylacine_Models_BulkMessages_DeleteMessages_1.htm" />
+          </HelpTOCNode>
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="7f76d4fa-e2a1-474e-895c-b919217d97e2" Title="Channel Class" Url="html/T_Thylacine_Models_Channel.htm">
+        <HelpTOCNode Title="Channel Constructor " Url="html/M_Thylacine_Models_Channel__ctor.htm" />
+        <HelpTOCNode Id="ec71d213-d38f-4927-b020-f31191a3ead9" Title="Channel Properties" Url="html/Properties_T_Thylacine_Models_Channel.htm">
+          <HelpTOCNode Title="Discord Property " Url="html/P_Thylacine_Models_Channel_Discord.htm" />
+          <HelpTOCNode Title="Guild Property " Url="html/P_Thylacine_Models_Channel_Guild.htm" />
+          <HelpTOCNode Title="GuildID Property " Url="html/P_Thylacine_Models_Channel_GuildID.htm" />
+          <HelpTOCNode Title="ID Property " Url="html/P_Thylacine_Models_Channel_ID.htm" />
+          <HelpTOCNode Title="IsPrivate Property " Url="html/P_Thylacine_Models_Channel_IsPrivate.htm" />
+          <HelpTOCNode Title="MentionTag Property " Url="html/P_Thylacine_Models_Channel_MentionTag.htm" />
+          <HelpTOCNode Title="Name Property " Url="html/P_Thylacine_Models_Channel_Name.htm" />
+          <HelpTOCNode Title="PermissionOverwrites Property " Url="html/P_Thylacine_Models_Channel_PermissionOverwrites.htm" />
+          <HelpTOCNode Title="Position Property " Url="html/P_Thylacine_Models_Channel_Position.htm" />
+          <HelpTOCNode Title="Type Property " Url="html/P_Thylacine_Models_Channel_Type.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="353cff9f-dc8d-479c-90c2-5cd23d320817" Title="Channel Methods" Url="html/Methods_T_Thylacine_Models_Channel.htm">
+          <HelpTOCNode Title="ApplyModifications Method " Url="html/M_Thylacine_Models_Channel_ApplyModifications.htm" />
+          <HelpTOCNode Title="CreateInvite Method " Url="html/M_Thylacine_Models_Channel_CreateInvite.htm" />
+          <HelpTOCNode Title="CreateWebhook Method " Url="html/M_Thylacine_Models_Channel_CreateWebhook.htm" />
+          <HelpTOCNode Title="DeleteChannel Method " Url="html/M_Thylacine_Models_Channel_DeleteChannel.htm" />
+          <HelpTOCNode Id="3ad111f0-abe3-4d35-9790-58122b3de699" Title="DeletePermission Method " Url="html/Overload_Thylacine_Models_Channel_DeletePermission.htm">
+            <HelpTOCNode Title="DeletePermission Method (UInt64)" Url="html/M_Thylacine_Models_Channel_DeletePermission.htm" />
+            <HelpTOCNode Title="DeletePermission Method (Overwrite)" Url="html/M_Thylacine_Models_Channel_DeletePermission_1.htm" />
+          </HelpTOCNode>
+          <HelpTOCNode Title="FetchInvites Method " Url="html/M_Thylacine_Models_Channel_FetchInvites.htm" />
+          <HelpTOCNode Title="FetchMessage Method " Url="html/M_Thylacine_Models_Channel_FetchMessage.htm" />
+          <HelpTOCNode Title="FetchMessages Method " Url="html/M_Thylacine_Models_Channel_FetchMessages.htm" />
+          <HelpTOCNode Title="FetchPinnedMessages Method " Url="html/M_Thylacine_Models_Channel_FetchPinnedMessages.htm" />
+          <HelpTOCNode Title="FetchWebhooks Method " Url="html/M_Thylacine_Models_Channel_FetchWebhooks.htm" />
+          <HelpTOCNode Id="a499072b-2a05-4dda-b4d8-98ff9ecfeea5" Title="SendMessage Method " Url="html/Overload_Thylacine_Models_Channel_SendMessage.htm">
+            <HelpTOCNode Title="SendMessage Method (String, Boolean, Embed)" Url="html/M_Thylacine_Models_Channel_SendMessage.htm" />
+            <HelpTOCNode Title="SendMessage Method (MessageBuilder, Boolean, Embed)" Url="html/M_Thylacine_Models_Channel_SendMessage_1.htm" />
+          </HelpTOCNode>
+          <HelpTOCNode Id="f4f0cd22-4c26-40e4-b7dd-0a72d7a29fbd" Title="SetPermission Method " Url="html/Overload_Thylacine_Models_Channel_SetPermission.htm">
+            <HelpTOCNode Title="SetPermission Method (Overwrite)" Url="html/M_Thylacine_Models_Channel_SetPermission_1.htm" />
+            <HelpTOCNode Title="SetPermission Method (UInt64, Permission, Permission, OverwriteType)" Url="html/M_Thylacine_Models_Channel_SetPermission.htm" />
+            <HelpTOCNode Title="SetPermission Method (Overwrite, Permission, Permission, OverwriteType)" Url="html/M_Thylacine_Models_Channel_SetPermission_2.htm" />
+          </HelpTOCNode>
+          <HelpTOCNode Title="ShowTyping Method " Url="html/M_Thylacine_Models_Channel_ShowTyping.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Title="ChannelType Enumeration" Url="html/T_Thylacine_Models_ChannelType.htm" />
+      <HelpTOCNode Id="8c79075e-edc0-4b0c-9520-b23c2facaa36" Title="DMChannel Class" Url="html/T_Thylacine_Models_DMChannel.htm">
+        <HelpTOCNode Title="DMChannel Constructor " Url="html/M_Thylacine_Models_DMChannel__ctor.htm" />
+        <HelpTOCNode Id="a4e03c08-bcb6-48e3-ad95-2906c095e5f4" Title="DMChannel Properties" Url="html/Properties_T_Thylacine_Models_DMChannel.htm">
+          <HelpTOCNode Title="ID Property " Url="html/P_Thylacine_Models_DMChannel_ID.htm" />
+          <HelpTOCNode Title="IsPrivate Property " Url="html/P_Thylacine_Models_DMChannel_IsPrivate.htm" />
+          <HelpTOCNode Title="LastMessageID Property " Url="html/P_Thylacine_Models_DMChannel_LastMessageID.htm" />
+          <HelpTOCNode Title="Recipient Property " Url="html/P_Thylacine_Models_DMChannel_Recipient.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="DMChannel Methods" Url="html/Methods_T_Thylacine_Models_DMChannel.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="5fb304f1-5292-4e84-b64b-f0c8a4ce1866" Title="Embed Class" Url="html/T_Thylacine_Models_Embed.htm">
+        <HelpTOCNode Title="Embed Constructor " Url="html/M_Thylacine_Models_Embed__ctor.htm" />
+        <HelpTOCNode Id="60469241-cd85-4b47-b9d3-dc3a1a00e21e" Title="Embed Properties" Url="html/Properties_T_Thylacine_Models_Embed.htm">
+          <HelpTOCNode Title="Author Property " Url="html/P_Thylacine_Models_Embed_Author.htm" />
+          <HelpTOCNode Title="Color Property " Url="html/P_Thylacine_Models_Embed_Color.htm" />
+          <HelpTOCNode Title="Description Property " Url="html/P_Thylacine_Models_Embed_Description.htm" />
+          <HelpTOCNode Title="Fields Property " Url="html/P_Thylacine_Models_Embed_Fields.htm" />
+          <HelpTOCNode Title="Footer Property " Url="html/P_Thylacine_Models_Embed_Footer.htm" />
+          <HelpTOCNode Title="Image Property " Url="html/P_Thylacine_Models_Embed_Image.htm" />
+          <HelpTOCNode Title="Provider Property " Url="html/P_Thylacine_Models_Embed_Provider.htm" />
+          <HelpTOCNode Title="Thumbnail Property " Url="html/P_Thylacine_Models_Embed_Thumbnail.htm" />
+          <HelpTOCNode Title="Timestamp Property " Url="html/P_Thylacine_Models_Embed_Timestamp.htm" />
+          <HelpTOCNode Title="Title Property " Url="html/P_Thylacine_Models_Embed_Title.htm" />
+          <HelpTOCNode Title="Type Property " Url="html/P_Thylacine_Models_Embed_Type.htm" />
+          <HelpTOCNode Title="URL Property " Url="html/P_Thylacine_Models_Embed_URL.htm" />
+          <HelpTOCNode Title="Video Property " Url="html/P_Thylacine_Models_Embed_Video.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="Embed Methods" Url="html/Methods_T_Thylacine_Models_Embed.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="158e3dfc-47b3-4b33-8cda-ca5041e643d8" Title="EmbedAuthor Class" Url="html/T_Thylacine_Models_EmbedAuthor.htm">
+        <HelpTOCNode Title="EmbedAuthor Constructor " Url="html/M_Thylacine_Models_EmbedAuthor__ctor.htm" />
+        <HelpTOCNode Id="99b37908-3808-4570-9828-a41240ac7a59" Title="EmbedAuthor Properties" Url="html/Properties_T_Thylacine_Models_EmbedAuthor.htm">
+          <HelpTOCNode Title="IconURL Property " Url="html/P_Thylacine_Models_EmbedAuthor_IconURL.htm" />
+          <HelpTOCNode Title="Name Property " Url="html/P_Thylacine_Models_EmbedAuthor_Name.htm" />
+          <HelpTOCNode Title="ProxyIconURL Property " Url="html/P_Thylacine_Models_EmbedAuthor_ProxyIconURL.htm" />
+          <HelpTOCNode Title="URL Property " Url="html/P_Thylacine_Models_EmbedAuthor_URL.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="EmbedAuthor Methods" Url="html/Methods_T_Thylacine_Models_EmbedAuthor.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="44dfb00f-be7b-49fb-88e3-6c8eeee12518" Title="EmbedField Class" Url="html/T_Thylacine_Models_EmbedField.htm">
+        <HelpTOCNode Title="EmbedField Constructor " Url="html/M_Thylacine_Models_EmbedField__ctor.htm" />
+        <HelpTOCNode Id="f71a982a-0c52-4414-9de2-4db2cbfe853c" Title="EmbedField Properties" Url="html/Properties_T_Thylacine_Models_EmbedField.htm">
+          <HelpTOCNode Title="Inline Property " Url="html/P_Thylacine_Models_EmbedField_Inline.htm" />
+          <HelpTOCNode Title="Name Property " Url="html/P_Thylacine_Models_EmbedField_Name.htm" />
+          <HelpTOCNode Title="Value Property " Url="html/P_Thylacine_Models_EmbedField_Value.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="EmbedField Methods" Url="html/Methods_T_Thylacine_Models_EmbedField.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="02086e6f-05ea-42fa-a6c5-529642f76c19" Title="EmbedFooter Class" Url="html/T_Thylacine_Models_EmbedFooter.htm">
+        <HelpTOCNode Title="EmbedFooter Constructor " Url="html/M_Thylacine_Models_EmbedFooter__ctor.htm" />
+        <HelpTOCNode Id="f8b17266-0a82-45ef-82fe-66a8b8019f8e" Title="EmbedFooter Properties" Url="html/Properties_T_Thylacine_Models_EmbedFooter.htm">
+          <HelpTOCNode Title="IconURL Property " Url="html/P_Thylacine_Models_EmbedFooter_IconURL.htm" />
+          <HelpTOCNode Title="ProxyIconURL Property " Url="html/P_Thylacine_Models_EmbedFooter_ProxyIconURL.htm" />
+          <HelpTOCNode Title="Text Property " Url="html/P_Thylacine_Models_EmbedFooter_Text.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="EmbedFooter Methods" Url="html/Methods_T_Thylacine_Models_EmbedFooter.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="1a6ccb45-b935-4f5b-b995-49330bb846e4" Title="EmbedImage Class" Url="html/T_Thylacine_Models_EmbedImage.htm">
+        <HelpTOCNode Title="EmbedImage Constructor " Url="html/M_Thylacine_Models_EmbedImage__ctor.htm" />
+        <HelpTOCNode Id="1410edae-3e4d-437e-9e9b-c399dc613576" Title="EmbedImage Properties" Url="html/Properties_T_Thylacine_Models_EmbedImage.htm">
+          <HelpTOCNode Title="Height Property " Url="html/P_Thylacine_Models_EmbedImage_Height.htm" />
+          <HelpTOCNode Title="ProxyURL Property " Url="html/P_Thylacine_Models_EmbedImage_ProxyURL.htm" />
+          <HelpTOCNode Title="URL Property " Url="html/P_Thylacine_Models_EmbedImage_URL.htm" />
+          <HelpTOCNode Title="Width Property " Url="html/P_Thylacine_Models_EmbedImage_Width.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="EmbedImage Methods" Url="html/Methods_T_Thylacine_Models_EmbedImage.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="4a86fdbb-d5b5-49d5-8a90-b23db79c977a" Title="EmbedProvider Class" Url="html/T_Thylacine_Models_EmbedProvider.htm">
+        <HelpTOCNode Title="EmbedProvider Constructor " Url="html/M_Thylacine_Models_EmbedProvider__ctor.htm" />
+        <HelpTOCNode Id="c9642ca8-b18d-41d3-b089-8836f556b8d4" Title="EmbedProvider Properties" Url="html/Properties_T_Thylacine_Models_EmbedProvider.htm">
+          <HelpTOCNode Title="Name Property " Url="html/P_Thylacine_Models_EmbedProvider_Name.htm" />
+          <HelpTOCNode Title="URL Property " Url="html/P_Thylacine_Models_EmbedProvider_URL.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="EmbedProvider Methods" Url="html/Methods_T_Thylacine_Models_EmbedProvider.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="1d7aee51-e512-4b25-9886-536b00a57e65" Title="EmbedVideo Class" Url="html/T_Thylacine_Models_EmbedVideo.htm">
+        <HelpTOCNode Title="EmbedVideo Constructor " Url="html/M_Thylacine_Models_EmbedVideo__ctor.htm" />
+        <HelpTOCNode Id="90dfbc65-f581-4c45-bbe8-3a10c874a654" Title="EmbedVideo Properties" Url="html/Properties_T_Thylacine_Models_EmbedVideo.htm">
+          <HelpTOCNode Title="Height Property " Url="html/P_Thylacine_Models_EmbedVideo_Height.htm" />
+          <HelpTOCNode Title="URL Property " Url="html/P_Thylacine_Models_EmbedVideo_URL.htm" />
+          <HelpTOCNode Title="Width Property " Url="html/P_Thylacine_Models_EmbedVideo_Width.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="EmbedVideo Methods" Url="html/Methods_T_Thylacine_Models_EmbedVideo.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="661eba39-f885-4518-a43e-aed970fa49fb" Title="Emoji Structure" Url="html/T_Thylacine_Models_Emoji.htm">
+        <HelpTOCNode Id="c97c604e-393f-4bf4-9e38-78e1191d885d" Title="Emoji Properties" Url="html/Properties_T_Thylacine_Models_Emoji.htm">
+          <HelpTOCNode Title="ID Property " Url="html/P_Thylacine_Models_Emoji_ID.htm" />
+          <HelpTOCNode Title="MentionTag Property " Url="html/P_Thylacine_Models_Emoji_MentionTag.htm" />
+          <HelpTOCNode Title="Name Property " Url="html/P_Thylacine_Models_Emoji_Name.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="Emoji Methods" Url="html/Methods_T_Thylacine_Models_Emoji.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="ed886a29-6970-4ec4-a3bc-e47c97b42094" Title="Game Structure" Url="html/T_Thylacine_Models_Game.htm">
+        <HelpTOCNode Id="13a8df89-bb0c-45ff-8f70-3f5127ab08de" Title="Game Properties" Url="html/Properties_T_Thylacine_Models_Game.htm">
+          <HelpTOCNode Title="Name Property " Url="html/P_Thylacine_Models_Game_Name.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="Game Methods" Url="html/Methods_T_Thylacine_Models_Game.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="1b439535-167c-43e0-9283-1ed4605ddd76" Title="Guild Class" Url="html/T_Thylacine_Models_Guild.htm">
+        <HelpTOCNode Title="Guild Constructor " Url="html/M_Thylacine_Models_Guild__ctor.htm" />
+        <HelpTOCNode Id="73857814-ee8a-4b1a-bbea-0936db855fe6" Title="Guild Properties" Url="html/Properties_T_Thylacine_Models_Guild.htm">
+          <HelpTOCNode Title="AFKChannelID Property " Url="html/P_Thylacine_Models_Guild_AFKChannelID.htm" />
+          <HelpTOCNode Title="AFKTimeout Property " Url="html/P_Thylacine_Models_Guild_AFKTimeout.htm" />
+          <HelpTOCNode Title="Channels Property " Url="html/P_Thylacine_Models_Guild_Channels.htm" />
+          <HelpTOCNode Title="DefaultMessageNotifications Property " Url="html/P_Thylacine_Models_Guild_DefaultMessageNotifications.htm" />
+          <HelpTOCNode Title="Discord Property " Url="html/P_Thylacine_Models_Guild_Discord.htm" />
+          <HelpTOCNode Title="EmbedChannelID Property " Url="html/P_Thylacine_Models_Guild_EmbedChannelID.htm" />
+          <HelpTOCNode Title="EmbedEnabled Property " Url="html/P_Thylacine_Models_Guild_EmbedEnabled.htm" />
+          <HelpTOCNode Title="Emojis Property " Url="html/P_Thylacine_Models_Guild_Emojis.htm" />
+          <HelpTOCNode Title="Features Property " Url="html/P_Thylacine_Models_Guild_Features.htm" />
+          <HelpTOCNode Title="GuildMembers Property " Url="html/P_Thylacine_Models_Guild_GuildMembers.htm" />
+          <HelpTOCNode Title="IconHash Property " Url="html/P_Thylacine_Models_Guild_IconHash.htm" />
+          <HelpTOCNode Title="ID Property " Url="html/P_Thylacine_Models_Guild_ID.htm" />
+          <HelpTOCNode Title="IsLarge Property " Url="html/P_Thylacine_Models_Guild_IsLarge.htm" />
+          <HelpTOCNode Title="JoinedAt Property " Url="html/P_Thylacine_Models_Guild_JoinedAt.htm" />
+          <HelpTOCNode Title="MemberCount Property " Url="html/P_Thylacine_Models_Guild_MemberCount.htm" />
+          <HelpTOCNode Title="MFALevel Property " Url="html/P_Thylacine_Models_Guild_MFALevel.htm" />
+          <HelpTOCNode Title="Name Property " Url="html/P_Thylacine_Models_Guild_Name.htm" />
+          <HelpTOCNode Title="OwnerID Property " Url="html/P_Thylacine_Models_Guild_OwnerID.htm" />
+          <HelpTOCNode Title="Presences Property " Url="html/P_Thylacine_Models_Guild_Presences.htm" />
+          <HelpTOCNode Title="Region Property " Url="html/P_Thylacine_Models_Guild_Region.htm" />
+          <HelpTOCNode Title="Roles Property " Url="html/P_Thylacine_Models_Guild_Roles.htm" />
+          <HelpTOCNode Title="SplashHash Property " Url="html/P_Thylacine_Models_Guild_SplashHash.htm" />
+          <HelpTOCNode Title="Unavailable Property " Url="html/P_Thylacine_Models_Guild_Unavailable.htm" />
+          <HelpTOCNode Title="VerificationLevel Property " Url="html/P_Thylacine_Models_Guild_VerificationLevel.htm" />
+          <HelpTOCNode Title="VoiceStates Property " Url="html/P_Thylacine_Models_Guild_VoiceStates.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="1b53a8b9-820a-4c2c-98d6-df98ecdd9849" Title="Guild Methods" Url="html/Methods_T_Thylacine_Models_Guild.htm">
+          <HelpTOCNode Title="ApplyModifications Method " Url="html/M_Thylacine_Models_Guild_ApplyModifications.htm" />
+          <HelpTOCNode Title="CreateRole Method " Url="html/M_Thylacine_Models_Guild_CreateRole.htm" />
+          <HelpTOCNode Title="CreateTextChannel Method " Url="html/M_Thylacine_Models_Guild_CreateTextChannel.htm" />
+          <HelpTOCNode Title="CreateVoiceChannel Method " Url="html/M_Thylacine_Models_Guild_CreateVoiceChannel.htm" />
+          <HelpTOCNode Title="DeleteGuild Method " Url="html/M_Thylacine_Models_Guild_DeleteGuild.htm" />
+          <HelpTOCNode Title="FetchBans Method " Url="html/M_Thylacine_Models_Guild_FetchBans.htm" />
+          <HelpTOCNode Title="FetchInvites Method " Url="html/M_Thylacine_Models_Guild_FetchInvites.htm" />
+          <HelpTOCNode Title="FetchPruneCount Method " Url="html/M_Thylacine_Models_Guild_FetchPruneCount.htm" />
+          <HelpTOCNode Title="FetchWebhooks Method " Url="html/M_Thylacine_Models_Guild_FetchWebhooks.htm" />
+          <HelpTOCNode Title="GetChannel Method " Url="html/M_Thylacine_Models_Guild_GetChannel.htm" />
+          <HelpTOCNode Title="GetMember Method " Url="html/M_Thylacine_Models_Guild_GetMember.htm" />
+          <HelpTOCNode Title="GetRole Method " Url="html/M_Thylacine_Models_Guild_GetRole.htm" />
+          <HelpTOCNode Title="HasChannel Method " Url="html/M_Thylacine_Models_Guild_HasChannel.htm" />
+          <HelpTOCNode Title="HasMember Method " Url="html/M_Thylacine_Models_Guild_HasMember.htm" />
+          <HelpTOCNode Title="HasRole Method " Url="html/M_Thylacine_Models_Guild_HasRole.htm" />
+          <HelpTOCNode Title="Prune Method " Url="html/M_Thylacine_Models_Guild_Prune.htm" />
+          <HelpTOCNode Title="RemoveBan Method " Url="html/M_Thylacine_Models_Guild_RemoveBan.htm" />
+          <HelpTOCNode Title="SetNickname Method " Url="html/M_Thylacine_Models_Guild_SetNickname.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="72830bac-e568-49a3-ad9d-8532637db80d" Title="GuildMember Class" Url="html/T_Thylacine_Models_GuildMember.htm">
+        <HelpTOCNode Title="GuildMember Constructor " Url="html/M_Thylacine_Models_GuildMember__ctor.htm" />
+        <HelpTOCNode Id="3f173d11-f41b-4ddf-9776-ff8951904d29" Title="GuildMember Properties" Url="html/Properties_T_Thylacine_Models_GuildMember.htm">
+          <HelpTOCNode Title="Deaf Property " Url="html/P_Thylacine_Models_GuildMember_Deaf.htm" />
+          <HelpTOCNode Title="Discord Property " Url="html/P_Thylacine_Models_GuildMember_Discord.htm" />
+          <HelpTOCNode Title="Guild Property " Url="html/P_Thylacine_Models_GuildMember_Guild.htm" />
+          <HelpTOCNode Title="ID Property " Url="html/P_Thylacine_Models_GuildMember_ID.htm" />
+          <HelpTOCNode Title="JoinedAt Property " Url="html/P_Thylacine_Models_GuildMember_JoinedAt.htm" />
+          <HelpTOCNode Title="MentionTag Property " Url="html/P_Thylacine_Models_GuildMember_MentionTag.htm" />
+          <HelpTOCNode Title="Mute Property " Url="html/P_Thylacine_Models_GuildMember_Mute.htm" />
+          <HelpTOCNode Title="Nickname Property " Url="html/P_Thylacine_Models_GuildMember_Nickname.htm" />
+          <HelpTOCNode Title="Presence Property " Url="html/P_Thylacine_Models_GuildMember_Presence.htm" />
+          <HelpTOCNode Title="RoleIDs Property " Url="html/P_Thylacine_Models_GuildMember_RoleIDs.htm" />
+          <HelpTOCNode Title="Roles Property " Url="html/P_Thylacine_Models_GuildMember_Roles.htm" />
+          <HelpTOCNode Title="User Property " Url="html/P_Thylacine_Models_GuildMember_User.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="d072035a-a49d-42ed-a715-a9f3e8daf594" Title="GuildMember Methods" Url="html/Methods_T_Thylacine_Models_GuildMember.htm">
+          <HelpTOCNode Title="AddRole Method " Url="html/M_Thylacine_Models_GuildMember_AddRole.htm" />
+          <HelpTOCNode Title="ApplyModifications Method " Url="html/M_Thylacine_Models_GuildMember_ApplyModifications.htm" />
+          <HelpTOCNode Title="Ban Method " Url="html/M_Thylacine_Models_GuildMember_Ban.htm" />
+          <HelpTOCNode Title="Kick Method " Url="html/M_Thylacine_Models_GuildMember_Kick.htm" />
+          <HelpTOCNode Title="RemoveRole Method " Url="html/M_Thylacine_Models_GuildMember_RemoveRole.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="a8c85650-72b2-4300-bc77-98256c840ad2" Title="GuildMemberModification Structure" Url="html/T_Thylacine_Models_GuildMemberModification.htm">
+        <HelpTOCNode Id="97dbcfe2-d5e2-457a-97ff-956a0ae84167" Title="GuildMemberModification Properties" Url="html/Properties_T_Thylacine_Models_GuildMemberModification.htm">
+          <HelpTOCNode Title="ChannelID Property " Url="html/P_Thylacine_Models_GuildMemberModification_ChannelID.htm" />
+          <HelpTOCNode Title="Deaf Property " Url="html/P_Thylacine_Models_GuildMemberModification_Deaf.htm" />
+          <HelpTOCNode Title="Mute Property " Url="html/P_Thylacine_Models_GuildMemberModification_Mute.htm" />
+          <HelpTOCNode Title="Nickname Property " Url="html/P_Thylacine_Models_GuildMemberModification_Nickname.htm" />
+          <HelpTOCNode Title="Roles Property " Url="html/P_Thylacine_Models_GuildMemberModification_Roles.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="GuildMemberModification Methods" Url="html/Methods_T_Thylacine_Models_GuildMemberModification.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="9ae0def2-0ac3-4618-8464-fd6fc35d442e" Title="GuildModification Structure" Url="html/T_Thylacine_Models_GuildModification.htm">
+        <HelpTOCNode Id="458a7232-ac1d-4a43-a3c2-b1c2f027dbc5" Title="GuildModification Properties" Url="html/Properties_T_Thylacine_Models_GuildModification.htm">
+          <HelpTOCNode Title="AFKChannelID Property " Url="html/P_Thylacine_Models_GuildModification_AFKChannelID.htm" />
+          <HelpTOCNode Title="AFKTimeout Property " Url="html/P_Thylacine_Models_GuildModification_AFKTimeout.htm" />
+          <HelpTOCNode Title="DefaultMessageNotifications Property " Url="html/P_Thylacine_Models_GuildModification_DefaultMessageNotifications.htm" />
+          <HelpTOCNode Title="Icon Property " Url="html/P_Thylacine_Models_GuildModification_Icon.htm" />
+          <HelpTOCNode Title="Name Property " Url="html/P_Thylacine_Models_GuildModification_Name.htm" />
+          <HelpTOCNode Title="OwnerID Property " Url="html/P_Thylacine_Models_GuildModification_OwnerID.htm" />
+          <HelpTOCNode Title="Region Property " Url="html/P_Thylacine_Models_GuildModification_Region.htm" />
+          <HelpTOCNode Title="Splash Property " Url="html/P_Thylacine_Models_GuildModification_Splash.htm" />
+          <HelpTOCNode Title="VerificationLevel Property " Url="html/P_Thylacine_Models_GuildModification_VerificationLevel.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="GuildModification Methods" Url="html/Methods_T_Thylacine_Models_GuildModification.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="a13b73e5-74de-43c8-9f10-7685c5962341" Title="Invite Class" Url="html/T_Thylacine_Models_Invite.htm">
+        <HelpTOCNode Title="Invite Constructor " Url="html/M_Thylacine_Models_Invite__ctor.htm" />
+        <HelpTOCNode Id="2a5933c5-8093-4b17-9c87-c91156bc0cd0" Title="Invite Properties" Url="html/Properties_T_Thylacine_Models_Invite.htm">
+          <HelpTOCNode Title="Channel Property " Url="html/P_Thylacine_Models_Invite_Channel.htm" />
+          <HelpTOCNode Title="Code Property " Url="html/P_Thylacine_Models_Invite_Code.htm" />
+          <HelpTOCNode Title="CreatedAt Property " Url="html/P_Thylacine_Models_Invite_CreatedAt.htm" />
+          <HelpTOCNode Title="Guild Property " Url="html/P_Thylacine_Models_Invite_Guild.htm" />
+          <HelpTOCNode Title="Inviter Property " Url="html/P_Thylacine_Models_Invite_Inviter.htm" />
+          <HelpTOCNode Title="MaxAge Property " Url="html/P_Thylacine_Models_Invite_MaxAge.htm" />
+          <HelpTOCNode Title="MaxUsers Property " Url="html/P_Thylacine_Models_Invite_MaxUsers.htm" />
+          <HelpTOCNode Title="Revoked Property " Url="html/P_Thylacine_Models_Invite_Revoked.htm" />
+          <HelpTOCNode Title="Temporary Property " Url="html/P_Thylacine_Models_Invite_Temporary.htm" />
+          <HelpTOCNode Title="Uses Property " Url="html/P_Thylacine_Models_Invite_Uses.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="Invite Methods" Url="html/Methods_T_Thylacine_Models_Invite.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="e9c0501b-1481-4e5d-b73b-9f1f75a4c9e0" Title="InviteChannel Class" Url="html/T_Thylacine_Models_InviteChannel.htm">
+        <HelpTOCNode Title="InviteChannel Constructor " Url="html/M_Thylacine_Models_InviteChannel__ctor.htm" />
+        <HelpTOCNode Id="253dcf9c-2464-4dfb-a4e7-14b03abdbfb6" Title="InviteChannel Properties" Url="html/Properties_T_Thylacine_Models_InviteChannel.htm">
+          <HelpTOCNode Title="ID Property " Url="html/P_Thylacine_Models_InviteChannel_ID.htm" />
+          <HelpTOCNode Title="Name Property " Url="html/P_Thylacine_Models_InviteChannel_Name.htm" />
+          <HelpTOCNode Title="Type Property " Url="html/P_Thylacine_Models_InviteChannel_Type.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="InviteChannel Methods" Url="html/Methods_T_Thylacine_Models_InviteChannel.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="784a6339-4a5f-4e63-9f60-9956102a2cd9" Title="InviteGuild Class" Url="html/T_Thylacine_Models_InviteGuild.htm">
+        <HelpTOCNode Title="InviteGuild Constructor " Url="html/M_Thylacine_Models_InviteGuild__ctor.htm" />
+        <HelpTOCNode Id="fb8700c7-94c9-46bb-ab54-dd4199f6484a" Title="InviteGuild Properties" Url="html/Properties_T_Thylacine_Models_InviteGuild.htm">
+          <HelpTOCNode Title="Icon Property " Url="html/P_Thylacine_Models_InviteGuild_Icon.htm" />
+          <HelpTOCNode Title="ID Property " Url="html/P_Thylacine_Models_InviteGuild_ID.htm" />
+          <HelpTOCNode Title="Name Property " Url="html/P_Thylacine_Models_InviteGuild_Name.htm" />
+          <HelpTOCNode Title="Splash Property " Url="html/P_Thylacine_Models_InviteGuild_Splash.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="InviteGuild Methods" Url="html/Methods_T_Thylacine_Models_InviteGuild.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="3a2dc027-7f20-415f-91a5-c9cd92d66cab" Title="Message Class" Url="html/T_Thylacine_Models_Message.htm">
+        <HelpTOCNode Title="Message Constructor " Url="html/M_Thylacine_Models_Message__ctor.htm" />
+        <HelpTOCNode Id="5f582fa3-fa85-4828-aa73-a92f822af03a" Title="Message Properties" Url="html/Properties_T_Thylacine_Models_Message.htm">
+          <HelpTOCNode Title="Attachments Property " Url="html/P_Thylacine_Models_Message_Attachments.htm" />
+          <HelpTOCNode Title="Author Property " Url="html/P_Thylacine_Models_Message_Author.htm" />
+          <HelpTOCNode Title="ChannelID Property " Url="html/P_Thylacine_Models_Message_ChannelID.htm" />
+          <HelpTOCNode Title="Content Property " Url="html/P_Thylacine_Models_Message_Content.htm" />
+          <HelpTOCNode Title="Discord Property " Url="html/P_Thylacine_Models_Message_Discord.htm" />
+          <HelpTOCNode Title="EditedTimestamp Property " Url="html/P_Thylacine_Models_Message_EditedTimestamp.htm" />
+          <HelpTOCNode Title="Embeds Property " Url="html/P_Thylacine_Models_Message_Embeds.htm" />
+          <HelpTOCNode Title="ID Property " Url="html/P_Thylacine_Models_Message_ID.htm" />
+          <HelpTOCNode Title="IsTTS Property " Url="html/P_Thylacine_Models_Message_IsTTS.htm" />
+          <HelpTOCNode Title="MentionedUsers Property " Url="html/P_Thylacine_Models_Message_MentionedUsers.htm" />
+          <HelpTOCNode Title="MentionRoles Property " Url="html/P_Thylacine_Models_Message_MentionRoles.htm" />
+          <HelpTOCNode Title="MentionsEveryone Property " Url="html/P_Thylacine_Models_Message_MentionsEveryone.htm" />
+          <HelpTOCNode Title="Nonce Property " Url="html/P_Thylacine_Models_Message_Nonce.htm" />
+          <HelpTOCNode Title="Pinned Property " Url="html/P_Thylacine_Models_Message_Pinned.htm" />
+          <HelpTOCNode Title="Reactions Property " Url="html/P_Thylacine_Models_Message_Reactions.htm" />
+          <HelpTOCNode Title="Timestamp Property " Url="html/P_Thylacine_Models_Message_Timestamp.htm" />
+          <HelpTOCNode Title="WebhookID Property " Url="html/P_Thylacine_Models_Message_WebhookID.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="3cf4cb96-6304-45b6-8026-af1991ff2d2a" Title="Message Methods" Url="html/Methods_T_Thylacine_Models_Message.htm">
+          <HelpTOCNode Title="ClearReactions Method " Url="html/M_Thylacine_Models_Message_ClearReactions.htm" />
+          <HelpTOCNode Title="CreateReaction Method " Url="html/M_Thylacine_Models_Message_CreateReaction.htm" />
+          <HelpTOCNode Title="DeleteMessage Method " Url="html/M_Thylacine_Models_Message_DeleteMessage.htm" />
+          <HelpTOCNode Id="8151315b-6400-4b28-8c07-ae53a32440fa" Title="DeleteReaction Method " Url="html/Overload_Thylacine_Models_Message_DeleteReaction.htm">
+            <HelpTOCNode Title="DeleteReaction Method (Emoji)" Url="html/M_Thylacine_Models_Message_DeleteReaction.htm" />
+            <HelpTOCNode Title="DeleteReaction Method (Emoji, User)" Url="html/M_Thylacine_Models_Message_DeleteReaction_1.htm" />
+          </HelpTOCNode>
+          <HelpTOCNode Title="EditMessage Method " Url="html/M_Thylacine_Models_Message_EditMessage.htm" />
+          <HelpTOCNode Id="d6221bb7-99b1-46a4-9c66-b0839f5e820b" Title="FormatContent Method " Url="html/Overload_Thylacine_Models_Message_FormatContent.htm">
+            <HelpTOCNode Title="FormatContent Method " Url="html/M_Thylacine_Models_Message_FormatContent.htm" />
+            <HelpTOCNode Title="FormatContent Method (String)" Url="html/M_Thylacine_Models_Message_FormatContent_1.htm" />
+            <HelpTOCNode Title="FormatContent Method (DiscordBot, String)" Url="html/M_Thylacine_Models_Message_FormatContent_2.htm" />
+          </HelpTOCNode>
+          <HelpTOCNode Id="fc46af97-dd1a-4cfd-a6ba-65eafbb8d839" Title="GetChannel Method " Url="html/Overload_Thylacine_Models_Message_GetChannel.htm">
+            <HelpTOCNode Title="GetChannel Method " Url="html/M_Thylacine_Models_Message_GetChannel.htm" />
+            <HelpTOCNode Title="GetChannel Method (DiscordBot)" Url="html/M_Thylacine_Models_Message_GetChannel_1.htm" />
+          </HelpTOCNode>
+          <HelpTOCNode Title="GetReactions Method " Url="html/M_Thylacine_Models_Message_GetReactions.htm" />
+          <HelpTOCNode Title="Mentions Method " Url="html/M_Thylacine_Models_Message_Mentions.htm" />
+          <HelpTOCNode Title="MentionsBot Method " Url="html/M_Thylacine_Models_Message_MentionsBot.htm" />
+          <HelpTOCNode Title="Pin Method " Url="html/M_Thylacine_Models_Message_Pin.htm" />
+          <HelpTOCNode Title="Unpin Method " Url="html/M_Thylacine_Models_Message_Unpin.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="1bcd30b2-0df5-4904-bc5b-a77a1751a452" Title="Overwrite Class" Url="html/T_Thylacine_Models_Overwrite.htm">
+        <HelpTOCNode Title="Overwrite Constructor " Url="html/M_Thylacine_Models_Overwrite__ctor.htm" />
+        <HelpTOCNode Id="e9209fcb-bf04-4da0-9341-8c2cafd533e8" Title="Overwrite Properties" Url="html/Properties_T_Thylacine_Models_Overwrite.htm">
+          <HelpTOCNode Title="Allow Property " Url="html/P_Thylacine_Models_Overwrite_Allow.htm" />
+          <HelpTOCNode Title="Deny Property " Url="html/P_Thylacine_Models_Overwrite_Deny.htm" />
+          <HelpTOCNode Title="ID Property " Url="html/P_Thylacine_Models_Overwrite_ID.htm" />
+          <HelpTOCNode Title="Type Property " Url="html/P_Thylacine_Models_Overwrite_Type.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="Overwrite Methods" Url="html/Methods_T_Thylacine_Models_Overwrite.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="OverwriteType Enumeration" Url="html/T_Thylacine_Models_OverwriteType.htm" />
+      <HelpTOCNode Title="Permission Enumeration" Url="html/T_Thylacine_Models_Permission.htm" />
+      <HelpTOCNode Id="e1e898bb-ab55-42eb-935c-0d5278d87abb" Title="Presence Class" Url="html/T_Thylacine_Models_Presence.htm">
+        <HelpTOCNode Title="Presence Constructor " Url="html/M_Thylacine_Models_Presence__ctor.htm" />
+        <HelpTOCNode Id="a74eb3b7-5ad3-4cad-87ec-24267c3d121d" Title="Presence Properties" Url="html/Properties_T_Thylacine_Models_Presence.htm">
+          <HelpTOCNode Title="Game Property " Url="html/P_Thylacine_Models_Presence_Game.htm" />
+          <HelpTOCNode Title="GuildID Property " Url="html/P_Thylacine_Models_Presence_GuildID.htm" />
+          <HelpTOCNode Title="Roles Property " Url="html/P_Thylacine_Models_Presence_Roles.htm" />
+          <HelpTOCNode Title="Status Property " Url="html/P_Thylacine_Models_Presence_Status.htm" />
+          <HelpTOCNode Title="Updates Property " Url="html/P_Thylacine_Models_Presence_Updates.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="Presence Methods" Url="html/Methods_T_Thylacine_Models_Presence.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="b63ed248-6f75-43a2-b33d-13a1269df834" Title="PresenceUser Class" Url="html/T_Thylacine_Models_PresenceUser.htm">
+        <HelpTOCNode Title="PresenceUser Constructor " Url="html/M_Thylacine_Models_PresenceUser__ctor.htm" />
+        <HelpTOCNode Id="383b9168-c139-434e-a85d-534ccbd3992f" Title="PresenceUser Properties" Url="html/Properties_T_Thylacine_Models_PresenceUser.htm">
+          <HelpTOCNode Title="Avatar Property " Url="html/P_Thylacine_Models_PresenceUser_Avatar.htm" />
+          <HelpTOCNode Title="Bot Property " Url="html/P_Thylacine_Models_PresenceUser_Bot.htm" />
+          <HelpTOCNode Title="Discriminator Property " Url="html/P_Thylacine_Models_PresenceUser_Discriminator.htm" />
+          <HelpTOCNode Title="Email Property " Url="html/P_Thylacine_Models_PresenceUser_Email.htm" />
+          <HelpTOCNode Title="ID Property " Url="html/P_Thylacine_Models_PresenceUser_ID.htm" />
+          <HelpTOCNode Title="MFAEnabled Property " Url="html/P_Thylacine_Models_PresenceUser_MFAEnabled.htm" />
+          <HelpTOCNode Title="Username Property " Url="html/P_Thylacine_Models_PresenceUser_Username.htm" />
+          <HelpTOCNode Title="Verified Property " Url="html/P_Thylacine_Models_PresenceUser_Verified.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="PresenceUser Methods" Url="html/Methods_T_Thylacine_Models_PresenceUser.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="a935105d-77cb-45d6-a3a3-150b31b268ab" Title="Reaction Class" Url="html/T_Thylacine_Models_Reaction.htm">
+        <HelpTOCNode Title="Reaction Constructor " Url="html/M_Thylacine_Models_Reaction__ctor.htm" />
+        <HelpTOCNode Id="9913b9bf-db85-4b53-8d5c-6c43165fb16e" Title="Reaction Properties" Url="html/Properties_T_Thylacine_Models_Reaction.htm">
+          <HelpTOCNode Title="Count Property " Url="html/P_Thylacine_Models_Reaction_Count.htm" />
+          <HelpTOCNode Title="Emoji Property " Url="html/P_Thylacine_Models_Reaction_Emoji.htm" />
+          <HelpTOCNode Title="HaveReacted Property " Url="html/P_Thylacine_Models_Reaction_HaveReacted.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="Reaction Methods" Url="html/Methods_T_Thylacine_Models_Reaction.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="baf68c74-32c6-4337-812e-c752998a947b" Title="Role Class" Url="html/T_Thylacine_Models_Role.htm">
+        <HelpTOCNode Title="Role Constructor " Url="html/M_Thylacine_Models_Role__ctor.htm" />
+        <HelpTOCNode Id="fd0edb99-f080-4c19-9c91-b7604c13b47d" Title="Role Properties" Url="html/Properties_T_Thylacine_Models_Role.htm">
+          <HelpTOCNode Title="Color Property " Url="html/P_Thylacine_Models_Role_Color.htm" />
+          <HelpTOCNode Title="Discord Property " Url="html/P_Thylacine_Models_Role_Discord.htm" />
+          <HelpTOCNode Title="Guild Property " Url="html/P_Thylacine_Models_Role_Guild.htm" />
+          <HelpTOCNode Title="Hoist Property " Url="html/P_Thylacine_Models_Role_Hoist.htm" />
+          <HelpTOCNode Title="ID Property " Url="html/P_Thylacine_Models_Role_ID.htm" />
+          <HelpTOCNode Title="Managed Property " Url="html/P_Thylacine_Models_Role_Managed.htm" />
+          <HelpTOCNode Title="Mentionable Property " Url="html/P_Thylacine_Models_Role_Mentionable.htm" />
+          <HelpTOCNode Title="MentionTag Property " Url="html/P_Thylacine_Models_Role_MentionTag.htm" />
+          <HelpTOCNode Title="Name Property " Url="html/P_Thylacine_Models_Role_Name.htm" />
+          <HelpTOCNode Title="Permission Property " Url="html/P_Thylacine_Models_Role_Permission.htm" />
+          <HelpTOCNode Title="Position Property " Url="html/P_Thylacine_Models_Role_Position.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="eb212ec6-06dc-41ab-9c60-1c227a917767" Title="Role Methods" Url="html/Methods_T_Thylacine_Models_Role.htm">
+          <HelpTOCNode Title="ApplyModifications Method " Url="html/M_Thylacine_Models_Role_ApplyModifications.htm" />
+          <HelpTOCNode Title="Delete Method " Url="html/M_Thylacine_Models_Role_Delete.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Title="Status Enumeration" Url="html/T_Thylacine_Models_Status.htm" />
+      <HelpTOCNode Id="0f09f7db-baa1-467f-a042-598dfd55878c" Title="TextChannel Class" Url="html/T_Thylacine_Models_TextChannel.htm">
+        <HelpTOCNode Title="TextChannel Constructor " Url="html/M_Thylacine_Models_TextChannel__ctor.htm" />
+        <HelpTOCNode Id="30a0f362-cee8-48a9-9d79-29b96dc1d608" Title="TextChannel Properties" Url="html/Properties_T_Thylacine_Models_TextChannel.htm">
+          <HelpTOCNode Title="LastMessageID Property " Url="html/P_Thylacine_Models_TextChannel_LastMessageID.htm" />
+          <HelpTOCNode Title="Topic Property " Url="html/P_Thylacine_Models_TextChannel_Topic.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="TextChannel Methods" Url="html/Methods_T_Thylacine_Models_TextChannel.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="4c447bcb-edf0-41cf-a236-7db623de8b18" Title="UnavailableGuild Class" Url="html/T_Thylacine_Models_UnavailableGuild.htm">
+        <HelpTOCNode Title="UnavailableGuild Constructor " Url="html/M_Thylacine_Models_UnavailableGuild__ctor.htm" />
+        <HelpTOCNode Id="7f21af63-fbff-4001-a758-46977653897a" Title="UnavailableGuild Properties" Url="html/Properties_T_Thylacine_Models_UnavailableGuild.htm">
+          <HelpTOCNode Title="ID Property " Url="html/P_Thylacine_Models_UnavailableGuild_ID.htm" />
+          <HelpTOCNode Title="Unavailable Property " Url="html/P_Thylacine_Models_UnavailableGuild_Unavailable.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="UnavailableGuild Methods" Url="html/Methods_T_Thylacine_Models_UnavailableGuild.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="2b3a85dc-25b2-4121-b2a6-5ec0c9f800fd" Title="User Class" Url="html/T_Thylacine_Models_User.htm">
+        <HelpTOCNode Title="User Constructor " Url="html/M_Thylacine_Models_User__ctor.htm" />
+        <HelpTOCNode Id="39c80e1b-9002-4be2-92c3-67d9fec34c89" Title="User Properties" Url="html/Properties_T_Thylacine_Models_User.htm">
+          <HelpTOCNode Title="AvatarHash Property " Url="html/P_Thylacine_Models_User_AvatarHash.htm" />
+          <HelpTOCNode Title="Discriminator Property " Url="html/P_Thylacine_Models_User_Discriminator.htm" />
+          <HelpTOCNode Title="Email Property " Url="html/P_Thylacine_Models_User_Email.htm" />
+          <HelpTOCNode Title="GuildID Property " Url="html/P_Thylacine_Models_User_GuildID.htm" />
+          <HelpTOCNode Title="ID Property " Url="html/P_Thylacine_Models_User_ID.htm" />
+          <HelpTOCNode Title="IsBot Property " Url="html/P_Thylacine_Models_User_IsBot.htm" />
+          <HelpTOCNode Title="MentionTag Property " Url="html/P_Thylacine_Models_User_MentionTag.htm" />
+          <HelpTOCNode Title="MFAEnabled Property " Url="html/P_Thylacine_Models_User_MFAEnabled.htm" />
+          <HelpTOCNode Title="Username Property " Url="html/P_Thylacine_Models_User_Username.htm" />
+          <HelpTOCNode Title="Verified Property " Url="html/P_Thylacine_Models_User_Verified.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="b883f49e-64eb-4fe9-8cce-335f9d0c3968" Title="User Methods" Url="html/Methods_T_Thylacine_Models_User.htm">
+          <HelpTOCNode Title="Equals Method " Url="html/M_Thylacine_Models_User_Equals.htm" />
+          <HelpTOCNode Title="GetHashCode Method " Url="html/M_Thylacine_Models_User_GetHashCode.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="9e3759e9-99a6-488c-8cfa-e2bba4b92119" Title="UserGuild Class" Url="html/T_Thylacine_Models_UserGuild.htm">
+        <HelpTOCNode Title="UserGuild Constructor " Url="html/M_Thylacine_Models_UserGuild__ctor.htm" />
+        <HelpTOCNode Id="4885c782-b071-4c2a-a5c2-1d74c416f6bf" Title="UserGuild Properties" Url="html/Properties_T_Thylacine_Models_UserGuild.htm">
+          <HelpTOCNode Title="IconHash Property " Url="html/P_Thylacine_Models_UserGuild_IconHash.htm" />
+          <HelpTOCNode Title="ID Property " Url="html/P_Thylacine_Models_UserGuild_ID.htm" />
+          <HelpTOCNode Title="IsOwner Property " Url="html/P_Thylacine_Models_UserGuild_IsOwner.htm" />
+          <HelpTOCNode Title="Name Property " Url="html/P_Thylacine_Models_UserGuild_Name.htm" />
+          <HelpTOCNode Title="Permissions Property " Url="html/P_Thylacine_Models_UserGuild_Permissions.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="UserGuild Methods" Url="html/Methods_T_Thylacine_Models_UserGuild.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="36e259be-1be0-4e5a-b015-15e1e38827f6" Title="VoiceChannel Class" Url="html/T_Thylacine_Models_VoiceChannel.htm">
+        <HelpTOCNode Title="VoiceChannel Constructor " Url="html/M_Thylacine_Models_VoiceChannel__ctor.htm" />
+        <HelpTOCNode Id="46a60462-b3b4-4615-841b-7aa8580628d6" Title="VoiceChannel Properties" Url="html/Properties_T_Thylacine_Models_VoiceChannel.htm">
+          <HelpTOCNode Title="Bitrate Property " Url="html/P_Thylacine_Models_VoiceChannel_Bitrate.htm" />
+          <HelpTOCNode Title="UserLimit Property " Url="html/P_Thylacine_Models_VoiceChannel_UserLimit.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="VoiceChannel Methods" Url="html/Methods_T_Thylacine_Models_VoiceChannel.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="1cc312e9-53f5-4547-aec4-7b1f507f0038" Title="VoiceState Class" Url="html/T_Thylacine_Models_VoiceState.htm">
+        <HelpTOCNode Title="VoiceState Constructor " Url="html/M_Thylacine_Models_VoiceState__ctor.htm" />
+        <HelpTOCNode Id="21a47842-9b33-4baa-826c-208493bdd7bc" Title="VoiceState Properties" Url="html/Properties_T_Thylacine_Models_VoiceState.htm">
+          <HelpTOCNode Title="ChannelID Property " Url="html/P_Thylacine_Models_VoiceState_ChannelID.htm" />
+          <HelpTOCNode Title="Deaf Property " Url="html/P_Thylacine_Models_VoiceState_Deaf.htm" />
+          <HelpTOCNode Title="GuildID Property " Url="html/P_Thylacine_Models_VoiceState_GuildID.htm" />
+          <HelpTOCNode Title="Mute Property " Url="html/P_Thylacine_Models_VoiceState_Mute.htm" />
+          <HelpTOCNode Title="SelfDeath Property " Url="html/P_Thylacine_Models_VoiceState_SelfDeath.htm" />
+          <HelpTOCNode Title="SelfMute Property " Url="html/P_Thylacine_Models_VoiceState_SelfMute.htm" />
+          <HelpTOCNode Title="SessionID Property " Url="html/P_Thylacine_Models_VoiceState_SessionID.htm" />
+          <HelpTOCNode Title="Suppress Property " Url="html/P_Thylacine_Models_VoiceState_Suppress.htm" />
+          <HelpTOCNode Title="UserID Property " Url="html/P_Thylacine_Models_VoiceState_UserID.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="VoiceState Methods" Url="html/Methods_T_Thylacine_Models_VoiceState.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="78c5e181-0010-433c-b0d7-0ce666876fe6" Title="Webhook Class" Url="html/T_Thylacine_Models_Webhook.htm">
+        <HelpTOCNode Title="Webhook Constructor " Url="html/M_Thylacine_Models_Webhook__ctor.htm" />
+        <HelpTOCNode Id="b965b91a-bdaf-4991-a9dd-96175adfe73f" Title="Webhook Properties" Url="html/Properties_T_Thylacine_Models_Webhook.htm">
+          <HelpTOCNode Title="Avatar Property " Url="html/P_Thylacine_Models_Webhook_Avatar.htm" />
+          <HelpTOCNode Title="ChannelID Property " Url="html/P_Thylacine_Models_Webhook_ChannelID.htm" />
+          <HelpTOCNode Title="Discord Property " Url="html/P_Thylacine_Models_Webhook_Discord.htm" />
+          <HelpTOCNode Title="GuildID Property " Url="html/P_Thylacine_Models_Webhook_GuildID.htm" />
+          <HelpTOCNode Title="ID Property " Url="html/P_Thylacine_Models_Webhook_ID.htm" />
+          <HelpTOCNode Title="Name Property " Url="html/P_Thylacine_Models_Webhook_Name.htm" />
+          <HelpTOCNode Title="Token Property " Url="html/P_Thylacine_Models_Webhook_Token.htm" />
+          <HelpTOCNode Title="User Property " Url="html/P_Thylacine_Models_Webhook_User.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="87a86611-16e0-4830-a838-206560635445" Title="Webhook Methods" Url="html/Methods_T_Thylacine_Models_Webhook.htm">
+          <HelpTOCNode Title="Delete Method " Url="html/M_Thylacine_Models_Webhook_Delete.htm" />
+          <HelpTOCNode Id="a8e5aa5e-f156-46ce-ab43-62fa8083914f" Title="Modify Method " Url="html/Overload_Thylacine_Models_Webhook_Modify.htm">
+            <HelpTOCNode Title="Modify Method (String)" Url="html/M_Thylacine_Models_Webhook_Modify.htm" />
+            <HelpTOCNode Title="Modify Method (Avatar)" Url="html/M_Thylacine_Models_Webhook_Modify_2.htm" />
+            <HelpTOCNode Title="Modify Method (String, Avatar)" Url="html/M_Thylacine_Models_Webhook_Modify_1.htm" />
+          </HelpTOCNode>
+          <HelpTOCNode Id="ba557bea-0e87-44f5-8598-2c8a441c072f" Title="SendMessage Method " Url="html/Overload_Thylacine_Models_Webhook_SendMessage.htm">
+            <HelpTOCNode Title="SendMessage Method (String, String, String, Boolean, Embed)" Url="html/M_Thylacine_Models_Webhook_SendMessage.htm" />
+            <HelpTOCNode Title="SendMessage Method (MessageBuilder, String, String, Boolean, Embed)" Url="html/M_Thylacine_Models_Webhook_SendMessage_1.htm" />
+          </HelpTOCNode>
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="1540cd73-c4f1-42cc-a1b2-13962525426a" Title="Thylacine.Models.Event" Url="html/N_Thylacine_Models_Event.htm">
+      <HelpTOCNode Id="4a5c33d0-f1a4-42e7-a1f1-7acbfbe4ba82" Title="GuildBan Class" Url="html/T_Thylacine_Models_Event_GuildBan.htm">
+        <HelpTOCNode Title="GuildBan Constructor " Url="html/M_Thylacine_Models_Event_GuildBan__ctor.htm" />
+        <HelpTOCNode Id="8083bd26-f52d-41e8-99d5-363288257fad" Title="GuildBan Properties" Url="html/Properties_T_Thylacine_Models_Event_GuildBan.htm">
+          <HelpTOCNode Title="User Property " Url="html/P_Thylacine_Models_Event_GuildBan_User.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="GuildBan Methods" Url="html/Methods_T_Thylacine_Models_Event_GuildBan.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="740fa458-dcbb-42db-b83a-6767d6605c9a" Title="GuildDelete Class" Url="html/T_Thylacine_Models_Event_GuildDelete.htm">
+        <HelpTOCNode Title="GuildDelete Constructor " Url="html/M_Thylacine_Models_Event_GuildDelete__ctor.htm" />
+        <HelpTOCNode Id="1b9c6217-deb4-4d86-9ab9-78fb8f9334fa" Title="GuildDelete Properties" Url="html/Properties_T_Thylacine_Models_Event_GuildDelete.htm">
+          <HelpTOCNode Title="GuildID Property " Url="html/P_Thylacine_Models_Event_GuildDelete_GuildID.htm" />
+          <HelpTOCNode Title="Unavailable Property " Url="html/P_Thylacine_Models_Event_GuildDelete_Unavailable.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="GuildDelete Methods" Url="html/Methods_T_Thylacine_Models_Event_GuildDelete.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="806c4178-ea44-4b39-aa7b-a7ffbdea6630" Title="GuildEmojiUpdate Class" Url="html/T_Thylacine_Models_Event_GuildEmojiUpdate.htm">
+        <HelpTOCNode Title="GuildEmojiUpdate Constructor " Url="html/M_Thylacine_Models_Event_GuildEmojiUpdate__ctor.htm" />
+        <HelpTOCNode Id="48f6acc7-990f-47ff-bb26-d998ea92a2f8" Title="GuildEmojiUpdate Properties" Url="html/Properties_T_Thylacine_Models_Event_GuildEmojiUpdate.htm">
+          <HelpTOCNode Title="Emojis Property " Url="html/P_Thylacine_Models_Event_GuildEmojiUpdate_Emojis.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="GuildEmojiUpdate Methods" Url="html/Methods_T_Thylacine_Models_Event_GuildEmojiUpdate.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="275f6e92-9547-4d1b-83b9-7db7bd24ba79" Title="GuildEvent Class" Url="html/T_Thylacine_Models_Event_GuildEvent.htm">
+        <HelpTOCNode Title="GuildEvent Constructor " Url="html/M_Thylacine_Models_Event_GuildEvent__ctor.htm" />
+        <HelpTOCNode Id="4f884382-f1c3-427c-a085-3fec822cd85e" Title="GuildEvent Properties" Url="html/Properties_T_Thylacine_Models_Event_GuildEvent.htm">
+          <HelpTOCNode Title="GuildID Property " Url="html/P_Thylacine_Models_Event_GuildEvent_GuildID.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="GuildEvent Methods" Url="html/Methods_T_Thylacine_Models_Event_GuildEvent.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="ae1e23b5-1b8f-44a2-8397-18b6f14648d3" Title="GuildMemberRemove Class" Url="html/T_Thylacine_Models_Event_GuildMemberRemove.htm">
+        <HelpTOCNode Title="GuildMemberRemove Constructor " Url="html/M_Thylacine_Models_Event_GuildMemberRemove__ctor.htm" />
+        <HelpTOCNode Id="77536682-d91f-46c2-8418-eaf667f28186" Title="GuildMemberRemove Properties" Url="html/Properties_T_Thylacine_Models_Event_GuildMemberRemove.htm">
+          <HelpTOCNode Title="User Property " Url="html/P_Thylacine_Models_Event_GuildMemberRemove_User.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="GuildMemberRemove Methods" Url="html/Methods_T_Thylacine_Models_Event_GuildMemberRemove.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="d718ff94-ea6e-4658-8a80-795ef43fd702" Title="GuildMembersChunk Class" Url="html/T_Thylacine_Models_Event_GuildMembersChunk.htm">
+        <HelpTOCNode Title="GuildMembersChunk Constructor " Url="html/M_Thylacine_Models_Event_GuildMembersChunk__ctor.htm" />
+        <HelpTOCNode Id="ccd1eb01-4985-4c21-8f4f-033d09053df3" Title="GuildMembersChunk Properties" Url="html/Properties_T_Thylacine_Models_Event_GuildMembersChunk.htm">
+          <HelpTOCNode Title="Members Property " Url="html/P_Thylacine_Models_Event_GuildMembersChunk_Members.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="GuildMembersChunk Methods" Url="html/Methods_T_Thylacine_Models_Event_GuildMembersChunk.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="f5ab5020-1157-4bf7-8a0c-310f708b5557" Title="GuildMemeberAdd Class" Url="html/T_Thylacine_Models_Event_GuildMemeberAdd.htm">
+        <HelpTOCNode Title="GuildMemeberAdd Constructor " Url="html/M_Thylacine_Models_Event_GuildMemeberAdd__ctor.htm" />
+        <HelpTOCNode Id="e79d7e4c-2dce-48ed-b7a2-efe63656470e" Title="GuildMemeberAdd Properties" Url="html/Properties_T_Thylacine_Models_Event_GuildMemeberAdd.htm">
+          <HelpTOCNode Title="GuildID Property " Url="html/P_Thylacine_Models_Event_GuildMemeberAdd_GuildID.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="GuildMemeberAdd Methods" Url="html/Methods_T_Thylacine_Models_Event_GuildMemeberAdd.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="c358b843-1093-4194-9163-24f524304e3f" Title="GuildMemeberUpdate Class" Url="html/T_Thylacine_Models_Event_GuildMemeberUpdate.htm">
+        <HelpTOCNode Title="GuildMemeberUpdate Constructor " Url="html/M_Thylacine_Models_Event_GuildMemeberUpdate__ctor.htm" />
+        <HelpTOCNode Id="d62c1863-d02e-4c32-a830-fd4b572627fc" Title="GuildMemeberUpdate Properties" Url="html/Properties_T_Thylacine_Models_Event_GuildMemeberUpdate.htm">
+          <HelpTOCNode Title="Nickname Property " Url="html/P_Thylacine_Models_Event_GuildMemeberUpdate_Nickname.htm" />
+          <HelpTOCNode Title="Roles Property " Url="html/P_Thylacine_Models_Event_GuildMemeberUpdate_Roles.htm" />
+          <HelpTOCNode Title="User Property " Url="html/P_Thylacine_Models_Event_GuildMemeberUpdate_User.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="GuildMemeberUpdate Methods" Url="html/Methods_T_Thylacine_Models_Event_GuildMemeberUpdate.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="240e2402-9983-40cb-9f58-302b99fa673d" Title="GuildRoleDelete Class" Url="html/T_Thylacine_Models_Event_GuildRoleDelete.htm">
+        <HelpTOCNode Title="GuildRoleDelete Constructor " Url="html/M_Thylacine_Models_Event_GuildRoleDelete__ctor.htm" />
+        <HelpTOCNode Id="adfd4cf3-a16e-40e9-af05-bbb5e969c902" Title="GuildRoleDelete Properties" Url="html/Properties_T_Thylacine_Models_Event_GuildRoleDelete.htm">
+          <HelpTOCNode Title="Role Property " Url="html/P_Thylacine_Models_Event_GuildRoleDelete_Role.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="GuildRoleDelete Methods" Url="html/Methods_T_Thylacine_Models_Event_GuildRoleDelete.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="012d178f-300b-410e-87cf-c41e86500ef3" Title="GuildRoleEvent Class" Url="html/T_Thylacine_Models_Event_GuildRoleEvent.htm">
+        <HelpTOCNode Title="GuildRoleEvent Constructor " Url="html/M_Thylacine_Models_Event_GuildRoleEvent__ctor.htm" />
+        <HelpTOCNode Id="9ef47e21-35d5-4317-8f33-a13388647e26" Title="GuildRoleEvent Properties" Url="html/Properties_T_Thylacine_Models_Event_GuildRoleEvent.htm">
+          <HelpTOCNode Title="Role Property " Url="html/P_Thylacine_Models_Event_GuildRoleEvent_Role.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="GuildRoleEvent Methods" Url="html/Methods_T_Thylacine_Models_Event_GuildRoleEvent.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="048fc7ec-bfed-4298-9e06-fdcd266091ca" Title="MessageDeleteBulk Class" Url="html/T_Thylacine_Models_Event_MessageDeleteBulk.htm">
+        <HelpTOCNode Title="MessageDeleteBulk Constructor " Url="html/M_Thylacine_Models_Event_MessageDeleteBulk__ctor.htm" />
+        <HelpTOCNode Id="43ef89d7-09ae-4a4d-a239-284019365d67" Title="MessageDeleteBulk Properties" Url="html/Properties_T_Thylacine_Models_Event_MessageDeleteBulk.htm">
+          <HelpTOCNode Title="ChannelID Property " Url="html/P_Thylacine_Models_Event_MessageDeleteBulk_ChannelID.htm" />
+          <HelpTOCNode Title="IDs Property " Url="html/P_Thylacine_Models_Event_MessageDeleteBulk_IDs.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="MessageDeleteBulk Methods" Url="html/Methods_T_Thylacine_Models_Event_MessageDeleteBulk.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="0b35892d-ac4c-4094-a597-a6eb3f14e29f" Title="MessageDeleteEvent Class" Url="html/T_Thylacine_Models_Event_MessageDeleteEvent.htm">
+        <HelpTOCNode Title="MessageDeleteEvent Constructor " Url="html/M_Thylacine_Models_Event_MessageDeleteEvent__ctor.htm" />
+        <HelpTOCNode Id="dcab32fd-2f3e-48fe-aba0-f628bc48c11e" Title="MessageDeleteEvent Properties" Url="html/Properties_T_Thylacine_Models_Event_MessageDeleteEvent.htm">
+          <HelpTOCNode Title="ChannelID Property " Url="html/P_Thylacine_Models_Event_MessageDeleteEvent_ChannelID.htm" />
+          <HelpTOCNode Title="ID Property " Url="html/P_Thylacine_Models_Event_MessageDeleteEvent_ID.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="MessageDeleteEvent Methods" Url="html/Methods_T_Thylacine_Models_Event_MessageDeleteEvent.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="fa20438a-c8d7-4a8b-a6ba-fe9fed8304fd" Title="TypingStartEvent Class" Url="html/T_Thylacine_Models_Event_TypingStartEvent.htm">
+        <HelpTOCNode Title="TypingStartEvent Constructor " Url="html/M_Thylacine_Models_Event_TypingStartEvent__ctor.htm" />
+        <HelpTOCNode Id="a64fe07b-3442-4494-9971-052de71c4c7b" Title="TypingStartEvent Properties" Url="html/Properties_T_Thylacine_Models_Event_TypingStartEvent.htm">
+          <HelpTOCNode Title="ChannelID Property " Url="html/P_Thylacine_Models_Event_TypingStartEvent_ChannelID.htm" />
+          <HelpTOCNode Title="Timestamp Property " Url="html/P_Thylacine_Models_Event_TypingStartEvent_Timestamp.htm" />
+          <HelpTOCNode Title="UserID Property " Url="html/P_Thylacine_Models_Event_TypingStartEvent_UserID.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="TypingStartEvent Methods" Url="html/Methods_T_Thylacine_Models_Event_TypingStartEvent.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="7ac54aa3-9322-45f6-8ea7-658a2348aa73" Title="VoiceServerUpdateEvent Class" Url="html/T_Thylacine_Models_Event_VoiceServerUpdateEvent.htm">
+        <HelpTOCNode Title="VoiceServerUpdateEvent Constructor " Url="html/M_Thylacine_Models_Event_VoiceServerUpdateEvent__ctor.htm" />
+        <HelpTOCNode Id="b8a540b4-15ab-4427-8f0d-5860035fdf4c" Title="VoiceServerUpdateEvent Properties" Url="html/Properties_T_Thylacine_Models_Event_VoiceServerUpdateEvent.htm">
+          <HelpTOCNode Title="Endpoint Property " Url="html/P_Thylacine_Models_Event_VoiceServerUpdateEvent_Endpoint.htm" />
+          <HelpTOCNode Title="GuildID Property " Url="html/P_Thylacine_Models_Event_VoiceServerUpdateEvent_GuildID.htm" />
+          <HelpTOCNode Title="Token Property " Url="html/P_Thylacine_Models_Event_VoiceServerUpdateEvent_Token.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="VoiceServerUpdateEvent Methods" Url="html/Methods_T_Thylacine_Models_Event_VoiceServerUpdateEvent.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="45192783-6172-4882-9745-a639a75b8733" Title="Thylacine.Rest" Url="html/N_Thylacine_Rest.htm">
+      <HelpTOCNode Id="86087506-b634-44fd-9b44-709150a41208" Title="IRestClient Class" Url="html/T_Thylacine_Rest_IRestClient.htm">
+        <HelpTOCNode Title="IRestClient Constructor " Url="html/M_Thylacine_Rest_IRestClient__ctor.htm" />
+        <HelpTOCNode Id="dc945de8-b39d-464f-a416-e93f3246e3a7" Title="IRestClient Methods" Url="html/Methods_T_Thylacine_Rest_IRestClient.htm">
+          <HelpTOCNode Title="Send Method " Url="html/M_Thylacine_Rest_IRestClient_Send.htm" />
+          <HelpTOCNode Id="e6e951c4-6587-4ae2-91fd-0dbd1c5d6db1" Title="SendPayload Method " Url="html/Overload_Thylacine_Rest_IRestClient_SendPayload.htm">
+            <HelpTOCNode Title="SendPayload Method (IRestPayload)" Url="html/M_Thylacine_Rest_IRestClient_SendPayload.htm" />
+            <HelpTOCNode Title="SendPayload(T) Method (IRestPayload)" Url="html/M_Thylacine_Rest_IRestClient_SendPayload__1.htm" />
+          </HelpTOCNode>
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="672461b1-ba60-45c3-a16f-17da0bd71d4e" Title="RestSharpClient Class" Url="html/T_Thylacine_Rest_RestSharpClient.htm">
+        <HelpTOCNode Title="RestSharpClient Constructor " Url="html/M_Thylacine_Rest_RestSharpClient__ctor.htm" />
+        <HelpTOCNode Id="76b9237e-bf92-4189-9ba1-7e048b4bab01" Title="RestSharpClient Methods" Url="html/Methods_T_Thylacine_Rest_RestSharpClient.htm">
+          <HelpTOCNode Title="Send Method " Url="html/M_Thylacine_Rest_RestSharpClient_Send.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="33ba13d4-816b-4a6f-9659-d37b69f69c2d" Title="Thylacine.Rest.Payloads" Url="html/N_Thylacine_Rest_Payloads.htm">
+      <HelpTOCNode Id="923127ee-c1da-418f-bfae-9f932cc10be5" Title="CreateReaction Class" Url="html/T_Thylacine_Rest_Payloads_CreateReaction.htm">
+        <HelpTOCNode Id="01764fc3-29f6-4b27-b051-396f8740b77c" Title="CreateReaction Constructor " Url="html/Overload_Thylacine_Rest_Payloads_CreateReaction__ctor.htm">
+          <HelpTOCNode Title="CreateReaction Constructor " Url="html/M_Thylacine_Rest_Payloads_CreateReaction__ctor.htm" />
+          <HelpTOCNode Title="CreateReaction Constructor (Channel, Emoji)" Url="html/M_Thylacine_Rest_Payloads_CreateReaction__ctor_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="90923d55-03e9-407c-b41a-cca299885dd0" Title="CreateReaction Properties" Url="html/Properties_T_Thylacine_Rest_Payloads_CreateReaction.htm">
+          <HelpTOCNode Title="ChannelID Property " Url="html/P_Thylacine_Rest_Payloads_CreateReaction_ChannelID.htm" />
+          <HelpTOCNode Title="MessageID Property " Url="html/P_Thylacine_Rest_Payloads_CreateReaction_MessageID.htm" />
+          <HelpTOCNode Title="Reaction Property " Url="html/P_Thylacine_Rest_Payloads_CreateReaction_Reaction.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="CreateReaction Methods" Url="html/Methods_T_Thylacine_Rest_Payloads_CreateReaction.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="6cf778ed-29af-4110-802b-44afd8d776f1" Title="CreateWebhook Class" Url="html/T_Thylacine_Rest_Payloads_CreateWebhook.htm">
+        <HelpTOCNode Title="CreateWebhook Constructor " Url="html/M_Thylacine_Rest_Payloads_CreateWebhook__ctor.htm" />
+        <HelpTOCNode Id="170c1ce8-de72-4e9d-879c-d1bc35830f21" Title="CreateWebhook Properties" Url="html/Properties_T_Thylacine_Rest_Payloads_CreateWebhook.htm">
+          <HelpTOCNode Title="Avatar Property " Url="html/P_Thylacine_Rest_Payloads_CreateWebhook_Avatar.htm" />
+          <HelpTOCNode Title="ChannelID Property " Url="html/P_Thylacine_Rest_Payloads_CreateWebhook_ChannelID.htm" />
+          <HelpTOCNode Title="Name Property " Url="html/P_Thylacine_Rest_Payloads_CreateWebhook_Name.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="CreateWebhook Methods" Url="html/Methods_T_Thylacine_Rest_Payloads_CreateWebhook.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="cb22ff1a-f2c2-4ef2-8e3b-9cf1b03858fb" Title="DeleteAllReactions Class" Url="html/T_Thylacine_Rest_Payloads_DeleteAllReactions.htm">
+        <HelpTOCNode Id="c82f0a50-1e4b-4165-b5cc-b815164c1b39" Title="DeleteAllReactions Constructor " Url="html/Overload_Thylacine_Rest_Payloads_DeleteAllReactions__ctor.htm">
+          <HelpTOCNode Title="DeleteAllReactions Constructor " Url="html/M_Thylacine_Rest_Payloads_DeleteAllReactions__ctor.htm" />
+          <HelpTOCNode Title="DeleteAllReactions Constructor (Channel)" Url="html/M_Thylacine_Rest_Payloads_DeleteAllReactions__ctor_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="9049d970-6260-459f-9ea6-a0d058b3476c" Title="DeleteAllReactions Properties" Url="html/Properties_T_Thylacine_Rest_Payloads_DeleteAllReactions.htm">
+          <HelpTOCNode Title="ChannelID Property " Url="html/P_Thylacine_Rest_Payloads_DeleteAllReactions_ChannelID.htm" />
+          <HelpTOCNode Title="MessageID Property " Url="html/P_Thylacine_Rest_Payloads_DeleteAllReactions_MessageID.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="DeleteAllReactions Methods" Url="html/Methods_T_Thylacine_Rest_Payloads_DeleteAllReactions.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="9e3f938a-0e3b-40f0-8147-10de36c7a393" Title="DeleteBulkMessages Class" Url="html/T_Thylacine_Rest_Payloads_DeleteBulkMessages.htm">
+        <HelpTOCNode Title="DeleteBulkMessages Constructor " Url="html/M_Thylacine_Rest_Payloads_DeleteBulkMessages__ctor.htm" />
+        <HelpTOCNode Id="1dc47228-3f72-4c67-a249-e01856021198" Title="DeleteBulkMessages Properties" Url="html/Properties_T_Thylacine_Rest_Payloads_DeleteBulkMessages.htm">
+          <HelpTOCNode Title="ChannelID Property " Url="html/P_Thylacine_Rest_Payloads_DeleteBulkMessages_ChannelID.htm" />
+          <HelpTOCNode Title="Snowflakes Property " Url="html/P_Thylacine_Rest_Payloads_DeleteBulkMessages_Snowflakes.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="DeleteBulkMessages Methods" Url="html/Methods_T_Thylacine_Rest_Payloads_DeleteBulkMessages.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="6fdb49c8-a9e2-4db5-b881-5dc04f96a788" Title="DeleteChannel Class" Url="html/T_Thylacine_Rest_Payloads_DeleteChannel.htm">
+        <HelpTOCNode Id="f7d2871d-cfc0-4c80-93dc-c5d7a896f774" Title="DeleteChannel Constructor " Url="html/Overload_Thylacine_Rest_Payloads_DeleteChannel__ctor.htm">
+          <HelpTOCNode Title="DeleteChannel Constructor " Url="html/M_Thylacine_Rest_Payloads_DeleteChannel__ctor.htm" />
+          <HelpTOCNode Title="DeleteChannel Constructor (Channel)" Url="html/M_Thylacine_Rest_Payloads_DeleteChannel__ctor_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="d1ec18ab-c091-429f-a328-504471b1bd72" Title="DeleteChannel Properties" Url="html/Properties_T_Thylacine_Rest_Payloads_DeleteChannel.htm">
+          <HelpTOCNode Title="ChannelID Property " Url="html/P_Thylacine_Rest_Payloads_DeleteChannel_ChannelID.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="DeleteChannel Methods" Url="html/Methods_T_Thylacine_Rest_Payloads_DeleteChannel.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="37347112-9d5a-4bba-b603-590df32f40e7" Title="DeleteChannelPermission Class" Url="html/T_Thylacine_Rest_Payloads_DeleteChannelPermission.htm">
+        <HelpTOCNode Title="DeleteChannelPermission Constructor " Url="html/M_Thylacine_Rest_Payloads_DeleteChannelPermission__ctor.htm" />
+        <HelpTOCNode Id="7d59a1fa-4a0d-43ee-92d1-10d6062cd7a5" Title="DeleteChannelPermission Properties" Url="html/Properties_T_Thylacine_Rest_Payloads_DeleteChannelPermission.htm">
+          <HelpTOCNode Title="ChannelID Property " Url="html/P_Thylacine_Rest_Payloads_DeleteChannelPermission_ChannelID.htm" />
+          <HelpTOCNode Title="OverwriteID Property " Url="html/P_Thylacine_Rest_Payloads_DeleteChannelPermission_OverwriteID.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="DeleteChannelPermission Methods" Url="html/Methods_T_Thylacine_Rest_Payloads_DeleteChannelPermission.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="7b3d5dc4-d48d-4c66-b7b7-31f92bf8f13c" Title="DeleteGuild Class" Url="html/T_Thylacine_Rest_Payloads_DeleteGuild.htm">
+        <HelpTOCNode Id="0e62ef8b-ba16-44d3-9e54-3a002f72b91b" Title="DeleteGuild Constructor " Url="html/Overload_Thylacine_Rest_Payloads_DeleteGuild__ctor.htm">
+          <HelpTOCNode Title="DeleteGuild Constructor " Url="html/M_Thylacine_Rest_Payloads_DeleteGuild__ctor.htm" />
+          <HelpTOCNode Title="DeleteGuild Constructor (Guild)" Url="html/M_Thylacine_Rest_Payloads_DeleteGuild__ctor_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="3c4b21b8-8aa6-49b4-8947-0fa20ceb72c9" Title="DeleteGuild Properties" Url="html/Properties_T_Thylacine_Rest_Payloads_DeleteGuild.htm">
+          <HelpTOCNode Title="GuildID Property " Url="html/P_Thylacine_Rest_Payloads_DeleteGuild_GuildID.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="DeleteGuild Methods" Url="html/Methods_T_Thylacine_Rest_Payloads_DeleteGuild.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="50fdcd2d-9985-4df1-8ca0-0fc92de19328" Title="DeleteGuildRole Class" Url="html/T_Thylacine_Rest_Payloads_DeleteGuildRole.htm">
+        <HelpTOCNode Id="83707cfe-21c4-408f-8d7e-ab2c494a2a10" Title="DeleteGuildRole Constructor " Url="html/Overload_Thylacine_Rest_Payloads_DeleteGuildRole__ctor.htm">
+          <HelpTOCNode Title="DeleteGuildRole Constructor " Url="html/M_Thylacine_Rest_Payloads_DeleteGuildRole__ctor.htm" />
+          <HelpTOCNode Title="DeleteGuildRole Constructor (Role)" Url="html/M_Thylacine_Rest_Payloads_DeleteGuildRole__ctor_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="f0efe4b8-6ab4-41f7-9ca6-8092b8a6adce" Title="DeleteGuildRole Properties" Url="html/Properties_T_Thylacine_Rest_Payloads_DeleteGuildRole.htm">
+          <HelpTOCNode Title="GuildID Property " Url="html/P_Thylacine_Rest_Payloads_DeleteGuildRole_GuildID.htm" />
+          <HelpTOCNode Title="RoleID Property " Url="html/P_Thylacine_Rest_Payloads_DeleteGuildRole_RoleID.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="DeleteGuildRole Methods" Url="html/Methods_T_Thylacine_Rest_Payloads_DeleteGuildRole.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="1e2fca19-4fdc-4968-b1be-37f48f4be973" Title="DeleteMessage Class" Url="html/T_Thylacine_Rest_Payloads_DeleteMessage.htm">
+        <HelpTOCNode Id="f1c2cbfd-2ba4-4fa2-be59-3325c997220f" Title="DeleteMessage Constructor " Url="html/Overload_Thylacine_Rest_Payloads_DeleteMessage__ctor.htm">
+          <HelpTOCNode Title="DeleteMessage Constructor " Url="html/M_Thylacine_Rest_Payloads_DeleteMessage__ctor.htm" />
+          <HelpTOCNode Title="DeleteMessage Constructor (Message)" Url="html/M_Thylacine_Rest_Payloads_DeleteMessage__ctor_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="5f882f61-ce90-433f-975f-64a5a9ac08e6" Title="DeleteMessage Properties" Url="html/Properties_T_Thylacine_Rest_Payloads_DeleteMessage.htm">
+          <HelpTOCNode Title="ChannelID Property " Url="html/P_Thylacine_Rest_Payloads_DeleteMessage_ChannelID.htm" />
+          <HelpTOCNode Title="MessageID Property " Url="html/P_Thylacine_Rest_Payloads_DeleteMessage_MessageID.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="DeleteMessage Methods" Url="html/Methods_T_Thylacine_Rest_Payloads_DeleteMessage.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="701f6696-d49c-47fc-8f05-b1b56e5290c4" Title="DeleteReaction Class" Url="html/T_Thylacine_Rest_Payloads_DeleteReaction.htm">
+        <HelpTOCNode Id="5d7c6893-4ec5-47c0-82f9-8f9c686ac859" Title="DeleteReaction Constructor " Url="html/Overload_Thylacine_Rest_Payloads_DeleteReaction__ctor.htm">
+          <HelpTOCNode Title="DeleteReaction Constructor " Url="html/M_Thylacine_Rest_Payloads_DeleteReaction__ctor.htm" />
+          <HelpTOCNode Title="DeleteReaction Constructor (Channel, Emoji)" Url="html/M_Thylacine_Rest_Payloads_DeleteReaction__ctor_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="c29f9c18-4a48-4fbd-b882-614837f42b1d" Title="DeleteReaction Properties" Url="html/Properties_T_Thylacine_Rest_Payloads_DeleteReaction.htm">
+          <HelpTOCNode Title="ChannelID Property " Url="html/P_Thylacine_Rest_Payloads_DeleteReaction_ChannelID.htm" />
+          <HelpTOCNode Title="MessageID Property " Url="html/P_Thylacine_Rest_Payloads_DeleteReaction_MessageID.htm" />
+          <HelpTOCNode Title="Reaction Property " Url="html/P_Thylacine_Rest_Payloads_DeleteReaction_Reaction.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="DeleteReaction Methods" Url="html/Methods_T_Thylacine_Rest_Payloads_DeleteReaction.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="424edb21-7559-445b-82e1-8fb85e864d22" Title="DeleteUserReaction Class" Url="html/T_Thylacine_Rest_Payloads_DeleteUserReaction.htm">
+        <HelpTOCNode Id="37eb7362-cec3-49da-8460-7d9f4c33b271" Title="DeleteUserReaction Constructor " Url="html/Overload_Thylacine_Rest_Payloads_DeleteUserReaction__ctor.htm">
+          <HelpTOCNode Title="DeleteUserReaction Constructor " Url="html/M_Thylacine_Rest_Payloads_DeleteUserReaction__ctor.htm" />
+          <HelpTOCNode Title="DeleteUserReaction Constructor (Channel, Emoji, User)" Url="html/M_Thylacine_Rest_Payloads_DeleteUserReaction__ctor_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="4341377f-a218-4fc4-8930-0e675df1628f" Title="DeleteUserReaction Properties" Url="html/Properties_T_Thylacine_Rest_Payloads_DeleteUserReaction.htm">
+          <HelpTOCNode Title="ChannelID Property " Url="html/P_Thylacine_Rest_Payloads_DeleteUserReaction_ChannelID.htm" />
+          <HelpTOCNode Title="MessageID Property " Url="html/P_Thylacine_Rest_Payloads_DeleteUserReaction_MessageID.htm" />
+          <HelpTOCNode Title="Reaction Property " Url="html/P_Thylacine_Rest_Payloads_DeleteUserReaction_Reaction.htm" />
+          <HelpTOCNode Title="UserID Property " Url="html/P_Thylacine_Rest_Payloads_DeleteUserReaction_UserID.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="DeleteUserReaction Methods" Url="html/Methods_T_Thylacine_Rest_Payloads_DeleteUserReaction.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="a3752243-926e-4637-8d29-7a5c474fbfde" Title="DeleteWebhook Class" Url="html/T_Thylacine_Rest_Payloads_DeleteWebhook.htm">
+        <HelpTOCNode Id="da43b64d-1066-4f67-8681-dde43f93f1a7" Title="DeleteWebhook Constructor " Url="html/Overload_Thylacine_Rest_Payloads_DeleteWebhook__ctor.htm">
+          <HelpTOCNode Title="DeleteWebhook Constructor " Url="html/M_Thylacine_Rest_Payloads_DeleteWebhook__ctor.htm" />
+          <HelpTOCNode Title="DeleteWebhook Constructor (Webhook)" Url="html/M_Thylacine_Rest_Payloads_DeleteWebhook__ctor_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="725fff7d-eef8-4903-81fa-02bc0482a3d2" Title="DeleteWebhook Properties" Url="html/Properties_T_Thylacine_Rest_Payloads_DeleteWebhook.htm">
+          <HelpTOCNode Title="WebhookID Property " Url="html/P_Thylacine_Rest_Payloads_DeleteWebhook_WebhookID.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="DeleteWebhook Methods" Url="html/Methods_T_Thylacine_Rest_Payloads_DeleteWebhook.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="bab12179-bcc4-4995-9094-ffd304fe386a" Title="EditChannelPermissions Class" Url="html/T_Thylacine_Rest_Payloads_EditChannelPermissions.htm">
+        <HelpTOCNode Title="EditChannelPermissions Constructor " Url="html/M_Thylacine_Rest_Payloads_EditChannelPermissions__ctor.htm" />
+        <HelpTOCNode Id="9dec71bd-45bc-4e90-b92f-bd22ef75bf1d" Title="EditChannelPermissions Properties" Url="html/Properties_T_Thylacine_Rest_Payloads_EditChannelPermissions.htm">
+          <HelpTOCNode Title="Allow Property " Url="html/P_Thylacine_Rest_Payloads_EditChannelPermissions_Allow.htm" />
+          <HelpTOCNode Title="ChannelID Property " Url="html/P_Thylacine_Rest_Payloads_EditChannelPermissions_ChannelID.htm" />
+          <HelpTOCNode Title="Deny Property " Url="html/P_Thylacine_Rest_Payloads_EditChannelPermissions_Deny.htm" />
+          <HelpTOCNode Title="OverwriteID Property " Url="html/P_Thylacine_Rest_Payloads_EditChannelPermissions_OverwriteID.htm" />
+          <HelpTOCNode Title="Type Property " Url="html/P_Thylacine_Rest_Payloads_EditChannelPermissions_Type.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="EditChannelPermissions Methods" Url="html/Methods_T_Thylacine_Rest_Payloads_EditChannelPermissions.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="6e950229-aacc-4800-9f95-f46746627062" Title="EditMessage Class" Url="html/T_Thylacine_Rest_Payloads_EditMessage.htm">
+        <HelpTOCNode Id="61c95c8c-20fe-4cb8-958e-e696c1e6eb20" Title="EditMessage Constructor " Url="html/Overload_Thylacine_Rest_Payloads_EditMessage__ctor.htm">
+          <HelpTOCNode Title="EditMessage Constructor " Url="html/M_Thylacine_Rest_Payloads_EditMessage__ctor.htm" />
+          <HelpTOCNode Title="EditMessage Constructor (Message)" Url="html/M_Thylacine_Rest_Payloads_EditMessage__ctor_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="61be86d5-72b4-4b5b-97d0-81a709037904" Title="EditMessage Properties" Url="html/Properties_T_Thylacine_Rest_Payloads_EditMessage.htm">
+          <HelpTOCNode Title="ChannelID Property " Url="html/P_Thylacine_Rest_Payloads_EditMessage_ChannelID.htm" />
+          <HelpTOCNode Title="Message Property " Url="html/P_Thylacine_Rest_Payloads_EditMessage_Message.htm" />
+          <HelpTOCNode Title="MessageID Property " Url="html/P_Thylacine_Rest_Payloads_EditMessage_MessageID.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="EditMessage Methods" Url="html/Methods_T_Thylacine_Rest_Payloads_EditMessage.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="8aabd4db-642e-4c23-bfd1-e0c9313485a7" Title="IRestPayload Interface" Url="html/T_Thylacine_Rest_Payloads_IRestPayload.htm">
+        <HelpTOCNode Id="efd27712-0784-454b-901a-6599a562f16d" Title="IRestPayload Properties" Url="html/Properties_T_Thylacine_Rest_Payloads_IRestPayload.htm">
+          <HelpTOCNode Title="Method Property " Url="html/P_Thylacine_Rest_Payloads_IRestPayload_Method.htm" />
+          <HelpTOCNode Title="Payload Property " Url="html/P_Thylacine_Rest_Payloads_IRestPayload_Payload.htm" />
+          <HelpTOCNode Title="Request Property " Url="html/P_Thylacine_Rest_Payloads_IRestPayload_Request.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="9d1ec6ed-152f-42a4-8c74-d9cdfdc69997" Title="ModifyChannel Class" Url="html/T_Thylacine_Rest_Payloads_ModifyChannel.htm">
+        <HelpTOCNode Id="738e66d4-7658-4fe7-8d52-a870c13f1352" Title="ModifyChannel Constructor " Url="html/Overload_Thylacine_Rest_Payloads_ModifyChannel__ctor.htm">
+          <HelpTOCNode Title="ModifyChannel Constructor " Url="html/M_Thylacine_Rest_Payloads_ModifyChannel__ctor.htm" />
+          <HelpTOCNode Title="ModifyChannel Constructor (Channel)" Url="html/M_Thylacine_Rest_Payloads_ModifyChannel__ctor_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="9584b582-ad14-4438-8433-2592bdf42c8f" Title="ModifyChannel Properties" Url="html/Properties_T_Thylacine_Rest_Payloads_ModifyChannel.htm">
+          <HelpTOCNode Title="Bitrate Property " Url="html/P_Thylacine_Rest_Payloads_ModifyChannel_Bitrate.htm" />
+          <HelpTOCNode Title="ChannelID Property " Url="html/P_Thylacine_Rest_Payloads_ModifyChannel_ChannelID.htm" />
+          <HelpTOCNode Title="Name Property " Url="html/P_Thylacine_Rest_Payloads_ModifyChannel_Name.htm" />
+          <HelpTOCNode Title="Position Property " Url="html/P_Thylacine_Rest_Payloads_ModifyChannel_Position.htm" />
+          <HelpTOCNode Title="Topic Property " Url="html/P_Thylacine_Rest_Payloads_ModifyChannel_Topic.htm" />
+          <HelpTOCNode Title="UserLimit Property " Url="html/P_Thylacine_Rest_Payloads_ModifyChannel_UserLimit.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="ModifyChannel Methods" Url="html/Methods_T_Thylacine_Rest_Payloads_ModifyChannel.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="3f00e2b4-5bd9-49f2-83f5-dc3805b8c45a" Title="PinChannelMessage Class" Url="html/T_Thylacine_Rest_Payloads_PinChannelMessage.htm">
+        <HelpTOCNode Title="PinChannelMessage Constructor " Url="html/M_Thylacine_Rest_Payloads_PinChannelMessage__ctor.htm" />
+        <HelpTOCNode Id="335af19a-b39f-41bd-a5e5-59a505e9d4b6" Title="PinChannelMessage Properties" Url="html/Properties_T_Thylacine_Rest_Payloads_PinChannelMessage.htm">
+          <HelpTOCNode Title="ChannelID Property " Url="html/P_Thylacine_Rest_Payloads_PinChannelMessage_ChannelID.htm" />
+          <HelpTOCNode Title="MessageID Property " Url="html/P_Thylacine_Rest_Payloads_PinChannelMessage_MessageID.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="PinChannelMessage Methods" Url="html/Methods_T_Thylacine_Rest_Payloads_PinChannelMessage.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="719fc394-c6f6-490b-a052-126c83cdef0c" Title="TriggerTypingIndicator Class" Url="html/T_Thylacine_Rest_Payloads_TriggerTypingIndicator.htm">
+        <HelpTOCNode Title="TriggerTypingIndicator Constructor " Url="html/M_Thylacine_Rest_Payloads_TriggerTypingIndicator__ctor.htm" />
+        <HelpTOCNode Id="e5afe518-2e8a-433a-b0a7-e4dc77e95aec" Title="TriggerTypingIndicator Properties" Url="html/Properties_T_Thylacine_Rest_Payloads_TriggerTypingIndicator.htm">
+          <HelpTOCNode Title="ChannelID Property " Url="html/P_Thylacine_Rest_Payloads_TriggerTypingIndicator_ChannelID.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="TriggerTypingIndicator Methods" Url="html/Methods_T_Thylacine_Rest_Payloads_TriggerTypingIndicator.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="59db0216-e3cb-48c0-9b4a-9981f6d1a7fc" Title="UnpinChannelMessage Class" Url="html/T_Thylacine_Rest_Payloads_UnpinChannelMessage.htm">
+        <HelpTOCNode Title="UnpinChannelMessage Constructor " Url="html/M_Thylacine_Rest_Payloads_UnpinChannelMessage__ctor.htm" />
+        <HelpTOCNode Id="f259c9e6-50bd-4a33-a3fc-761342182c83" Title="UnpinChannelMessage Properties" Url="html/Properties_T_Thylacine_Rest_Payloads_UnpinChannelMessage.htm">
+          <HelpTOCNode Title="ChannelID Property " Url="html/P_Thylacine_Rest_Payloads_UnpinChannelMessage_ChannelID.htm" />
+          <HelpTOCNode Title="MessageID Property " Url="html/P_Thylacine_Rest_Payloads_UnpinChannelMessage_MessageID.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="UnpinChannelMessage Methods" Url="html/Methods_T_Thylacine_Rest_Payloads_UnpinChannelMessage.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>
