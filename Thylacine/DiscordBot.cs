@@ -89,7 +89,7 @@ namespace Thylacine
         /// <summary>
         /// Creates a new bot instance with login.
         /// </summary>
-        /// <param name="token"></param>
+        /// <param name="token">The token supplied by Discord for your target bot</param>
         public DiscordBot(string token)
         {
             this.token = token;
@@ -519,7 +519,7 @@ namespace Thylacine
         /// <summary>
         /// Gets a Guild the bot is apart of
         /// </summary>
-        /// <param name="guildID"></param>
+        /// <param name="guildID">The ID of the guild you are trying to get.</param>
         /// <returns></returns>
         public Guild GetGuild(ulong guildID)
         {
@@ -537,7 +537,7 @@ namespace Thylacine
         /// <summary>
         /// Gets the guild a channel belongs to
         /// </summary>
-        /// <param name="channelID"></param>
+        /// <param name="channelID">The ID of the channel you are looking for.</param>
         /// <returns></returns>
         public Guild GetChannelGuild(ulong channelID)
         {
@@ -553,7 +553,7 @@ namespace Thylacine
         /// <summary>
         /// Gets a list of guilds a user belongs to
         /// </summary>
-        /// <param name="userID"></param>
+        /// <param name="userID">The ID of the user you are looking for.</param>
         /// <returns></returns>
         public List<Guild> GetUserGuilds(ulong userID)
         {
@@ -571,7 +571,7 @@ namespace Thylacine
         /// <summary>
         /// Gets a channel object. Scans through all the guilds.
         /// </summary>
-        /// <param name="channelID"></param>
+        /// <param name="channelID">The channel ID you are looking for.</param>
         /// <returns></returns>
         public Channel GetChannel(ulong channelID)
         {
@@ -589,15 +589,15 @@ namespace Thylacine
         /// <summary>
         ///  Returns the new webhook object for the given id.
         /// </summary>
-        /// <param name="webhookID"></param>
+        /// <param name="webhookID">The webhook ID you are looking for.</param>
         /// <returns></returns>
         public Webhook FetchWebhook(ulong webhookID) { return FetchWebhook(webhookID, null);  }
 
         /// <summary>
-        ///  Returns the new webhook object for the given id.
+        ///  Returns the new webhook object for the given id and token.
         /// </summary>
-        /// <param name="webhookID"></param>
-        /// <param name="token"></param>
+        /// <param name="webhookID">The webhook ID you are looking for.</param>
+        /// <param name="token">The token of the webhook.</param>
         /// <returns></returns>
         public Webhook FetchWebhook(ulong webhookID, string token)
         {
