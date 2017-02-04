@@ -13,15 +13,31 @@ using System.Threading.Tasks;
 
 namespace Thylacine
 {
+    /// <summary>
+    /// A Discord Bot instance. Use this to connect to discord and send messages.
+    /// </summary>
     public class DiscordBot
     {
-        public RestClient Rest { get; set; }
+        /// <summary>
+        /// The current REST Client
+        /// </summary>
+        public IRestClient Rest { get; set; }
+
+        /// <summary>
+        /// The current Gateway Client
+        /// </summary>
         public GatewaySocket Gateway { get; set; }
 
         private Dictionary<ulong, Guild> _guilds = new Dictionary<ulong, Guild>();
 
+        /// <summary>
+        /// A list of all private channels the bot is subscribed to
+        /// </summary>
         public List<DMChannel> PrivateChannels { get; private set; } = new List<DMChannel>();
 
+        /// <summary>
+        /// The current bot user
+        /// </summary>
         public User User { get; private set; }
 
         private string token;
@@ -65,15 +81,26 @@ namespace Thylacine
         public event TypingEvent OnTyping;
         #endregion
 
+        /// <summary>
+        /// The current session of the bot
+        /// </summary>
         public string Session { get; private set; }
 
+        /// <summary>
+        /// Creates a new bot instance with login.
+        /// </summary>
+        /// <param name="token"></param>
         public DiscordBot(string token)
         {
             this.token = token;
         }
+
+        /// <summary>
+        /// Connects the bot to Discord.
+        /// </summary>
         public void Connect()
         {
-            this.Rest = new RestClient(token);
+            this.Rest = new RestSharpClient(token);
             GatewayEndpoint endpoint = this.Rest.SendPayload<GatewayEndpoint>(new Rest.Payloads.GatewayRequest());
 
             this.Gateway = new GatewaySocket(endpoint, token);
@@ -489,14 +516,29 @@ namespace Thylacine
         }
 
         #region Guilds
+        /// <summary>
+        /// Gets a Guild the bot is apart of
+        /// </summary>
+        /// <param name="guildID"></param>
+        /// <returns></returns>
         public Guild GetGuild(ulong guildID)
         {
             Guild g;
             if (!_guilds.TryGetValue(guildID, out g)) return null;
             return g;
         }
+
+        /// <summary>
+        /// Gets the guilds the bot is apart of
+        /// </summary>
+        /// <returns></returns>
         public Guild[] GetGuilds() { return _guilds.Values.ToArray(); }
 
+        /// <summary>
+        /// Gets the guild a channel belongs to
+        /// </summary>
+        /// <param name="channelID"></param>
+        /// <returns></returns>
         public Guild GetChannelGuild(ulong channelID)
         {
             foreach(Guild g in _guilds.Values)
@@ -507,6 +549,12 @@ namespace Thylacine
 
             return null;
         }
+
+        /// <summary>
+        /// Gets a list of guilds a user belongs to
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <returns></returns>
         public List<Guild> GetUserGuilds(ulong userID)
         {
             List<Guild> guilds = new List<Guild>();
@@ -520,6 +568,11 @@ namespace Thylacine
         #endregion
 
         #region channels
+        /// <summary>
+        /// Gets a channel object. Scans through all the guilds.
+        /// </summary>
+        /// <param name="channelID"></param>
+        /// <returns></returns>
         public Channel GetChannel(ulong channelID)
         {
             foreach (Guild g in _guilds.Values)
@@ -544,6 +597,7 @@ namespace Thylacine
         ///  Returns the new webhook object for the given id.
         /// </summary>
         /// <param name="webhookID"></param>
+        /// <param name="token"></param>
         /// <returns></returns>
         public Webhook FetchWebhook(ulong webhookID, string token)
         {
@@ -551,8 +605,7 @@ namespace Thylacine
             hook.Discord = this;
             return hook;
         }
-
-
+        
         #endregion
     }
 }

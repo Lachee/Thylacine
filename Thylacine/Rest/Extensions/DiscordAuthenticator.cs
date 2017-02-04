@@ -14,7 +14,7 @@ namespace Thylacine.Rest.Authenticator
 
         public DiscordAuthenticator(string token) { this.token = token; }
 
-        public void Authenticate(IRestClient client, IRestRequest request)
+        public void Authenticate(RestSharp.IRestClient client, IRestRequest request)
         {
             request.AddHeader("Authorization", "Bot " + token);
         }

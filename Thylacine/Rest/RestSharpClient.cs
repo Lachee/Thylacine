@@ -16,22 +16,27 @@ using Thylacine.Exceptions;
 
 namespace Thylacine.Rest
 {
-    //TODO: Make a IRestClient interface to allow modulation
-    public class RestClient
+    /// <summary>
+    /// A REST Client for RestSharp
+    /// </summary>
+    public class RestSharpClient : IRestClient
     {
         private RestSharp.RestClient client;
         private string token;
 
-        public RestClient(string token)
+        /// <summary>
+        /// Creates a new instance of the RestSharp Client
+        /// </summary>
+        /// <param name="token">Token for Discord</param>
+        public RestSharpClient(string token)
         {
             this.token = token;
 
             this.client = new RestSharp.RestClient("https://discordapp.com/api");
             this.client.Authenticator = new DiscordAuthenticator(this.token);
         }
-
-
-        private IRestResponse Send(string resource, Method method, object payload)
+        
+        protected override IRestResponse Send(string resource, Method method, object payload)
         {
             RestRequest request = new RestRequest(resource, method);
             request.JsonSerializer = new NewtonsoftJsonSerializer();
@@ -53,28 +58,6 @@ namespace Thylacine.Rest
                 default:
                     throw new Exception("A HTTP status error has occured while sending a REST call to discord. Status Code: " + (int)response.StatusCode);
             }
-        }
-
-        /// <summary>
-        /// Sends a IRestPayload to discord.
-        /// </summary>
-        /// <param name="payload"></param>
-        /// <returns></returns>
-        public void SendPayload(IRestPayload payload)
-        {
-            Send(payload.Request, payload.Method, payload.Payload);
-        }
-
-        /// <summary>
-        /// Sends a IRestPayload to discord.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="payload"></param>
-        /// <returns></returns>
-        public T SendPayload<T>(IRestPayload payload) where T : new()
-        {
-            IRestResponse response = Send(payload.Request, payload.Method, payload.Payload);            
-            return JsonConvert.DeserializeObject<T>(response.Content);
         }
 
 

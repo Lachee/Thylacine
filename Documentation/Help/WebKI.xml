@@ -1067,6 +1067,15 @@
   <HelpKINode Title="InviteGuild.Name property" Url="html/P_Thylacine_Models_InviteGuild_Name.htm" />
   <HelpKINode Title="InviteGuild.Splash property" Url="html/P_Thylacine_Models_InviteGuild_Splash.htm" />
   <HelpKINode Title="Inviter property" Url="html/P_Thylacine_Models_Invite_Inviter.htm" />
+  <HelpKINode Title="IRestClient class">
+    <HelpKINode Title="IRestClient Class" Url="html/T_Thylacine_Rest_IRestClient.htm" />
+    <HelpKINode Title="about IRestClient class" Url="html/T_Thylacine_Rest_IRestClient.htm" />
+    <HelpKINode Title="constructor" Url="html/M_Thylacine_Rest_IRestClient__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_Thylacine_Rest_IRestClient.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IRestClient.IRestClient constructor" Url="html/M_Thylacine_Rest_IRestClient__ctor.htm" />
+  <HelpKINode Title="IRestClient.Send method" Url="html/M_Thylacine_Rest_IRestClient_Send.htm" />
+  <HelpKINode Title="IRestClient.SendPayload method" Url="html/Overload_Thylacine_Rest_IRestClient_SendPayload.htm" />
   <HelpKINode Title="IRestPayload interface">
     <HelpKINode Title="IRestPayload Interface" Url="html/T_Thylacine_Rest_Payloads_IRestPayload.htm" />
     <HelpKINode Title="about IRestPayload interface" Url="html/T_Thylacine_Rest_Payloads_IRestPayload.htm" />
@@ -1488,16 +1497,16 @@
   <HelpKINode Title="Request property" Url="html/P_Thylacine_Rest_Payloads_IRestPayload_Request.htm" />
   <HelpKINode Title="RequestGuildMembers enumeration member" Url="html/T_Thylacine_Gateway_OpCode.htm" />
   <HelpKINode Title="Rest property" Url="html/P_Thylacine_DiscordBot_Rest.htm" />
-  <HelpKINode Title="RestClient class">
-    <HelpKINode Title="RestClient Class" Url="html/T_Thylacine_Rest_RestClient.htm" />
-    <HelpKINode Title="about RestClient class" Url="html/T_Thylacine_Rest_RestClient.htm" />
-    <HelpKINode Title="constructor" Url="html/M_Thylacine_Rest_RestClient__ctor.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_Thylacine_Rest_RestClient.htm" />
-  </HelpKINode>
-  <HelpKINode Title="RestClient.RestClient constructor" Url="html/M_Thylacine_Rest_RestClient__ctor.htm" />
-  <HelpKINode Title="RestClient.SendPayload method" Url="html/Overload_Thylacine_Rest_RestClient_SendPayload.htm" />
   <HelpKINode Title="RestSharp.Newtonsoft.Json namespace" Url="html/N_RestSharp_Newtonsoft_Json.htm" />
   <HelpKINode Title="RestSharp.Newtonsoft.Json.NewtonsoftJsonSerializer class" Url="html/T_RestSharp_Newtonsoft_Json_NewtonsoftJsonSerializer.htm" />
+  <HelpKINode Title="RestSharpClient class">
+    <HelpKINode Title="RestSharpClient Class" Url="html/T_Thylacine_Rest_RestSharpClient.htm" />
+    <HelpKINode Title="about RestSharpClient class" Url="html/T_Thylacine_Rest_RestSharpClient.htm" />
+    <HelpKINode Title="constructor" Url="html/M_Thylacine_Rest_RestSharpClient__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_Thylacine_Rest_RestSharpClient.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RestSharpClient.RestSharpClient constructor" Url="html/M_Thylacine_Rest_RestSharpClient__ctor.htm" />
+  <HelpKINode Title="RestSharpClient.Send method" Url="html/M_Thylacine_Rest_RestSharpClient_Send.htm" />
   <HelpKINode Title="Resume enumeration member" Url="html/T_Thylacine_Gateway_OpCode.htm" />
   <HelpKINode Title="Revoked property" Url="html/P_Thylacine_Models_Invite_Revoked.htm" />
   <HelpKINode Title="Role class">
@@ -1548,12 +1557,16 @@
   <HelpKINode Title="RootElement property" Url="html/P_RestSharp_Newtonsoft_Json_NewtonsoftJsonSerializer_RootElement.htm" />
   <HelpKINode Title="SelfDeath property" Url="html/P_Thylacine_Models_VoiceState_SelfDeath.htm" />
   <HelpKINode Title="SelfMute property" Url="html/P_Thylacine_Models_VoiceState_SelfMute.htm" />
+  <HelpKINode Title="Send method">
+    <HelpKINode Title="IRestClient.Send Method " Url="html/M_Thylacine_Rest_IRestClient_Send.htm" />
+    <HelpKINode Title="RestSharpClient.Send Method " Url="html/M_Thylacine_Rest_RestSharpClient_Send.htm" />
+  </HelpKINode>
   <HelpKINode Title="SendMessage method">
     <HelpKINode Title="Channel.SendMessage Method " Url="html/Overload_Thylacine_Models_Channel_SendMessage.htm" />
     <HelpKINode Title="Webhook.SendMessage Method " Url="html/Overload_Thylacine_Models_Webhook_SendMessage.htm" />
   </HelpKINode>
   <HelpKINode Title="SendMessages enumeration member" Url="html/T_Thylacine_Models_Permission.htm" />
-  <HelpKINode Title="SendPayload method" Url="html/Overload_Thylacine_Rest_RestClient_SendPayload.htm" />
+  <HelpKINode Title="SendPayload method" Url="html/Overload_Thylacine_Rest_IRestClient_SendPayload.htm" />
   <HelpKINode Title="SendTTSMessage enumeration member" Url="html/T_Thylacine_Models_Permission.htm" />
   <HelpKINode Title="Serialize method" Url="html/M_RestSharp_Newtonsoft_Json_NewtonsoftJsonSerializer_Serialize.htm" />
   <HelpKINode Title="Session property">
@@ -1718,6 +1731,7 @@
   <HelpKINode Title="Thylacine.Models.VoiceState class" Url="html/T_Thylacine_Models_VoiceState.htm" />
   <HelpKINode Title="Thylacine.Models.Webhook class" Url="html/T_Thylacine_Models_Webhook.htm" />
   <HelpKINode Title="Thylacine.Rest namespace" Url="html/N_Thylacine_Rest.htm" />
+  <HelpKINode Title="Thylacine.Rest.IRestClient class" Url="html/T_Thylacine_Rest_IRestClient.htm" />
   <HelpKINode Title="Thylacine.Rest.Payloads namespace" Url="html/N_Thylacine_Rest_Payloads.htm" />
   <HelpKINode Title="Thylacine.Rest.Payloads.CreateReaction class" Url="html/T_Thylacine_Rest_Payloads_CreateReaction.htm" />
   <HelpKINode Title="Thylacine.Rest.Payloads.CreateWebhook class" Url="html/T_Thylacine_Rest_Payloads_CreateWebhook.htm" />
@@ -1738,7 +1752,7 @@
   <HelpKINode Title="Thylacine.Rest.Payloads.PinChannelMessage class" Url="html/T_Thylacine_Rest_Payloads_PinChannelMessage.htm" />
   <HelpKINode Title="Thylacine.Rest.Payloads.TriggerTypingIndicator class" Url="html/T_Thylacine_Rest_Payloads_TriggerTypingIndicator.htm" />
   <HelpKINode Title="Thylacine.Rest.Payloads.UnpinChannelMessage class" Url="html/T_Thylacine_Rest_Payloads_UnpinChannelMessage.htm" />
-  <HelpKINode Title="Thylacine.Rest.RestClient class" Url="html/T_Thylacine_Rest_RestClient.htm" />
+  <HelpKINode Title="Thylacine.Rest.RestSharpClient class" Url="html/T_Thylacine_Rest_RestSharpClient.htm" />
   <HelpKINode Title="Timestamp property">
     <HelpKINode Title="Embed.Timestamp Property " Url="html/P_Thylacine_Models_Embed_Timestamp.htm" />
     <HelpKINode Title="Message.Timestamp Property " Url="html/P_Thylacine_Models_Message_Timestamp.htm" />
