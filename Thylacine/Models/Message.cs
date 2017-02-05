@@ -13,7 +13,7 @@ namespace Thylacine.Models
     [JsonObject(MemberSerialization.OptIn)]
     public class Message
     {
-        public DiscordBot Discord { get; internal set; }
+        public Discord Discord { get; internal set; }
 
         [JsonProperty("id"), JsonConverter(typeof(SnowflakeConverter))]
         public ulong ID { get; internal set; }
@@ -90,7 +90,7 @@ namespace Thylacine.Models
         {
             return GetChannel(Discord);
         }
-        public Channel GetChannel(DiscordBot discord)
+        public Channel GetChannel(Discord discord)
         {
             if (discord == null) throw new DiscordMissingException();
             return discord.GetChannel(this.ChannelID);
@@ -99,7 +99,7 @@ namespace Thylacine.Models
         #region Helpers
         public string FormatContent() { return FormatContent(Discord, this.Content); }
         public string FormatContent(string content) { return FormatContent(Discord, content); }
-        public string FormatContent(DiscordBot discord, string content)
+        public string FormatContent(Discord discord, string content)
         {
             if (discord == null) return content;
 
@@ -288,7 +288,7 @@ namespace Thylacine.Models
         /// <param name="messages"></param>
         /// <param name="discord"></param>
         [System.Obsolete("Bulk Delete endpoint has been depreciated and will be removed in the next Discord API updated. A new purge endpoint will take its place.")]
-        public static void DeleteMessages(this Message[] messages, DiscordBot discord)
+        public static void DeleteMessages(this Message[] messages, Discord discord)
         {
             if (discord == null) throw new DiscordMissingException();
             if (messages.Length <= 0) return;

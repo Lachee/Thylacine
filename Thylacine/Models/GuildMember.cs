@@ -18,9 +18,9 @@ namespace Thylacine.Models
         public Guild Guild { get; internal set; }
 
         /// <summary>
-        /// The current <see cref="DiscordBot"/> that the member was created with. 
+        /// The current <see cref="Thylacine.Discord"/> that the member was created with. 
         /// </summary>
-        public DiscordBot Discord { get { return Guild?.Discord; } }
+        public Discord Discord { get { return Guild?.Discord; } }
 
         /// <summary>
         /// The user of the guild member

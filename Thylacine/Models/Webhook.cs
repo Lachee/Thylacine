@@ -12,7 +12,7 @@ namespace Thylacine.Models
     [JsonObject(MemberSerialization.OptIn)]
     public class Webhook
     {
-        public DiscordBot Discord { get; internal set; }
+        public Discord Discord { get; internal set; }
 
         [JsonProperty("id"), JsonConverter(typeof(SnowflakeConverter))]
         public ulong ID { get; internal set; }

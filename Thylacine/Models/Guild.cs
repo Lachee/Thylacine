@@ -18,7 +18,7 @@ namespace Thylacine.Models
         /// <summary>
         /// A reference back to the discord object that created this guild.
         /// </summary>
-        public DiscordBot Discord { get; internal set; }
+        public Discord Discord { get; internal set; }
 
         #region Json Properties
         /// <summary>
@@ -506,7 +506,7 @@ namespace Thylacine.Models
             Discord.Rest.SendPayload(new Rest.Payloads.DeleteGuild(this));
         }
         
-        internal void UpdateGuild(Guild g, DiscordBot discord)
+        internal void UpdateGuild(Guild g, Discord discord)
         {
             this.Discord = discord;
             this.Name = g.Name;

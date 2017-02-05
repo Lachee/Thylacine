@@ -16,7 +16,7 @@ namespace Thylacine
     /// <summary>
     /// A Discord Bot instance. Use this to connect to discord and send messages.
     /// </summary>
-    public class DiscordBot
+    public class Discord
     {
         /// <summary>
         /// The current REST Client
@@ -91,7 +91,7 @@ namespace Thylacine
         /// Creates a new bot instance with login.
         /// </summary>
         /// <param name="token">The token supplied by Discord for your target bot</param>
-        public DiscordBot(string token)
+        public Discord(string token)
         {
             this.token = token;
         }

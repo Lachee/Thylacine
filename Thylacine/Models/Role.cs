@@ -12,7 +12,7 @@ namespace Thylacine.Models
     public class Role
     {
         public Guild Guild { get; internal set; }
-        public DiscordBot Discord { get { return Guild?.Discord; } }
+        public Discord Discord { get { return Guild?.Discord; } }
 
         public string MentionTag { get { return "<@&" + this.ID + ">"; } }
 

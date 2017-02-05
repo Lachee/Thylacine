@@ -18,7 +18,7 @@ namespace Thylacine.Test
             {
                 string key = System.IO.File.ReadAllText("botkey.key");
 
-                DiscordBot bot = new DiscordBot(key);
+                Discord bot = new Discord(key);
                 bot.OnMessageCreate += (sender, e) =>
                 {
                     if (e.Message.Author.IsBot) return;
@@ -67,7 +67,7 @@ namespace Thylacine.Test
             Console.ReadKey(true);
         }
         
-        public static string FormatContent(DiscordBot discord, string content)
+        public static string FormatContent(Discord discord, string content)
         {
             if (discord == null) return content;
             
