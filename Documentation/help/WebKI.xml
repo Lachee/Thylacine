@@ -187,7 +187,7 @@
   </HelpKINode>
   <HelpKINode Title="Connect enumeration member" Url="html/T_Thylacine_Models_Permission.htm" />
   <HelpKINode Title="Connect method">
-    <HelpKINode Title="DiscordBot.Connect Method " Url="html/M_Thylacine_DiscordBot_Connect.htm" />
+    <HelpKINode Title="Discord.Connect Method " Url="html/M_Thylacine_Discord_Connect.htm" />
     <HelpKINode Title="GatewaySocket.Connect Method " Url="html/M_Thylacine_Gateway_GatewaySocket_Connect.htm" />
     <HelpKINode Title="IGateway.Connect Method " Url="html/M_Thylacine_Gateway_IGateway_Connect.htm" />
   </HelpKINode>
@@ -355,6 +355,14 @@
     <HelpKINode Title="Overwrite.Deny Property " Url="html/P_Thylacine_Models_Overwrite_Deny.htm" />
   </HelpKINode>
   <HelpKINode Title="Description property" Url="html/P_Thylacine_Models_Embed_Description.htm" />
+  <HelpKINode Title="Discord class">
+    <HelpKINode Title="Discord Class" Url="html/T_Thylacine_Discord.htm" />
+    <HelpKINode Title="about Discord class" Url="html/T_Thylacine_Discord.htm" />
+    <HelpKINode Title="constructor" Url="html/M_Thylacine_Discord__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_Thylacine_Discord.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_Thylacine_Discord.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_Thylacine_Discord.htm" />
+  </HelpKINode>
   <HelpKINode Title="Discord property">
     <HelpKINode Title="Channel.Discord Property " Url="html/P_Thylacine_Models_Channel_Discord.htm" />
     <HelpKINode Title="Guild.Discord Property " Url="html/P_Thylacine_Models_Guild_Discord.htm" />
@@ -363,54 +371,48 @@
     <HelpKINode Title="Role.Discord Property " Url="html/P_Thylacine_Models_Role_Discord.htm" />
     <HelpKINode Title="Webhook.Discord Property " Url="html/P_Thylacine_Models_Webhook_Discord.htm" />
   </HelpKINode>
-  <HelpKINode Title="DiscordBot class">
-    <HelpKINode Title="DiscordBot Class" Url="html/T_Thylacine_DiscordBot.htm" />
-    <HelpKINode Title="about DiscordBot class" Url="html/T_Thylacine_DiscordBot.htm" />
-    <HelpKINode Title="constructor" Url="html/M_Thylacine_DiscordBot__ctor.htm" />
-    <HelpKINode Title="events" Url="html/Events_T_Thylacine_DiscordBot.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_Thylacine_DiscordBot.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_Thylacine_DiscordBot.htm" />
-  </HelpKINode>
-  <HelpKINode Title="DiscordBot.Connect method" Url="html/M_Thylacine_DiscordBot_Connect.htm" />
-  <HelpKINode Title="DiscordBot.DiscordBot constructor" Url="html/M_Thylacine_DiscordBot__ctor.htm" />
-  <HelpKINode Title="DiscordBot.FetchWebhook method" Url="html/Overload_Thylacine_DiscordBot_FetchWebhook.htm" />
-  <HelpKINode Title="DiscordBot.Gateway property" Url="html/P_Thylacine_DiscordBot_Gateway.htm" />
-  <HelpKINode Title="DiscordBot.GetChannel method" Url="html/M_Thylacine_DiscordBot_GetChannel.htm" />
-  <HelpKINode Title="DiscordBot.GetChannelGuild method" Url="html/M_Thylacine_DiscordBot_GetChannelGuild.htm" />
-  <HelpKINode Title="DiscordBot.GetGuild method" Url="html/M_Thylacine_DiscordBot_GetGuild.htm" />
-  <HelpKINode Title="DiscordBot.GetGuilds method" Url="html/M_Thylacine_DiscordBot_GetGuilds.htm" />
-  <HelpKINode Title="DiscordBot.GetUserGuilds method" Url="html/M_Thylacine_DiscordBot_GetUserGuilds.htm" />
-  <HelpKINode Title="DiscordBot.OnChannelCreate event" Url="html/E_Thylacine_DiscordBot_OnChannelCreate.htm" />
-  <HelpKINode Title="DiscordBot.OnChannelRemove event" Url="html/E_Thylacine_DiscordBot_OnChannelRemove.htm" />
-  <HelpKINode Title="DiscordBot.OnChannelUpdate event" Url="html/E_Thylacine_DiscordBot_OnChannelUpdate.htm" />
-  <HelpKINode Title="DiscordBot.OnDiscordReady event" Url="html/E_Thylacine_DiscordBot_OnDiscordReady.htm" />
-  <HelpKINode Title="DiscordBot.OnDMCreate event" Url="html/E_Thylacine_DiscordBot_OnDMCreate.htm" />
-  <HelpKINode Title="DiscordBot.OnDMRemove event" Url="html/E_Thylacine_DiscordBot_OnDMRemove.htm" />
-  <HelpKINode Title="DiscordBot.OnEmojisUpdate event" Url="html/E_Thylacine_DiscordBot_OnEmojisUpdate.htm" />
-  <HelpKINode Title="DiscordBot.OnGuildCreate event" Url="html/E_Thylacine_DiscordBot_OnGuildCreate.htm" />
-  <HelpKINode Title="DiscordBot.OnGuildRemove event" Url="html/E_Thylacine_DiscordBot_OnGuildRemove.htm" />
-  <HelpKINode Title="DiscordBot.OnGuildUpdate event" Url="html/E_Thylacine_DiscordBot_OnGuildUpdate.htm" />
-  <HelpKINode Title="DiscordBot.OnIntergrationsUpdate event" Url="html/E_Thylacine_DiscordBot_OnIntergrationsUpdate.htm" />
-  <HelpKINode Title="DiscordBot.OnMemberBanned event" Url="html/E_Thylacine_DiscordBot_OnMemberBanned.htm" />
-  <HelpKINode Title="DiscordBot.OnMemberCreate event" Url="html/E_Thylacine_DiscordBot_OnMemberCreate.htm" />
-  <HelpKINode Title="DiscordBot.OnMemberRemove event" Url="html/E_Thylacine_DiscordBot_OnMemberRemove.htm" />
-  <HelpKINode Title="DiscordBot.OnMembersChunk event" Url="html/E_Thylacine_DiscordBot_OnMembersChunk.htm" />
-  <HelpKINode Title="DiscordBot.OnMemberUnbanned event" Url="html/E_Thylacine_DiscordBot_OnMemberUnbanned.htm" />
-  <HelpKINode Title="DiscordBot.OnMemberUpdate event" Url="html/E_Thylacine_DiscordBot_OnMemberUpdate.htm" />
-  <HelpKINode Title="DiscordBot.OnMessageBulkRemove event" Url="html/E_Thylacine_DiscordBot_OnMessageBulkRemove.htm" />
-  <HelpKINode Title="DiscordBot.OnMessageCreate event" Url="html/E_Thylacine_DiscordBot_OnMessageCreate.htm" />
-  <HelpKINode Title="DiscordBot.OnMessageRemove event" Url="html/E_Thylacine_DiscordBot_OnMessageRemove.htm" />
-  <HelpKINode Title="DiscordBot.OnMessageUpdate event" Url="html/E_Thylacine_DiscordBot_OnMessageUpdate.htm" />
-  <HelpKINode Title="DiscordBot.OnPresenceUpdate event" Url="html/E_Thylacine_DiscordBot_OnPresenceUpdate.htm" />
-  <HelpKINode Title="DiscordBot.OnRoleCreate event" Url="html/E_Thylacine_DiscordBot_OnRoleCreate.htm" />
-  <HelpKINode Title="DiscordBot.OnRoleRemove event" Url="html/E_Thylacine_DiscordBot_OnRoleRemove.htm" />
-  <HelpKINode Title="DiscordBot.OnRoleUpdate event" Url="html/E_Thylacine_DiscordBot_OnRoleUpdate.htm" />
-  <HelpKINode Title="DiscordBot.OnTyping event" Url="html/E_Thylacine_DiscordBot_OnTyping.htm" />
-  <HelpKINode Title="DiscordBot.OnUserUpdate event" Url="html/E_Thylacine_DiscordBot_OnUserUpdate.htm" />
-  <HelpKINode Title="DiscordBot.PrivateChannels property" Url="html/P_Thylacine_DiscordBot_PrivateChannels.htm" />
-  <HelpKINode Title="DiscordBot.Rest property" Url="html/P_Thylacine_DiscordBot_Rest.htm" />
-  <HelpKINode Title="DiscordBot.Session property" Url="html/P_Thylacine_DiscordBot_Session.htm" />
-  <HelpKINode Title="DiscordBot.User property" Url="html/P_Thylacine_DiscordBot_User.htm" />
+  <HelpKINode Title="Discord.Connect method" Url="html/M_Thylacine_Discord_Connect.htm" />
+  <HelpKINode Title="Discord.Discord constructor" Url="html/M_Thylacine_Discord__ctor.htm" />
+  <HelpKINode Title="Discord.FetchUser method" Url="html/M_Thylacine_Discord_FetchUser.htm" />
+  <HelpKINode Title="Discord.FetchWebhook method" Url="html/Overload_Thylacine_Discord_FetchWebhook.htm" />
+  <HelpKINode Title="Discord.Gateway property" Url="html/P_Thylacine_Discord_Gateway.htm" />
+  <HelpKINode Title="Discord.GetChannel method" Url="html/M_Thylacine_Discord_GetChannel.htm" />
+  <HelpKINode Title="Discord.GetChannelGuild method" Url="html/M_Thylacine_Discord_GetChannelGuild.htm" />
+  <HelpKINode Title="Discord.GetGuild method" Url="html/M_Thylacine_Discord_GetGuild.htm" />
+  <HelpKINode Title="Discord.GetGuilds method" Url="html/M_Thylacine_Discord_GetGuilds.htm" />
+  <HelpKINode Title="Discord.GetUserGuilds method" Url="html/M_Thylacine_Discord_GetUserGuilds.htm" />
+  <HelpKINode Title="Discord.ModifyUser method" Url="html/Overload_Thylacine_Discord_ModifyUser.htm" />
+  <HelpKINode Title="Discord.OnChannelCreate event" Url="html/E_Thylacine_Discord_OnChannelCreate.htm" />
+  <HelpKINode Title="Discord.OnChannelRemove event" Url="html/E_Thylacine_Discord_OnChannelRemove.htm" />
+  <HelpKINode Title="Discord.OnChannelUpdate event" Url="html/E_Thylacine_Discord_OnChannelUpdate.htm" />
+  <HelpKINode Title="Discord.OnDiscordReady event" Url="html/E_Thylacine_Discord_OnDiscordReady.htm" />
+  <HelpKINode Title="Discord.OnDMCreate event" Url="html/E_Thylacine_Discord_OnDMCreate.htm" />
+  <HelpKINode Title="Discord.OnDMRemove event" Url="html/E_Thylacine_Discord_OnDMRemove.htm" />
+  <HelpKINode Title="Discord.OnEmojisUpdate event" Url="html/E_Thylacine_Discord_OnEmojisUpdate.htm" />
+  <HelpKINode Title="Discord.OnGuildCreate event" Url="html/E_Thylacine_Discord_OnGuildCreate.htm" />
+  <HelpKINode Title="Discord.OnGuildRemove event" Url="html/E_Thylacine_Discord_OnGuildRemove.htm" />
+  <HelpKINode Title="Discord.OnGuildUpdate event" Url="html/E_Thylacine_Discord_OnGuildUpdate.htm" />
+  <HelpKINode Title="Discord.OnIntergrationsUpdate event" Url="html/E_Thylacine_Discord_OnIntergrationsUpdate.htm" />
+  <HelpKINode Title="Discord.OnMemberBanned event" Url="html/E_Thylacine_Discord_OnMemberBanned.htm" />
+  <HelpKINode Title="Discord.OnMemberCreate event" Url="html/E_Thylacine_Discord_OnMemberCreate.htm" />
+  <HelpKINode Title="Discord.OnMemberRemove event" Url="html/E_Thylacine_Discord_OnMemberRemove.htm" />
+  <HelpKINode Title="Discord.OnMembersChunk event" Url="html/E_Thylacine_Discord_OnMembersChunk.htm" />
+  <HelpKINode Title="Discord.OnMemberUnbanned event" Url="html/E_Thylacine_Discord_OnMemberUnbanned.htm" />
+  <HelpKINode Title="Discord.OnMemberUpdate event" Url="html/E_Thylacine_Discord_OnMemberUpdate.htm" />
+  <HelpKINode Title="Discord.OnMessageBulkRemove event" Url="html/E_Thylacine_Discord_OnMessageBulkRemove.htm" />
+  <HelpKINode Title="Discord.OnMessageCreate event" Url="html/E_Thylacine_Discord_OnMessageCreate.htm" />
+  <HelpKINode Title="Discord.OnMessageRemove event" Url="html/E_Thylacine_Discord_OnMessageRemove.htm" />
+  <HelpKINode Title="Discord.OnMessageUpdate event" Url="html/E_Thylacine_Discord_OnMessageUpdate.htm" />
+  <HelpKINode Title="Discord.OnPresenceUpdate event" Url="html/E_Thylacine_Discord_OnPresenceUpdate.htm" />
+  <HelpKINode Title="Discord.OnRoleCreate event" Url="html/E_Thylacine_Discord_OnRoleCreate.htm" />
+  <HelpKINode Title="Discord.OnRoleRemove event" Url="html/E_Thylacine_Discord_OnRoleRemove.htm" />
+  <HelpKINode Title="Discord.OnRoleUpdate event" Url="html/E_Thylacine_Discord_OnRoleUpdate.htm" />
+  <HelpKINode Title="Discord.OnTyping event" Url="html/E_Thylacine_Discord_OnTyping.htm" />
+  <HelpKINode Title="Discord.OnUserUpdate event" Url="html/E_Thylacine_Discord_OnUserUpdate.htm" />
+  <HelpKINode Title="Discord.PrivateChannels property" Url="html/P_Thylacine_Discord_PrivateChannels.htm" />
+  <HelpKINode Title="Discord.Rest property" Url="html/P_Thylacine_Discord_Rest.htm" />
+  <HelpKINode Title="Discord.Session property" Url="html/P_Thylacine_Discord_Session.htm" />
+  <HelpKINode Title="Discord.User property" Url="html/P_Thylacine_Discord_User.htm" />
   <HelpKINode Title="DiscordHash property" Url="html/P_Thylacine_Models_Avatar_DiscordHash.htm" />
   <HelpKINode Title="DiscordMissingException class">
     <HelpKINode Title="DiscordMissingException Class" Url="html/T_Thylacine_Exceptions_DiscordMissingException.htm" />
@@ -646,7 +648,8 @@
   <HelpKINode Title="FetchMessages method" Url="html/M_Thylacine_Models_Channel_FetchMessages.htm" />
   <HelpKINode Title="FetchPinnedMessages method" Url="html/M_Thylacine_Models_Channel_FetchPinnedMessages.htm" />
   <HelpKINode Title="FetchPruneCount method" Url="html/M_Thylacine_Models_Guild_FetchPruneCount.htm" />
-  <HelpKINode Title="FetchWebhook method" Url="html/Overload_Thylacine_DiscordBot_FetchWebhook.htm" />
+  <HelpKINode Title="FetchUser method" Url="html/M_Thylacine_Discord_FetchUser.htm" />
+  <HelpKINode Title="FetchWebhook method" Url="html/Overload_Thylacine_Discord_FetchWebhook.htm" />
   <HelpKINode Title="FetchWebhooks method">
     <HelpKINode Title="Channel.FetchWebhooks Method " Url="html/M_Thylacine_Models_Channel_FetchWebhooks.htm" />
     <HelpKINode Title="Guild.FetchWebhooks Method " Url="html/M_Thylacine_Models_Guild_FetchWebhooks.htm" />
@@ -664,7 +667,7 @@
     <HelpKINode Title="properties" Url="html/Properties_T_Thylacine_Models_Game.htm" />
   </HelpKINode>
   <HelpKINode Title="Game.Name property" Url="html/P_Thylacine_Models_Game_Name.htm" />
-  <HelpKINode Title="Gateway property" Url="html/P_Thylacine_DiscordBot_Gateway.htm" />
+  <HelpKINode Title="Gateway property" Url="html/P_Thylacine_Discord_Gateway.htm" />
   <HelpKINode Title="GatewayEndpoint class">
     <HelpKINode Title="GatewayEndpoint Class" Url="html/T_Thylacine_Gateway_GatewayEndpoint.htm" />
     <HelpKINode Title="about GatewayEndpoint class" Url="html/T_Thylacine_Gateway_GatewayEndpoint.htm" />
@@ -687,21 +690,21 @@
   <HelpKINode Title="GatewaySocket.Connect method" Url="html/M_Thylacine_Gateway_GatewaySocket_Connect.htm" />
   <HelpKINode Title="GatewaySocket.GatewaySocket constructor" Url="html/M_Thylacine_Gateway_GatewaySocket__ctor.htm" />
   <HelpKINode Title="GetChannel method">
-    <HelpKINode Title="DiscordBot.GetChannel Method " Url="html/M_Thylacine_DiscordBot_GetChannel.htm" />
+    <HelpKINode Title="Discord.GetChannel Method " Url="html/M_Thylacine_Discord_GetChannel.htm" />
     <HelpKINode Title="Guild.GetChannel Method " Url="html/M_Thylacine_Models_Guild_GetChannel.htm" />
     <HelpKINode Title="Message.GetChannel Method " Url="html/Overload_Thylacine_Models_Message_GetChannel.htm" />
   </HelpKINode>
-  <HelpKINode Title="GetChannelGuild method" Url="html/M_Thylacine_DiscordBot_GetChannelGuild.htm" />
+  <HelpKINode Title="GetChannelGuild method" Url="html/M_Thylacine_Discord_GetChannelGuild.htm" />
   <HelpKINode Title="GetChannels method" Url="html/M_Thylacine_Models_Guild_GetChannels.htm" />
-  <HelpKINode Title="GetGuild method" Url="html/M_Thylacine_DiscordBot_GetGuild.htm" />
-  <HelpKINode Title="GetGuilds method" Url="html/M_Thylacine_DiscordBot_GetGuilds.htm" />
+  <HelpKINode Title="GetGuild method" Url="html/M_Thylacine_Discord_GetGuild.htm" />
+  <HelpKINode Title="GetGuilds method" Url="html/M_Thylacine_Discord_GetGuilds.htm" />
   <HelpKINode Title="GetHashCode method" Url="html/M_Thylacine_Models_User_GetHashCode.htm" />
   <HelpKINode Title="GetMember method" Url="html/M_Thylacine_Models_Guild_GetMember.htm" />
   <HelpKINode Title="GetMembers method" Url="html/M_Thylacine_Models_Guild_GetMembers.htm" />
   <HelpKINode Title="GetReactions method" Url="html/M_Thylacine_Models_Message_GetReactions.htm" />
   <HelpKINode Title="GetRole method" Url="html/M_Thylacine_Models_Guild_GetRole.htm" />
   <HelpKINode Title="GetRoles method" Url="html/M_Thylacine_Models_Guild_GetRoles.htm" />
-  <HelpKINode Title="GetUserGuilds method" Url="html/M_Thylacine_DiscordBot_GetUserGuilds.htm" />
+  <HelpKINode Title="GetUserGuilds method" Url="html/M_Thylacine_Discord_GetUserGuilds.htm" />
   <HelpKINode Title="Guild class">
     <HelpKINode Title="Guild Class" Url="html/T_Thylacine_Models_Guild.htm" />
     <HelpKINode Title="about Guild class" Url="html/T_Thylacine_Models_Guild.htm" />
@@ -1301,6 +1304,7 @@
   <HelpKINode Title="ModifyChannel.Position property" Url="html/P_Thylacine_Rest_Payloads_ModifyChannel_Position.htm" />
   <HelpKINode Title="ModifyChannel.Topic property" Url="html/P_Thylacine_Rest_Payloads_ModifyChannel_Topic.htm" />
   <HelpKINode Title="ModifyChannel.UserLimit property" Url="html/P_Thylacine_Rest_Payloads_ModifyChannel_UserLimit.htm" />
+  <HelpKINode Title="ModifyUser method" Url="html/Overload_Thylacine_Discord_ModifyUser.htm" />
   <HelpKINode Title="MoveMembers enumeration member" Url="html/T_Thylacine_Models_Permission.htm" />
   <HelpKINode Title="Mute property">
     <HelpKINode Title="GuildMember.Mute Property " Url="html/P_Thylacine_Models_GuildMember_Mute.htm" />
@@ -1354,35 +1358,35 @@
   <HelpKINode Title="ObjectDumper.DumpJson method" Url="html/M_Thylacine_Helper_ObjectDumper_DumpJson.htm" />
   <HelpKINode Title="ObjectDumper.DumpXML method" Url="html/M_Thylacine_Helper_ObjectDumper_DumpXML.htm" />
   <HelpKINode Title="Offline enumeration member" Url="html/T_Thylacine_Models_Status.htm" />
-  <HelpKINode Title="OnChannelCreate event" Url="html/E_Thylacine_DiscordBot_OnChannelCreate.htm" />
-  <HelpKINode Title="OnChannelRemove event" Url="html/E_Thylacine_DiscordBot_OnChannelRemove.htm" />
-  <HelpKINode Title="OnChannelUpdate event" Url="html/E_Thylacine_DiscordBot_OnChannelUpdate.htm" />
-  <HelpKINode Title="OnDiscordReady event" Url="html/E_Thylacine_DiscordBot_OnDiscordReady.htm" />
+  <HelpKINode Title="OnChannelCreate event" Url="html/E_Thylacine_Discord_OnChannelCreate.htm" />
+  <HelpKINode Title="OnChannelRemove event" Url="html/E_Thylacine_Discord_OnChannelRemove.htm" />
+  <HelpKINode Title="OnChannelUpdate event" Url="html/E_Thylacine_Discord_OnChannelUpdate.htm" />
+  <HelpKINode Title="OnDiscordReady event" Url="html/E_Thylacine_Discord_OnDiscordReady.htm" />
   <HelpKINode Title="OnDispatchEvent event" Url="html/E_Thylacine_Gateway_IGateway_OnDispatchEvent.htm" />
-  <HelpKINode Title="OnDMCreate event" Url="html/E_Thylacine_DiscordBot_OnDMCreate.htm" />
-  <HelpKINode Title="OnDMRemove event" Url="html/E_Thylacine_DiscordBot_OnDMRemove.htm" />
-  <HelpKINode Title="OnEmojisUpdate event" Url="html/E_Thylacine_DiscordBot_OnEmojisUpdate.htm" />
-  <HelpKINode Title="OnGuildCreate event" Url="html/E_Thylacine_DiscordBot_OnGuildCreate.htm" />
-  <HelpKINode Title="OnGuildRemove event" Url="html/E_Thylacine_DiscordBot_OnGuildRemove.htm" />
-  <HelpKINode Title="OnGuildUpdate event" Url="html/E_Thylacine_DiscordBot_OnGuildUpdate.htm" />
-  <HelpKINode Title="OnIntergrationsUpdate event" Url="html/E_Thylacine_DiscordBot_OnIntergrationsUpdate.htm" />
+  <HelpKINode Title="OnDMCreate event" Url="html/E_Thylacine_Discord_OnDMCreate.htm" />
+  <HelpKINode Title="OnDMRemove event" Url="html/E_Thylacine_Discord_OnDMRemove.htm" />
+  <HelpKINode Title="OnEmojisUpdate event" Url="html/E_Thylacine_Discord_OnEmojisUpdate.htm" />
+  <HelpKINode Title="OnGuildCreate event" Url="html/E_Thylacine_Discord_OnGuildCreate.htm" />
+  <HelpKINode Title="OnGuildRemove event" Url="html/E_Thylacine_Discord_OnGuildRemove.htm" />
+  <HelpKINode Title="OnGuildUpdate event" Url="html/E_Thylacine_Discord_OnGuildUpdate.htm" />
+  <HelpKINode Title="OnIntergrationsUpdate event" Url="html/E_Thylacine_Discord_OnIntergrationsUpdate.htm" />
   <HelpKINode Title="Online enumeration member" Url="html/T_Thylacine_Models_Status.htm" />
-  <HelpKINode Title="OnMemberBanned event" Url="html/E_Thylacine_DiscordBot_OnMemberBanned.htm" />
-  <HelpKINode Title="OnMemberCreate event" Url="html/E_Thylacine_DiscordBot_OnMemberCreate.htm" />
-  <HelpKINode Title="OnMemberRemove event" Url="html/E_Thylacine_DiscordBot_OnMemberRemove.htm" />
-  <HelpKINode Title="OnMembersChunk event" Url="html/E_Thylacine_DiscordBot_OnMembersChunk.htm" />
-  <HelpKINode Title="OnMemberUnbanned event" Url="html/E_Thylacine_DiscordBot_OnMemberUnbanned.htm" />
-  <HelpKINode Title="OnMemberUpdate event" Url="html/E_Thylacine_DiscordBot_OnMemberUpdate.htm" />
-  <HelpKINode Title="OnMessageBulkRemove event" Url="html/E_Thylacine_DiscordBot_OnMessageBulkRemove.htm" />
-  <HelpKINode Title="OnMessageCreate event" Url="html/E_Thylacine_DiscordBot_OnMessageCreate.htm" />
-  <HelpKINode Title="OnMessageRemove event" Url="html/E_Thylacine_DiscordBot_OnMessageRemove.htm" />
-  <HelpKINode Title="OnMessageUpdate event" Url="html/E_Thylacine_DiscordBot_OnMessageUpdate.htm" />
-  <HelpKINode Title="OnPresenceUpdate event" Url="html/E_Thylacine_DiscordBot_OnPresenceUpdate.htm" />
-  <HelpKINode Title="OnRoleCreate event" Url="html/E_Thylacine_DiscordBot_OnRoleCreate.htm" />
-  <HelpKINode Title="OnRoleRemove event" Url="html/E_Thylacine_DiscordBot_OnRoleRemove.htm" />
-  <HelpKINode Title="OnRoleUpdate event" Url="html/E_Thylacine_DiscordBot_OnRoleUpdate.htm" />
-  <HelpKINode Title="OnTyping event" Url="html/E_Thylacine_DiscordBot_OnTyping.htm" />
-  <HelpKINode Title="OnUserUpdate event" Url="html/E_Thylacine_DiscordBot_OnUserUpdate.htm" />
+  <HelpKINode Title="OnMemberBanned event" Url="html/E_Thylacine_Discord_OnMemberBanned.htm" />
+  <HelpKINode Title="OnMemberCreate event" Url="html/E_Thylacine_Discord_OnMemberCreate.htm" />
+  <HelpKINode Title="OnMemberRemove event" Url="html/E_Thylacine_Discord_OnMemberRemove.htm" />
+  <HelpKINode Title="OnMembersChunk event" Url="html/E_Thylacine_Discord_OnMembersChunk.htm" />
+  <HelpKINode Title="OnMemberUnbanned event" Url="html/E_Thylacine_Discord_OnMemberUnbanned.htm" />
+  <HelpKINode Title="OnMemberUpdate event" Url="html/E_Thylacine_Discord_OnMemberUpdate.htm" />
+  <HelpKINode Title="OnMessageBulkRemove event" Url="html/E_Thylacine_Discord_OnMessageBulkRemove.htm" />
+  <HelpKINode Title="OnMessageCreate event" Url="html/E_Thylacine_Discord_OnMessageCreate.htm" />
+  <HelpKINode Title="OnMessageRemove event" Url="html/E_Thylacine_Discord_OnMessageRemove.htm" />
+  <HelpKINode Title="OnMessageUpdate event" Url="html/E_Thylacine_Discord_OnMessageUpdate.htm" />
+  <HelpKINode Title="OnPresenceUpdate event" Url="html/E_Thylacine_Discord_OnPresenceUpdate.htm" />
+  <HelpKINode Title="OnRoleCreate event" Url="html/E_Thylacine_Discord_OnRoleCreate.htm" />
+  <HelpKINode Title="OnRoleRemove event" Url="html/E_Thylacine_Discord_OnRoleRemove.htm" />
+  <HelpKINode Title="OnRoleUpdate event" Url="html/E_Thylacine_Discord_OnRoleUpdate.htm" />
+  <HelpKINode Title="OnTyping event" Url="html/E_Thylacine_Discord_OnTyping.htm" />
+  <HelpKINode Title="OnUserUpdate event" Url="html/E_Thylacine_Discord_OnUserUpdate.htm" />
   <HelpKINode Title="OpCode enumeration" Url="html/T_Thylacine_Gateway_OpCode.htm" />
   <HelpKINode Title="Overwrite class">
     <HelpKINode Title="Overwrite Class" Url="html/T_Thylacine_Models_Overwrite.htm" />
@@ -1474,7 +1478,7 @@
   <HelpKINode Title="PresenceUser.PresenceUser constructor" Url="html/M_Thylacine_Models_PresenceUser__ctor.htm" />
   <HelpKINode Title="PresenceUser.Username property" Url="html/P_Thylacine_Models_PresenceUser_Username.htm" />
   <HelpKINode Title="PresenceUser.Verified property" Url="html/P_Thylacine_Models_PresenceUser_Verified.htm" />
-  <HelpKINode Title="PrivateChannels property" Url="html/P_Thylacine_DiscordBot_PrivateChannels.htm" />
+  <HelpKINode Title="PrivateChannels property" Url="html/P_Thylacine_Discord_PrivateChannels.htm" />
   <HelpKINode Title="Provider property" Url="html/P_Thylacine_Models_Embed_Provider.htm" />
   <HelpKINode Title="ProxyIconURL property">
     <HelpKINode Title="EmbedAuthor.ProxyIconURL Property " Url="html/P_Thylacine_Models_EmbedAuthor_ProxyIconURL.htm" />
@@ -1520,7 +1524,7 @@
   <HelpKINode Title="RemoveRole method" Url="html/M_Thylacine_Models_GuildMember_RemoveRole.htm" />
   <HelpKINode Title="Request property" Url="html/P_Thylacine_Rest_Payloads_IRestPayload_Request.htm" />
   <HelpKINode Title="RequestGuildMembers enumeration member" Url="html/T_Thylacine_Gateway_OpCode.htm" />
-  <HelpKINode Title="Rest property" Url="html/P_Thylacine_DiscordBot_Rest.htm" />
+  <HelpKINode Title="Rest property" Url="html/P_Thylacine_Discord_Rest.htm" />
   <HelpKINode Title="RestSharp.Newtonsoft.Json namespace" Url="html/N_RestSharp_Newtonsoft_Json.htm" />
   <HelpKINode Title="RestSharp.Newtonsoft.Json.NewtonsoftJsonSerializer class" Url="html/T_RestSharp_Newtonsoft_Json_NewtonsoftJsonSerializer.htm" />
   <HelpKINode Title="RestSharpClient class">
@@ -1595,7 +1599,7 @@
   <HelpKINode Title="SendTTSMessage enumeration member" Url="html/T_Thylacine_Models_Permission.htm" />
   <HelpKINode Title="Serialize method" Url="html/M_RestSharp_Newtonsoft_Json_NewtonsoftJsonSerializer_Serialize.htm" />
   <HelpKINode Title="Session property">
-    <HelpKINode Title="DiscordBot.Session Property " Url="html/P_Thylacine_DiscordBot_Session.htm" />
+    <HelpKINode Title="Discord.Session Property " Url="html/P_Thylacine_Discord_Session.htm" />
     <HelpKINode Title="DiscordReadyEventArgs.Session Property " Url="html/P_Thylacine_Event_DiscordReadyEventArgs_Session.htm" />
   </HelpKINode>
   <HelpKINode Title="SessionID property" Url="html/P_Thylacine_Models_VoiceState_SessionID.htm" />
@@ -1653,7 +1657,7 @@
   <HelpKINode Title="TextChannel.Topic property" Url="html/P_Thylacine_Models_TextChannel_Topic.htm" />
   <HelpKINode Title="Thumbnail property" Url="html/P_Thylacine_Models_Embed_Thumbnail.htm" />
   <HelpKINode Title="Thylacine namespace" Url="html/N_Thylacine.htm" />
-  <HelpKINode Title="Thylacine.DiscordBot class" Url="html/T_Thylacine_DiscordBot.htm" />
+  <HelpKINode Title="Thylacine.Discord class" Url="html/T_Thylacine_Discord.htm" />
   <HelpKINode Title="Thylacine.Event namespace" Url="html/N_Thylacine_Event.htm" />
   <HelpKINode Title="Thylacine.Event.ChannelEvent delegate" Url="html/T_Thylacine_Event_ChannelEvent.htm" />
   <HelpKINode Title="Thylacine.Event.ChannelEventArgs class" Url="html/T_Thylacine_Event_ChannelEventArgs.htm" />
@@ -1881,12 +1885,12 @@
   <HelpKINode Title="UnpinChannelMessage.UnpinChannelMessage constructor" Url="html/M_Thylacine_Rest_Payloads_UnpinChannelMessage__ctor.htm" />
   <HelpKINode Title="Updates property" Url="html/P_Thylacine_Models_Presence_Updates.htm" />
   <HelpKINode Title="URL property">
-    <HelpKINode Title="Embed.URL Property " Url="html/P_Thylacine_Models_Embed_URL.htm" />
-    <HelpKINode Title="EmbedImage.URL Property " Url="html/P_Thylacine_Models_EmbedImage_URL.htm" />
-    <HelpKINode Title="EmbedVideo.URL Property " Url="html/P_Thylacine_Models_EmbedVideo_URL.htm" />
     <HelpKINode Title="Attachment.URL Property " Url="html/P_Thylacine_Models_Attachment_URL.htm" />
+    <HelpKINode Title="Embed.URL Property " Url="html/P_Thylacine_Models_Embed_URL.htm" />
     <HelpKINode Title="EmbedAuthor.URL Property " Url="html/P_Thylacine_Models_EmbedAuthor_URL.htm" />
+    <HelpKINode Title="EmbedImage.URL Property " Url="html/P_Thylacine_Models_EmbedImage_URL.htm" />
     <HelpKINode Title="EmbedProvider.URL Property " Url="html/P_Thylacine_Models_EmbedProvider_URL.htm" />
+    <HelpKINode Title="EmbedVideo.URL Property " Url="html/P_Thylacine_Models_EmbedVideo_URL.htm" />
   </HelpKINode>
   <HelpKINode Title="Url property" Url="html/P_Thylacine_Gateway_GatewayEndpoint_Url.htm" />
   <HelpKINode Title="UseExternalEmojis enumeration member" Url="html/T_Thylacine_Models_Permission.htm" />
@@ -1898,7 +1902,7 @@
     <HelpKINode Title="properties" Url="html/Properties_T_Thylacine_Models_User.htm" />
   </HelpKINode>
   <HelpKINode Title="User property">
-    <HelpKINode Title="DiscordBot.User Property " Url="html/P_Thylacine_DiscordBot_User.htm" />
+    <HelpKINode Title="Discord.User Property " Url="html/P_Thylacine_Discord_User.htm" />
     <HelpKINode Title="GuildBan.User Property " Url="html/P_Thylacine_Models_Event_GuildBan_User.htm" />
     <HelpKINode Title="GuildBanEventArgs.User Property " Url="html/P_Thylacine_Event_GuildBanEventArgs_User.htm" />
     <HelpKINode Title="GuildMember.User Property " Url="html/P_Thylacine_Models_GuildMember_User.htm" />
