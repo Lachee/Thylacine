@@ -54,7 +54,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DiscordBot.cs" />
+    <Compile Include="Discord.cs" />
     <Compile Include="Event\ChannelEvent.cs" />
     <Compile Include="Event\GuildEvent.cs" />
     <Compile Include="Event\MemberEvent.cs" />
@@ -111,9 +111,11 @@
     <Compile Include="Rest\Payloads\BeginGuildPrune.cs" />
     <Compile Include="Rest\Payloads\GetGuildPruneCount.cs" />
     <Compile Include="Rest\Payloads\DeleteGuildRole.cs" />
+    <Compile Include="Rest\Payloads\GetUser.cs" />
     <Compile Include="Rest\Payloads\ModifyGuildRole.cs" />
     <Compile Include="Rest\Payloads\CreateGuildRole.cs" />
     <Compile Include="Rest\Payloads\GetGuildBans.cs" />
+    <Compile Include="Rest\Payloads\ModifyUser.cs" />
     <Compile Include="Rest\Payloads\RemoveGuildBan.cs" />
     <Compile Include="Rest\Payloads\DeleteGuild.cs" />
     <Compile Include="Rest\Payloads\GetInvites.cs" />

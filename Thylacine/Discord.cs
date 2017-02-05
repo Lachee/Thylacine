@@ -11,6 +11,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+/// <summary>
+/// The root namespace. The basis of everything.
+/// </summary>
 namespace Thylacine
 {
     /// <summary>
@@ -606,7 +610,41 @@ namespace Thylacine
             hook.Discord = this;
             return hook;
         }
-        
+
+        #endregion
+
+        #region Users
+        /// <summary>
+        /// Fetches a user of given ID
+        /// </summary>
+        /// <param name="userID">The user ID</param>
+        /// <returns>A new user object</returns>
+        public User FetchUser(ulong userID)
+        {
+            return Rest.SendPayload<User>(new Rest.Payloads.GetUser() { UserID = userID });
+        }
+
+        /// <summary>
+        /// Modifies the current account settings of the bot.
+        /// </summary>
+        /// <param name="username">Username to set the bot too</param>
+        public void ModifyUser(string username) { ModifyUser(username, null); }
+
+        /// <summary>
+        /// Modifies the current account settings of the bot.
+        /// </summary>
+        /// <param name="avatar">Avatar to set the bot too.</param>
+        public void ModifyUser(Avatar avatar) { ModifyUser(null, avatar); }
+
+        /// <summary>
+        /// Modifies the current account settings of the bot.
+        /// </summary>
+        /// <param name="username">Username to set the bot too</param>
+        /// <param name="avatar">Avatar to set the bot too.</param>
+        public void ModifyUser(string username, Avatar avatar)
+        {
+            Rest.SendPayload(new Rest.Payloads.ModifyUser() { UserID = User.ID, Name = username, Avatar = avatar });
+        }
         #endregion
     }
 }
