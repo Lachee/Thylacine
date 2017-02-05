@@ -17,23 +17,20 @@ using Thylacine.Exceptions;
 namespace Thylacine.Rest
 {
     /// <summary>
-    /// A REST Client for RestSharp
+    /// A RestSharp client to connect to the Discord API with. Use this to perform API calls and actions.
     /// </summary>
     public class RestSharpClient : IRestClient
     {
         private RestSharp.RestClient client;
-        private string token;
 
         /// <summary>
         /// Creates a new instance of the RestSharp Client
         /// </summary>
         /// <param name="token">Token for Discord</param>
-        public RestSharpClient(string token)
+        public RestSharpClient(string token) : base(token)
         {
-            this.token = token;
-
             this.client = new RestSharp.RestClient("https://discordapp.com/api");
-            this.client.Authenticator = new DiscordAuthenticator(this.token);
+            this.client.Authenticator = new DiscordAuthenticator(base.token);
         }
         
         protected override IRestResponse Send(string resource, Method method, object payload)
@@ -60,8 +57,7 @@ namespace Thylacine.Rest
             }
         }
 
-
-
+        
         private struct DiscordError
         {
             [JsonProperty("code")]

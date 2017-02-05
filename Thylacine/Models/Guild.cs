@@ -9,48 +9,95 @@ using Thylacine.Exceptions;
 
 namespace Thylacine.Models
 {
+    /// <summary>
+    /// A Guild is a representation of the Servers within Discord. A bot can be connected to several guilds at once to communicated with different groups of people.
+    /// </summary>
     [JsonObject(MemberSerialization.OptIn)]
     public class Guild
     {
+        /// <summary>
+        /// A reference back to the discord object that created this guild.
+        /// </summary>
         public DiscordBot Discord { get; internal set; }
 
         #region Json Properties
+        /// <summary>
+        /// The ID of the guild
+        /// </summary>
         [JsonProperty("id"), JsonConverter(typeof(SnowflakeConverter))]
         public ulong ID { get; internal set; }
 
+        /// <summary>
+        /// The name of the guild
+        /// </summary>
         [JsonProperty("name")]
         public string Name { get; internal set; }
 
+        /// <summary>
+        /// The hash of the icon for the guild. This is used in fetching the image via URL.
+        /// </summary>
         [JsonProperty("icon")]
         public string IconHash { get; internal set; }
 
+        /// <summary>
+        /// The hash of the splash for the guild. This is used in fetching the image via URL.
+        /// </summary>
         [JsonProperty("splash")]
         public string SplashHash { get; internal set; }
 
+        /// <summary>
+        /// The ID of the user who owns the guild.
+        /// </summary>
         [JsonProperty("owner_id"), JsonConverter(typeof(SnowflakeConverter))]
         public ulong OwnerID { get; internal set; }
 
+        /// <summary>
+        /// The region the guild is based in.
+        /// </summary>
         [JsonProperty("region")]
         public string Region { get; internal set; }
 
+        /// <summary>
+        /// The ID of the AFK Channel.
+        /// </summary>
         [JsonProperty("afk_channel_id"), JsonConverter(typeof(SnowflakeConverter))]
         public ulong AFKChannelID { get; internal set; }
 
+        /// <summary>
+        /// The time (in seconds) of inactivity before the user is considered to be AFK.
+        /// </summary>
         [JsonProperty("afk_timeout")]
         public int AFKTimeout { get; internal set; }
 
+        /// <summary>
+        /// Are embeds allowed in the guild?
+        /// </summary>
         [JsonProperty("embed_enabled")]
         public bool EmbedEnabled { get; internal set; }
 
+        /// <summary>
+        /// The ID of the channel that embeds go to.
+        /// </summary>
         [JsonProperty("embed_channel_id"), JsonConverter(typeof(SnowflakeConverter))]
         public ulong EmbedChannelID { get; internal set; }
 
+        /// <summary>
+        /// The level of verification required to be apart of this guild.
+        /// </summary>
         [JsonProperty("verification_level")]
         public int VerificationLevel { get; internal set; }
 
+        /// <summary>
+        /// The default level of notifications new users receive.
+        /// </summary>
         [JsonProperty("default_message_notifications")]
         public int DefaultMessageNotifications { get; internal set; }
 
+        /// <summary>
+        /// A list of roles available on this guild.
+        /// </summary>
+        /// <remarks>This is implemented with a dictionary backend. It is recommended to fetch the dictionary with <see cref="GetRoles()"/>.</remarks>
+        /// <seealso cref="GetRoles()"/>
         [JsonProperty("roles")]
         public Role[] Roles
         {
@@ -58,7 +105,7 @@ namespace Thylacine.Models
             {
                 return _roles.Select(k => k.Value).ToArray();
             }
-            internal set
+            set
             {
                 _roles = new Dictionary<ulong, Role>();
                 foreach (var r in value)
@@ -69,30 +116,62 @@ namespace Thylacine.Models
             }
         }
 
+        /// <summary>
+        /// A list of custom Emojis that the guild uses.
+        /// </summary>
         [JsonProperty("emojis")]
         public Emoji[] Emojis { get; internal set; }
 
+        /// <summary>
+        /// A list of features that the guild uses.
+        /// </summary>
         [JsonProperty("features")]
         public string[] Features { get; internal set; }
 
+        /// <summary>
+        /// The default 2 factor authication level.
+        /// </summary>
         [JsonProperty("mfa_level")]
         public int MFALevel { get; internal set; }
 
+        /// <summary>
+        /// The current count of members in the guild.
+        /// </summary>
         [JsonProperty("member_count")]
         public int MemberCount { get; internal set; }
 
+        /// <summary>
+        /// The timestamp at which the bot goined the guild.
+        /// </summary>
+        //TODO: Make this a Timestamp object
         [JsonProperty("joined_at")]
         public object JoinedAt { get; internal set; }
 
+        /// <summary>
+        /// Is the guild considered to large to download all the users from?
+        /// </summary>
+        //TODO: Implement FetchUsers
         [JsonProperty("large")]
         public bool IsLarge { get; internal set; }
 
+        /// <summary>
+        /// Is the guild currently unavailable?
+        /// </summary>
         [JsonProperty("unavailable")]
         public bool Unavailable { get; internal set; }
 
+        /// <summary>
+        /// A list of voice states for users.
+        /// </summary>
+        /// <remarks>This isn't optimised with dictionaries and can be slow to lookup.</remarks>
         [JsonProperty("voice_states")]
         public VoiceState[] VoiceStates { get; internal set; }
 
+        /// <summary>
+        /// A list of members that are apart of this guild.
+        /// </summary>
+        /// <remarks>This is implemented with a dictionary backend. It is recommended to fetch the dictionary with <see cref="GetMembers()"/>.</remarks>
+        /// <seealso cref="GetMembers()"/>
         [JsonProperty("members")]
         public GuildMember[] GuildMembers
         {
@@ -107,6 +186,11 @@ namespace Thylacine.Models
             }
         }
 
+        /// <summary>
+        /// A list of channels that are within the guild.
+        /// </summary>
+        /// <remarks>This is implemented with a dictionary backend. It is recommended to fetch the dictionary with <see cref="GetChannels()"/>.</remarks>
+        /// <seealso cref="GetChannels()"/>
         [JsonProperty("channels")]
         public Channel[] Channels
         {
@@ -124,7 +208,12 @@ namespace Thylacine.Models
                 }
             }
         }
-
+        
+        /// <summary>
+        /// A list of user presences.
+        /// </summary>
+        /// <remarks>Presences are automatically applied and updated to <see cref="GuildMember"/> objects. It is recommended to not access this directly.</remarks>
+        /// <seealso cref="GuildMember"/>
         [JsonProperty("presences")]
         public Presence[] Presences { get; internal set; }
         #endregion
@@ -140,7 +229,24 @@ namespace Thylacine.Models
         internal void UpdateChannel(Channel c) { _channels[c.ID] = c; }
         internal void RemoveChannel(Channel c) { _channels.Remove(c.ID); }
 
+        /// <summary>
+        /// Returns a channel
+        /// </summary>
+        /// <param name="id">ID of the channel</param>
+        /// <returns>Channel object</returns>
         public Channel GetChannel(ulong id) { return _channels[id]; }
+
+        /// <summary>
+        /// Get a list of all the channels within this guild
+        /// </summary>
+        /// <returns> Returns a dictionary of id => channel pairs that are of every channel</returns>
+        public Dictionary<ulong, Channel> GetChannels() { return _channels; }
+
+        /// <summary>
+        /// Does the current guild have a specified channel ID?
+        /// </summary>
+        /// <param name="id">ID to look for</param>
+        /// <returns>true of the guild has the channel</returns>
         public bool HasChannel(ulong id) { return _channels.ContainsKey(id); }
 
         /// <summary>
@@ -148,7 +254,7 @@ namespace Thylacine.Models
         /// </summary>
         /// <param name="name">Name of the channel. Between 2 and 100 characters long.</param>
         /// <param name="permissions">The channel's permission overwrites.</param>
-        /// <returns></returns>
+        /// <returns>Returns the new channel that was created</returns>
         public Channel CreateTextChannel(string name, Overwrite[] permissions)
         {
             if (name.Length < 2 || name.Length > 100) throw new ArgumentException("Channel name must be greater than 2 characters and less than 100. A length of " + name.Length + " was given.");
@@ -162,7 +268,7 @@ namespace Thylacine.Models
         /// <param name="bitrate">The bitrate of the voice channel</param>
         /// <param name="userlimit">The user limit of the voice channel</param>
         /// <param name="permissions">The channel's permission overwrites.</param>
-        /// <returns></returns>
+        /// <returns>Returns the new channel that was created</returns>
         public Channel CreateVoiceChannel(string name, int bitrate, int userlimit, Overwrite[] permissions)
         {
             if (name.Length < 2 || name.Length > 100) throw new ArgumentException("Channel name must be greater than 2 characters and less than 100. A length of " + name.Length + " was given.");
@@ -197,21 +303,38 @@ namespace Thylacine.Models
             _roles.Remove(r);
         }
 
+        /// <summary>
+        /// Gets a role
+        /// </summary>
+        /// <param name="id">ID of the role</param>
+        /// <returns>The role object</returns>
         public Role GetRole(ulong id) { return _roles[id]; }
+
+        /// <summary>
+        /// Gets a list of all roles
+        /// </summary>
+        /// <returns> Returns a dictionary of id => role pairs that are of every role</returns>
+        public Dictionary<ulong, Role> GetRoles() { return _roles; }
+
+        /// <summary>
+        /// Does the guild have a specified role?
+        /// </summary>
+        /// <param name="id">ID of the role</param>
+        /// <returns>true if role was found</returns>
         public bool HasRole(ulong id) { return _roles.ContainsKey(id); }
 
         /// <summary>
         /// Create a new role for the guild. Requires the 'MANAGE_ROLES' permission. ID is ignored.
         /// </summary>
-        /// <param name="r"></param>
-        /// <returns></returns>
-        public Role CreateRole(Role r)
+        /// <param name="role">The role to create</param>
+        /// <returns>Returns the new role object</returns>
+        public Role CreateRole(Role role)
         {
             if (Discord == null) throw new DiscordMissingException();
-            Role role = Discord.Rest.SendPayload<Role>(new Rest.Payloads.CreateGuildRole(this, r));
-            UpdateRole(role);
+            Role r = Discord.Rest.SendPayload<Role>(new Rest.Payloads.CreateGuildRole(this, role));
+            UpdateRole(r);
 
-            return role;
+            return r;
         }
         
         #endregion
@@ -249,7 +372,24 @@ namespace Thylacine.Models
             _guildmembers[u.ID].User = u;
         }
 
+        /// <summary>
+        /// Gets a member within the guild
+        /// </summary>
+        /// <param name="id">The User ID of the member.</param>
+        /// <returns>Returns target member</returns>
         public GuildMember GetMember(ulong id) { return _guildmembers[id]; }
+
+        /// <summary>
+        /// Gets a list of members that are apart of the guild.
+        /// </summary>
+        /// <returns> Returns a dictionary of id => member pairs that are of every member</returns>
+        public Dictionary<ulong, GuildMember> GetMembers() { return _guildmembers; }
+
+        /// <summary>
+        /// Checks id the a member is apart of this guild
+        /// </summary>
+        /// <param name="id">The User ID of the member.</param>
+        /// <returns>Returns true if the member is apart of the guild</returns>
         public bool HasMember(ulong id) { return _guildmembers.ContainsKey(id); }
 
 
@@ -263,7 +403,7 @@ namespace Thylacine.Models
         /// Returns the number indicating how many members would be removed in a prune operation.
         /// </summary>
         /// <param name="days">Number of days to count prune for (1 or more)</param>
-        /// <returns></returns>
+        /// <returns>Returns the count of members that will be removed</returns>
         public int FetchPruneCount(int days)
         {
             if (Discord == null) throw new DiscordMissingException();
@@ -274,10 +414,10 @@ namespace Thylacine.Models
         }
 
         /// <summary>
-        /// Begin a prune operation. Requires the 'KICK_MEMBERS' permission. Returns number of members that were removed in the prune operation.
+        /// Begin a prune operation. Requires the 'KICK_MEMBERS' permission.
         /// </summary>
         /// <param name="days">Number of days to count prune for (1 or more)</param>
-        /// <returns></returns>
+        /// <returns> Returns number of members that were removed in the prune operation.</returns>
         public int Prune(int days)
         {
             if (Discord == null) throw new DiscordMissingException();

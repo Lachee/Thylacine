@@ -30,7 +30,7 @@
     <CleanIntermediates>True</CleanIntermediates>
     <HelpFileVersion>1.0.0.0</HelpFileVersion>
     <MaximumGroupParts>2</MaximumGroupParts>
-    <NamespaceGrouping>True</NamespaceGrouping>
+    <NamespaceGrouping>False</NamespaceGrouping>
     <SyntaxFilters>C#</SyntaxFilters>
     <SdkLinkTarget>Blank</SdkLinkTarget>
     <RootNamespaceContainer>True</RootNamespaceContainer>
@@ -38,7 +38,7 @@
     <Preliminary>False</Preliminary>
     <NamingMethod>MemberName</NamingMethod>
     <HelpTitle>Thylacine Documentation</HelpTitle>
-    <FooterText>Available on Github: &amp;lt%3ba href=&amp;quot%3bhttps://github.com/Lachee/Thylacine&amp;quot%3b&amp;gt%3bhttp://thylacine.voidpixel.com.au&amp;lt%3b/a&amp;gt%3b</FooterText>
+    <FooterText>Available on Github: &amp;lt%3ba href=&amp;quot%3bhttps://github.com/Lachee/Thylacine&amp;quot%3b&amp;gt%3bhttps://github.com/Lachee/Thylacine&amp;lt%3b/a&amp;gt%3b</FooterText>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <TransformComponentArguments>
       <Argument Key="logoFile" Value="" />
@@ -54,7 +54,7 @@
       <Argument Key="requestExampleUrl" Value="Create a new issue on GitHub: https://github.com/Lachee/Thylacine/issues/new" />
     </TransformComponentArguments>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
-    <HeaderText>Generated with Sandcastle.</HeaderText>
+    <HeaderText>Generated with Sandcastle</HeaderText>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->

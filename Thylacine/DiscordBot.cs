@@ -26,13 +26,14 @@ namespace Thylacine
         /// <summary>
         /// The current Gateway Client
         /// </summary>
-        public GatewaySocket Gateway { get; set; }
+        public IGateway Gateway { get; set; }
 
         private Dictionary<ulong, Guild> _guilds = new Dictionary<ulong, Guild>();
 
         /// <summary>
-        /// A list of all private channels the bot is subscribed to
+        /// A list of all private channels the bot is subscribed to.
         /// </summary>
+        /// <remarks>The DM Channels are not fully implemented yet and are subjected to change. They do not have the same functionalites as normal channels.</remarks>
         public List<DMChannel> PrivateChannels { get; private set; } = new List<DMChannel>();
 
         /// <summary>

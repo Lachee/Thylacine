@@ -189,8 +189,9 @@
   <HelpKINode Title="Connect method">
     <HelpKINode Title="DiscordBot.Connect Method " Url="html/M_Thylacine_DiscordBot_Connect.htm" />
     <HelpKINode Title="GatewaySocket.Connect Method " Url="html/M_Thylacine_Gateway_GatewaySocket_Connect.htm" />
+    <HelpKINode Title="IGateway.Connect Method " Url="html/M_Thylacine_Gateway_IGateway_Connect.htm" />
   </HelpKINode>
-  <HelpKINode Title="Connected property" Url="html/P_Thylacine_Gateway_GatewaySocket_Connected.htm" />
+  <HelpKINode Title="Connected property" Url="html/P_Thylacine_Gateway_IGateway_Connected.htm" />
   <HelpKINode Title="Content property" Url="html/P_Thylacine_Models_Message_Content.htm" />
   <HelpKINode Title="ContentType property" Url="html/P_RestSharp_Newtonsoft_Json_NewtonsoftJsonSerializer_ContentType.htm" />
   <HelpKINode Title="Count property" Url="html/P_Thylacine_Models_Reaction_Count.htm" />
@@ -612,7 +613,7 @@
     <HelpKINode Title="GuildEmojiUpdate.Emojis Property " Url="html/P_Thylacine_Models_Event_GuildEmojiUpdate_Emojis.htm" />
   </HelpKINode>
   <HelpKINode Title="Endpoint property">
-    <HelpKINode Title="GatewaySocket.Endpoint Property " Url="html/P_Thylacine_Gateway_GatewaySocket_Endpoint.htm" />
+    <HelpKINode Title="IGateway.Endpoint Property " Url="html/P_Thylacine_Gateway_IGateway_Endpoint.htm" />
     <HelpKINode Title="VoiceServerUpdateEvent.Endpoint Property " Url="html/P_Thylacine_Models_Event_VoiceServerUpdateEvent_Endpoint.htm" />
   </HelpKINode>
   <HelpKINode Title="Equals method" Url="html/M_Thylacine_Models_User_Equals.htm" />
@@ -679,26 +680,27 @@
     <HelpKINode Title="about GatewaySocket class" Url="html/T_Thylacine_Gateway_GatewaySocket.htm" />
     <HelpKINode Title="constructor" Url="html/M_Thylacine_Gateway_GatewaySocket__ctor.htm" />
     <HelpKINode Title="events" Url="html/Events_T_Thylacine_Gateway_GatewaySocket.htm" />
+    <HelpKINode Title="fields" Url="html/Fields_T_Thylacine_Gateway_GatewaySocket.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Thylacine_Gateway_GatewaySocket.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Thylacine_Gateway_GatewaySocket.htm" />
   </HelpKINode>
   <HelpKINode Title="GatewaySocket.Connect method" Url="html/M_Thylacine_Gateway_GatewaySocket_Connect.htm" />
-  <HelpKINode Title="GatewaySocket.Connected property" Url="html/P_Thylacine_Gateway_GatewaySocket_Connected.htm" />
-  <HelpKINode Title="GatewaySocket.Endpoint property" Url="html/P_Thylacine_Gateway_GatewaySocket_Endpoint.htm" />
   <HelpKINode Title="GatewaySocket.GatewaySocket constructor" Url="html/M_Thylacine_Gateway_GatewaySocket__ctor.htm" />
-  <HelpKINode Title="GatewaySocket.OnDispatchEvent event" Url="html/E_Thylacine_Gateway_GatewaySocket_OnDispatchEvent.htm" />
   <HelpKINode Title="GetChannel method">
     <HelpKINode Title="DiscordBot.GetChannel Method " Url="html/M_Thylacine_DiscordBot_GetChannel.htm" />
     <HelpKINode Title="Guild.GetChannel Method " Url="html/M_Thylacine_Models_Guild_GetChannel.htm" />
     <HelpKINode Title="Message.GetChannel Method " Url="html/Overload_Thylacine_Models_Message_GetChannel.htm" />
   </HelpKINode>
   <HelpKINode Title="GetChannelGuild method" Url="html/M_Thylacine_DiscordBot_GetChannelGuild.htm" />
+  <HelpKINode Title="GetChannels method" Url="html/M_Thylacine_Models_Guild_GetChannels.htm" />
   <HelpKINode Title="GetGuild method" Url="html/M_Thylacine_DiscordBot_GetGuild.htm" />
   <HelpKINode Title="GetGuilds method" Url="html/M_Thylacine_DiscordBot_GetGuilds.htm" />
   <HelpKINode Title="GetHashCode method" Url="html/M_Thylacine_Models_User_GetHashCode.htm" />
   <HelpKINode Title="GetMember method" Url="html/M_Thylacine_Models_Guild_GetMember.htm" />
+  <HelpKINode Title="GetMembers method" Url="html/M_Thylacine_Models_Guild_GetMembers.htm" />
   <HelpKINode Title="GetReactions method" Url="html/M_Thylacine_Models_Message_GetReactions.htm" />
   <HelpKINode Title="GetRole method" Url="html/M_Thylacine_Models_Guild_GetRole.htm" />
+  <HelpKINode Title="GetRoles method" Url="html/M_Thylacine_Models_Guild_GetRoles.htm" />
   <HelpKINode Title="GetUserGuilds method" Url="html/M_Thylacine_DiscordBot_GetUserGuilds.htm" />
   <HelpKINode Title="Guild class">
     <HelpKINode Title="Guild Class" Url="html/T_Thylacine_Models_Guild.htm" />
@@ -742,8 +744,11 @@
   <HelpKINode Title="Guild.FetchPruneCount method" Url="html/M_Thylacine_Models_Guild_FetchPruneCount.htm" />
   <HelpKINode Title="Guild.FetchWebhooks method" Url="html/M_Thylacine_Models_Guild_FetchWebhooks.htm" />
   <HelpKINode Title="Guild.GetChannel method" Url="html/M_Thylacine_Models_Guild_GetChannel.htm" />
+  <HelpKINode Title="Guild.GetChannels method" Url="html/M_Thylacine_Models_Guild_GetChannels.htm" />
   <HelpKINode Title="Guild.GetMember method" Url="html/M_Thylacine_Models_Guild_GetMember.htm" />
+  <HelpKINode Title="Guild.GetMembers method" Url="html/M_Thylacine_Models_Guild_GetMembers.htm" />
   <HelpKINode Title="Guild.GetRole method" Url="html/M_Thylacine_Models_Guild_GetRole.htm" />
+  <HelpKINode Title="Guild.GetRoles method" Url="html/M_Thylacine_Models_Guild_GetRoles.htm" />
   <HelpKINode Title="Guild.Guild constructor" Url="html/M_Thylacine_Models_Guild__ctor.htm" />
   <HelpKINode Title="Guild.GuildMembers property" Url="html/P_Thylacine_Models_Guild_GuildMembers.htm" />
   <HelpKINode Title="Guild.HasChannel method" Url="html/M_Thylacine_Models_Guild_HasChannel.htm" />
@@ -1010,6 +1015,22 @@
   <HelpKINode Title="Identify enumeration member" Url="html/T_Thylacine_Gateway_OpCode.htm" />
   <HelpKINode Title="Idle enumeration member" Url="html/T_Thylacine_Models_Status.htm" />
   <HelpKINode Title="IDs property" Url="html/P_Thylacine_Models_Event_MessageDeleteBulk_IDs.htm" />
+  <HelpKINode Title="IGateway class">
+    <HelpKINode Title="IGateway Class" Url="html/T_Thylacine_Gateway_IGateway.htm" />
+    <HelpKINode Title="about IGateway class" Url="html/T_Thylacine_Gateway_IGateway.htm" />
+    <HelpKINode Title="constructor" Url="html/M_Thylacine_Gateway_IGateway__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_Thylacine_Gateway_IGateway.htm" />
+    <HelpKINode Title="fields" Url="html/Fields_T_Thylacine_Gateway_IGateway.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_Thylacine_Gateway_IGateway.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_Thylacine_Gateway_IGateway.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IGateway.Connect method" Url="html/M_Thylacine_Gateway_IGateway_Connect.htm" />
+  <HelpKINode Title="IGateway.Connected property" Url="html/P_Thylacine_Gateway_IGateway_Connected.htm" />
+  <HelpKINode Title="IGateway.Endpoint property" Url="html/P_Thylacine_Gateway_IGateway_Endpoint.htm" />
+  <HelpKINode Title="IGateway.IGateway constructor" Url="html/M_Thylacine_Gateway_IGateway__ctor.htm" />
+  <HelpKINode Title="IGateway.InvokeDispatch method" Url="html/M_Thylacine_Gateway_IGateway_InvokeDispatch.htm" />
+  <HelpKINode Title="IGateway.OnDispatchEvent event" Url="html/E_Thylacine_Gateway_IGateway_OnDispatchEvent.htm" />
+  <HelpKINode Title="IGateway.token field" Url="html/F_Thylacine_Gateway_IGateway_token.htm" />
   <HelpKINode Title="Image property" Url="html/P_Thylacine_Models_Embed_Image.htm" />
   <HelpKINode Title="ImageBytes property" Url="html/P_Thylacine_Models_Avatar_ImageBytes.htm" />
   <HelpKINode Title="ImageSizeException class">
@@ -1067,15 +1088,18 @@
   <HelpKINode Title="InviteGuild.Name property" Url="html/P_Thylacine_Models_InviteGuild_Name.htm" />
   <HelpKINode Title="InviteGuild.Splash property" Url="html/P_Thylacine_Models_InviteGuild_Splash.htm" />
   <HelpKINode Title="Inviter property" Url="html/P_Thylacine_Models_Invite_Inviter.htm" />
+  <HelpKINode Title="InvokeDispatch method" Url="html/M_Thylacine_Gateway_IGateway_InvokeDispatch.htm" />
   <HelpKINode Title="IRestClient class">
     <HelpKINode Title="IRestClient Class" Url="html/T_Thylacine_Rest_IRestClient.htm" />
     <HelpKINode Title="about IRestClient class" Url="html/T_Thylacine_Rest_IRestClient.htm" />
     <HelpKINode Title="constructor" Url="html/M_Thylacine_Rest_IRestClient__ctor.htm" />
+    <HelpKINode Title="fields" Url="html/Fields_T_Thylacine_Rest_IRestClient.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Thylacine_Rest_IRestClient.htm" />
   </HelpKINode>
   <HelpKINode Title="IRestClient.IRestClient constructor" Url="html/M_Thylacine_Rest_IRestClient__ctor.htm" />
   <HelpKINode Title="IRestClient.Send method" Url="html/M_Thylacine_Rest_IRestClient_Send.htm" />
   <HelpKINode Title="IRestClient.SendPayload method" Url="html/Overload_Thylacine_Rest_IRestClient_SendPayload.htm" />
+  <HelpKINode Title="IRestClient.token field" Url="html/F_Thylacine_Rest_IRestClient_token.htm" />
   <HelpKINode Title="IRestPayload interface">
     <HelpKINode Title="IRestPayload Interface" Url="html/T_Thylacine_Rest_Payloads_IRestPayload.htm" />
     <HelpKINode Title="about IRestPayload interface" Url="html/T_Thylacine_Rest_Payloads_IRestPayload.htm" />
@@ -1334,7 +1358,7 @@
   <HelpKINode Title="OnChannelRemove event" Url="html/E_Thylacine_DiscordBot_OnChannelRemove.htm" />
   <HelpKINode Title="OnChannelUpdate event" Url="html/E_Thylacine_DiscordBot_OnChannelUpdate.htm" />
   <HelpKINode Title="OnDiscordReady event" Url="html/E_Thylacine_DiscordBot_OnDiscordReady.htm" />
-  <HelpKINode Title="OnDispatchEvent event" Url="html/E_Thylacine_Gateway_GatewaySocket_OnDispatchEvent.htm" />
+  <HelpKINode Title="OnDispatchEvent event" Url="html/E_Thylacine_Gateway_IGateway_OnDispatchEvent.htm" />
   <HelpKINode Title="OnDMCreate event" Url="html/E_Thylacine_DiscordBot_OnDMCreate.htm" />
   <HelpKINode Title="OnDMRemove event" Url="html/E_Thylacine_DiscordBot_OnDMRemove.htm" />
   <HelpKINode Title="OnEmojisUpdate event" Url="html/E_Thylacine_DiscordBot_OnEmojisUpdate.htm" />
@@ -1503,6 +1527,7 @@
     <HelpKINode Title="RestSharpClient Class" Url="html/T_Thylacine_Rest_RestSharpClient.htm" />
     <HelpKINode Title="about RestSharpClient class" Url="html/T_Thylacine_Rest_RestSharpClient.htm" />
     <HelpKINode Title="constructor" Url="html/M_Thylacine_Rest_RestSharpClient__ctor.htm" />
+    <HelpKINode Title="fields" Url="html/Fields_T_Thylacine_Rest_RestSharpClient.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Thylacine_Rest_RestSharpClient.htm" />
   </HelpKINode>
   <HelpKINode Title="RestSharpClient.RestSharpClient constructor" Url="html/M_Thylacine_Rest_RestSharpClient__ctor.htm" />
@@ -1665,6 +1690,7 @@
   <HelpKINode Title="Thylacine.Gateway.DispatchEventArgs class" Url="html/T_Thylacine_Gateway_DispatchEventArgs.htm" />
   <HelpKINode Title="Thylacine.Gateway.GatewayEndpoint class" Url="html/T_Thylacine_Gateway_GatewayEndpoint.htm" />
   <HelpKINode Title="Thylacine.Gateway.GatewaySocket class" Url="html/T_Thylacine_Gateway_GatewaySocket.htm" />
+  <HelpKINode Title="Thylacine.Gateway.IGateway class" Url="html/T_Thylacine_Gateway_IGateway.htm" />
   <HelpKINode Title="Thylacine.Gateway.OpCode enumeration" Url="html/T_Thylacine_Gateway_OpCode.htm" />
   <HelpKINode Title="Thylacine.Gateway.Payload namespace" Url="html/N_Thylacine_Gateway_Payload.htm" />
   <HelpKINode Title="Thylacine.Gateway.Payload.HelloPayload class" Url="html/T_Thylacine_Gateway_Payload_HelloPayload.htm" />
@@ -1771,6 +1797,10 @@
   <HelpKINode Title="TimestampConverter.WriteJson method" Url="html/M_Thylacine_Helper_TimestampConverter_WriteJson.htm" />
   <HelpKINode Title="Title property" Url="html/P_Thylacine_Models_Embed_Title.htm" />
   <HelpKINode Title="ToFile method" Url="html/M_Thylacine_Models_Avatar_ToFile.htm" />
+  <HelpKINode Title="token field">
+    <HelpKINode Title="IGateway.token Field" Url="html/F_Thylacine_Gateway_IGateway_token.htm" />
+    <HelpKINode Title="IRestClient.token Field" Url="html/F_Thylacine_Rest_IRestClient_token.htm" />
+  </HelpKINode>
   <HelpKINode Title="Token property">
     <HelpKINode Title="VoiceServerUpdateEvent.Token Property " Url="html/P_Thylacine_Models_Event_VoiceServerUpdateEvent_Token.htm" />
     <HelpKINode Title="Webhook.Token Property " Url="html/P_Thylacine_Models_Webhook_Token.htm" />
@@ -1851,12 +1881,12 @@
   <HelpKINode Title="UnpinChannelMessage.UnpinChannelMessage constructor" Url="html/M_Thylacine_Rest_Payloads_UnpinChannelMessage__ctor.htm" />
   <HelpKINode Title="Updates property" Url="html/P_Thylacine_Models_Presence_Updates.htm" />
   <HelpKINode Title="URL property">
-    <HelpKINode Title="Attachment.URL Property " Url="html/P_Thylacine_Models_Attachment_URL.htm" />
     <HelpKINode Title="Embed.URL Property " Url="html/P_Thylacine_Models_Embed_URL.htm" />
-    <HelpKINode Title="EmbedAuthor.URL Property " Url="html/P_Thylacine_Models_EmbedAuthor_URL.htm" />
     <HelpKINode Title="EmbedImage.URL Property " Url="html/P_Thylacine_Models_EmbedImage_URL.htm" />
-    <HelpKINode Title="EmbedProvider.URL Property " Url="html/P_Thylacine_Models_EmbedProvider_URL.htm" />
     <HelpKINode Title="EmbedVideo.URL Property " Url="html/P_Thylacine_Models_EmbedVideo_URL.htm" />
+    <HelpKINode Title="Attachment.URL Property " Url="html/P_Thylacine_Models_Attachment_URL.htm" />
+    <HelpKINode Title="EmbedAuthor.URL Property " Url="html/P_Thylacine_Models_EmbedAuthor_URL.htm" />
+    <HelpKINode Title="EmbedProvider.URL Property " Url="html/P_Thylacine_Models_EmbedProvider_URL.htm" />
   </HelpKINode>
   <HelpKINode Title="Url property" Url="html/P_Thylacine_Gateway_GatewayEndpoint_Url.htm" />
   <HelpKINode Title="UseExternalEmojis enumeration member" Url="html/T_Thylacine_Models_Permission.htm" />

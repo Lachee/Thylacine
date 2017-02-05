@@ -10,26 +10,25 @@ using WebSocketSharp;
 
 namespace Thylacine.Gateway
 {
-    public class DispatchEventArgs : EventArgs { public string Type { get; } public JToken Payload { get; } public DispatchEventArgs(string type, JToken payload) { this.Type = type; this.Payload = payload; } }
-    public delegate void DispatchEvent(object sender, DispatchEventArgs args);
-    public  class GatewaySocket
+    public class GatewaySocket : IGateway
     {
-        public GatewayEndpoint Endpoint { get; }
-        public bool Connected { get; private set; } = false;
-
-        public event DispatchEvent OnDispatchEvent;
 
         private WebSocket socket;
-        private string token;
+
         private string session;
         private uint sequence;
 
         private Timer heartbeat;
         private int travelingbeats = 0;
 
-        public GatewaySocket(GatewayEndpoint endpoint, string token) { this.Endpoint = endpoint; this.token = token; }
+        /// <summary>
+        /// Creates a new WebSocketSharp gateway object to connect to discord.
+        /// </summary>
+        /// <param name="endpoint">Endpoint of the Discord websocket</param>
+        /// <param name="token">Authorization token of the bot</param>
+        public GatewaySocket(GatewayEndpoint endpoint, string token) : base(endpoint, token) { }
 
-        public void Connect()
+        public override void Connect()
         {
             //Setup the heartbeat
             this.heartbeat = new Timer();
@@ -37,14 +36,14 @@ namespace Thylacine.Gateway
             this.heartbeat.Elapsed += delegate (object sender, ElapsedEventArgs e) { SendHeartbeat();  };
 
             //Connect the socket
-            socket = new WebSocket(Endpoint.Url + "/?encoding=json&v=5");
+            socket = new WebSocket(base.Endpoint.Url + "/?encoding=json&v=5");
             socket.Compression = CompressionMethod.None;
 
             socket.OnClose += SocketOnClose;
             socket.OnMessage += SocketOnMessage;
             
             socket.Connect();
-            Connected = true;
+            base.Connected = true;
         }
 
         private void SocketOnMessage(object sender, MessageEventArgs e)
@@ -75,7 +74,7 @@ namespace Thylacine.Gateway
                             session = readyEvent.Session;
                         }
 
-                        OnDispatchEvent?.Invoke(this, new DispatchEventArgs(dispatch.Event, payload));
+                        base.InvokeDispatch(this, new DispatchEventArgs(dispatch.Event, payload));
                         break;
 
                     case OpCode.Heartbeat:
@@ -120,7 +119,7 @@ namespace Thylacine.Gateway
         
         private void SocketOnClose(object sender, CloseEventArgs e)
         {
-            Connected = false;
+            base.Connected = false;
         }
 
 
@@ -152,7 +151,7 @@ namespace Thylacine.Gateway
             //Prepare the payload
             IdentifyPayload payload = new IdentifyPayload()
             {
-                Token = this.token,
+                Token = base.token,
                 Compress = false,
                 LargeThreshold = 150,
                 Shard = new int[] { 0, 1 },
