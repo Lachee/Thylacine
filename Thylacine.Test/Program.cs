@@ -21,13 +21,34 @@ namespace Thylacine.Test
                 Discord bot = new Discord(key);
                 bot.OnMessageCreate += (sender, e) =>
                 {
-                    if (e.Message.Author.IsBot) return;
+					if (e.Message.Author.ID == bot.User.ID) return;
+					if (e.Message.Author.ID != 172002275412279296L && !e.Message.Content.ToLowerInvariant().Contains("platypus")) return;
 
-                    MessageBuilder mb = new MessageBuilder();
-                    mb.Append(e.Message.Author).Append(" said: ").Append(e.Message);
-                // e.Guild.GetChannel(e.Message.ChannelID).SendMessage(mb, false);
+					//Prepare the random
+					Random random = new Random();
 
-                Console.WriteLine("{0}: {1}", e.Message.Author.Username, e.Message.FormatContent());
+					//Prepare the builder
+					MessageBuilder mb = new MessageBuilder();
+					mb.Append(e.Message.Author).Append(" ");
+
+					//Prepare the content
+					string content = e.Message.FormatContent();
+					for (int i = 0; i < content.Length; i++)
+						mb.Append(random.NextDouble() > 0.5D ? content[i].ToString().ToUpperInvariant() : content[i].ToString().ToLowerInvariant());
+
+					Embed embed = new Embed()
+					{
+						Title = "SoMe faNcy AttaCheMent",
+						Timestamp = DateTime.UtcNow,
+						Image = new EmbedImage()
+						{
+							URL = "http://i0.kym-cdn.com/entries/icons/original/000/022/940/spongebobicon.jpg"
+						}
+					};
+
+					//Send it out
+					e.Guild.GetChannel(e.Message.ChannelID).SendMessage(mb, false, e.Message.Attachments.Length > 0 ? embed : null);
+					Console.WriteLine("{0}: {1}", e.Message.Author.Username, e.Message.FormatContent());
                 };
 
                 Console.WriteLine("Connecting...");

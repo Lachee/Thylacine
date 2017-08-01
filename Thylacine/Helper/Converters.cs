@@ -35,10 +35,12 @@ namespace Thylacine.Helper
                 return;
             }
 
-            double time = (TimeZoneInfo.ConvertTimeToUtc((DateTime)value) - new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc)).TotalSeconds;
-            int seconds = (int) Math.Round(time);
-            writer.WriteValue(time.ToString(CultureInfo.InvariantCulture));
-        }
+            //double time = (TimeZoneInfo.ConvertTimeToUtc((DateTime)value) - new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc)).TotalSeconds;
+            //int seconds = (int) Math.Round(time);
+            //writer.WriteValue(time.ToString(CultureInfo.InvariantCulture));
+
+			writer.WriteValue(((DateTime)value).ToString("o"));
+		}
     }
 
     public class SnowflakeConverter : JsonConverter

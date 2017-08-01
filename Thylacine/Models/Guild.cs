@@ -61,7 +61,7 @@ namespace Thylacine.Models
         /// The ID of the AFK Channel.
         /// </summary>
         [JsonProperty("afk_channel_id"), JsonConverter(typeof(SnowflakeConverter))]
-        public ulong AFKChannelID { get; internal set; }
+        public ulong? AFKChannelID { get; set; }
 
         /// <summary>
         /// The time (in seconds) of inactivity before the user is considered to be AFK.
