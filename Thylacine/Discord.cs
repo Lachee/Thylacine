@@ -65,13 +65,14 @@ namespace Thylacine
         public event DMCreateEvent OnDMCreate;
         public event DMCreateEvent OnDMRemove;
 
-        public event ChannelEvent OnChannelCreate;
-        public event ChannelEvent OnChannelUpdate;
-        public event ChannelEvent OnChannelRemove;
+        //public event ChannelEvent OnChannelCreate;
+        //public event ChannelEvent OnChannelUpdate;
+        //public event ChannelEvent OnChannelRemove;
 
-        public event GuildMemberEvent OnMemberCreate;
-        public event GuildMemberEvent OnMemberUpdate;
-        public event GuildMemberEvent OnMemberRemove;
+		//Moved to GUILD
+        //public event GuildMemberEvent OnMemberCreate;
+        //public event GuildMemberEvent OnMemberUpdate;
+        //public event GuildMemberEvent OnMemberRemove;
 
         public event GuildBanEvent OnMemberBanned;
         public event GuildBanEvent OnMemberUnbanned;
@@ -103,10 +104,10 @@ namespace Thylacine
         /// <summary>
         /// Connects the bot to Discord.
         /// </summary>
-        public void Connect()
+        public async void Connect()
         {
             this.Rest = new RestSharpClient(token);
-            GatewayEndpoint endpoint = this.Rest.SendPayload<GatewayEndpoint>(new Rest.Payloads.GatewayRequest());
+            GatewayEndpoint endpoint = await this.Rest.SendPayload<GatewayEndpoint>(new Rest.Payloads.GatewayRequest());
 
             this.Gateway = new GatewaySocket(endpoint, token);
             this.Gateway.OnDispatchEvent += OnDispatchEvent;
@@ -166,29 +167,19 @@ namespace Thylacine
         private void HandleGuildMemberAddEvent(GuildMemeberAdd member)
         {
             Guild g = _guilds[member.GuildID];
-            g.UpdateMember(member);
-
-            OnMemberCreate?.Invoke(this, new GuildMemberEventArgs(g, g.GetMember(member.ID)));
+			g.UpdateMember(member);			
         }
         private void HandleGuildMemberUpdateEvent(GuildMemeberUpdate e)
         {
             Guild g = _guilds[e.GuildID];
-            GuildMember gm = g.GetMember(e.User.ID);
-            gm.RoleIDs = e.Roles;
-            gm.Nickname = e.Nickname;
-            gm.User = e.User;
 
-            g.UpdateMember(gm);
-            OnMemberUpdate?.Invoke(this, new GuildMemberEventArgs(g, g.GetMember(e.User.ID)));
+            GuildMember gm = g.GetMember(e.User.ID);
+            g.UpdateMember(gm, e,Roles, e.Nickname, e.User);            
         }
         private void HandleGuildMemberRemoveEvent(GuildMemberRemove e)
         {
             Guild g = _guilds[e.GuildID];
-            GuildMember member = g.GetMember(e.User.ID);
-
             g.RemoveMember(e.User.ID);
-            OnMemberRemove?.Invoke(this, new GuildMemberEventArgs(g, member));
-
             //Console.WriteLine("Finished removing memeber");
         }
         private void HandleGuildMemberChunkEvent(GuildMembersChunk c)
@@ -260,8 +251,6 @@ namespace Thylacine
 
             //Update the guilds channel
             g.UpdateChannel(c);
-
-            OnChannelCreate?.Invoke(this, new ChannelEventArgs(c, g));
         }
         private void HandleChannelUpdateEvent(Channel c)
         {
@@ -270,8 +259,6 @@ namespace Thylacine
             c.Guild = g;
 
             g.UpdateChannel(c);
-
-            OnChannelUpdate?.Invoke(this, new ChannelEventArgs(c, g));
         }
         private void HandleDMDeleteEvent(DMChannel c)
         {
@@ -284,8 +271,6 @@ namespace Thylacine
         {
             Guild g = _guilds[c.GuildID];
             g.RemoveChannel(c);
-
-            OnChannelRemove?.Invoke(this, new ChannelEventArgs(c, g));
         }
        
         private void HandleEmojiUpdate(GuildEmojiUpdate e)
@@ -596,7 +581,7 @@ namespace Thylacine
         /// </summary>
         /// <param name="webhookID">The webhook ID you are looking for.</param>
         /// <returns></returns>
-        public Webhook FetchWebhook(ulong webhookID) { return FetchWebhook(webhookID, null);  }
+        public async Task<Webhook> FetchWebhook(ulong webhookID) { return await FetchWebhook(webhookID, null);  }
 
         /// <summary>
         ///  Returns the new webhook object for the given id and token.
@@ -604,9 +589,9 @@ namespace Thylacine
         /// <param name="webhookID">The webhook ID you are looking for.</param>
         /// <param name="token">The token of the webhook.</param>
         /// <returns></returns>
-        public Webhook FetchWebhook(ulong webhookID, string token)
+        public async Task<Webhook> FetchWebhook(ulong webhookID, string token)
         {
-            Webhook hook = Rest.SendPayload<Webhook>(new Rest.Payloads.GetWebhook() { WebhookID = webhookID, Token = token });
+            Webhook hook = await Rest.SendPayload<Webhook>(new Rest.Payloads.GetWebhook() { WebhookID = webhookID, Token = token });
             hook.Discord = this;
             return hook;
         }
@@ -619,7 +604,7 @@ namespace Thylacine
         /// </summary>
         /// <param name="userID">The user ID</param>
         /// <returns>A new user object</returns>
-        public User FetchUser(ulong userID)
+        public Task<User> FetchUser(ulong userID)
         {
             return Rest.SendPayload<User>(new Rest.Payloads.GetUser() { UserID = userID });
         }
@@ -645,6 +630,15 @@ namespace Thylacine
         {
             Rest.SendPayload(new Rest.Payloads.ModifyUser() { UserID = User.ID, Name = username, Avatar = avatar });
         }
-        #endregion
+       
+		public List<User> GetUsers()
+		{
+			List<User> users = new List<User>();
+			foreach (Guild g in _guilds.Values)
+				users.AddRange(g.GetMembers().Select(gm => gm.Value.User));
+
+			return users;
+		}
+		#endregion
     }
 }

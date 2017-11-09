@@ -49,7 +49,11 @@ namespace Thylacine.Models
             if (Discord == null) throw new DiscordMissingException();
             Discord.Rest.SendPayload(new Rest.Payloads.ModifyChannel(this));
         }
-
+		
+		/// <summary>
+		/// Sets the permission/role for the channel.
+		/// </summary>
+		/// <param name="permission">The permission to set</param>
         public void SetPermission(Overwrite permission) { this.SetPermission(permission, permission.Allow, permission.Deny, permission.Type); }
         public void SetPermission(Overwrite permission, Permission allow, Permission deny, OverwriteType type) { this.SetPermission(permission.ID, permission.Allow, permission.Deny, permission.Type); }
         public void SetPermission(ulong permissionID, Permission allow, Permission deny, OverwriteType type)
@@ -77,17 +81,19 @@ namespace Thylacine.Models
             }
         }
 
-        /// <summary>
-        /// Delete a channel permission overwrite for a user or role in a channel. Only usable for guild channels. Requires the 'MANAGE_ROLES' permission
-        /// </summary>
-        /// <param name="permission"></param>
-        public void DeletePermission(Overwrite permission) { DeletePermission(permission.ID); }
+		/// <summary>
+		/// Delete a channel permission overwrite for a user or role in a channel. Only usable for guild channels.
+		/// <para>Permission: MANAGE_ROLES</para>
+		/// </summary>
+		/// <param name="permission"></param>
+		public void DeletePermission(Overwrite permission) { DeletePermission(permission.ID); }
 
-        /// <summary>
-        /// Delete a channel permission overwrite for a user or role in a channel. Only usable for guild channels. Requires the 'MANAGE_ROLES' permission
-        /// </summary>
-        /// <param name="permissionID"></param>
-        public void DeletePermission(ulong permissionID)
+		/// <summary>
+		/// Delete a channel permission overwrite for a user or role in a channel. Only usable for guild channels.
+		/// <para>Permission: MANAGE_ROLES</para>
+		/// </summary>
+		/// <param name="permissionID"></param>
+		public void DeletePermission(ulong permissionID)
         {
             if (Discord == null) throw new DiscordMissingException();
             Discord.Rest.SendPayload(new Rest.Payloads.DeleteChannelPermission()
@@ -97,23 +103,26 @@ namespace Thylacine.Models
             });
         }
 
-        /// <summary>
-        /// Delete a guild channel, or close a private message. Requires the 'MANAGE_CHANNELS' permission for the guild
-        /// </summary>
-        public void DeleteChannel()
+		/// <summary>
+		/// Delete a guild channel, or close a private message. 
+		/// <para>Permission: MANAGE_CHANNELS</para>
+		/// </summary>
+		public void DeleteChannel()
         {
             if (Discord == null) throw new DiscordMissingException();
             Discord.Rest.SendPayload(new Rest.Payloads.DeleteChannel(this));
         }
 
-        /// <summary>
-        /// Create a new invite object for the channel. Only usable for guild channels. Requires the CREATE_INSTANT_INVITE permission
-        /// </summary>
-        /// <param name="lifetime">duration of invite in seconds before expiry, or 0 for never</param>
-        /// <param name="uses">	max number of uses or 0 for unlimited</param>
-        /// <param name="temporary">whether this invite only grants temporary membership</param>
-        /// <param name="unique">if true, don't try to reuse a similar invite (useful for creating many unique one time use invites)</param>
-        public Invite CreateInvite(int lifetime = 86400, int uses = 0, bool temporary = false, bool unique = false)
+		/// <summary>
+		/// Create a new invite object for the channel. Only usable for guild channels. Default behaviour as the discord client, making a day long invite with infinite uses.
+		/// Requires the CREATE_INSTANT_INVITE permission.
+		/// <para>Permission: CREATE_INSTANT_INVITE</para>
+		/// </summary>
+		/// <param name="lifetime">duration of invite in seconds before expiry, or 0 for never</param>
+		/// <param name="uses">	max number of uses or 0 for unlimited</param>
+		/// <param name="temporary">whether this invite only grants temporary membership</param>
+		/// <param name="unique">if true, don't try to reuse a similar invite (useful for creating many unique one time use invites)</param>
+		public Task<Invite> CreateInvite(int lifetime = 86400, int uses = 0, bool temporary = false, bool unique = false)
         {
             if (Discord == null) throw new DiscordMissingException();
             return Discord.Rest.SendPayload<Invite>(new Rest.Payloads.CreateInvite()
@@ -130,7 +139,7 @@ namespace Thylacine.Models
         /// Returns a list of invites for the channel
         /// </summary>
         /// <returns></returns>
-        public List<Invite> FetchInvites()
+        public Task<List<Invite>> FetchInvites()
         {
             if (Discord == null) throw new DiscordMissingException();
             return Discord.Rest.SendPayload<List<Invite>>(new Rest.Payloads.GetChannelInvites() { ChannelID = this.ID });
@@ -146,12 +155,12 @@ namespace Thylacine.Models
         /// <param name="tts">true if this is a TTS message</param>
         /// <param name="embed">embedded rich content</param>
         /// <returns></returns>
-        public Message SendMessage(string message, bool tts = false, Embed embed = null)
+        public async Task<Message> SendMessage(string message, bool tts = false, Embed embed = null)
         {
             if (Discord == null) throw new DiscordMissingException();
             if (message.Length >= 2000) return null;
 
-            Message msg = Discord.Rest.SendPayload<Message>(new Rest.Payloads.CreateMessagePayload()
+            Message msg = await Discord.Rest.SendPayload<Message>(new Rest.Payloads.CreateMessagePayload()
             {
                 ChannelID = ID,
                 Message = message,
@@ -170,9 +179,9 @@ namespace Thylacine.Models
         /// <param name="tts">true if this is a TTS message</param>
         /// <param name="embed">embedded rich content</param>
         /// <returns></returns>
-        public Message SendMessage(MessageBuilder builder, bool tts = false, Embed embed = null)
+        public async Task<Message> SendMessage(MessageBuilder builder, bool tts = false, Embed embed = null)
         {
-            Message message = this.SendMessage(builder.ToString(), tts, embed);
+            Message message = await this.SendMessage(builder.ToString(), tts, embed);
             message.Discord = this.Discord;
             return message;
         }
@@ -185,7 +194,7 @@ namespace Thylacine.Models
         /// <param name="after">get messages after this message ID</param>
         /// <param name="limit">max number of messages to return (1-100)</param>
         /// <returns></returns>
-        public List<Message> FetchMessages(ulong? around = null, ulong? before = null, ulong? after = null, int limit = 50)
+        public Task<List<Message>> FetchMessages(ulong? around = null, ulong? before = null, ulong? after = null, int limit = 50)
         {
             if (Discord == null) throw new DiscordMissingException();
 
@@ -208,7 +217,7 @@ namespace Thylacine.Models
         /// </summary>
         /// <param name="messageID"></param>
         /// <returns></returns>
-        public Message FetchMessage(ulong messageID)
+        public Task<Message> FetchMessage(ulong messageID)
         {
             if (Discord == null) throw new DiscordMissingException();
             return Discord.Rest.SendPayload<Message>(new Rest.Payloads.GetMessage()
@@ -222,7 +231,7 @@ namespace Thylacine.Models
         /// Returns all pinned messages in the channel
         /// </summary>
         /// <returns></returns>
-        public List<Message> FetchPinnedMessages()
+        public Task<List<Message>> FetchPinnedMessages()
         {
             if (Discord == null) throw new DiscordMissingException();
             return Discord.Rest.SendPayload<List<Message>>(new Rest.Payloads.GetPinnedMessages() { ChannelID = ID });
@@ -231,11 +240,11 @@ namespace Thylacine.Models
         #endregion
 
         #region Webhook Management
-        public Webhook CreateWebhook(string name, Avatar avatar)
+        public async Task<Webhook> CreateWebhook(string name, Avatar avatar)
         {
             if (Discord == null) throw new DiscordMissingException();
 
-            Webhook hook = Discord.Rest.SendPayload<Webhook>(new Rest.Payloads.CreateWebhook()
+            Webhook hook = await Discord.Rest.SendPayload<Webhook>(new Rest.Payloads.CreateWebhook()
             {
                 ChannelID = this.ID,
                 Name = name,
@@ -245,10 +254,10 @@ namespace Thylacine.Models
 
             return hook;
         }
-        public List<Webhook> FetchWebhooks()
+        public async Task<List<Webhook>> FetchWebhooks()
         {
             if (Discord == null) throw new DiscordMissingException();
-            List<Webhook> hooks = Discord.Rest.SendPayload<List<Webhook>>(new Rest.Payloads.GetWebhooks() { ScopeID = this.ID, Scope = "channels" });
+            List<Webhook> hooks = await Discord.Rest.SendPayload<List<Webhook>>(new Rest.Payloads.GetWebhooks() { ScopeID = this.ID, Scope = "channels" });
             foreach (Webhook h in hooks) h.Discord = Discord;
 
             return hooks;

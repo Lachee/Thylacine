@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thylacine", "Thylacine\Thyl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thylacine.Test", "Thylacine.Test\Thylacine.Test.csproj", "{E38ACB82-06F4-4EE6-AC39-044160237D8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thylacine.WinForm", "Thylacine.WinForm\Thylacine.WinForm.csproj", "{4E60CC00-5D83-4E49-B54D-89ED4C5543DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{E38ACB82-06F4-4EE6-AC39-044160237D8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E38ACB82-06F4-4EE6-AC39-044160237D8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E38ACB82-06F4-4EE6-AC39-044160237D8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E60CC00-5D83-4E49-B54D-89ED4C5543DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E60CC00-5D83-4E49-B54D-89ED4C5543DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E60CC00-5D83-4E49-B54D-89ED4C5543DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E60CC00-5D83-4E49-B54D-89ED4C5543DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,16 +11,19 @@ namespace Thylacine.Test
 {
     class Program
     {
-        static void Main(string[] args)
-        {
+		static void Main(string[] args)
+		{
+			Run().Wait();
+		}
+		static async Task Run() { 
 
             try
             {
                 string key = System.IO.File.ReadAllText("botkey.key");
 
                 Discord bot = new Discord(key);
-                bot.OnMessageCreate += (sender, e) =>
-                {
+                bot.OnMessageCreate += async (sender, e) =>
+				{
 					if (e.Message.Author.ID == bot.User.ID) return;
 					if (e.Message.Author.ID != 172002275412279296L && !e.Message.Content.ToLowerInvariant().Contains("platypus")) return;
 
@@ -47,12 +50,22 @@ namespace Thylacine.Test
 					};
 
 					//Send it out
-					e.Guild.GetChannel(e.Message.ChannelID).SendMessage(mb, false, e.Message.Attachments.Length > 0 ? embed : null);
+					await e.Guild.GetChannel(e.Message.ChannelID).SendMessage(mb, false, e.Message.Attachments.Length > 0 ? embed : null);
 					Console.WriteLine("{0}: {1}", e.Message.Author.Username, e.Message.FormatContent());
-                };
-
+				};
+				
+				//Connect to the servers
                 Console.WriteLine("Connecting...");
                 bot.Connect();
+
+				//Wait for the guilds to connect
+				Console.WriteLine("Waiting for channels...");
+				while(bot.GetGuilds().Length == 0)
+				{
+					Console.Write(".");
+					await Task.Delay(100);
+				}
+				Console.WriteLine();
 
                 Console.WriteLine("Type a message to send in our first guild, first channel. Type EXIT to quit");
                 while (true)
@@ -70,13 +83,14 @@ namespace Thylacine.Test
 
                     if (message == "test")
                     {
-                        Invite invite = channel.CreateInvite(60, 1, true, true);
+                        Invite invite = await channel.CreateInvite(60, 1, true, true);
+						Console.WriteLine("Invite created: {0}", invite);
                         continue;
                     }
 
 
                     Console.WriteLine("Sending '" + message + "' to channel '" + (channel?.Name ?? "nothing") + "'");
-                    Message msg = channel.SendMessage(message);
+                    Message msg = channel.SendMessage(message).Result;
                     Console.WriteLine("Message ID: {0}", msg.ID);
                 }
             }catch(Exception e)

@@ -42,7 +42,12 @@ namespace Thylacine.Models
         [JsonProperty("revoked")]
         public bool Revoked { get; internal set; }
 
-    }
+		public override string ToString()
+		{
+			return string.Format("{0}( https://discord.gg/{1} )", Guild.Name, Code);
+		}
+
+	}
 
     public class InviteGuild
     {

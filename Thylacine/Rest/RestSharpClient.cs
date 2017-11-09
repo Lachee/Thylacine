@@ -33,13 +33,13 @@ namespace Thylacine.Rest
             this.client.Authenticator = new DiscordAuthenticator(base.token);
         }
         
-        protected override IRestResponse Send(string resource, Method method, object payload)
+        protected override async Task<IRestResponse> Send(string resource, Method method, object payload)
         {
             RestRequest request = new RestRequest(resource, method);
-            request.JsonSerializer = new NewtonsoftJsonSerializer();
+			request.JsonSerializer = new NewtonsoftJsonSerializer();
             request.AddJsonBody(payload);
 
-            var response = client.Execute(request);
+			var response = await client.ExecuteTaskAsync(request);
             switch(response.StatusCode)
             {
                 case System.Net.HttpStatusCode.OK:

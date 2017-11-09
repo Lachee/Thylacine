@@ -32,15 +32,15 @@ namespace Thylacine.Rest
         /// <param name="method">The HTTP method to use.</param>
         /// <param name="payload">The json serilizable payload.</param>
         /// <returns>Returns a response object that contains the content and any errors.</returns>
-        protected abstract IRestResponse Send(string resource, Method method, object payload);
+        protected abstract Task<IRestResponse> Send(string resource, Method method, object payload);
 
         /// <summary>
         /// Sends a IRestPayload to discord.
         /// </summary>
         /// <param name="payload">The payload to send to discord.</param>
-        public virtual void SendPayload(IRestPayload payload)
+        public virtual async void SendPayload(IRestPayload payload)
         {
-            Send(payload.Request, payload.Method, payload.Payload);
+			await Send(payload.Request, payload.Method, payload.Payload);
         }
 
         /// <summary>
@@ -49,9 +49,9 @@ namespace Thylacine.Rest
         /// <typeparam name="T">The return type from Discord that is expected</typeparam>
         /// <param name="payload">The payload to send to discord.</param>
         /// <returns>Returns a new instance of target type.</returns>
-        public virtual T SendPayload<T>(IRestPayload payload) where T : new()
+        public virtual async Task<T> SendPayload<T>(IRestPayload payload) where T : new()
         {
-            IRestResponse response = Send(payload.Request, payload.Method, payload.Payload);
+            IRestResponse response = await Send(payload.Request, payload.Method, payload.Payload);
             return JsonConvert.DeserializeObject<T>(response.Content);
         }
     }

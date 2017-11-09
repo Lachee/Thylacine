@@ -161,11 +161,11 @@ namespace Thylacine.Models
         /// Edit a previously sent message. You can only edit messages that have been sent by the current user. 
         /// </summary>
         /// <param name="content"></param>
-        public void EditMessage(string content)
+        public async void EditMessage(string content)
         {
             if (Discord == null) throw new DiscordMissingException();
             
-            Message msg = Discord.Rest.SendPayload<Message>(new Rest.Payloads.EditMessage(this) { Message = content });
+            Message msg = await  Discord.Rest.SendPayload<Message>(new Rest.Payloads.EditMessage(this) { Message = content });
             if (msg == null) return;
 
             this.Content = msg.Content;
@@ -180,7 +180,7 @@ namespace Thylacine.Models
             Discord.Rest.SendPayload(new Rest.Payloads.DeleteMessage(this));
         }
 
-        public List<User> GetReactions(Emoji reaction)
+        public Task<List<User>> GetReactions(Emoji reaction)
         {
             if (Discord == null) throw new DiscordMissingException();
             return Discord.Rest.SendPayload<List<User>>(new Rest.Payloads.GetReactions(this) { Reaction = reaction.ID.GetValueOrDefault() });

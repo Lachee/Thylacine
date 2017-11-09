@@ -169,7 +169,7 @@ namespace Thylacine.Gateway
         private void SendDispatch(Dispatch dispatch)
         {
             string json = JsonConvert.SerializeObject(dispatch, Formatting.None);
-            socket.Send(json);
+            socket.SendAsync(json, null);
         }
     }
 }

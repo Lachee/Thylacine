@@ -16,61 +16,60 @@ namespace Thylacine.Models
         /// The current <see cref="Guild"/> the member is apart of.
         /// </summary>
         public Guild Guild { get; internal set; }
-
         /// <summary>
         /// The current <see cref="Thylacine.Discord"/> that the member was created with. 
         /// </summary>
         public Discord Discord { get { return Guild?.Discord; } }
 
-        /// <summary>
-        /// The user of the guild member
-        /// </summary>
-        [JsonProperty("user")]
-        public User User { get; internal set; }
+		/// <summary>
+		/// The <see cref="User.ID"/> of the guild member.
+		/// </summary>
+		/// <seealso cref="User.ID"/>
+		public ulong ID { get { return User.ID; } }
 
-        /// <summary>
-        /// The <see cref="User.ID"/> of the guild member.
-        /// </summary>
-        /// <seealso cref="User.ID"/>
-        public ulong ID { get { return User.ID; } }
+		/// <summary>
+		/// Gets the channel the user is in
+		/// </summary>
+		public Channel Channel => Guild.GetChannel(_channel);
+		[JsonProperty("channel")] private ulong _channel;
 
-        /// <summary>
-        /// The nickname used within the guild
-        /// </summary>
-        [JsonProperty("nick")]
-        public string Nickname { get; internal set; }
-        
+		/// <summary>
+		/// The user of the guild member
+		/// </summary>
+		public User User => _user;
+		[JsonProperty("user")] private User _user;
 
-        /// <summary>
-        /// A list of role id's the member has. See <see cref="Roles"/> for actual role objects.
-        /// </summary>
-        /// <seealso cref="Roles"/>
-        [JsonProperty("roles"), JsonConverter(typeof(SnowflakeArrayConverter))]
-        public ulong[] RoleIDs { get; internal set; }
-
+		/// <summary>
+		/// The nickname used within the guild
+		/// </summary>		
+		public string Nickname => _nickname;
+		[JsonProperty("nick")] private string _nickname;
+		
         /// <summary>
         /// A list of roles the user has.
         /// </summary>
-        public Role[] Roles { get; internal set; }
+        public Role[] Roles { get; private set; }
+		[JsonProperty("roles"), JsonConverter(typeof(SnowflakeArrayConverter))]
+		private ulong[] _roleids;
 
-        /// <summary>
-        /// The time the member goined the guild
-        /// </summary>
-        //TODO: MAke this a timestamp converter
-        [JsonProperty("joined_at")]
-        public DateTime JoinedAt { get; internal set; }
+		/// <summary>
+		/// The time the member goined the guild
+		/// </summary>
+		//TODO: MAke this a timestamp converter
+		public DateTime JoinedAt => _joinedAt;
+		[JsonProperty("joined_at")] private DateTime _joinedAt;
 
-        /// <summary>
-        /// Is the member deafened in the guild?
-        /// </summary>
-        [JsonProperty("deaf")]
-        public bool Deaf { get; internal set; }
+		/// <summary>
+		/// Is the member deafened in the guild?
+		/// </summary>
+		public bool Deaf => _deaf;
+		[JsonProperty("deaf")] private bool _deaf;
 
-        /// <summary>
-        /// Is the member muted in the guild?
-        /// </summary>
-        [JsonProperty("mute")]
-        public bool Mute { get; internal set; }
+		/// <summary>
+		/// Is the member muted in the guild?
+		/// </summary>
+		public bool Mute => _mute;
+		[JsonProperty("mute")] private bool _mute;
 
         /// <summary>
         /// The member's current presence.
@@ -90,16 +89,36 @@ namespace Thylacine.Models
         internal void UpdateRoles(Guild guild)
         {
             List<Role> roles = new List<Role>();
-            for (int i = 0; i < RoleIDs.Length; i++)
+            for (int i = 0; i < _roleids.Length; i++)
             {
-                Role r = guild.GetRole(RoleIDs[i]);
+                Role r = guild.GetRole(_roleids[i]);
                 if (r != null) roles.Add(r);
             }
 
             Roles = roles.ToArray();
         }
 
-        #region REST Calls
+		#region Internal Updates
+		internal void UpdateModification(GuildMemberModification modifiction)
+		{
+			this._nickname = modifiction.Nickname ?? this._nickname;
+			this._mute = modifiction.Mute ?? this._mute;
+			this._deaf = modifiction.Deaf ?? this._deaf;
+			this._channel = modifiction.ChannelID ?? this._channel;
+		}
+
+
+		#endregion
+
+		#region REST Calls
+
+		public void SetNickname(string name)
+		{
+			ApplyModifications(new GuildMemberModification()
+			{
+				Nickname = name
+			});
+		}
 
         /// <summary>
         /// Modifies attributes of this current GuildMember
@@ -169,36 +188,36 @@ namespace Thylacine.Models
     /// A object used to modify <see cref="GuildMember"/>s. All fields are optional and do not need to be assigned.
     /// </summary>
     /// <seealso cref="GuildMember"/>
-    public struct GuildMemberModification
+    public class GuildMemberModification
     {
         /// <summary>
         /// Update the nickname. Requires MANAGE_NICKNAMES.
         /// </summary>
         [JsonProperty("nick")]
-        public string Nickname { get; set; }
+        public string Nickname { get; set; } = null;
 
-        /// <summary>
-        /// Update the users roles. Requires MANAGE_ROLES.
-        /// </summary>
-        [JsonProperty("roles")]
-        public Role[] Roles { get; set; }
+		/// <summary>
+		/// Update the users roles. Requires MANAGE_ROLES.
+		/// </summary>
+		[JsonProperty("roles")]
+		public Role[] Roles { get; set; } = null;
 
-        /// <summary>
-        /// Mutes the user. Requires MUTE_MEMBERS.
-        /// </summary>
-        [JsonProperty("mute")]
-        public bool? Mute { get; set; }
+		/// <summary>
+		/// Mutes the user. Requires MUTE_MEMBERS.
+		/// </summary>
+		[JsonProperty("mute")]
+		public bool? Mute { get; set; } = null;
 
         /// <summary>
         /// Silences the user. Requires DEAFEN_MEMBERS.
         /// </summary>
         [JsonProperty("deaf")]
-        public bool? Deaf { get; set; }
+        public bool? Deaf { get; set; } = null;
 
-        /// <summary>
-        /// ID of channel to move user to (if they are connected to voice). Requires MOVE_MEMBERS.
-        /// </summary>
-        [JsonProperty("channel_id"), JsonConverter(typeof(SnowflakeConverter))]
-        public ulong? ChannelID { get; set; }
-    }
+		/// <summary>
+		/// ID of channel to move user to (if they are connected to voice). Requires MOVE_MEMBERS.
+		/// </summary>
+		[JsonProperty("channel_id"), JsonConverter(typeof(SnowflakeConverter))]
+        public ulong? ChannelID { get; set; } = null;
+	}
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Thylacine.Exceptions;
+using Thylacine.Event;
 
 namespace Thylacine.Models
 {
@@ -32,6 +33,11 @@ namespace Thylacine.Models
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; internal set; }
+
+		/// <summary>
+		/// Is the guild ready to be accessed?
+		/// </summary>
+		public bool IsReady => Name != null;
 
         /// <summary>
         /// The hash of the icon for the guild. This is used in fetching the image via URL.
@@ -182,7 +188,11 @@ namespace Thylacine.Models
             internal set
             {
                 _guildmembers = new Dictionary<ulong, GuildMember>();
-                foreach (var m in value) _guildmembers.Add(m.User.ID, m);
+				foreach (var m in value)
+				{
+					m.Guild = this;
+					_guildmembers.Add(m.User.ID, m);
+				}
             }
         }
 
@@ -225,9 +235,29 @@ namespace Thylacine.Models
         /// <summary>Does the inital mapping of the presences</summary>
         internal void SyncronizePresence() { foreach (Presence p in Presences) UpdateMemberPresence(p); }
 
-        #region Channel Management
-        internal void UpdateChannel(Channel c) { _channels[c.ID] = c; }
-        internal void RemoveChannel(Channel c) { _channels.Remove(c.ID); }
+		#region Events
+		public event GuildMemberEvent OnMemberCreate;
+		public event GuildMemberEvent OnMemberUpdate;
+		public event GuildMemberEvent OnMemberRemove;
+		
+		public event ChannelEvent OnChannelCreate;
+		public event ChannelEvent OnChannelUpdate;
+		public event ChannelEvent OnChannelRemove;
+		#endregion
+
+		#region Channel Management
+		internal void UpdateChannel(Channel c)
+		{
+			bool isUpdate = HasChannel(c.ID);
+			_channels[c.ID] = c;
+
+			//Invoke the event... This is strange and I don't like it.. DO IT ANYWAYS
+			(isUpdate ? OnChannelUpdate : OnChannelCreate)?.Invoke(this, new ChannelEventArgs(c, this));
+		}
+        internal void RemoveChannel(Channel c) {
+			_channels.Remove(c.ID);
+			OnChannelRemove?.Invoke(this, new ChannelEventArgs(c, this));
+		}
 
         /// <summary>
         /// Returns a channel
@@ -255,7 +285,7 @@ namespace Thylacine.Models
         /// <param name="name">Name of the channel. Between 2 and 100 characters long.</param>
         /// <param name="permissions">The channel's permission overwrites.</param>
         /// <returns>Returns the new channel that was created</returns>
-        public Channel CreateTextChannel(string name, Overwrite[] permissions)
+        public Task<Channel> CreateTextChannel(string name, Overwrite[] permissions)
         {
             if (name.Length < 2 || name.Length > 100) throw new ArgumentException("Channel name must be greater than 2 characters and less than 100. A length of " + name.Length + " was given.");
             return CreateChannel(name, ChannelType.Text, null, null, permissions);
@@ -269,15 +299,15 @@ namespace Thylacine.Models
         /// <param name="userlimit">The user limit of the voice channel</param>
         /// <param name="permissions">The channel's permission overwrites.</param>
         /// <returns>Returns the new channel that was created</returns>
-        public Channel CreateVoiceChannel(string name, int bitrate, int userlimit, Overwrite[] permissions)
+        public Task<Channel> CreateVoiceChannel(string name, int bitrate, int userlimit, Overwrite[] permissions)
         {
             if (name.Length < 2 || name.Length > 100) throw new ArgumentException("Channel name must be greater than 2 characters and less than 100. A length of " + name.Length + " was given.");
             return CreateChannel(name, ChannelType.Voice, bitrate, userlimit, permissions);
         }
-        internal Channel CreateChannel(string name, ChannelType type, int? bitrate, int? userlimit, Overwrite[] permissions)
+        internal async Task<Channel> CreateChannel(string name, ChannelType type, int? bitrate, int? userlimit, Overwrite[] permissions)
         {
             if (name.Length < 2 || name.Length > 100) throw new ArgumentException("Channel name must be greater than 2 characters and less than 100. A length of " + name.Length + " was given.");
-            Channel c = Discord.Rest.SendPayload<Channel>(new Rest.Payloads.CreateChannel()
+            Channel c = await Discord.Rest.SendPayload<Channel>(new Rest.Payloads.CreateChannel()
             {
                 GuildID = ID,
                 Name = name,
@@ -328,10 +358,10 @@ namespace Thylacine.Models
         /// </summary>
         /// <param name="role">The role to create</param>
         /// <returns>Returns the new role object</returns>
-        public Role CreateRole(Role role)
+        public async Task<Role> CreateRole(Role role)
         {
             if (Discord == null) throw new DiscordMissingException();
-            Role r = Discord.Rest.SendPayload<Role>(new Rest.Payloads.CreateGuildRole(this, role));
+            Role r = await Discord.Rest.SendPayload<Role>(new Rest.Payloads.CreateGuildRole(this, role));
             UpdateRole(r);
 
             return r;
@@ -342,15 +372,24 @@ namespace Thylacine.Models
         #region Member Management
         internal void UpdateMember(GuildMember m)
         {
-            _guildmembers[m.User.ID] = m;
+			bool isUpdate = HasMember(m.User.ID);
+
+			m.Guild = this;
+			_guildmembers[m.User.ID] = m;
             _guildmembers[m.User.ID].Guild = this;
             _guildmembers[m.User.ID].User.GuildID = this.ID;
             _guildmembers[m.User.ID].UpdateRoles(this);
+
+			//Invoke the event... This is strange and I don't like it.. DO IT ANYWAYS
+			(isUpdate ? OnMemberUpdate : OnMemberCreate)?.Invoke(this, new GuildMemberEventArgs(this, m));
         }
         internal void RemoveMember(ulong id)
-        {
-            _guildmembers.Remove(id);
-        }
+		{
+			var member = GetMember(id);
+			_guildmembers.Remove(id);
+			OnMemberRemove?.Invoke(this, new GuildMemberEventArgs(this, member));
+
+		}
 
         /// <summary>Update the presence of a user in this guild</summary>
         internal void UpdateMemberPresence(Presence p)
@@ -404,12 +443,12 @@ namespace Thylacine.Models
         /// </summary>
         /// <param name="days">Number of days to count prune for (1 or more)</param>
         /// <returns>Returns the count of members that will be removed</returns>
-        public int FetchPruneCount(int days)
+        public async Task<int> FetchPruneCount(int days)
         {
             if (Discord == null) throw new DiscordMissingException();
             if (days < 1) throw new ArgumentException("Days must be 1 or more.");
 
-            PruneResult result = Discord.Rest.SendPayload<PruneResult>(new Rest.Payloads.GetGuildPruneCount(this, days));
+            PruneResult result = await Discord.Rest.SendPayload<PruneResult>(new Rest.Payloads.GetGuildPruneCount(this, days));
             return result.Count;
         }
 
@@ -418,12 +457,12 @@ namespace Thylacine.Models
         /// </summary>
         /// <param name="days">Number of days to count prune for (1 or more)</param>
         /// <returns> Returns number of members that were removed in the prune operation.</returns>
-        public int Prune(int days)
+        public async Task<int> Prune(int days)
         {
             if (Discord == null) throw new DiscordMissingException();
             if (days < 1) throw new ArgumentException("Days must be 1 or more.");
 
-            PruneResult result = Discord.Rest.SendPayload<PruneResult>(new Rest.Payloads.BeginGuildPrune(this, days));
+            PruneResult result = await Discord.Rest.SendPayload<PruneResult>(new Rest.Payloads.BeginGuildPrune(this, days));
             return result.Count;
         }
 
@@ -435,7 +474,7 @@ namespace Thylacine.Models
         /// Returns a list of user objects that are banned from this guild. Requires the 'BAN_MEMBERS' permission.
         /// </summary>
         /// <returns></returns>
-        public List<User> FetchBans()
+        public Task<List<User>> FetchBans()
         {
             if (Discord == null) throw new DiscordMissingException();
             return Discord.Rest.SendPayload<List<User>>(new Rest.Payloads.GetGuildBans(this));
@@ -459,7 +498,7 @@ namespace Thylacine.Models
         /// Returns a list of invites for the guild. Requires the 'MANAGE_GUILD' permission.
         /// </summary>
         /// <returns></returns>
-        public List<Invite> FetchInvites()
+        public Task<List<Invite>> FetchInvites()
         {
             if (Discord == null) throw new DiscordMissingException();
             return Discord.Rest.SendPayload<List<Invite>>(new Rest.Payloads.GetGuildInvites(this));
@@ -469,10 +508,10 @@ namespace Thylacine.Models
         /// Fetches webhooks for this guild.
         /// </summary>
         /// <returns></returns>
-        public List<Webhook> FetchWebhooks()
+        public async Task<List<Webhook>> FetchWebhooks()
         {
             if (Discord == null) throw new DiscordMissingException();
-            List<Webhook> hooks = Discord.Rest.SendPayload<List<Webhook>>(new Rest.Payloads.GetWebhooks() { ScopeID = this.ID, Scope = "guilds" });
+            List<Webhook> hooks = await Discord.Rest.SendPayload<List<Webhook>>(new Rest.Payloads.GetWebhooks() { ScopeID = this.ID, Scope = "guilds" });
             foreach (Webhook h in hooks) h.Discord = Discord;
             return hooks;
         }
@@ -480,10 +519,10 @@ namespace Thylacine.Models
         /// <summary>
         /// Modifies the guilds settings
         /// </summary>
-        public void ApplyModifications(GuildModification modification)
+        public async void ApplyModifications(GuildModification modification)
         {
             if (Discord == null) throw new DiscordMissingException();
-            Guild g = Discord.Rest.SendPayload<Guild>(new Rest.Payloads.ModifyGuild(this, modification));
+            Guild g = await Discord.Rest.SendPayload<Guild>(new Rest.Payloads.ModifyGuild(this, modification));
             UpdateGuild(g, Discord);
         }
 
