@@ -21,11 +21,14 @@ namespace Thylacine.WinForm
 		public string PrefixTextChannels { get; set; } = "#";
 		public string PrefixVoiceChannels { get; set; } = "🔊";
 
+		public event EventHandler SelectedIndexChanged;
+
 		public Channel Selected
 		{
 			get
 			{
 				if (Guild == null) return null;
+				if (combobox.SelectedItem == null) return null;
 
 				IDNameBox item = (IDNameBox)combobox.SelectedItem;
 				return Guild.GetChannel(item.Identifier);
@@ -90,7 +93,7 @@ namespace Thylacine.WinForm
 		}
 		private void combobox_SelectedIndexChanged(object sender, EventArgs e)
 		{
-
+			SelectedIndexChanged?.Invoke(this, e);
 		}
 	}
 }

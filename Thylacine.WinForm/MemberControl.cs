@@ -43,11 +43,35 @@ namespace Thylacine.WinForm
 			
 			this.voicelist.Guild = Member.Guild;
 			voicelist.Selected = Member.VoiceState.Channel;
+
+			isDeafen.Checked = Member.VoiceState.Deaf;
+			isMute.Checked = Member.VoiceState.Mute;
+			isSelfDeafen.Checked = Member.VoiceState.SelfDeath;
+			isSelfMute.Checked = Member.VoiceState.SelfMute;
 		}
 
 		private void btnNicknameApply_Click(object sender, EventArgs e)
 		{
 			Member.SetNickname(textbox_nickname.Text);
 		}
+
+		private void onMuteStateChange(object sender, EventArgs e) => ApplyModifications();
+		private void voicelist_change(object sender, EventArgs e) => ApplyModifications();
+
+		void ApplyModifications()
+		{
+			Member.ApplyModifications(new GuildMemberModification()
+			{
+				Deaf = isDeafen.Checked,
+				Mute = isMute.Checked,
+				ChannelID = voicelist.Selected.ID
+			});
+		}
+
+		private void btnInspect_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("TODO: Make this show a property editor of everything to do with the member.");
+		}
+
 	}
 }
