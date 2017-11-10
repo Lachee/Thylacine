@@ -16,7 +16,8 @@ namespace Thylacine.Models
         /// The current <see cref="Guild"/> the member is apart of.
         /// </summary>
         public Guild Guild { get; internal set; }
-        /// <summary>
+      
+		/// <summary>
         /// The current <see cref="Thylacine.Discord"/> that the member was created with. 
         /// </summary>
         public Discord Discord { get { return Guild?.Discord; } }
@@ -30,7 +31,7 @@ namespace Thylacine.Models
 		/// <summary>
 		/// Gets the channel the user is in
 		/// </summary>
-		public Channel Channel => Guild.GetChannel(_channel);
+		public Channel Channel => (_channel > 0 ? Guild.GetChannel(_channel) : null);
 		[JsonProperty("channel")] private ulong _channel;
 
 		/// <summary>
@@ -42,7 +43,7 @@ namespace Thylacine.Models
 		/// <summary>
 		/// The nickname used within the guild
 		/// </summary>		
-		public string Nickname => _nickname;
+		public string Nickname { get { return _nickname; } internal set { _nickname = value; } }
 		[JsonProperty("nick")] private string _nickname;
 		
         /// <summary>
@@ -74,29 +75,12 @@ namespace Thylacine.Models
         /// <summary>
         /// The member's current presence.
         /// </summary>
-        public Presence Presence { get; private set; }
+        public PresenceUpdate Presence { get; private set; }
         
         /// <summary>
         /// The tag used to mention the member in chat.
         /// </summary>
         public string MentionTag { get { return "<@!" + this.ID + ">"; } }
-
-        internal void UpdatePresence(Presence p)
-        {
-            this.User.Update(p.Updates);
-            this.Presence = p;
-        }
-        internal void UpdateRoles(Guild guild)
-        {
-            List<Role> roles = new List<Role>();
-            for (int i = 0; i < _roleids.Length; i++)
-            {
-                Role r = guild.GetRole(_roleids[i]);
-                if (r != null) roles.Add(r);
-            }
-
-            Roles = roles.ToArray();
-        }
 
 		#region Internal Updates
 		internal void UpdateModification(GuildMemberModification modifiction)
@@ -106,8 +90,30 @@ namespace Thylacine.Models
 			this._deaf = modifiction.Deaf ?? this._deaf;
 			this._channel = modifiction.ChannelID ?? this._channel;
 		}
+		
+		///<summary>Associates the Role ID's from the JSON to actual Role Objects.</summary>
+		internal void AssociateRoles(ulong[] roles = null)
+		{
+			//Apply the new roles
+			if (roles != null) _roleids = roles;
 
+			//We have to have a guild to get roles for.
+			if (Guild == null) throw new Exceptions.GuildMissingException();
 
+			//Prepare the role array
+			Roles = new Role[_roleids.Length];
+
+			//Iterate over each role ID, updating its actual role reference
+			for (int i = 0; i < Roles.Length; i++)
+				Roles[i] = Guild.GetRole(_roleids[i]);
+		}
+
+		///<summary>Updates the presence of the member.</summary>
+		internal void UpdatePresence(PresenceUpdate p)
+		{
+			this.Presence = p;
+			this.AssociateRoles(p.Roles);
+		}		
 		#endregion
 
 		#region REST Calls

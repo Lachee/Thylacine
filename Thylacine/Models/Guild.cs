@@ -173,28 +173,14 @@ namespace Thylacine.Models
         [JsonProperty("voice_states")]
         public VoiceState[] VoiceStates { get; internal set; }
 
-        /// <summary>
-        /// A list of members that are apart of this guild.
-        /// </summary>
-        /// <remarks>This is implemented with a dictionary backend. It is recommended to fetch the dictionary with <see cref="GetMembers()"/>.</remarks>
-        /// <seealso cref="GetMembers()"/>
-        [JsonProperty("members")]
-        public GuildMember[] GuildMembers
-        {
-            get
-            {
-                return _guildmembers.Select(k => k.Value).ToArray();
-            }
-            internal set
-            {
-                _guildmembers = new Dictionary<ulong, GuildMember>();
-				foreach (var m in value)
-				{
-					m.Guild = this;
-					_guildmembers.Add(m.User.ID, m);
-				}
-            }
-        }
+		/// <summary>
+		/// A list of members that are apart of this guild.
+		/// </summary>
+		/// <remarks>This is implemented with a dictionary backend. It is recommended to fetch the dictionary with <see cref="GetMembers()"/>.</remarks>
+		/// <seealso cref="GetMembers()"/>
+		[JsonProperty("members")]
+		private GuildMember[] j_members { get { return _guildMembers.Values.ToArray(); } set { SetGuildMembers(value); } }
+
 
         /// <summary>
         /// A list of channels that are within the guild.
@@ -202,39 +188,20 @@ namespace Thylacine.Models
         /// <remarks>This is implemented with a dictionary backend. It is recommended to fetch the dictionary with <see cref="GetChannels()"/>.</remarks>
         /// <seealso cref="GetChannels()"/>
         [JsonProperty("channels")]
-        public Channel[] Channels
-        {
-            get
-            {
-                return _channels.Select(k => k.Value).ToArray();
-            }
-            internal set
-            {
-                _channels = new Dictionary<ulong, Channel>();
-                foreach (var c in value)
-                {
-                    c.Guild = this;
-                    _channels.Add(c.ID, c);
-                }
-            }
-        }
-        
-        /// <summary>
-        /// A list of user presences.
-        /// </summary>
-        /// <remarks>Presences are automatically applied and updated to <see cref="GuildMember"/> objects. It is recommended to not access this directly.</remarks>
-        /// <seealso cref="GuildMember"/>
-        [JsonProperty("presences")]
-        public Presence[] Presences { get; internal set; }
+        private Channel[] j_channels  { get {  return _channels.Values.ToArray(); } set { SetChannels(value); }  }
+
+		/// <summary>
+		/// A list of user presences.
+		/// </summary>
+		/// <remarks>Presences are automatically applied and updated to <see cref="GuildMember"/> objects. It is recommended to not access this directly.</remarks>
+		/// <seealso cref="GuildMember"/>
+		[JsonProperty("presences")] private PresenceUpdate[] _presence;
         #endregion
 
-        private Dictionary<ulong, GuildMember> _guildmembers = new Dictionary<ulong, GuildMember>();
+        private Dictionary<ulong, GuildMember> _guildMembers = new Dictionary<ulong, GuildMember>();
         private Dictionary<ulong, Role> _roles = new Dictionary<ulong, Role>();
         private Dictionary<ulong, Channel> _channels = new Dictionary<ulong, Channel>();
-
-        /// <summary>Does the inital mapping of the presences</summary>
-        internal void SyncronizePresence() { foreach (Presence p in Presences) UpdateMemberPresence(p); }
-
+		
 		#region Events
 		public event GuildMemberEvent OnMemberCreate;
 		public event GuildMemberEvent OnMemberUpdate;
@@ -243,9 +210,21 @@ namespace Thylacine.Models
 		public event ChannelEvent OnChannelCreate;
 		public event ChannelEvent OnChannelUpdate;
 		public event ChannelEvent OnChannelRemove;
+
+		public event PresenceEvent OnPresenceUpdate;
 		#endregion
 
 		#region Channel Management
+		private void SetChannels(Channel[] channels)
+		{
+			_channels = new Dictionary<ulong, Channel>();
+			foreach (var c in channels)
+			{
+				c.Guild = this;
+				_channels.Add(c.ID, c);
+			}
+		}
+
 		internal void UpdateChannel(Channel c)
 		{
 			bool isUpdate = HasChannel(c.ID);
@@ -366,70 +345,93 @@ namespace Thylacine.Models
 
             return r;
         }
-        
-        #endregion
 
-        #region Member Management
-        internal void UpdateMember(GuildMember m)
-        {
-			bool isUpdate = HasMember(m.User.ID);
+		#endregion
 
-			m.Guild = this;
-			_guildmembers[m.User.ID] = m;
-            _guildmembers[m.User.ID].Guild = this;
-            _guildmembers[m.User.ID].User.GuildID = this.ID;
-            _guildmembers[m.User.ID].UpdateRoles(this);
-
-			//Invoke the event... This is strange and I don't like it.. DO IT ANYWAYS
-			(isUpdate ? OnMemberUpdate : OnMemberCreate)?.Invoke(this, new GuildMemberEventArgs(this, m));
-        }
-        internal void RemoveMember(ulong id)
+		#region Member Management
+		
+		private void SetGuildMembers(GuildMember[] value)
 		{
-			var member = GetMember(id);
-			_guildmembers.Remove(id);
-			OnMemberRemove?.Invoke(this, new GuildMemberEventArgs(this, member));
+			//Called when JSON serializes the _gm variables.
+			_guildMembers = new Dictionary<ulong, GuildMember>();
+			foreach (var m in value)
+			{
+				//Set the guild for the member
+				m.Guild = this;
 
+				//Add them to the dictionary
+				_guildMembers.Add(m.User.ID, m);
+			}
 		}
 
-        /// <summary>Update the presence of a user in this guild</summary>
-        internal void UpdateMemberPresence(Presence p)
-        {
-            //Updates the presence of the user
-            if (p.GuildID != this.ID) return;
+		internal void AddMember(GuildMember m)
+		{
+			//Event that is called when a new member is added to the guild.
+			m.Guild = this;
+			_guildMembers[m.ID] = m;
+			_guildMembers[m.ID].AssociateRoles();
 
-            //Get the member
-            GuildMember member;
-            if (!_guildmembers.TryGetValue(p.Updates.ID, out member)) return;
+			OnMemberCreate?.Invoke(this, new GuildMemberEventArgs(this, m));
+		}
+		internal void UpdateMember(User user, ulong[] roles, string nickname)
+		{
+			if (!HasMember(user.ID))
+				throw new ArgumentNullException("user", "No guild member exists with supplied ID!");
 
-            //Update them
-            member.Guild = this;
-            member.UpdatePresence(p);
-        }
-        internal void UpdateUser(User u)
-        {
-            if (!HasMember(u.ID)) return;
-            _guildmembers[u.ID].User = u;
-        }
+			_guildMembers[user.ID].Nickname = nickname;
+			_guildMembers[user.ID].AssociateRoles(roles);
 
+			OnMemberUpdate?.Invoke(this, new GuildMemberEventArgs(this, _guildMembers[user.ID]));
+		}
+		internal void RemoveMember(ulong ID)
+		{
+			GuildMember m;
+			if (!_guildMembers.TryGetValue(ID, out m))
+				throw new ArgumentOutOfRangeException("ID", "Guild does not contain any member with ID");
+
+			_guildMembers.Remove(ID);
+			OnMemberRemove?.Invoke(this, new GuildMemberEventArgs(this, m));
+		}
+		
+		internal void UpdatePresence(PresenceUpdate presence)
+		{
+			//Get the member
+			GuildMember m;
+			if (!_guildMembers.TryGetValue(presence.User.ID, out m))
+				throw new ArgumentNullException("presence.User.ID", "Guild does not have a user with matching ID.");
+
+			//Update their presence
+			m.UpdatePresence(presence);
+			OnPresenceUpdate?.Invoke(this, new PresenceEventArgs(this, m, presence));
+		}
+		internal void AssociatePresences()
+		{
+			foreach (PresenceUpdate p in _presence)
+			{
+				if (p.GuildID == 0) continue;
+				_guildMembers[p.GuildID].UpdatePresence(p);
+			}
+		}
+		
         /// <summary>
         /// Gets a member within the guild
         /// </summary>
         /// <param name="id">The User ID of the member.</param>
         /// <returns>Returns target member</returns>
-        public GuildMember GetMember(ulong id) { return _guildmembers[id]; }
+        public GuildMember GetMember(ulong id) { return _guildMembers[id]; }
 
         /// <summary>
         /// Gets a list of members that are apart of the guild.
         /// </summary>
         /// <returns> Returns a dictionary of id => member pairs that are of every member</returns>
-        public Dictionary<ulong, GuildMember> GetMembers() { return _guildmembers; }
+        public Dictionary<ulong, GuildMember> GetMembers() { return _guildMembers; }
 
         /// <summary>
         /// Checks id the a member is apart of this guild
         /// </summary>
         /// <param name="id">The User ID of the member.</param>
         /// <returns>Returns true if the member is apart of the guild</returns>
-        public bool HasMember(ulong id) { return _guildmembers.ContainsKey(id); }
+        public bool HasMember(ulong id) { return _guildMembers.ContainsKey(id); }
 
 
         internal struct PruneResult
@@ -565,7 +567,7 @@ namespace Thylacine.Models
             this.MFALevel = g.MFALevel;
             this.MemberCount = g.MemberCount;
 
-            SyncronizePresence();
+			AssociatePresences();
         }
         #endregion
         

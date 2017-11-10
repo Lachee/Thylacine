@@ -63,6 +63,7 @@
     <Compile Include="Event\ReadyEvent.cs" />
     <Compile Include="Event\RoleEvent.cs" />
     <Compile Include="Event\UserEvent.cs" />
+    <Compile Include="Exceptions\GuildMissingException.cs" />
     <Compile Include="Exceptions\DiscordMissingException.cs" />
     <Compile Include="Exceptions\ImageSizeException.cs" />
     <Compile Include="Gateway\GatewayEndpoint.cs" />

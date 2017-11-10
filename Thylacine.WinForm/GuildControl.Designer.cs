@@ -28,19 +28,19 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Test");
-			System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("sdads");
-			System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("fdafdasfasd");
+			System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Test");
+			System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("sdads");
+			System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("fdafdasfasd");
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.statusUsersOnline = new System.Windows.Forms.ToolStripStatusLabel();
 			this.textMessage = new System.Windows.Forms.TextBox();
 			this.buttonMessageSend = new System.Windows.Forms.Button();
-			this.comboChannels = new System.Windows.Forms.ComboBox();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.groupUsers = new System.Windows.Forms.GroupBox();
 			this.listview = new System.Windows.Forms.ListView();
 			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.properties = new System.Windows.Forms.PropertyGrid();
+			this.channellist = new Thylacine.WinForm.ChannelList();
+			this.memberview = new Thylacine.WinForm.MemberControl();
 			this.statusStrip1.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.groupUsers.SuspendLayout();
@@ -80,18 +80,9 @@
 			this.buttonMessageSend.UseVisualStyleBackColor = true;
 			this.buttonMessageSend.Click += new System.EventHandler(this.buttonMessageSend_Click);
 			// 
-			// comboChannels
-			// 
-			this.comboChannels.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboChannels.FormattingEnabled = true;
-			this.comboChannels.Location = new System.Drawing.Point(6, 19);
-			this.comboChannels.Name = "comboChannels";
-			this.comboChannels.Size = new System.Drawing.Size(151, 21);
-			this.comboChannels.TabIndex = 3;
-			// 
 			// groupBox1
 			// 
-			this.groupBox1.Controls.Add(this.comboChannels);
+			this.groupBox1.Controls.Add(this.channellist);
 			this.groupBox1.Controls.Add(this.buttonMessageSend);
 			this.groupBox1.Controls.Add(this.textMessage);
 			this.groupBox1.Location = new System.Drawing.Point(10, 3);
@@ -117,9 +108,9 @@
             this.columnHeader1});
 			this.listview.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.listview.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3});
+            listViewItem4,
+            listViewItem5,
+            listViewItem6});
 			this.listview.Location = new System.Drawing.Point(3, 16);
 			this.listview.Name = "listview";
 			this.listview.Size = new System.Drawing.Size(171, 374);
@@ -133,19 +124,28 @@
 			this.columnHeader1.Text = "Username";
 			this.columnHeader1.Width = 167;
 			// 
-			// properties
+			// channellist
 			// 
-			this.properties.LineColor = System.Drawing.SystemColors.ControlDark;
-			this.properties.Location = new System.Drawing.Point(611, 3);
-			this.properties.Name = "properties";
-			this.properties.Size = new System.Drawing.Size(261, 473);
-			this.properties.TabIndex = 7;
+			this.channellist.Guild = null;
+			this.channellist.Location = new System.Drawing.Point(6, 19);
+			this.channellist.MaximumSize = new System.Drawing.Size(10000, 1000);
+			this.channellist.MinimumSize = new System.Drawing.Size(21, 21);
+			this.channellist.Name = "channellist";
+			this.channellist.Size = new System.Drawing.Size(151, 21);
+			this.channellist.TabIndex = 8;
+			// 
+			// memberview
+			// 
+			this.memberview.Location = new System.Drawing.Point(457, 19);
+			this.memberview.Name = "memberview";
+			this.memberview.Size = new System.Drawing.Size(402, 191);
+			this.memberview.TabIndex = 7;
 			// 
 			// GuildControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Controls.Add(this.properties);
+			this.Controls.Add(this.memberview);
 			this.Controls.Add(this.groupUsers);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.statusStrip1);
@@ -168,11 +168,11 @@
 		private System.Windows.Forms.ToolStripStatusLabel statusUsersOnline;
 		private System.Windows.Forms.TextBox textMessage;
 		private System.Windows.Forms.Button buttonMessageSend;
-		private System.Windows.Forms.ComboBox comboChannels;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.GroupBox groupUsers;
 		private System.Windows.Forms.ListView listview;
 		private System.Windows.Forms.ColumnHeader columnHeader1;
-		private System.Windows.Forms.PropertyGrid properties;
+		private MemberControl memberview;
+		private ChannelList channellist;
 	}
 }

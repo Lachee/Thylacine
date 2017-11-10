@@ -73,7 +73,7 @@ namespace Thylacine.Test
                     string message = Console.ReadLine();
                     if (message == "exit") break;
                   
-                    var channels = bot.GetGuilds().First().Channels.Where(c => c.Type == Models.ChannelType.Text).ToArray();
+                    var channels = bot.GetGuilds().First().GetChannels().Values.Where(c => c.Type == Models.ChannelType.Text).ToArray();
 
                     Console.WriteLine("Text Channels:");
                     foreach (var c in channels)

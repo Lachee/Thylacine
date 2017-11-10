@@ -76,11 +76,11 @@ namespace Thylacine.Models
         /// </summary>
         [JsonProperty("email")]
         public string Email { get; internal set; }
-        #endregion
+		#endregion
         
-        //Dont know why I am doing this over just setting it
-        internal void Update(PresenceUser pu)
+        internal void UpdatePresence(PresenceUpdate presence)
         {
+			var pu = presence.User;
             this.Username = pu.Username ?? this.Username;
             this.Discriminator = pu.Discriminator ?? this.Discriminator;
             this.AvatarHash = pu.Avatar ?? this.AvatarHash;
@@ -89,7 +89,7 @@ namespace Thylacine.Models
             this.MFAEnabled = pu.MFAEnabled ?? this.MFAEnabled;
             this.Verified = pu.Verified ?? this.Verified;
             this.Email = pu.Email ?? this.Email;
-        }
+		}
 
         public override bool Equals(object obj)
         {

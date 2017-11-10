@@ -19,7 +19,8 @@ namespace Thylacine.WinForm
 		public GuildControl(Guild guild)
 		{
 			InitializeComponent();
-			_guild = guild;
+
+			_guild = channellist.Guild = guild;			
 		}
 
 		private void GuildControl_Load(object sender, EventArgs arg)
@@ -28,8 +29,7 @@ namespace Thylacine.WinForm
 			Guild.OnMemberCreate += (s, e) => this.Invoke(new MethodInvoker(delegate () { OnMemberUpdate(s, e); }));
 			Guild.OnChannelUpdate += (s, e) => this.Invoke(new MethodInvoker(delegate () { OnChannelUpdate(s, e); }));
 			Guild.OnChannelCreate += (s, e) => this.Invoke(new MethodInvoker(delegate () { OnChannelUpdate(s, e); }));
-
-			properties.SelectedObject = Guild;
+			
 			UpdateChannels();
 			UpdateMembers();
 		}
@@ -40,18 +40,7 @@ namespace Thylacine.WinForm
 		#endregion
 
 		#region Updates
-		private void UpdateChannels()
-		{
-			comboChannels.Items.Clear();
-			foreach (Channel c in Guild.GetChannels().Values)
-			{
-				if (c.IsPrivate) continue;
-				if (c.Type != ChannelType.Text) continue;
-
-				comboChannels.Items.Add(new IDNameBox() { DisplayName = "#" + c.Name, Identifier = c.ID });
-				if (c.Position == 0) comboChannels.SelectedIndex = comboChannels.Items.Count - 1;
-			}
-		}
+		private void UpdateChannels() { channellist.SyncChannels(); }
 
 		private void UpdateMembers()
 		{
@@ -73,13 +62,13 @@ namespace Thylacine.WinForm
 		private async void buttonMessageSend_Click(object sender, EventArgs e)
 		{
 			//Get the channel
-			var combo = (IDNameBox)(comboChannels.SelectedItem);
-			Channel channel = Guild.GetChannel(combo.Identifier);
+			Channel channel = channellist.Selected;
+			if (channel == null) return;
 
 			//Send a message
 			await channel.SendMessage(textMessage.Text);
 			textMessage.Text = "";
-
+			
 			//Get the selected channel
 		}
 
@@ -87,12 +76,14 @@ namespace Thylacine.WinForm
 		{
 			if (listview.SelectedIndices.Count == 0)
 			{
-				properties.SelectedObject = Guild;
+				memberview.SetMember(null);
 				return;
 			}
 
 			ulong id = (ulong)listview.SelectedItems[0].Tag;
-			properties.SelectedObject = Guild.GetMember(id);
+			var m = Guild.GetMember(id);
+
+			memberview.SetMember(m);
 		}
 	}
 }

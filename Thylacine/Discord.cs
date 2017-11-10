@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Collections;
 
 /// <summary>
 /// The root namespace. The basis of everything.
@@ -31,19 +31,15 @@ namespace Thylacine
         /// The current Gateway Client
         /// </summary>
         public IGateway Gateway { get; set; }
+		
+		private Dictionary<ulong, Guild> _guilds = new Dictionary<ulong, Guild>();
+		
 
-        private Dictionary<ulong, Guild> _guilds = new Dictionary<ulong, Guild>();
-
-        /// <summary>
-        /// A list of all private channels the bot is subscribed to.
-        /// </summary>
-        /// <remarks>The DM Channels are not fully implemented yet and are subjected to change. They do not have the same functionalites as normal channels.</remarks>
-        public List<DMChannel> PrivateChannels { get; private set; } = new List<DMChannel>();
-
-        /// <summary>
-        /// The current bot user
-        /// </summary>
-        public User User { get; private set; }
+		/// <summary>
+		/// A list of all private channels the bot is subscribed to.
+		/// </summary>
+		/// <remarks>The DM Channels are not fully implemented yet and are subjected to change. They do not have the same functionalites as normal channels.</remarks>
+		public List<DMChannel> PrivateChannels { get; private set; } = new List<DMChannel>();
 
         private string token;
 
@@ -82,6 +78,7 @@ namespace Thylacine
         public event RoleEvent OnRoleRemove;
 
         public event UserEvent OnUserUpdate;
+		public event UserEvent OnUserCreate;
 
         public event PresenceEvent OnPresenceUpdate;
         public event TypingEvent OnTyping;
@@ -146,7 +143,7 @@ namespace Thylacine
             //Add the guild
             guild.Discord = this;
             _guilds[guild.ID] = guild;
-            _guilds[guild.ID].SyncronizePresence();
+            _guilds[guild.ID].AssociatePresences();
 
             OnGuildCreate?.Invoke(this, new GuildEventArgs(_guilds[guild.ID]));
         }
@@ -166,27 +163,32 @@ namespace Thylacine
 
         private void HandleGuildMemberAddEvent(GuildMemeberAdd member)
         {
+			//Get the guild
             Guild g = _guilds[member.GuildID];
-			g.UpdateMember(member);			
+
+			//Highjack the user and add it to our list for our own evil purposes.
+			AddUser(member.User);
+
+			//Add the member
+			g.AddMember(member);			
         }
         private void HandleGuildMemberUpdateEvent(GuildMemeberUpdate e)
         {
+			//Get the guild and update them
             Guild g = _guilds[e.GuildID];
-
-            GuildMember gm = g.GetMember(e.User.ID);
-            g.UpdateMember(gm, e,Roles, e.Nickname, e.User);            
+			g.UpdateMember(e.User, e.Roles, e.Nickname);     
         }
         private void HandleGuildMemberRemoveEvent(GuildMemberRemove e)
         {
             Guild g = _guilds[e.GuildID];
-            g.RemoveMember(e.User.ID);
-            //Console.WriteLine("Finished removing memeber");
+			g.RemoveMember(e.User.ID);
         }
         private void HandleGuildMemberChunkEvent(GuildMembersChunk c)
         {
-            Guild g = GetGuild(c.GuildID);
-            g.GuildMembers = c.Members;
-            OnMembersChunk?.Invoke(this, new GuildEventArgs(g));
+			throw new NotImplementedException();
+            //Guild g = GetGuild(c.GuildID);
+            //g.GuildMembers = c.Members;
+            //OnMembersChunk?.Invoke(this, new GuildEventArgs(g));
         }
 
         private void HandleGuildRoleUCEvent(GuildRoleEvent e, bool isCreate)
@@ -210,35 +212,21 @@ namespace Thylacine
 
             //Console.WriteLine("Finished Role Deletion");
         }
-        private void HandlePresenceUpdateEvent(Presence p)
+        private void HandlePresenceUpdateEvent(PresenceUpdate p)
         {
-            Guild g = null;
+			if (p.GuildID <= 0)
+			{
+				Console.WriteLine("Presence Update from a Bot's Friend. This is not yet supported.");
+				return;
+			}
 
-            if (p.GuildID.HasValue)
-            {
-                g = _guilds[p.GuildID.Value];
-            }
-            else
-            {
-                foreach (Guild guild in _guilds.Values)
-                {
-                    if (guild.HasMember(p.Updates.ID))
-                    {
-                        g = guild;
-                        break;
-                    }
-                }
+			//Update the user
+			UpdateUserPresence(p);
 
-                if (g == null)
-                {
-                    Console.WriteLine("Cannot update presence! Null guild!");
-                    return;
-                }
-            }
+			//Update the presence of the guild user
+			Guild g = _guilds[p.GuildID];
+			g.UpdatePresence(p);
 
-
-            g.UpdateMemberPresence(p);
-            OnPresenceUpdate?.Invoke(this, new PresenceEventArgs(g, g.GetMember(p.Updates.ID), p));
         }
 
         private void HandleChannelCreateEvent(Channel c)
@@ -280,13 +268,7 @@ namespace Thylacine
             OnEmojisUpdate?.Invoke(this, new GuildEventArgs(g));
         }
         
-        private void HandleUserUpdate(User user)
-        {
-            foreach (Guild g in _guilds.Values)
-                g.UpdateUser(user);
-
-            OnUserUpdate?.Invoke(this, new UserEventArgs(user));
-        }
+     
         #endregion
 
         private void OnDispatchEvent(object sender, DispatchEventArgs args)
@@ -453,7 +435,7 @@ namespace Thylacine
 
                 #region Presence
                 case "PRESENCE_UPDATE":
-                    HandlePresenceUpdateEvent(args.Payload.ToObject<Presence>());
+                    HandlePresenceUpdateEvent(args.Payload.ToObject<PresenceUpdate>());
                     break;
 
                 case "TYPING_START":
@@ -596,49 +578,106 @@ namespace Thylacine
             return hook;
         }
 
-        #endregion
+		#endregion
 
-        #region Users
-        /// <summary>
-        /// Fetches a user of given ID
-        /// </summary>
-        /// <param name="userID">The user ID</param>
-        /// <returns>A new user object</returns>
-        public Task<User> FetchUser(ulong userID)
+		#region Users
+
+		private Dictionary<ulong, User> _users = new Dictionary<ulong, User>();
+
+		#region Sets / Events
+
+		private void HandleUserUpdate(User user)
+		{
+			_users[user.ID] = user;
+			OnUserUpdate?.Invoke(this, new UserEventArgs(user));
+		}
+
+		private void UpdateUserPresence(PresenceUpdate presence)
+		{
+			_users[presence.User.ID].UpdatePresence(presence);
+			OnUserUpdate?.Invoke(this, new UserEventArgs(_users[presence.User.ID]));
+
+		}
+		private void AddUser(User user)
+		{
+			//User already exists in the list
+			if (_users.ContainsKey(user.ID))
+				return;
+
+			//Create the user
+			_users.Add(user.ID, user);
+			OnUserCreate?.Invoke(this, new UserEventArgs(user));
+		}
+
+		private Task<User> FetchUser(ulong userID)
         {
             return Rest.SendPayload<User>(new Rest.Payloads.GetUser() { UserID = userID });
         }
+		#endregion
 
-        /// <summary>
-        /// Modifies the current account settings of the bot.
-        /// </summary>
-        /// <param name="username">Username to set the bot too</param>
-        public void ModifyUser(string username) { ModifyUser(username, null); }
-
-        /// <summary>
-        /// Modifies the current account settings of the bot.
-        /// </summary>
-        /// <param name="avatar">Avatar to set the bot too.</param>
-        public void ModifyUser(Avatar avatar) { ModifyUser(null, avatar); }
-
-        /// <summary>
-        /// Modifies the current account settings of the bot.
-        /// </summary>
-        /// <param name="username">Username to set the bot too</param>
-        /// <param name="avatar">Avatar to set the bot too.</param>
-        public void ModifyUser(string username, Avatar avatar)
-        {
-            Rest.SendPayload(new Rest.Payloads.ModifyUser() { UserID = User.ID, Name = username, Avatar = avatar });
-        }
-       
-		public List<User> GetUsers()
+		#region Gets
+		/// <summary>
+		/// Gets a User the bot can see.
+		/// </summary>
+		/// <param name="id">The ID of the User</param>
+		/// <returns></returns>
+		public User GetUser(ulong id)
 		{
-			List<User> users = new List<User>();
-			foreach (Guild g in _guilds.Values)
-				users.AddRange(g.GetMembers().Select(gm => gm.Value.User));
+			User u;
+			if (_users.TryGetValue(id, out u)) return u;
+			return null;
+		}
 
-			return users;
+		/// <summary>
+		/// Gets a list of users the bot can see.
+		/// </summary>
+		/// <returns></returns>
+		public User[] GetUsers()
+		{
+			return _users.Values.ToArray();
+		}
+
+		/// <summary>
+		/// Gets an enumerator of users the bot can see
+		/// </summary>
+		/// <returns></returns>
+		public Dictionary<ulong, User>.Enumerator GetUsersEnumerator()
+		{
+			return _users.GetEnumerator();
 		}
 		#endregion
-    }
+
+		#endregion
+
+		#region Bot User
+
+		/// <summary>
+		/// The current bot user
+		/// </summary>
+		public User User { get; private set; }
+
+		/// <summary>
+		/// Modifies the current account settings of the bot.
+		/// </summary>
+		/// <param name="username">Username to set the bot too</param>
+		public void ModifyBotUser(string username) { ModifyBotUser(username, null); }
+
+		/// <summary>
+		/// Modifies the current account settings of the bot.
+		/// </summary>
+		/// <param name="avatar">Avatar to set the bot too.</param>
+		public void ModifyBotUser(Avatar avatar) { ModifyBotUser(null, avatar); }
+
+		/// <summary>
+		/// Modifies the current account settings of the bot.
+		/// </summary>
+		/// <param name="username">Username to set the bot too</param>
+		/// <param name="avatar">Avatar to set the bot too.</param>
+		public void ModifyBotUser(string username, Avatar avatar)
+		{
+			Rest.SendPayload(new Rest.Payloads.ModifyUser() { UserID = User.ID, Name = username, Avatar = avatar });
+		}
+
+		#endregion
+	}
 }
