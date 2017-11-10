@@ -131,6 +131,11 @@
 			this.channellist.MaximumSize = new System.Drawing.Size(10000, 1000);
 			this.channellist.MinimumSize = new System.Drawing.Size(21, 21);
 			this.channellist.Name = "channellist";
+			this.channellist.PrefixTextChannels = "#";
+			this.channellist.PrefixVoiceChannels = "🔊";
+			this.channellist.Selected = null;
+			this.channellist.ShowTextChannels = true;
+			this.channellist.ShowVoiceChannels = false;
 			this.channellist.Size = new System.Drawing.Size(151, 21);
 			this.channellist.TabIndex = 8;
 			// 
@@ -138,7 +143,7 @@
 			// 
 			this.memberview.Location = new System.Drawing.Point(457, 19);
 			this.memberview.Name = "memberview";
-			this.memberview.Size = new System.Drawing.Size(402, 191);
+			this.memberview.Size = new System.Drawing.Size(321, 152);
 			this.memberview.TabIndex = 7;
 			// 
 			// GuildControl
@@ -172,7 +177,7 @@
 		private System.Windows.Forms.GroupBox groupUsers;
 		private System.Windows.Forms.ListView listview;
 		private System.Windows.Forms.ColumnHeader columnHeader1;
-		private MemberControl memberview;
 		private ChannelList channellist;
+		private MemberControl memberview;
 	}
 }

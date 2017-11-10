@@ -26,7 +26,7 @@ namespace Thylacine.Models.Event
         public string Session { get; set; }
 
         [JsonProperty("presences")]
-        public PresenceUpdate[] Presences { get; set; }
+        public Presence[] Presences { get; set; }
 
         [JsonProperty("relationships")]
         public object Relationships { get; set; }

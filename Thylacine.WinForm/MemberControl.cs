@@ -24,7 +24,11 @@ namespace Thylacine.WinForm
 			SyncFields();
 		}
 
-		public void SetMember(GuildMember member) { this._member = member; SyncFields(); }
+		public void SetMember(GuildMember member)
+		{
+			this._member = member;
+			SyncFields();
+		}
 
 		private void MemberControl_Load(object sender, EventArgs e)
 		{
@@ -33,8 +37,12 @@ namespace Thylacine.WinForm
 		public void SyncFields()
 		{
 			if (Member == null) return;
+
 			textbox_username.Text = Member.User.Username;
 			textbox_nickname.Text = Member.Nickname;
+			
+			this.voicelist.Guild = Member.Guild;
+			voicelist.Selected = Member.VoiceState.Channel;
 		}
 
 		private void btnNicknameApply_Click(object sender, EventArgs e)

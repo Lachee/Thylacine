@@ -12,9 +12,9 @@ namespace Thylacine.Event
     {
         public Guild Guild { get; }
         public GuildMember Member { get; }
-        public PresenceUpdate Presence { get; }
+        public Presence Presence { get; }
 
-        internal PresenceEventArgs(Guild g, GuildMember m, PresenceUpdate p)
+        internal PresenceEventArgs(Guild g, GuildMember m, Presence p)
         {
             this.Guild = g;
             this.Member = m;

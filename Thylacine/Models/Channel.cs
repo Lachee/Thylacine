@@ -38,7 +38,7 @@ namespace Thylacine.Models
 
         [JsonProperty("permission_overwrites")]
         public List<Overwrite> PermissionOverwrites { get; internal set; }
-
+		
         #region Channel Management
         /// <summary>
         /// Update a channels settings. Requires the 'MANAGE_GUILD' permission for the guild. 

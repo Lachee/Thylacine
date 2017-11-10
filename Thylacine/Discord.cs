@@ -141,9 +141,8 @@ namespace Thylacine
         private void HandleGuildCreateEvent(Guild guild)
         {
             //Add the guild
-            guild.Discord = this;
             _guilds[guild.ID] = guild;
-            _guilds[guild.ID].AssociatePresences();
+			_guilds[guild.ID].Initialize(this);
 
             OnGuildCreate?.Invoke(this, new GuildEventArgs(_guilds[guild.ID]));
         }
@@ -212,7 +211,7 @@ namespace Thylacine
 
             //Console.WriteLine("Finished Role Deletion");
         }
-        private void HandlePresenceUpdateEvent(PresenceUpdate p)
+        private void HandlePresenceUpdateEvent(Presence p)
         {
 			if (p.GuildID <= 0)
 			{
@@ -435,7 +434,7 @@ namespace Thylacine
 
                 #region Presence
                 case "PRESENCE_UPDATE":
-                    HandlePresenceUpdateEvent(args.Payload.ToObject<PresenceUpdate>());
+                    HandlePresenceUpdateEvent(args.Payload.ToObject<Presence>());
                     break;
 
                 case "TYPING_START":
@@ -469,7 +468,8 @@ namespace Thylacine
                 case "VOICE_STATE_UPDATE":
                     {
                         VoiceState state = args.Payload.ToObject<VoiceState>();
-                        //TODO: Handle VOICE_STATE_UPDATE Event
+						state.AssociateGuild(this);
+						state.Guild.UpdateVoiceState(state);
                     }
                     break;
 
@@ -592,7 +592,7 @@ namespace Thylacine
 			OnUserUpdate?.Invoke(this, new UserEventArgs(user));
 		}
 
-		private void UpdateUserPresence(PresenceUpdate presence)
+		private void UpdateUserPresence(Presence presence)
 		{
 			_users[presence.User.ID].UpdatePresence(presence);
 			OnUserUpdate?.Invoke(this, new UserEventArgs(_users[presence.User.ID]));

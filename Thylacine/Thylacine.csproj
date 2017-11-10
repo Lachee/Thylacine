@@ -62,6 +62,7 @@
     <Compile Include="Event\PresenceEvent.cs" />
     <Compile Include="Event\ReadyEvent.cs" />
     <Compile Include="Event\RoleEvent.cs" />
+    <Compile Include="Event\VoiceStateEvent.cs" />
     <Compile Include="Event\UserEvent.cs" />
     <Compile Include="Exceptions\GuildMissingException.cs" />
     <Compile Include="Exceptions\DiscordMissingException.cs" />

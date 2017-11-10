@@ -166,36 +166,32 @@ namespace Thylacine.Models
         [JsonProperty("unavailable")]
         public bool Unavailable { get; internal set; }
 
-        /// <summary>
-        /// A list of voice states for users.
-        /// </summary>
-        /// <remarks>This isn't optimised with dictionaries and can be slow to lookup.</remarks>
-        [JsonProperty("voice_states")]
-        public VoiceState[] VoiceStates { get; internal set; }
+		/// <summary>
+		/// A list of voice states for users.
+		/// </summary>
+		/// <remarks>This isn't optimised with dictionaries and can be slow to lookup.</remarks>
+		[JsonProperty("voice_states")] private VoiceState[] _voicestates;
 
 		/// <summary>
 		/// A list of members that are apart of this guild.
 		/// </summary>
 		/// <remarks>This is implemented with a dictionary backend. It is recommended to fetch the dictionary with <see cref="GetMembers()"/>.</remarks>
 		/// <seealso cref="GetMembers()"/>
-		[JsonProperty("members")]
-		private GuildMember[] j_members { get { return _guildMembers.Values.ToArray(); } set { SetGuildMembers(value); } }
+		[JsonProperty("members")] private GuildMember[] j_members;
 
-
-        /// <summary>
-        /// A list of channels that are within the guild.
-        /// </summary>
-        /// <remarks>This is implemented with a dictionary backend. It is recommended to fetch the dictionary with <see cref="GetChannels()"/>.</remarks>
-        /// <seealso cref="GetChannels()"/>
-        [JsonProperty("channels")]
-        private Channel[] j_channels  { get {  return _channels.Values.ToArray(); } set { SetChannels(value); }  }
+		/// <summary>
+		/// A list of channels that are within the guild.
+		/// </summary>
+		/// <remarks>This is implemented with a dictionary backend. It is recommended to fetch the dictionary with <see cref="GetChannels()"/>.</remarks>
+		/// <seealso cref="GetChannels()"/>
+		[JsonProperty("channels")] private Channel[] j_channels;
 
 		/// <summary>
 		/// A list of user presences.
 		/// </summary>
 		/// <remarks>Presences are automatically applied and updated to <see cref="GuildMember"/> objects. It is recommended to not access this directly.</remarks>
 		/// <seealso cref="GuildMember"/>
-		[JsonProperty("presences")] private PresenceUpdate[] _presence;
+		[JsonProperty("presences")] private Presence[] _presence;
         #endregion
 
         private Dictionary<ulong, GuildMember> _guildMembers = new Dictionary<ulong, GuildMember>();
@@ -213,6 +209,16 @@ namespace Thylacine.Models
 
 		public event PresenceEvent OnPresenceUpdate;
 		#endregion
+
+		internal void Initialize(Discord discord)
+		{
+			this.Discord = discord;
+
+			SetGuildMembers(j_members);
+			SetChannels(j_channels);
+			SetVoiceStates(_voicestates);
+			SetPresences(_presence);
+		}
 
 		#region Channel Management
 		private void SetChannels(Channel[] channels)
@@ -243,7 +249,7 @@ namespace Thylacine.Models
         /// </summary>
         /// <param name="id">ID of the channel</param>
         /// <returns>Channel object</returns>
-        public Channel GetChannel(ulong id) { return _channels[id]; }
+        public Channel GetChannel(ulong id) { return id == 0 ? null : _channels[id]; }
 
         /// <summary>
         /// Get a list of all the channels within this guild
@@ -348,8 +354,7 @@ namespace Thylacine.Models
 
 		#endregion
 
-		#region Member Management
-		
+		#region Member Management		
 		private void SetGuildMembers(GuildMember[] value)
 		{
 			//Called when JSON serializes the _gm variables.
@@ -358,6 +363,8 @@ namespace Thylacine.Models
 			{
 				//Set the guild for the member
 				m.Guild = this;
+				m.InitializeVoiceState();
+				m.AssociateRoles();
 
 				//Add them to the dictionary
 				_guildMembers.Add(m.User.ID, m);
@@ -369,6 +376,7 @@ namespace Thylacine.Models
 			//Event that is called when a new member is added to the guild.
 			m.Guild = this;
 			_guildMembers[m.ID] = m;
+			_guildMembers[m.ID].InitializeVoiceState();
 			_guildMembers[m.ID].AssociateRoles();
 
 			OnMemberCreate?.Invoke(this, new GuildMemberEventArgs(this, m));
@@ -393,7 +401,7 @@ namespace Thylacine.Models
 			OnMemberRemove?.Invoke(this, new GuildMemberEventArgs(this, m));
 		}
 		
-		internal void UpdatePresence(PresenceUpdate presence)
+		internal void UpdatePresence(Presence presence)
 		{
 			//Get the member
 			GuildMember m;
@@ -404,13 +412,24 @@ namespace Thylacine.Models
 			m.UpdatePresence(presence);
 			OnPresenceUpdate?.Invoke(this, new PresenceEventArgs(this, m, presence));
 		}
-		internal void AssociatePresences()
+		internal void UpdateVoiceState(VoiceState state)
 		{
-			foreach (PresenceUpdate p in _presence)
+			state.Guild = this;
+			state.GuildMember.UpdateVoiceState(state);
+		}
+		
+		private void SetPresences(Presence[] presences)
+		{
+			foreach (Presence p in presences)
 			{
 				if (p.GuildID == 0) continue;
-				_guildMembers[p.GuildID].UpdatePresence(p);
+				_guildMembers[p.User.ID].UpdatePresence(p);
 			}
+		}
+		private void SetVoiceStates(VoiceState[] states)
+		{
+			foreach (VoiceState s in states)
+				UpdateVoiceState(s);
 		}
 		
         /// <summary>
@@ -418,7 +437,7 @@ namespace Thylacine.Models
         /// </summary>
         /// <param name="id">The User ID of the member.</param>
         /// <returns>Returns target member</returns>
-        public GuildMember GetMember(ulong id) { return _guildMembers[id]; }
+        public GuildMember GetMember(ulong id) { return id == 0 ? null : _guildMembers[id]; }
 
         /// <summary>
         /// Gets a list of members that are apart of the guild.
@@ -566,8 +585,6 @@ namespace Thylacine.Models
             this.Features = g.Features;
             this.MFALevel = g.MFALevel;
             this.MemberCount = g.MemberCount;
-
-			AssociatePresences();
         }
         #endregion
         

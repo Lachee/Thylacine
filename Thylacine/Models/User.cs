@@ -78,7 +78,7 @@ namespace Thylacine.Models
         public string Email { get; internal set; }
 		#endregion
         
-        internal void UpdatePresence(PresenceUpdate presence)
+        internal void UpdatePresence(Presence presence)
         {
 			var pu = presence.User;
             this.Username = pu.Username ?? this.Username;

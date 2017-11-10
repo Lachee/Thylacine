@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Thylacine.Models
 {
-    public class PresenceUpdate
+    public class Presence
 	{
 		[JsonProperty("id"), JsonConverter(typeof(SnowflakeConverter))]
 		public ulong GuildID { get; set; }

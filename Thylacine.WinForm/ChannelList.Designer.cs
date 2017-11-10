@@ -37,13 +37,14 @@
 			this.combobox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.combobox.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.combobox.FormattingEnabled = true;
 			this.combobox.Items.AddRange(new object[] {
             "#lobby",
             "#secret-chat"});
 			this.combobox.Location = new System.Drawing.Point(0, 0);
 			this.combobox.Name = "combobox";
-			this.combobox.Size = new System.Drawing.Size(154, 21);
+			this.combobox.Size = new System.Drawing.Size(154, 22);
 			this.combobox.TabIndex = 0;
 			this.combobox.SelectedIndexChanged += new System.EventHandler(this.combobox_SelectedIndexChanged);
 			// 

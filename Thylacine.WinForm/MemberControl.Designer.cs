@@ -35,6 +35,10 @@
 			this.btnNicknameApply = new System.Windows.Forms.Button();
 			this.ismute = new System.Windows.Forms.CheckBox();
 			this.isDeafen = new System.Windows.Forms.CheckBox();
+			this.voicelist = new Thylacine.WinForm.ChannelList();
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.label_channel = new System.Windows.Forms.Label();
+			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// label_username
@@ -48,10 +52,12 @@
 			// 
 			// textbox_username
 			// 
+			this.textbox_username.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.textbox_username.Location = new System.Drawing.Point(70, 7);
 			this.textbox_username.Name = "textbox_username";
 			this.textbox_username.ReadOnly = true;
-			this.textbox_username.Size = new System.Drawing.Size(262, 20);
+			this.textbox_username.Size = new System.Drawing.Size(185, 20);
 			this.textbox_username.TabIndex = 3;
 			// 
 			// label_nickname
@@ -65,14 +71,17 @@
 			// 
 			// textbox_nickname
 			// 
+			this.textbox_nickname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.textbox_nickname.Location = new System.Drawing.Point(70, 37);
 			this.textbox_nickname.Name = "textbox_nickname";
-			this.textbox_nickname.Size = new System.Drawing.Size(262, 20);
+			this.textbox_nickname.Size = new System.Drawing.Size(185, 20);
 			this.textbox_nickname.TabIndex = 3;
 			// 
 			// btnNicknameApply
 			// 
-			this.btnNicknameApply.Location = new System.Drawing.Point(338, 35);
+			this.btnNicknameApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnNicknameApply.Location = new System.Drawing.Point(261, 35);
 			this.btnNicknameApply.Name = "btnNicknameApply";
 			this.btnNicknameApply.Size = new System.Drawing.Size(50, 23);
 			this.btnNicknameApply.TabIndex = 4;
@@ -83,7 +92,7 @@
 			// ismute
 			// 
 			this.ismute.AutoSize = true;
-			this.ismute.Location = new System.Drawing.Point(70, 64);
+			this.ismute.Location = new System.Drawing.Point(6, 19);
 			this.ismute.Name = "ismute";
 			this.ismute.Size = new System.Drawing.Size(50, 17);
 			this.ismute.TabIndex = 5;
@@ -93,27 +102,69 @@
 			// isDeafen
 			// 
 			this.isDeafen.AutoSize = true;
-			this.isDeafen.Location = new System.Drawing.Point(70, 87);
+			this.isDeafen.Location = new System.Drawing.Point(62, 19);
 			this.isDeafen.Name = "isDeafen";
 			this.isDeafen.Size = new System.Drawing.Size(61, 17);
 			this.isDeafen.TabIndex = 5;
 			this.isDeafen.Text = "Deafen";
 			this.isDeafen.UseVisualStyleBackColor = true;
 			// 
+			// voicelist
+			// 
+			this.voicelist.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.voicelist.Guild = null;
+			this.voicelist.Location = new System.Drawing.Point(6, 60);
+			this.voicelist.MaximumSize = new System.Drawing.Size(10000, 1000);
+			this.voicelist.MinimumSize = new System.Drawing.Size(21, 21);
+			this.voicelist.Name = "voicelist";
+			this.voicelist.PrefixTextChannels = "#";
+			this.voicelist.PrefixVoiceChannels = "🔊";
+			this.voicelist.ShowTextChannels = false;
+			this.voicelist.ShowVoiceChannels = true;
+			this.voicelist.Size = new System.Drawing.Size(295, 27);
+			this.voicelist.TabIndex = 6;
+			// 
+			// groupBox1
+			// 
+			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox1.Controls.Add(this.label_channel);
+			this.groupBox1.Controls.Add(this.ismute);
+			this.groupBox1.Controls.Add(this.voicelist);
+			this.groupBox1.Controls.Add(this.isDeafen);
+			this.groupBox1.Location = new System.Drawing.Point(6, 58);
+			this.groupBox1.Name = "groupBox1";
+			this.groupBox1.Size = new System.Drawing.Size(308, 88);
+			this.groupBox1.TabIndex = 7;
+			this.groupBox1.TabStop = false;
+			this.groupBox1.Text = "Voice";
+			// 
+			// label_channel
+			// 
+			this.label_channel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.label_channel.AutoSize = true;
+			this.label_channel.Location = new System.Drawing.Point(7, 41);
+			this.label_channel.Name = "label_channel";
+			this.label_channel.Size = new System.Drawing.Size(49, 13);
+			this.label_channel.TabIndex = 7;
+			this.label_channel.Text = "Channel:";
+			// 
 			// MemberControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Controls.Add(this.isDeafen);
-			this.Controls.Add(this.ismute);
+			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.btnNicknameApply);
 			this.Controls.Add(this.textbox_nickname);
 			this.Controls.Add(this.textbox_username);
 			this.Controls.Add(this.label_nickname);
 			this.Controls.Add(this.label_username);
 			this.Name = "MemberControl";
-			this.Size = new System.Drawing.Size(445, 232);
+			this.Size = new System.Drawing.Size(321, 152);
 			this.Load += new System.EventHandler(this.MemberControl_Load);
+			this.groupBox1.ResumeLayout(false);
+			this.groupBox1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -128,5 +179,8 @@
 		private System.Windows.Forms.Button btnNicknameApply;
 		private System.Windows.Forms.CheckBox ismute;
 		private System.Windows.Forms.CheckBox isDeafen;
+		private ChannelList voicelist;
+		private System.Windows.Forms.GroupBox groupBox1;
+		private System.Windows.Forms.Label label_channel;
 	}
 }

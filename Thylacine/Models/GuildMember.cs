@@ -27,12 +27,8 @@ namespace Thylacine.Models
 		/// </summary>
 		/// <seealso cref="User.ID"/>
 		public ulong ID { get { return User.ID; } }
-
-		/// <summary>
-		/// Gets the channel the user is in
-		/// </summary>
-		public Channel Channel => (_channel > 0 ? Guild.GetChannel(_channel) : null);
-		[JsonProperty("channel")] private ulong _channel;
+			
+		public VoiceState VoiceState { get; private set; }
 
 		/// <summary>
 		/// The user of the guild member
@@ -59,23 +55,14 @@ namespace Thylacine.Models
 		//TODO: MAke this a timestamp converter
 		public DateTime JoinedAt => _joinedAt;
 		[JsonProperty("joined_at")] private DateTime _joinedAt;
-
-		/// <summary>
-		/// Is the member deafened in the guild?
-		/// </summary>
-		public bool Deaf => _deaf;
-		[JsonProperty("deaf")] private bool _deaf;
-
-		/// <summary>
-		/// Is the member muted in the guild?
-		/// </summary>
-		public bool Mute => _mute;
+		
+		[JsonProperty("deaf")] private bool _deaf;		
 		[JsonProperty("mute")] private bool _mute;
 
         /// <summary>
         /// The member's current presence.
         /// </summary>
-        public PresenceUpdate Presence { get; private set; }
+        public Presence Presence { get; private set; }
         
         /// <summary>
         /// The tag used to mention the member in chat.
@@ -83,12 +70,14 @@ namespace Thylacine.Models
         public string MentionTag { get { return "<@!" + this.ID + ">"; } }
 
 		#region Internal Updates
+		[System.Obsolete("Not Used")]
 		internal void UpdateModification(GuildMemberModification modifiction)
 		{
 			this._nickname = modifiction.Nickname ?? this._nickname;
-			this._mute = modifiction.Mute ?? this._mute;
-			this._deaf = modifiction.Deaf ?? this._deaf;
-			this._channel = modifiction.ChannelID ?? this._channel;
+
+			this.VoiceState.Mute = modifiction.Mute ?? this.VoiceState.Mute;
+			this.VoiceState.Deaf = modifiction.Deaf ?? this.VoiceState.Deaf;
+			this.VoiceState.Channel = modifiction.ChannelID.HasValue ? Guild.GetChannel(modifiction.ChannelID.Value) : this.VoiceState.Channel;
 		}
 		
 		///<summary>Associates the Role ID's from the JSON to actual Role Objects.</summary>
@@ -108,12 +97,31 @@ namespace Thylacine.Models
 				Roles[i] = Guild.GetRole(_roleids[i]);
 		}
 
+		///<summary>Creates an initial voicestate</summary>
+		internal void InitializeVoiceState()
+		{
+			this.VoiceState = new VoiceState()
+			{
+				Guild = this.Guild,
+				Channel = null,
+				GuildMember = this,
+				Deaf = this._deaf,
+				Mute = this._mute
+			};
+		}
+
 		///<summary>Updates the presence of the member.</summary>
-		internal void UpdatePresence(PresenceUpdate p)
+		internal void UpdatePresence(Presence p)
 		{
 			this.Presence = p;
 			this.AssociateRoles(p.Roles);
-		}		
+		}
+
+		///<summary>Updates the voice state of the user.</summary>
+		internal void UpdateVoiceState(VoiceState s)
+		{
+			this.VoiceState = s;
+		}
 		#endregion
 
 		#region REST Calls
