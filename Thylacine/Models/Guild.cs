@@ -122,6 +122,11 @@ namespace Thylacine.Models
             }
         }
 
+		/// <summary>
+		/// The base role that everyone has.
+		/// </summary>
+		public Role EveryoneRole => GetRole(ID);
+
         /// <summary>
         /// A list of custom Emojis that the guild uses.
         /// </summary>
@@ -208,6 +213,12 @@ namespace Thylacine.Models
 		public event ChannelEvent OnChannelRemove;
 
 		public event PresenceEvent OnPresenceUpdate;
+		public event VoiceStateEvent OnVoiceStateUpdate;
+
+
+		public event RoleEvent OnRoleCreate;
+		public event RoleEvent OnRoleUpdate;
+		public event RoleEvent OnRoleRemove;
 		#endregion
 
 		internal void Initialize(Discord discord)
@@ -324,7 +335,7 @@ namespace Thylacine.Models
         /// <param name="id">ID of the role</param>
         /// <returns>The role object</returns>
         public Role GetRole(ulong id) { return _roles[id]; }
-
+		
         /// <summary>
         /// Gets a list of all roles
         /// </summary>
@@ -416,13 +427,13 @@ namespace Thylacine.Models
 		{
 			state.Guild = this;
 			state.GuildMember.UpdateVoiceState(state);
+			OnVoiceStateUpdate?.Invoke(this, new VoiceStateArgs(this, state, state.GuildMember));
 		}
 		
 		private void SetPresences(Presence[] presences)
 		{
 			foreach (Presence p in presences)
 			{
-				if (p.GuildID == 0) continue;
 				_guildMembers[p.User.ID].UpdatePresence(p);
 			}
 		}

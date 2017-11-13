@@ -195,8 +195,34 @@ namespace Thylacine.Models
             if (PurgeDays < 0 || PurgeDays > 7) throw new ArgumentException("Cannot purge " + PurgeDays + " days. Must be within range of 0 to 7 days.");
             Discord.Rest.SendPayload(new Rest.Payloads.CreateGuildBan(this));
         }
-        #endregion
-    }
+		#endregion
+		
+		/// <summary>
+		/// Calculates the base permission of the member.
+		/// </summary>
+		/// <returns>The base permission the user has in the guild.
+		/// </returns>
+		public Permission ComputePermissions()
+		{
+			if (Guild == null) throw new GuildMissingException();
+			if (Guild.OwnerID == this.ID) return Permission.ALL;
+
+			//Get the everyone role
+			Role everyone = Guild.EveryoneRole;
+			Permission permissions = everyone.Permissions;
+
+			//Iterate over each additional role, adding the permissions on
+			foreach (Role r in this.Roles)
+				permissions |= r.Permissions;
+
+			//If we have administrator, we get all the roles
+			if (permissions.HasFlag(Permission.Adminstrator))
+				return Permission.ALL;
+
+			//Return the final roles.
+			return permissions;
+		}
+	}
 
     /// <summary>
     /// A object used to modify <see cref="GuildMember"/>s. All fields are optional and do not need to be assigned.

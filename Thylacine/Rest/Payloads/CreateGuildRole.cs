@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Thylacine.Helper;
 using Thylacine.Models;
 
 namespace Thylacine.Rest.Payloads
@@ -20,12 +21,16 @@ namespace Thylacine.Rest.Payloads
 
         [JsonProperty("name")]
         public string Name { get; set; }
+
         [JsonProperty("permissions")]
         public Permission Permissions { get; set; }
-        [JsonProperty("color")]
-        public int Color { get; set; }
+
+		[JsonProperty("color"), JsonConverter(typeof(ColorConverter))]
+		public Color Color { get; set; }
+
         [JsonProperty("hoist")]
         public bool Hoist { get; set; }
+
         [JsonProperty("mentionable")]
         public bool Mentionable { get; set; }
 
@@ -34,7 +39,7 @@ namespace Thylacine.Rest.Payloads
         {
             this.GuildID = guild.ID;
             this.Name = role.Name;
-            this.Permissions = role.Permission;
+            this.Permissions = role.Permissions;
             this.Color = role.Color;
             this.Hoist = role.Hoist;
             this.Mentionable = role.Mentionable;

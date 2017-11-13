@@ -21,7 +21,7 @@ namespace Thylacine.WinForm
 		{
 			//Attempt to read the key file
 			string key = "";
-			label_readkeyfile.Visible = TryLoadKey(out key);
+			checkbox_savekey.Checked = TryLoadKey(out key);
 
 			//Enable things
 			text_botkey.Text = key;
@@ -39,6 +39,22 @@ namespace Thylacine.WinForm
 			//Input the key
 			key = System.IO.File.ReadAllText(BOTKEY_FILE);
 			return true;
+		}
+
+		private void btn_connect_Click(object sender, EventArgs e)
+		{
+			//Save the key if its requested
+			System.IO.File.WriteAllText(BOTKEY_FILE, Token);
+		}
+
+		private void linkSaveHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			MessageBox.Show(
+				"Will save the key you entered as plain text under " + BOTKEY_FILE +". Don't use this on production servers.",
+				"Save Key Help",
+				MessageBoxButtons.OK,
+				MessageBoxIcon.Information
+				);
 		}
 	}
 }

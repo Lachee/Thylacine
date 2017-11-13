@@ -22,7 +22,7 @@ namespace Thylacine.Models
 			internal set
 			{
 				_guild = value;
-				Channel = _guild.GetChannel(_channelID);
+				Channel = _channelID.HasValue ? _guild.GetChannel(_channelID.Value) : null;
 				GuildMember = _guild.GetMember(_userID);
 			}
 		}
@@ -45,7 +45,7 @@ namespace Thylacine.Models
 		/// The ID of the channel in question.
 		/// </summary>
 		[JsonProperty("channel_id"), JsonConverter(typeof(SnowflakeConverter))]
-		private ulong _channelID;
+		private ulong? _channelID;
 
 		/// <summary>
 		/// The ID of the user

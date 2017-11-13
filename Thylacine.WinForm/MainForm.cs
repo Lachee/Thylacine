@@ -42,6 +42,7 @@ namespace Thylacine.WinForm
 					discord.OnDiscordReady += (s, e) => this.Invoke(new MethodInvoker(delegate () { OnDiscordReady(s, e); }));
 					discord.OnGuildUpdate += (s, e) => this.Invoke(new MethodInvoker(delegate () { OnDiscordGuildUpdated(s, e); }));
 					discord.OnGuildCreate += (s, e) => this.Invoke(new MethodInvoker(delegate () { OnDiscordGuildUpdated(s, e); }));
+					discord.OnGuildRemove += (s, e) => this.Invoke(new MethodInvoker(delegate () { OnDiscordGuildUpdated(s, e); }));
 
 					discord.Connect();
 
@@ -70,8 +71,9 @@ namespace Thylacine.WinForm
 
 		private void OnDiscordReady(object sender, Event.DiscordReadyEventArgs args)
 		{			
-			if (_connectingForm != null) _connectingForm.Close();
-			UpdateStatusUsers();
+			if (_connectingForm != null) _connectingForm.Close();			
+			this.Text = "Thylacine - " + discord.User.Username;
+			UpdateStatusText();
 		}
 
 		private void OnDiscordGuildUpdated(object sender, Event.GuildEventArgs args)
@@ -84,7 +86,11 @@ namespace Thylacine.WinForm
 			//Get a list of guilds
 			Guild[] guilds = Discord.GetGuilds();
 
-			//Clear the tabs
+			//Make the tabs visible. Stop here if we have no guilds (this will make only the help visible).
+			tabs.Visible = true;
+			if (guilds.Length == 0) return;
+
+			//Clear the pages
 			tabs.TabPages.Clear();
 
 			//For each guild, if we have its name, load it.
@@ -96,13 +102,14 @@ namespace Thylacine.WinForm
 			//statusGuilds.Text = string.Format("Guilds: {0}/{1}", tabs.TabPages.Count, guilds.Length);
 
 			//Update the user status too
-			//UpdateStatusUsers();
+			UpdateStatusText();
 		}
 
-		private void UpdateStatusUsers()
+		private void UpdateStatusText()
 		{
 			//This is slow and inefficient. #shitsandgigs
-			//statusUsers.Text = string.Format("Users: {0}", Discord.GetUsers().Count);
+			statusUsers.Text = string.Format("Users: {0}", discord.GetUsers().Length);
+			statusGuild.Text = string.Format("Guilds: {0}", discord.GetGuilds().Length);
 		}
 
 		private void AddGuildTab(Guild g)
@@ -115,6 +122,17 @@ namespace Thylacine.WinForm
 			tbp.Controls.Add(content);
 
 			tabs.TabPages.Add(tbp);
+		}
+
+		private void buttonGetInvite_Click(object sender, EventArgs e)
+		{
+			System.Diagnostics.Process.Start(discord.GetBotInvite(Permission.ALL));
+		}
+
+		private void debugBreakToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			string name = discord.User.Username;
+			Console.WriteLine("Sole reason of this button is to allow easy breakpoints in the editor. " + name);
 		}
 	}
 }

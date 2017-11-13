@@ -73,9 +73,6 @@ namespace Thylacine
         public event GuildBanEvent OnMemberBanned;
         public event GuildBanEvent OnMemberUnbanned;
 
-        public event RoleEvent OnRoleCreate;
-        public event RoleEvent OnRoleUpdate;
-        public event RoleEvent OnRoleRemove;
 
         public event UserEvent OnUserUpdate;
 		public event UserEvent OnUserCreate;
@@ -144,6 +141,10 @@ namespace Thylacine
             _guilds[guild.ID] = guild;
 			_guilds[guild.ID].Initialize(this);
 
+			//Highjack all its users
+			foreach (GuildMember g in guild.GetMembers().Values)
+				AddUser(g.User);
+
             OnGuildCreate?.Invoke(this, new GuildEventArgs(_guilds[guild.ID]));
         }
         private void HandleGuildUpdateEvent(Guild guild)
@@ -195,10 +196,10 @@ namespace Thylacine
             Guild g = _guilds[e.GuildID];
             g.UpdateRole(e.Role);
 
-            if (isCreate)
-                OnRoleCreate?.Invoke(this, new RoleEventArgs(g, e.Role));
-            else
-                OnRoleUpdate?.Invoke(this, new RoleEventArgs(g, e.Role));
+           // if (isCreate)
+           //    OnRoleCreate?.Invoke(this, new RoleEventArgs(g, e.Role));
+            //else
+           //     OnRoleUpdate?.Invoke(this, new RoleEventArgs(g, e.Role));
 
             //Console.WriteLine("Finished updating/creating role");
         }
@@ -207,17 +208,12 @@ namespace Thylacine
         {
             Role r = _guilds[e.GuildID].GetRole(e.Role);
             _guilds[e.GuildID].RemoveRole(e.Role);
-            OnRoleRemove?.Invoke(this, new RoleEventArgs(_guilds[e.GuildID], r));
+           // OnRoleRemove?.Invoke(this, new RoleEventArgs(_guilds[e.GuildID], r));
 
             //Console.WriteLine("Finished Role Deletion");
         }
         private void HandlePresenceUpdateEvent(Presence p)
         {
-			if (p.GuildID <= 0)
-			{
-				Console.WriteLine("Presence Update from a Bot's Friend. This is not yet supported.");
-				return;
-			}
 
 			//Update the user
 			UpdateUserPresence(p);
@@ -594,8 +590,11 @@ namespace Thylacine
 
 		private void UpdateUserPresence(Presence presence)
 		{
-			_users[presence.User.ID].UpdatePresence(presence);
-			OnUserUpdate?.Invoke(this, new UserEventArgs(_users[presence.User.ID]));
+			if (_users.ContainsKey(presence.User.ID))
+			{
+				_users[presence.User.ID].UpdatePresence(presence);
+				OnUserUpdate?.Invoke(this, new UserEventArgs(_users[presence.User.ID]));
+			}
 
 		}
 		private void AddUser(User user)
@@ -676,6 +675,20 @@ namespace Thylacine
 		public void ModifyBotUser(string username, Avatar avatar)
 		{
 			Rest.SendPayload(new Rest.Payloads.ModifyUser() { UserID = User.ID, Name = username, Avatar = avatar });
+		}
+
+		/// <summary>
+		/// Gets a link that is used to invite the current bot to a guild.
+		/// </summary>
+		/// <param name="permissions">The permissions to allow the bot to have</param>
+		/// <returns>A valid URL used to direct users.</returns>
+		public string GetBotInvite(Permission permissions)
+		{
+			return string.Format("https://discordapp.com/api/oauth2/authorize?client_id={0}&scope={1}&permissions={2}",
+				 User.ID,
+				 User.IsBot ? "bot" : "user",
+				 (int)permissions
+			 );
 		}
 
 		#endregion

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Thylacine.Helper;
 using Thylacine.Models;
 
 namespace Thylacine.Rest.Payloads
@@ -13,34 +14,30 @@ namespace Thylacine.Rest.Payloads
     class ModifyGuildRole : IRestPayload
     {
         Method IRestPayload.Method => Method.PATCH;
-        string IRestPayload.Request => $"/guilds/{GuildID}/roles/{RoleID}";
+        string IRestPayload.Request => $"/guilds/{Role.Guild.ID}/roles/{Role.ID}";
         object IRestPayload.Payload => this;
 
-        public ulong GuildID { get; set; }
-        public ulong RoleID { get; set; }
+        public Role Role { get; set; }
 
-        [JsonProperty("name")]
-        public string Name { get; set; }
-        [JsonProperty("permissions")]
-        public Permission Permissions { get; set; }
-        [JsonProperty("color")]
-        public int Color { get; set; }
-        [JsonProperty("hoist")]
-        public bool Hoist { get; set; }
-        [JsonProperty("mentionable")]
-        public bool Mentionable { get; set; }
+		[JsonProperty("name")]
+		public string Name => Role.Name;
 
-        internal ModifyGuildRole() { }
-        internal ModifyGuildRole(Guild guild, Role role)
+		[JsonProperty("permissions")]
+		public Permission Permissions => Role.Permissions;
+
+		[JsonProperty("color"), JsonConverter(typeof(ColorConverter))]
+		public Color? Color => Role.Color;
+
+		[JsonProperty("hoist")]
+		public bool Hoist => Role.Hoist;
+
+		[JsonProperty("mentionable")]
+		public bool Mentionable => Role.Mentionable;
+
+        private ModifyGuildRole() { }
+        internal ModifyGuildRole(Role role)
         {
-            this.GuildID = guild.ID;
-            this.RoleID = role.ID;
-
-            this.Name = role.Name;
-            this.Permissions = role.Permission;
-            this.Color = role.Color;
-            this.Hoist = role.Hoist;
-            this.Mentionable = role.Mentionable;
+			Role = role;
         }
     }
 }

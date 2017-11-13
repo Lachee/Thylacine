@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Thylacine.Models
 {
-    [Flags]
+	/// <summary>
+	/// The permission bitwise flag. See the <a href="https://discordapp.com/developers/docs/topics/permissions#role-object">Discord API</a> for more details about each permission.
+	/// </summary>
+	[Flags]
     public enum Permission
     {
         CreateInstantInvite = 0x00000001,
@@ -35,6 +38,8 @@ namespace Thylacine.Models
         ManageNicknames = 0x08000000,
         ManageRoles = 0x10000000,
         ManageWebhooks = 0x20000000,
-        ManageEmojis = 0x40000000
+        ManageEmojis = 0x40000000,
+
+		ALL = ~0
     }
 }

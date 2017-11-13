@@ -36,9 +36,23 @@ namespace Thylacine.Models
         [JsonProperty("is_private")]
         public bool IsPrivate { get; internal set; }
 
-        [JsonProperty("permission_overwrites")]
-        public List<Overwrite> PermissionOverwrites { get; internal set; }
-		
+		/// <summary>
+		/// A list of all overwrites for the channel
+		/// </summary>
+		public Overwrite[] Overwrites => _overwrites.Values.ToArray();
+
+		private Dictionary<ulong, Overwrite> _overwrites = new Dictionary<ulong, Overwrite>();
+		[JsonProperty("permission_overwrites")]
+		private Overwrite[] j_overwrites
+		{
+			get { return _overwrites.Values.ToArray(); }
+			set
+			{
+				_overwrites = new Dictionary<ulong, Overwrite>();
+				foreach (Overwrite o in value) _overwrites.Add(o.ID, o);
+			}
+		}
+
         #region Channel Management
         /// <summary>
         /// Update a channels settings. Requires the 'MANAGE_GUILD' permission for the guild. 
@@ -56,30 +70,38 @@ namespace Thylacine.Models
 		/// <param name="permission">The permission to set</param>
         public void SetPermission(Overwrite permission) { this.SetPermission(permission, permission.Allow, permission.Deny, permission.Type); }
         public void SetPermission(Overwrite permission, Permission allow, Permission deny, OverwriteType type) { this.SetPermission(permission.ID, permission.Allow, permission.Deny, permission.Type); }
-        public void SetPermission(ulong permissionID, Permission allow, Permission deny, OverwriteType type)
-        {
-            if (Discord == null) throw new DiscordMissingException();
-            Discord.Rest.SendPayload(new Rest.Payloads.EditChannelPermissions()
-            {
-                ChannelID = this.ID,
-                OverwriteID = permissionID,
-                Allow = allow,
-                Deny = deny,
-                Type = type
-            });
+		public void SetPermission(ulong permissionID, Permission allow, Permission deny, OverwriteType type)
+		{
+			//We are missing discord. This object must not have been initialized properly.
+			if (Discord == null) throw new DiscordMissingException();
 
-            Overwrite poverwrite = PermissionOverwrites.Where(o => o.ID.Equals(permissionID)).First();
-            if (poverwrite != null)
-            {
-                poverwrite.Allow = allow;
-                poverwrite.Deny = deny;
-                poverwrite.Type = type;
+			//Send the payload to the discord, updating the things
+			Discord.Rest.SendPayload(new Rest.Payloads.EditChannelPermissions()
+			{
+				ChannelID = this.ID,
+				OverwriteID = permissionID,
+				Allow = allow,
+				Deny = deny,
+				Type = type
+			});
+
+
+			//This will be updated anyways.
+			/*
+			//Update the existing values. If they don't exist, add them to the table.
+			Overwrite overwrite;
+			if (_overwrites.TryGetValue(permissionID, out overwrite))
+			{
+				overwrite.Allow = allow;
+				overwrite.Deny = deny;
+				overwrite.Type = type;
             }
             else
             {
-                PermissionOverwrites.Add(new Overwrite() { ID = permissionID, Allow = allow, Deny = deny, Type = type });
+                _overwrites.Add(permissionID, new Overwrite() { ID = permissionID, Allow = allow, Deny = deny, Type = type });
             }
-        }
+			*/
+		}
 
 		/// <summary>
 		/// Delete a channel permission overwrite for a user or role in a channel. Only usable for guild channels.
@@ -263,6 +285,58 @@ namespace Thylacine.Models
             return hooks;
         }
         #endregion
+
+		/// <summary>
+		/// Computes the permission the member has in this channel
+		/// </summary>
+		/// <param name="member">The member</param>
+		/// <returns>The final permission the member has in the channel</returns>
+		public Permission ComputePermissions(GuildMember member)
+		{
+			if (Guild != member.Guild)
+				throw new ArgumentException("Member and Channel have different guilds!", "member");
+
+			//Get the base permission. If they are admin, they get everything anyways.
+			Permission basepems = member.ComputePermissions();
+			if (basepems.HasFlag(Permission.Adminstrator)) return Permission.ALL;
+
+			Permission perms = basepems;
+
+			//Find the everyone overwrites
+			Overwrite owEveryone;
+			if (_overwrites.TryGetValue(Guild.ID, out owEveryone))
+			{
+				perms &= ~owEveryone.Deny;
+				perms |= owEveryone.Allow;
+			}
+
+			//Find role specific overwrites
+			Permission deny = 0, allow = 0;
+			foreach (Role r in member.Roles)
+			{
+				Overwrite ow;
+				if (_overwrites.TryGetValue(r.ID, out ow))
+				{
+					allow |= ow.Allow;
+					deny |= ow.Deny;
+				}
+			}
+
+			//Apply them to the perms
+			perms &= ~deny;
+			perms |= allow;
+
+			//Apply member specific overrides
+			Overwrite owMember;
+			if (_overwrites.TryGetValue(member.ID, out owMember))
+			{
+				perms &= ~owMember.Deny;
+				perms |= owMember.Allow;
+			}
+
+			//Return the final permissions
+			return perms;
+		}
 
         /// <summary>
         /// Shows the typing indicator in current channel for current user.

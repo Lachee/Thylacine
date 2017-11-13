@@ -11,7 +11,7 @@ namespace Thylacine.Models
 {
     public class Presence
 	{
-		[JsonProperty("id"), JsonConverter(typeof(SnowflakeConverter))]
+		[JsonProperty("guild_id"), JsonConverter(typeof(SnowflakeConverter))]
 		public ulong GuildID { get; set; }
 
 		[JsonProperty("user")]
@@ -25,7 +25,21 @@ namespace Thylacine.Models
 		
         [JsonProperty("roles"), JsonConverter(typeof(SnowflakeArrayConverter))]
         public ulong[] Roles { get; set; }
-    }
+
+		public string FormatGame(string playing = "Playing", string streaming = "Streaming")
+		{
+			if (!Game.HasValue) return "";
+			switch(Game.Value.Type)
+			{
+				default:
+				case Models.Game.GameType.Game:
+					return playing + " " + Game.Value.Name;
+
+				case Models.Game.GameType.Streaming:
+					return streaming + " " + Game.Value.Name + " (" + Game.Value.URL + ") ";
+			}
+		}
+	}
 
     public struct Game
 	{

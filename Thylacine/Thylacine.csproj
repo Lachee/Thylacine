@@ -81,6 +81,7 @@
     <Compile Include="Helper\MessageBuilder.cs" />
     <Compile Include="Models\Attachment.cs" />
     <Compile Include="Models\Avatar.cs" />
+    <Compile Include="Models\Color.cs" />
     <Compile Include="Models\DMChannel.cs" />
     <Compile Include="Models\Embed.cs" />
     <Compile Include="Models\Event\GuildEvent.cs" />

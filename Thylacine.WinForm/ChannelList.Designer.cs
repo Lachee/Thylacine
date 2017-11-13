@@ -44,18 +44,19 @@
             "#secret-chat"});
 			this.combobox.Location = new System.Drawing.Point(0, 0);
 			this.combobox.Name = "combobox";
-			this.combobox.Size = new System.Drawing.Size(154, 22);
+			this.combobox.Size = new System.Drawing.Size(196, 22);
 			this.combobox.TabIndex = 0;
 			this.combobox.SelectedIndexChanged += new System.EventHandler(this.combobox_SelectedIndexChanged);
 			// 
 			// ChannelList
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+			this.BackColor = System.Drawing.Color.Transparent;
 			this.Controls.Add(this.combobox);
 			this.MaximumSize = new System.Drawing.Size(10000, 1000);
 			this.MinimumSize = new System.Drawing.Size(21, 21);
 			this.Name = "ChannelList";
-			this.Size = new System.Drawing.Size(154, 21);
+			this.Size = new System.Drawing.Size(196, 25);
 			this.Load += new System.EventHandler(this.ChannelList_Load);
 			this.ResumeLayout(false);
 

@@ -20,7 +20,7 @@ namespace Thylacine.WinForm
 		{
 			InitializeComponent();
 
-			_guild = channellist.Guild = guild;			
+			_guild = channellist.Guild = guild;
 		}
 
 		private void GuildControl_Load(object sender, EventArgs arg)
@@ -29,7 +29,7 @@ namespace Thylacine.WinForm
 			Guild.OnMemberCreate += (s, e) => this.Invoke(new MethodInvoker(delegate () { OnMemberUpdate(s, e); }));
 			Guild.OnChannelUpdate += (s, e) => this.Invoke(new MethodInvoker(delegate () { OnChannelUpdate(s, e); }));
 			Guild.OnChannelCreate += (s, e) => this.Invoke(new MethodInvoker(delegate () { OnChannelUpdate(s, e); }));
-			
+
 			UpdateChannels();
 			UpdateMembers();
 		}
@@ -45,20 +45,25 @@ namespace Thylacine.WinForm
 		private void UpdateMembers()
 		{
 			listview.Items.Clear();
-			foreach(GuildMember m in Guild.GetMembers().Values)
+			foreach (GuildMember m in Guild.GetMembers().Values)
 			{
 				string name = m.Nickname ?? m.User.Username;
-				if (name == null)
-					continue;
+				if (name == null) continue;
+
+				//Ignore Offline Users
+				if (m.Presence == null && checkbox_hideoffline.Checked) continue;
+
+
 
 				listview.Items.Add(new ListViewItem(name) { Tag = m.ID });
-				//groupUsers.Controls.Add(new Label() { Text = m.Nickname });
 			}
-
-			statusUsersOnline.Text = string.Format("Online: {0}", Guild.MemberCount);
 		}
+
+		private void ApplyUserFilter() { UpdateMembers(); }
+
 		#endregion
 
+		private void checkbox_hideoffline_CheckStateChanged(object sender, EventArgs e) => ApplyUserFilter();
 		private async void buttonMessageSend_Click(object sender, EventArgs e)
 		{
 			//Get the channel
@@ -76,14 +81,12 @@ namespace Thylacine.WinForm
 		{
 			if (listview.SelectedIndices.Count == 0)
 			{
-				memberview.SetMember(null);
+				memberview.Member = null;
 				return;
 			}
 
 			ulong id = (ulong)listview.SelectedItems[0].Tag;
-			var m = Guild.GetMember(id);
-
-			memberview.SetMember(m);
+			memberview.Member = Guild.GetMember(id);
 		}
 	}
 }

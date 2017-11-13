@@ -31,7 +31,8 @@
 			this.label_botkey = new System.Windows.Forms.Label();
 			this.text_botkey = new System.Windows.Forms.TextBox();
 			this.btn_connect = new System.Windows.Forms.Button();
-			this.label_readkeyfile = new System.Windows.Forms.Label();
+			this.checkbox_savekey = new System.Windows.Forms.CheckBox();
+			this.linkSaveHelp = new System.Windows.Forms.LinkLabel();
 			this.SuspendLayout();
 			// 
 			// label_botkey
@@ -60,23 +61,36 @@
 			this.btn_connect.TabIndex = 2;
 			this.btn_connect.Text = "Connect";
 			this.btn_connect.UseVisualStyleBackColor = true;
+			this.btn_connect.Click += new System.EventHandler(this.btn_connect_Click);
 			// 
-			// label_readkeyfile
+			// checkbox_savekey
 			// 
-			this.label_readkeyfile.AutoSize = true;
-			this.label_readkeyfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label_readkeyfile.Location = new System.Drawing.Point(63, 36);
-			this.label_readkeyfile.Name = "label_readkeyfile";
-			this.label_readkeyfile.Size = new System.Drawing.Size(130, 13);
-			this.label_readkeyfile.TabIndex = 3;
-			this.label_readkeyfile.Text = "botkey file found and read";
+			this.checkbox_savekey.AutoSize = true;
+			this.checkbox_savekey.Location = new System.Drawing.Point(63, 36);
+			this.checkbox_savekey.Name = "checkbox_savekey";
+			this.checkbox_savekey.Size = new System.Drawing.Size(98, 17);
+			this.checkbox_savekey.TabIndex = 3;
+			this.checkbox_savekey.Text = "Save Plain Key";
+			this.checkbox_savekey.UseVisualStyleBackColor = true;
+			// 
+			// linkSaveHelp
+			// 
+			this.linkSaveHelp.AutoSize = true;
+			this.linkSaveHelp.Location = new System.Drawing.Point(154, 31);
+			this.linkSaveHelp.Name = "linkSaveHelp";
+			this.linkSaveHelp.Size = new System.Drawing.Size(13, 13);
+			this.linkSaveHelp.TabIndex = 4;
+			this.linkSaveHelp.TabStop = true;
+			this.linkSaveHelp.Text = "?";
+			this.linkSaveHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkSaveHelp_LinkClicked);
 			// 
 			// ConnectForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(474, 64);
-			this.Controls.Add(this.label_readkeyfile);
+			this.Controls.Add(this.linkSaveHelp);
+			this.Controls.Add(this.checkbox_savekey);
 			this.Controls.Add(this.btn_connect);
 			this.Controls.Add(this.text_botkey);
 			this.Controls.Add(this.label_botkey);
@@ -94,6 +108,7 @@
 		private System.Windows.Forms.Label label_botkey;
 		private System.Windows.Forms.TextBox text_botkey;
 		private System.Windows.Forms.Button btn_connect;
-		private System.Windows.Forms.Label label_readkeyfile;
+		private System.Windows.Forms.CheckBox checkbox_savekey;
+		private System.Windows.Forms.LinkLabel linkSaveHelp;
 	}
 }
