@@ -16,8 +16,9 @@ namespace Thylacine.Rest.Payloads
         Method IRestPayload.Method => Method.POST;
         string IRestPayload.Request => $"/channels/{ChannelID}/invites";
         object IRestPayload.Payload => this;
+		QueryParam[] IRestPayload.Params => null;
 
-        public ulong ChannelID { get; set; }
+		public ulong ChannelID { get; set; }
 
         [JsonProperty("max_age")]
         public int? MaxAge { get; set; }

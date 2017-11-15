@@ -16,8 +16,9 @@ namespace Thylacine.Rest.Payloads
         Method IRestPayload.Method => Method.PUT;
         string IRestPayload.Request => $"/guilds/{GuildID}/members/{UserID}/roles/{RoleID}";
         object IRestPayload.Payload => this;
+		QueryParam[] IRestPayload.Params => null;
 
-        public ulong GuildID { get; set; }
+		public ulong GuildID { get; set; }
         public ulong UserID { get; set; }
         public ulong RoleID { get; set; }
     }
@@ -28,8 +29,9 @@ namespace Thylacine.Rest.Payloads
         Method IRestPayload.Method => Method.DELETE;
         string IRestPayload.Request => $"/guilds/{GuildID}/members/{UserID}/roles/{RoleID}";
         object IRestPayload.Payload => this;
+		QueryParam[] IRestPayload.Params => null;
 
-        public ulong GuildID { get; set; }
+		public ulong GuildID { get; set; }
         public ulong UserID { get; set; }
         public ulong RoleID { get; set; }
     }

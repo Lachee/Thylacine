@@ -11,8 +11,9 @@ namespace Thylacine.Rest.Payloads
         Method IRestPayload.Method => Method.DELETE;
         string IRestPayload.Request => $"/channels/{ChannelID}/messages/{MessageID}/reactions/{Reaction}/@me";
         object IRestPayload.Payload => this;
+		QueryParam[] IRestPayload.Params => null;
 
-        public ulong ChannelID { get; set; }
+		public ulong ChannelID { get; set; }
         public ulong MessageID { get; set; }
         public ulong Reaction { get; set; }
 
@@ -26,8 +27,9 @@ namespace Thylacine.Rest.Payloads
         Method IRestPayload.Method => Method.DELETE;
         string IRestPayload.Request => $"/channels/{ChannelID}/messages/{MessageID}/reactions/{Reaction}/{UserID}";
         object IRestPayload.Payload => this;
+		QueryParam[] IRestPayload.Params => null;
 
-        public ulong ChannelID { get; set; }
+		public ulong ChannelID { get; set; }
         public ulong Reaction { get; set; }
         public ulong UserID { get; set; }
 
@@ -43,8 +45,9 @@ namespace Thylacine.Rest.Payloads
         Method IRestPayload.Method => Method.DELETE;
         string IRestPayload.Request => $"/channels/{ChannelID}/messages/{MessageID}/reactions";
         object IRestPayload.Payload => this;
+		QueryParam[] IRestPayload.Params => null;
 
-        public ulong ChannelID { get; set; }
+		public ulong ChannelID { get; set; }
         public ulong MessageID { get; set; }
 
         public DeleteAllReactions() { }

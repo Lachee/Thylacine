@@ -15,8 +15,9 @@ namespace Thylacine.Rest.Payloads
         Method IRestPayload.Method => Method.PATCH;
         string IRestPayload.Request => $"/guilds/{GuildID}";
         object IRestPayload.Payload => this.Modification;
+		QueryParam[] IRestPayload.Params => null;
 
-        public ulong GuildID { get; set; }
+		public ulong GuildID { get; set; }
         public GuildModification Modification { get; set; }
         
         internal ModifyGuild() {}

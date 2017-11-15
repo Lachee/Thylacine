@@ -33,11 +33,26 @@ namespace Thylacine.Rest
             this.client.Authenticator = new DiscordAuthenticator(base.token);
         }
         
-        protected override async Task<IRestResponse> Send(string resource, Method method, object payload)
+        protected override async Task<IRestResponse> Send(string resource, Method method, object payload, QueryParam[] parameters)
         {
             RestRequest request = new RestRequest(resource, method);
 			request.JsonSerializer = new NewtonsoftJsonSerializer();
-            request.AddJsonBody(payload);
+
+			if (payload != null)
+				request.AddJsonBody(payload);
+
+			if (parameters != null)
+			{
+				//Iterate over each parameter, adding it
+				for (int i = 0; i < parameters.Length; i++)
+				{
+					//Skip over this as its null
+					if (parameters[i].isNull) continue;
+
+					//Add the thing
+					request.AddQueryParameter(parameters[i].key, parameters[i].value.ToString());
+				}
+			}
 
 			var response = await client.ExecuteTaskAsync(request);
             switch(response.StatusCode)

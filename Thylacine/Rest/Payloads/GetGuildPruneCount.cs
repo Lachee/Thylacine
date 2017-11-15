@@ -14,12 +14,15 @@ namespace Thylacine.Rest.Payloads
     {
         Method IRestPayload.Method => Method.GET;
         string IRestPayload.Request => $"/guilds/{GuildID}/prune";
-        object IRestPayload.Payload => this;
+        object IRestPayload.Payload => null;
+		QueryParam[] IRestPayload.Params => new QueryParam[]
+		{
+			new QueryParam("days", Days)
+		};
+		
 
         public ulong GuildID { get; set; }
-
-        [JsonProperty("days")]
-        public int Days { get; set; }
+		public int Days { get; set; }
 
         internal GetGuildPruneCount() { }
         internal GetGuildPruneCount(Guild guild, int days)

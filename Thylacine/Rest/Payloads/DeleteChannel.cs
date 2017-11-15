@@ -15,8 +15,9 @@ namespace Thylacine.Rest.Payloads
         Method IRestPayload.Method => Method.DELETE;
         string IRestPayload.Request => $"/channels/{ChannelID}";
         object IRestPayload.Payload => this;
+		QueryParam[] IRestPayload.Params => null;
 
-        public ulong ChannelID { get; set; }
+		public ulong ChannelID { get; set; }
 
         public DeleteChannel() { }
         public DeleteChannel(Channel channel) { this.ChannelID = channel.ID; }

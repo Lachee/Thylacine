@@ -14,7 +14,10 @@ namespace Thylacine.WinForm
 	public partial class GuildControl : UserControl
 	{
 		private Guild _guild;
+		private MessageBrowser _msgbrowser = null;
+
 		public Guild Guild => _guild;
+
 
 		public GuildControl(Guild guild)
 		{
@@ -87,6 +90,20 @@ namespace Thylacine.WinForm
 
 			ulong id = (ulong)listview.SelectedItems[0].Tag;
 			memberview.Member = Guild.GetMember(id);
+		}
+
+		private void buttonBrowseMessages_Click(object sender, EventArgs e)
+		{
+			if (_msgbrowser != null && !_msgbrowser.IsDisposed)
+			{
+				_msgbrowser.Guild = this.Guild;
+				_msgbrowser.BringToFront();
+				return;
+			}
+
+			_msgbrowser = new MessageBrowser() { Guild = this.Guild };
+			_msgbrowser.Show();
+			_msgbrowser.BringToFront();
 		}
 	}
 }

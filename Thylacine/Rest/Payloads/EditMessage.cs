@@ -10,8 +10,9 @@ namespace Thylacine.Rest.Payloads
         Method IRestPayload.Method => Method.PATCH;
         string IRestPayload.Request => $"/channels/{ChannelID}/messages/{MessageID}";
         object IRestPayload.Payload => this;
+		QueryParam[] IRestPayload.Params => null;
 
-        public ulong ChannelID { get; set; }
+		public ulong ChannelID { get; set; }
         public ulong MessageID { get; set; }
 
         [JsonProperty("content")]

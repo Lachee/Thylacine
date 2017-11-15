@@ -28,33 +28,34 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Test");
-			System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("sdads");
-			System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("fdafdasfasd");
+			System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Test");
+			System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("sdads");
+			System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("fdafdasfasd");
 			this.textMessage = new System.Windows.Forms.TextBox();
 			this.buttonMessageSend = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.channellist = new Thylacine.WinForm.ChannelList();
 			this.groupUsers = new System.Windows.Forms.GroupBox();
+			this.checkbox_hideoffline = new System.Windows.Forms.CheckBox();
 			this.listview = new System.Windows.Forms.ListView();
 			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.buttonBrowseMessages = new System.Windows.Forms.Button();
 			this.memberview = new Thylacine.WinForm.MemberControl();
-			this.checkbox_hideoffline = new System.Windows.Forms.CheckBox();
+			this.channellist = new Thylacine.WinForm.ChannelList();
 			this.groupBox1.SuspendLayout();
 			this.groupUsers.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// textMessage
 			// 
-			this.textMessage.Location = new System.Drawing.Point(0, 49);
+			this.textMessage.Location = new System.Drawing.Point(6, 49);
 			this.textMessage.Multiline = true;
 			this.textMessage.Name = "textMessage";
-			this.textMessage.Size = new System.Drawing.Size(246, 341);
+			this.textMessage.Size = new System.Drawing.Size(246, 338);
 			this.textMessage.TabIndex = 1;
 			// 
 			// buttonMessageSend
 			// 
-			this.buttonMessageSend.Location = new System.Drawing.Point(163, 17);
+			this.buttonMessageSend.Location = new System.Drawing.Point(163, 19);
 			this.buttonMessageSend.Name = "buttonMessageSend";
 			this.buttonMessageSend.Size = new System.Drawing.Size(89, 23);
 			this.buttonMessageSend.TabIndex = 2;
@@ -74,6 +75,70 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Send Message";
 			// 
+			// groupUsers
+			// 
+			this.groupUsers.Controls.Add(this.checkbox_hideoffline);
+			this.groupUsers.Controls.Add(this.listview);
+			this.groupUsers.Location = new System.Drawing.Point(274, 3);
+			this.groupUsers.Name = "groupUsers";
+			this.groupUsers.Size = new System.Drawing.Size(348, 393);
+			this.groupUsers.TabIndex = 6;
+			this.groupUsers.TabStop = false;
+			this.groupUsers.Text = "Users";
+			// 
+			// checkbox_hideoffline
+			// 
+			this.checkbox_hideoffline.AutoSize = true;
+			this.checkbox_hideoffline.Checked = true;
+			this.checkbox_hideoffline.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.checkbox_hideoffline.Location = new System.Drawing.Point(7, 17);
+			this.checkbox_hideoffline.Name = "checkbox_hideoffline";
+			this.checkbox_hideoffline.Size = new System.Drawing.Size(81, 17);
+			this.checkbox_hideoffline.TabIndex = 8;
+			this.checkbox_hideoffline.Text = "Hide Offline";
+			this.checkbox_hideoffline.UseVisualStyleBackColor = true;
+			this.checkbox_hideoffline.CheckStateChanged += new System.EventHandler(this.checkbox_hideoffline_CheckStateChanged);
+			// 
+			// listview
+			// 
+			this.listview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+			this.listview.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2,
+            listViewItem3});
+			this.listview.Location = new System.Drawing.Point(3, 40);
+			this.listview.Name = "listview";
+			this.listview.Size = new System.Drawing.Size(342, 350);
+			this.listview.TabIndex = 7;
+			this.listview.UseCompatibleStateImageBehavior = false;
+			this.listview.View = System.Windows.Forms.View.List;
+			this.listview.SelectedIndexChanged += new System.EventHandler(this.listview_SelectedIndexChanged);
+			// 
+			// columnHeader1
+			// 
+			this.columnHeader1.Text = "Username";
+			this.columnHeader1.Width = 167;
+			// 
+			// buttonBrowseMessages
+			// 
+			this.buttonBrowseMessages.Location = new System.Drawing.Point(628, 251);
+			this.buttonBrowseMessages.Name = "buttonBrowseMessages";
+			this.buttonBrowseMessages.Size = new System.Drawing.Size(145, 23);
+			this.buttonBrowseMessages.TabIndex = 8;
+			this.buttonBrowseMessages.Text = "Browse Messages...";
+			this.buttonBrowseMessages.UseVisualStyleBackColor = true;
+			this.buttonBrowseMessages.Click += new System.EventHandler(this.buttonBrowseMessages_Click);
+			// 
+			// memberview
+			// 
+			this.memberview.Location = new System.Drawing.Point(625, 3);
+			this.memberview.Member = null;
+			this.memberview.Name = "memberview";
+			this.memberview.RegisterGuildEvents = true;
+			this.memberview.Size = new System.Drawing.Size(365, 242);
+			this.memberview.TabIndex = 7;
+			// 
 			// channellist
 			// 
 			this.channellist.BackColor = System.Drawing.Color.Transparent;
@@ -90,64 +155,11 @@
 			this.channellist.Size = new System.Drawing.Size(151, 32);
 			this.channellist.TabIndex = 8;
 			// 
-			// groupUsers
-			// 
-			this.groupUsers.Controls.Add(this.checkbox_hideoffline);
-			this.groupUsers.Controls.Add(this.listview);
-			this.groupUsers.Location = new System.Drawing.Point(274, 3);
-			this.groupUsers.Name = "groupUsers";
-			this.groupUsers.Size = new System.Drawing.Size(348, 393);
-			this.groupUsers.TabIndex = 6;
-			this.groupUsers.TabStop = false;
-			this.groupUsers.Text = "Users";
-			// 
-			// listview
-			// 
-			this.listview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
-			this.listview.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem4,
-            listViewItem5,
-            listViewItem6});
-			this.listview.Location = new System.Drawing.Point(3, 40);
-			this.listview.Name = "listview";
-			this.listview.Size = new System.Drawing.Size(342, 350);
-			this.listview.TabIndex = 7;
-			this.listview.UseCompatibleStateImageBehavior = false;
-			this.listview.View = System.Windows.Forms.View.List;
-			this.listview.SelectedIndexChanged += new System.EventHandler(this.listview_SelectedIndexChanged);
-			// 
-			// columnHeader1
-			// 
-			this.columnHeader1.Text = "Username";
-			this.columnHeader1.Width = 167;
-			// 
-			// memberview
-			// 
-			this.memberview.Location = new System.Drawing.Point(669, 3);
-			this.memberview.Member = null;
-			this.memberview.Name = "memberview";
-			this.memberview.RegisterGuildEvents = true;
-			this.memberview.Size = new System.Drawing.Size(321, 242);
-			this.memberview.TabIndex = 7;
-			// 
-			// checkbox_hideoffline
-			// 
-			this.checkbox_hideoffline.AutoSize = true;
-			this.checkbox_hideoffline.Checked = true;
-			this.checkbox_hideoffline.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkbox_hideoffline.Location = new System.Drawing.Point(7, 17);
-			this.checkbox_hideoffline.Name = "checkbox_hideoffline";
-			this.checkbox_hideoffline.Size = new System.Drawing.Size(81, 17);
-			this.checkbox_hideoffline.TabIndex = 8;
-			this.checkbox_hideoffline.Text = "Hide Offline";
-			this.checkbox_hideoffline.UseVisualStyleBackColor = true;
-			this.checkbox_hideoffline.CheckStateChanged += new System.EventHandler(this.checkbox_hideoffline_CheckStateChanged);
-			// 
 			// GuildControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.buttonBrowseMessages);
 			this.Controls.Add(this.memberview);
 			this.Controls.Add(this.groupUsers);
 			this.Controls.Add(this.groupBox1);
@@ -172,5 +184,6 @@
 		private ChannelList channellist;
 		private MemberControl memberview;
 		private System.Windows.Forms.CheckBox checkbox_hideoffline;
+		private System.Windows.Forms.Button buttonBrowseMessages;
 	}
 }

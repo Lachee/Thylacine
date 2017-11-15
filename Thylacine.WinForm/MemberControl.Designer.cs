@@ -39,16 +39,16 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.isSelfMute = new System.Windows.Forms.CheckBox();
 			this.label_channel = new System.Windows.Forms.Label();
+			this.voicelist = new Thylacine.WinForm.ChannelList();
 			this.isSelfDeafen = new System.Windows.Forms.CheckBox();
 			this.buttonApplyVoice = new System.Windows.Forms.Button();
 			this.btnInspect = new System.Windows.Forms.Button();
 			this.groupInformation = new System.Windows.Forms.GroupBox();
-			this.label_id = new System.Windows.Forms.Label();
-			this.textbox_id = new System.Windows.Forms.TextBox();
 			this.textbox_mention = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
+			this.textbox_id = new System.Windows.Forms.TextBox();
 			this.label_presence = new System.Windows.Forms.Label();
-			this.voicelist = new Thylacine.WinForm.ChannelList();
+			this.label2 = new System.Windows.Forms.Label();
+			this.label_id = new System.Windows.Forms.Label();
 			this.groupVoice.SuspendLayout();
 			this.groupInformation.SuspendLayout();
 			this.SuspendLayout();
@@ -171,6 +171,24 @@
 			this.label_channel.TabIndex = 7;
 			this.label_channel.Text = "Channel:";
 			// 
+			// voicelist
+			// 
+			this.voicelist.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.voicelist.BackColor = System.Drawing.Color.Transparent;
+			this.voicelist.Guild = null;
+			this.voicelist.Location = new System.Drawing.Point(60, 14);
+			this.voicelist.MaximumSize = new System.Drawing.Size(10000, 1000);
+			this.voicelist.MinimumSize = new System.Drawing.Size(21, 21);
+			this.voicelist.Name = "voicelist";
+			this.voicelist.PrefixTextChannels = "#";
+			this.voicelist.PrefixVoiceChannels = "🔊";
+			this.voicelist.Selected = null;
+			this.voicelist.ShowTextChannels = false;
+			this.voicelist.ShowVoiceChannels = true;
+			this.voicelist.Size = new System.Drawing.Size(243, 27);
+			this.voicelist.TabIndex = 6;
+			// 
 			// isSelfDeafen
 			// 
 			this.isSelfDeafen.AutoSize = true;
@@ -195,8 +213,7 @@
 			// 
 			// btnInspect
 			// 
-			this.btnInspect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnInspect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnInspect.Location = new System.Drawing.Point(281, 16);
 			this.btnInspect.Name = "btnInspect";
 			this.btnInspect.Size = new System.Drawing.Size(22, 23);
@@ -228,14 +245,15 @@
 			this.groupInformation.Text = "Information";
 			this.groupInformation.Enter += new System.EventHandler(this.groupInformation_Enter);
 			// 
-			// label_id
+			// textbox_mention
 			// 
-			this.label_id.AutoSize = true;
-			this.label_id.Location = new System.Drawing.Point(38, 18);
-			this.label_id.Name = "label_id";
-			this.label_id.Size = new System.Drawing.Size(21, 13);
-			this.label_id.TabIndex = 2;
-			this.label_id.Text = "ID:";
+			this.textbox_mention.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.textbox_mention.Location = new System.Drawing.Point(64, 94);
+			this.textbox_mention.Name = "textbox_mention";
+			this.textbox_mention.ReadOnly = true;
+			this.textbox_mention.Size = new System.Drawing.Size(186, 20);
+			this.textbox_mention.TabIndex = 3;
 			// 
 			// textbox_id
 			// 
@@ -247,25 +265,6 @@
 			this.textbox_id.Size = new System.Drawing.Size(186, 20);
 			this.textbox_id.TabIndex = 3;
 			// 
-			// textbox_mention
-			// 
-			this.textbox_mention.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.textbox_mention.Location = new System.Drawing.Point(64, 94);
-			this.textbox_mention.Name = "textbox_mention";
-			this.textbox_mention.ReadOnly = true;
-			this.textbox_mention.Size = new System.Drawing.Size(186, 20);
-			this.textbox_mention.TabIndex = 3;
-			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(16, 97);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(48, 13);
-			this.label2.TabIndex = 2;
-			this.label2.Text = "Mention:";
-			// 
 			// label_presence
 			// 
 			this.label_presence.AutoSize = true;
@@ -276,23 +275,23 @@
 			this.label_presence.TabIndex = 2;
 			this.label_presence.Text = "...";
 			// 
-			// voicelist
+			// label2
 			// 
-			this.voicelist.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.voicelist.BackColor = System.Drawing.Color.Transparent;
-			this.voicelist.Guild = null;
-			this.voicelist.Location = new System.Drawing.Point(60, 14);
-			this.voicelist.MaximumSize = new System.Drawing.Size(10000, 1000);
-			this.voicelist.MinimumSize = new System.Drawing.Size(21, 21);
-			this.voicelist.Name = "voicelist";
-			this.voicelist.PrefixTextChannels = "#";
-			this.voicelist.PrefixVoiceChannels = "🔊";
-			this.voicelist.Selected = null;
-			this.voicelist.ShowTextChannels = false;
-			this.voicelist.ShowVoiceChannels = true;
-			this.voicelist.Size = new System.Drawing.Size(243, 27);
-			this.voicelist.TabIndex = 6;
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(16, 97);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(48, 13);
+			this.label2.TabIndex = 2;
+			this.label2.Text = "Mention:";
+			// 
+			// label_id
+			// 
+			this.label_id.AutoSize = true;
+			this.label_id.Location = new System.Drawing.Point(38, 18);
+			this.label_id.Name = "label_id";
+			this.label_id.Size = new System.Drawing.Size(21, 13);
+			this.label_id.TabIndex = 2;
+			this.label_id.Text = "ID:";
 			// 
 			// MemberControl
 			// 

@@ -17,8 +17,9 @@ namespace Thylacine.Rest.Payloads
         Method IRestPayload.Method => Method.POST;
         string IRestPayload.Request => $"/guilds/{GuildID}/channels";
         object IRestPayload.Payload => this;
+		QueryParam[] IRestPayload.Params => null;
 
-        public ulong GuildID { get; set; }
+		public ulong GuildID { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }

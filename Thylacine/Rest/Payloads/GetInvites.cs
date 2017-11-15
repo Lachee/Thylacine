@@ -15,9 +15,10 @@ namespace Thylacine.Rest.Payloads
     {
         Method IRestPayload.Method => Method.GET;
         string IRestPayload.Request => $"/channels/{ChannelID}/invites";
-        object IRestPayload.Payload => this;
+        object IRestPayload.Payload => null;
+		QueryParam[] IRestPayload.Params => null;
 
-        public ulong ChannelID { get; set; }
+		public ulong ChannelID { get; set; }
     }
 
     [JsonObject(MemberSerialization.OptIn)]
@@ -25,9 +26,10 @@ namespace Thylacine.Rest.Payloads
     {
         Method IRestPayload.Method => Method.GET;
         string IRestPayload.Request => $"/guilds/{GuildID}/invites";
-        object IRestPayload.Payload => this;
+        object IRestPayload.Payload => null;
+		QueryParam[] IRestPayload.Params => null;
 
-        public ulong GuildID { get; set; }
+		public ulong GuildID { get; set; }
 
         internal GetGuildInvites() { }
         internal GetGuildInvites(Guild g) { GuildID = g.ID; }

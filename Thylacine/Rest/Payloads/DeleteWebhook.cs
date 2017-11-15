@@ -15,8 +15,9 @@ namespace Thylacine.Rest.Payloads
         Method IRestPayload.Method => Method.DELETE;
         string IRestPayload.Request => $"/channels/{WebhookID}";
         object IRestPayload.Payload => this;
+		QueryParam[] IRestPayload.Params => null;
 
-        public ulong WebhookID { get; set; }
+		public ulong WebhookID { get; set; }
 
         public DeleteWebhook() { }
         public DeleteWebhook(Webhook channel) { this.WebhookID = channel.ID; }

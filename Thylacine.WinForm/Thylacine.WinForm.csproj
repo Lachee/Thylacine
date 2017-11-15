@@ -82,6 +82,12 @@
     <Compile Include="MemberControl.Designer.cs">
       <DependentUpon>MemberControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="MessageBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MessageBrowser.Designer.cs">
+      <DependentUpon>MessageBrowser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -102,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MemberControl.resx">
       <DependentUpon>MemberControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MessageBrowser.resx">
+      <DependentUpon>MessageBrowser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

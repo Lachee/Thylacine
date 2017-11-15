@@ -15,8 +15,9 @@ namespace Thylacine.Rest.Payloads
         Method IRestPayload.Method => Method.PATCH;
         string IRestPayload.Request => $"/users/{UserID}";
         object IRestPayload.Payload => this;
+		QueryParam[] IRestPayload.Params => null;
 
-        public ulong UserID { get; set; }
+		public ulong UserID { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }

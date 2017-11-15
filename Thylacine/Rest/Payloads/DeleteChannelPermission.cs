@@ -12,8 +12,9 @@ namespace Thylacine.Rest.Payloads
         Method IRestPayload.Method => Method.DELETE;
         string IRestPayload.Request => $"/channels/{ChannelID}/permissions/{OverwriteID}";
         object IRestPayload.Payload => this;
+		QueryParam[] IRestPayload.Params => null;
 
-        public ulong ChannelID { get; set; }
+		public ulong ChannelID { get; set; }
         public ulong OverwriteID { get; set; }
     }
 }

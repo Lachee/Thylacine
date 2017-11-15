@@ -16,8 +16,10 @@ namespace Thylacine.Rest.Payloads
         Method IRestPayload.Method => Method.POST;
         string IRestPayload.Request => $"/webhooks/{WebhookID}/{WebhookToken}";
         object IRestPayload.Payload => this;
+		QueryParam[] IRestPayload.Params => null;
 
-        public ulong WebhookID { get; }
+
+		public ulong WebhookID { get; }
         public string WebhookToken { get; }
 
         [JsonProperty("content")]

@@ -197,31 +197,59 @@ namespace Thylacine.Models
         /// <summary>
         /// Post a message to a guild text or DM channel. Requires the 'SEND_MESSAGES' permission to be present on the current user. Returns a message object.
         /// </summary>
-        /// <param name="message">The message builder.</param>
+        /// <param name="builder">The message builder.</param>
         /// <param name="tts">true if this is a TTS message</param>
         /// <param name="embed">embedded rich content</param>
         /// <returns></returns>
-        public async Task<Message> SendMessage(MessageBuilder builder, bool tts = false, Embed embed = null)
+        public Task<Message> SendMessage(MessageBuilder builder, bool tts = false, Embed embed = null)
         {
-            Message message = await this.SendMessage(builder.ToString(), tts, embed);
-            message.Discord = this.Discord;
-            return message;
+            return this.SendMessage(builder.ToString(), tts, embed);
         }
 
-        /// <summary>
-        /// Returns the messages for a channel. If operating on a guild channel, this endpoint requires the 'READ_MESSAGES' permission to be present on the current user
-        /// </summary>
-        /// <param name="around">get messages around this message ID</param>
-        /// <param name="before">	get messages before this message ID</param>
-        /// <param name="after">get messages after this message ID</param>
-        /// <param name="limit">max number of messages to return (1-100)</param>
-        /// <returns></returns>
-        public Task<List<Message>> FetchMessages(ulong? around = null, ulong? before = null, ulong? after = null, int limit = 50)
+		#region Fetch Messages
+		public Task<List<Message>> FetchMessages(int limit)
+		{
+			return m_FetchMessages(limit: limit);
+		}
+
+		/// <summary>
+		/// Gets an array of messages around the supplied id.
+		/// </summary>
+		/// <param name="around">The ID to get messages around.</param>
+		/// <param name="limit">The number of messages to fetch (1 - 100) </param>
+		/// <returns>A list of messages</returns>
+		public Task<List<Message>> FetchMessagesAround(ulong around, int limit)
+		{
+			return m_FetchMessages(around: around, limit: limit);
+		}
+
+		/// <summary>
+		/// Gets an array of messages before the supplied id.
+		/// </summary>
+		/// <param name="before">The ID to get messages before.</param>
+		/// <param name="limit">The number of messages to fetch (1 - 100) </param>
+		/// <returns>A list of messages</returns>
+		public Task<List<Message>> FetchMessagesBefore(ulong before, int limit)
+		{
+			return m_FetchMessages(before: before, limit: limit);
+		}
+
+		/// <summary>
+		/// Gets an array of messages after the supplied id.
+		/// </summary>
+		/// <param name="after">The ID to get messages after.</param>
+		/// <param name="limit">The number of messages to fetch (1 - 100) </param>
+		/// <returns>A list of messages</returns>
+		public Task<List<Message>> FetchMessagesAfter(ulong after, int limit)
+		{
+			return m_FetchMessages(after: after, limit: limit);
+		}
+        private Task<List<Message>> m_FetchMessages(ulong? around = null, ulong? before = null, ulong? after = null, int limit = 50)
         {
             if (Discord == null) throw new DiscordMissingException();
 
-            //Clamp the limit
-            limit = limit < 1 ? 1 : (limit > 100 ? 100 : limit);
+			//Clamp the limit
+			limit = limit < 1 ? 1 : (limit > 100 ? 100 : limit);
 
             //Send the request
             return Discord.Rest.SendPayload<List<Message>>(new Rest.Payloads.GetMessages()
@@ -233,13 +261,14 @@ namespace Thylacine.Models
                 Limit = limit
             });
         }
+		#endregion
 
-        /// <summary>
-        /// Returns a specific message in the channel. If operating on a guild channel, this endpoints requires the 'READ_MESSAGE_HISTORY' permission to be present on the current user.
-        /// </summary>
-        /// <param name="messageID"></param>
-        /// <returns></returns>
-        public Task<Message> FetchMessage(ulong messageID)
+		/// <summary>
+		/// Returns a specific message in the channel. If operating on a guild channel, this endpoints requires the 'READ_MESSAGE_HISTORY' permission to be present on the current user.
+		/// </summary>
+		/// <param name="messageID">The ID of the message</param>
+		/// <returns>The message</returns>
+		public Task<Message> FetchMessage(ulong messageID)
         {
             if (Discord == null) throw new DiscordMissingException();
             return Discord.Rest.SendPayload<Message>(new Rest.Payloads.GetMessage()
@@ -338,11 +367,13 @@ namespace Thylacine.Models
 			return perms;
 		}
 
-        /// <summary>
-        /// Shows the typing indicator in current channel for current user.
-        /// Generally bots should not implement this route. However, if a bot is responding to a command and expects the computation to take a few seconds, this endpoint may be called to let the user know that the bot is processing their message.
-        /// </summary>
-        public void ShowTyping()
+		/// <summary>
+		/// Shows the typing indicator in current channel for current user.
+		/// <para>
+		/// Generally bots should not implement this route. However, if a bot is responding to a command and expects the computation to take a few seconds, this endpoint may be called to let the user know that the bot is processing their message.
+		/// </para>
+		/// </summary>
+		public void ShowTyping()
         {
             if (Discord == null) throw new DiscordMissingException();
             Discord.Rest.SendPayload(new Rest.Payloads.TriggerTypingIndicator() { ChannelID = this.ID });

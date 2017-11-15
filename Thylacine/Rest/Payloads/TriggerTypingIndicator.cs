@@ -12,6 +12,7 @@ namespace Thylacine.Rest.Payloads
         Method IRestPayload.Method => Method.POST;
         string IRestPayload.Request => $"/channels/{ChannelID}/typing";
         object IRestPayload.Payload => this;
+		QueryParam[] IRestPayload.Params => null;
 
         public ulong ChannelID { get; set; }
     }

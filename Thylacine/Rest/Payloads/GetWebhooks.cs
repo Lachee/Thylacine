@@ -14,9 +14,10 @@ namespace Thylacine.Rest.Payloads
     {
         Method IRestPayload.Method => Method.GET;
         string IRestPayload.Request => $"/{Scope}/{ScopeID}/webhooks";
-        object IRestPayload.Payload => this;
+        object IRestPayload.Payload => null;
+		QueryParam[] IRestPayload.Params => null;
 
-        public ulong ScopeID { get; set; }
+		public ulong ScopeID { get; set; }
         public string Scope { get; set; } = "channels";
     }
 
@@ -25,7 +26,8 @@ namespace Thylacine.Rest.Payloads
     {
         Method IRestPayload.Method => Method.GET;
         object IRestPayload.Payload => this;
-        string IRestPayload.Request
+		QueryParam[] IRestPayload.Params => null;
+		string IRestPayload.Request
         {
             get {  return "/webhooks/" + WebhookID + (string.IsNullOrEmpty(Token) ? "" : "/" + Token); }
         }

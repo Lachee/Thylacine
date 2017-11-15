@@ -14,20 +14,20 @@ namespace Thylacine.Rest.Payloads
     {
         Method IRestPayload.Method => Method.GET;
         string IRestPayload.Request => $"/channels/{ChannelID}/messages";
-        object IRestPayload.Payload => this;
+        object IRestPayload.Payload => null;
+		QueryParam[] IRestPayload.Params => new QueryParam[]
+		{
+			new QueryParam("before", Before),
+			new QueryParam("around", Around),
+			new QueryParam("after", After),
+			new QueryParam("limit", Limit)
+		};
 
-        public ulong ChannelID { get; set; }
-
-        [JsonProperty("before")]
+		public ulong ChannelID { get; set; }
+		
         public ulong? Before { get; set; }
-
-        [JsonProperty("around")]
         public ulong? Around { get; set; }
-
-        [JsonProperty("after")]
         public ulong? After { get; set; }
-
-        [JsonProperty("limit")]
         public int Limit { get; set; }
     }
 
@@ -35,8 +35,9 @@ namespace Thylacine.Rest.Payloads
     class GetMessage : IRestPayload
     {
         Method IRestPayload.Method => Method.GET;
-        object IRestPayload.Payload => this;
-        string IRestPayload.Request => $"/channels/{ChannelID}/messages/{MessageID}";
+        object IRestPayload.Payload => null;
+		QueryParam[] IRestPayload.Params => null;
+		string IRestPayload.Request => $"/channels/{ChannelID}/messages/{MessageID}";
 
         public ulong ChannelID { get; set; }
         public ulong MessageID { get; set; }
@@ -47,7 +48,8 @@ namespace Thylacine.Rest.Payloads
     {
         Method IRestPayload.Method => Method.GET;
         object IRestPayload.Payload => this;
-        string IRestPayload.Request => $"/channels/{ChannelID}/pins";
+		QueryParam[] IRestPayload.Params => null;
+		string IRestPayload.Request => $"/channels/{ChannelID}/pins";
 
         public ulong ChannelID { get; set; }
     }

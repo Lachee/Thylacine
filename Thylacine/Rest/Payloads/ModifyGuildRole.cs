@@ -16,8 +16,9 @@ namespace Thylacine.Rest.Payloads
         Method IRestPayload.Method => Method.PATCH;
         string IRestPayload.Request => $"/guilds/{Role.Guild.ID}/roles/{Role.ID}";
         object IRestPayload.Payload => this;
+		QueryParam[] IRestPayload.Params => null;
 
-        public Role Role { get; set; }
+		public Role Role { get; set; }
 
 		[JsonProperty("name")]
 		public string Name => Role.Name;

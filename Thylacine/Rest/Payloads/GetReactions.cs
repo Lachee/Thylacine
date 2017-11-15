@@ -15,9 +15,10 @@ namespace Thylacine.Rest.Payloads
     {
         Method IRestPayload.Method => Method.GET;
         string IRestPayload.Request => $"/channels/{ChannelID}/messages/{MessageID}/reactions/{Reaction}";
-        object IRestPayload.Payload => this;
+        object IRestPayload.Payload => null;
+		QueryParam[] IRestPayload.Params => null;
 
-        public ulong ChannelID { get; set; }
+		public ulong ChannelID { get; set; }
         public ulong MessageID { get; set; }
         public ulong Reaction { get; set; }
 

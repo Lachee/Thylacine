@@ -14,7 +14,8 @@ namespace Thylacine.Rest.Payloads
     {
         Method IRestPayload.Method => Method.GET;
         string IRestPayload.Request => $"/guilds/{GuildID}/bans";
-        object IRestPayload.Payload => this;
+        object IRestPayload.Payload => null;
+		QueryParam[] IRestPayload.Params => null;
 
         public ulong GuildID { get; set; }
         public GetGuildBans() { }
