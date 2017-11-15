@@ -15,6 +15,7 @@ namespace Thylacine.Rest.Payloads
     {
         Method IRestPayload.Method => Method.GET;
         string IRestPayload.Request => $"/gateway/bot";
-        object IRestPayload.Payload => this;
-    }
+		object IRestPayload.Payload => null;
+		QueryParam[] IRestPayload.Params => null;
+	}
 }

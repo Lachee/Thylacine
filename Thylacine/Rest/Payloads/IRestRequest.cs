@@ -33,7 +33,7 @@ namespace Thylacine.Rest.Payloads
 		{
 			this.key = key;
 			this.isNull = value == null;
-			this.value = value.ToString();
+			this.value = value?.ToString();
 		}
 	}
 }
