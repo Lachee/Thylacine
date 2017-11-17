@@ -50,7 +50,7 @@ namespace Thylacine.Test
 					};
 
 					//Send it out
-					await e.Guild.GetChannel(e.Message.ChannelID).SendMessage(mb, false, e.Message.Attachments.Length > 0 ? embed : null);
+					await e.Message.Channel.SendMessage(mb, false, e.Message.Attachments.Length > 0 ? embed : null);
 					Console.WriteLine("{0}: {1}", e.Message.Author.Username, e.Message.FormatContent());
 				};
 				

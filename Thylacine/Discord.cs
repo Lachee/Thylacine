@@ -395,19 +395,19 @@ namespace Thylacine
                 case "MESSAGE_CREATE":
                     {
                         Message msg = args.Payload.ToObject<Message>();
-                        msg.Discord = this;
+						msg.AssociateDiscord(this);
 
-                        Guild guild = GetChannelGuild(msg.ChannelID);
-                        OnMessageCreate?.Invoke(this, new MessageEventArgs(msg, guild));
+						//TODO: Move this event into the channel
+                        OnMessageCreate?.Invoke(this, new MessageEventArgs(msg, msg.Guild));
                     }
                     break;
                 case "MESSAGE_UPDATE":
                     {
                         Message msg = args.Payload.ToObject<Message>();
-                        msg.Discord = this;
-                        
-                        Guild guild = GetChannelGuild(msg.ChannelID);
-                        OnMessageUpdate?.Invoke(this, new MessageEventArgs(msg, guild));
+						msg.AssociateDiscord(this);
+
+						//TODO: Move this event into the channel
+						OnMessageUpdate?.Invoke(this, new MessageEventArgs(msg, msg.Guild));
                     }
                     break;
 

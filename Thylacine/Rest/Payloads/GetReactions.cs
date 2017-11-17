@@ -24,7 +24,7 @@ namespace Thylacine.Rest.Payloads
 
         internal GetReactions() { }
         internal GetReactions(Message message) {
-            this.ChannelID = message.ChannelID;
+            this.ChannelID = message.Channel.ID;
             this.MessageID = message.ID;
         }  
     }

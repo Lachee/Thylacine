@@ -189,8 +189,10 @@ namespace Thylacine.Models
                 Embed = embed,
                 TTS = tts
             });
-            
-            msg.Discord = Discord;
+
+			//associate its discord
+			msg.AssociateChannel(this);
+
             return msg;
         }
         
@@ -201,15 +203,15 @@ namespace Thylacine.Models
         /// <param name="tts">true if this is a TTS message</param>
         /// <param name="embed">embedded rich content</param>
         /// <returns></returns>
-        public Task<Message> SendMessage(MessageBuilder builder, bool tts = false, Embed embed = null)
+        public async Task<Message> SendMessage(MessageBuilder builder, bool tts = false, Embed embed = null)
         {
-            return this.SendMessage(builder.ToString(), tts, embed);
+            return await this.SendMessage(builder.ToString(), tts, embed);
         }
 
 		#region Fetch Messages
-		public Task<List<Message>> FetchMessages(int limit)
+		public async Task<List<Message>> FetchMessages(int limit)
 		{
-			return m_FetchMessages(limit: limit);
+			return await m_FetchMessages(limit: limit);
 		}
 
 		/// <summary>
@@ -218,9 +220,9 @@ namespace Thylacine.Models
 		/// <param name="around">The ID to get messages around.</param>
 		/// <param name="limit">The number of messages to fetch (1 - 100) </param>
 		/// <returns>A list of messages</returns>
-		public Task<List<Message>> FetchMessagesAround(ulong around, int limit)
+		public async Task<List<Message>> FetchMessagesAround(ulong around, int limit)
 		{
-			return m_FetchMessages(around: around, limit: limit);
+			return await m_FetchMessages(around: around, limit: limit);
 		}
 
 		/// <summary>
@@ -229,9 +231,9 @@ namespace Thylacine.Models
 		/// <param name="before">The ID to get messages before.</param>
 		/// <param name="limit">The number of messages to fetch (1 - 100) </param>
 		/// <returns>A list of messages</returns>
-		public Task<List<Message>> FetchMessagesBefore(ulong before, int limit)
+		public async Task<List<Message>> FetchMessagesBefore(ulong before, int limit)
 		{
-			return m_FetchMessages(before: before, limit: limit);
+			return await m_FetchMessages(before: before, limit: limit);
 		}
 
 		/// <summary>
@@ -240,11 +242,11 @@ namespace Thylacine.Models
 		/// <param name="after">The ID to get messages after.</param>
 		/// <param name="limit">The number of messages to fetch (1 - 100) </param>
 		/// <returns>A list of messages</returns>
-		public Task<List<Message>> FetchMessagesAfter(ulong after, int limit)
+		public async Task<List<Message>> FetchMessagesAfter(ulong after, int limit)
 		{
-			return m_FetchMessages(after: after, limit: limit);
+			return await m_FetchMessages(after: after, limit: limit);
 		}
-        private Task<List<Message>> m_FetchMessages(ulong? around = null, ulong? before = null, ulong? after = null, int limit = 50)
+        private async Task<List<Message>> m_FetchMessages(ulong? around = null, ulong? before = null, ulong? after = null, int limit = 50)
         {
             if (Discord == null) throw new DiscordMissingException();
 
@@ -252,7 +254,7 @@ namespace Thylacine.Models
 			limit = limit < 1 ? 1 : (limit > 100 ? 100 : limit);
 
             //Send the request
-            return Discord.Rest.SendPayload<List<Message>>(new Rest.Payloads.GetMessages()
+            List<Message> messages = await Discord.Rest.SendPayload<List<Message>>(new Rest.Payloads.GetMessages()
             {
                 ChannelID = ID,
                 Around = around,
@@ -260,6 +262,13 @@ namespace Thylacine.Models
                 After = after,
                 Limit = limit
             });
+
+			//Update the discord references
+			foreach (Message m in messages)
+				m.AssociateChannel(this);
+
+
+			return messages;
         }
 		#endregion
 

@@ -13,13 +13,15 @@ namespace Thylacine.Models
     [JsonObject(MemberSerialization.OptIn)]
     public class Message
     {
-        public Discord Discord { get; internal set; }
+		public Discord Discord => Guild.Discord;
+		public Guild Guild => Channel.Guild;
+		public Channel Channel { get; private set; }
 
         [JsonProperty("id"), JsonConverter(typeof(SnowflakeConverter))]
         public ulong ID { get; internal set; }
-        
-        [JsonProperty("channel_id"), JsonConverter(typeof(SnowflakeConverter))]
-        public ulong ChannelID { get; internal set; }
+
+		[JsonProperty("channel_id"), JsonConverter(typeof(SnowflakeConverter))]
+		private ulong _channelid;
 
         [JsonProperty("author")]
         public User Author { get; internal set; }
@@ -65,6 +67,7 @@ namespace Thylacine.Models
         /// </summary>
         [JsonProperty("nonce"), JsonConverter(typeof(SnowflakeConverter))]
         public ulong? Nonce { get; set; }
+		
 
         /// <summary>
         /// Checks if the message mentions a said user.
@@ -86,33 +89,29 @@ namespace Thylacine.Models
             return Mentions(Discord.User);
         }
 
-        public Channel GetChannel()
-        {
-            return GetChannel(Discord);
-        }
-        public Channel GetChannel(Discord discord)
-        {
-            if (discord == null) throw new DiscordMissingException();
-            return discord.GetChannel(this.ChannelID);
-        }
+
+		internal void AssociateChannel(Channel channel)
+		{
+			this.Channel = channel;
+		}
+		internal void AssociateDiscord(Discord discord)
+		{
+			this.Channel = discord.GetChannel(_channelid);
+		}
 
         #region Helpers
-        public string FormatContent() { return FormatContent(Discord, this.Content); }
-        public string FormatContent(string content) { return FormatContent(Discord, content); }
-        public string FormatContent(Discord discord, string content)
-        {
-            if (discord == null) return content;
-
+        public string FormatContent()
+		{
             Regex regex = new Regex(@"(?:<@|<@!)(?'user'\d+)>|<#(?'channel'\d+)>|<@&(?'role'\d+)>|(?:<:)(?'emoji'\w+)(?::)(?'emoji_id'\d+)(?:)");
-            return regex.Replace(content, FormatContentEvaluator);
+            return regex.Replace(Content, FormatContentEvaluator);
         }
 
         private string FormatContentEvaluator(Match e)
         {
-            if (this.Discord == null) return e.Value;
+           // if (this.Discord == null) return e.Value;
 
-            //Prepare the guild
-            Guild g = Discord.GetChannelGuild(ChannelID);
+			//Prepare the guild
+			Guild g = Guild;
 
             //Guild cannot be null
             if (g == null) return e.Value;
@@ -195,7 +194,7 @@ namespace Thylacine.Models
             if (Discord == null) throw new DiscordMissingException();
             Discord.Rest.SendPayload(new Rest.Payloads.CreateReaction()
             {
-                ChannelID = this.ChannelID,
+                ChannelID = this.Channel.ID,
                 MessageID = this.ID,
                 Reaction = reaction.ID.GetValueOrDefault()
             });
@@ -210,7 +209,7 @@ namespace Thylacine.Models
             if (Discord == null) throw new DiscordMissingException();
             Discord.Rest.SendPayload(new Rest.Payloads.DeleteReaction()
             {
-                ChannelID = this.ChannelID,
+                ChannelID = this.Channel.ID,
                 MessageID = this.ID,
                 Reaction = reaction.ID.GetValueOrDefault()
             });
@@ -226,7 +225,7 @@ namespace Thylacine.Models
             if (Discord == null) throw new DiscordMissingException();
             Discord.Rest.SendPayload(new Rest.Payloads.DeleteUserReaction()
             {
-                ChannelID = this.ChannelID,
+                ChannelID = this.Channel.ID,
                 MessageID = this.ID,
                 Reaction = reaction.ID.GetValueOrDefault(),
                 UserID = user.ID
@@ -251,7 +250,7 @@ namespace Thylacine.Models
         public void Pin()
         {
             if (Discord == null) throw new DiscordMissingException();
-            Discord.Rest.SendPayload(new Rest.Payloads.PinChannelMessage() { ChannelID = this.ChannelID, MessageID = this.ID });
+            Discord.Rest.SendPayload(new Rest.Payloads.PinChannelMessage() { ChannelID = this.Channel.ID, MessageID = this.ID });
             Pinned = true;
         }
 
@@ -261,7 +260,7 @@ namespace Thylacine.Models
         public void Unpin()
         {
             if (Discord == null) throw new DiscordMissingException();
-            Discord.Rest.SendPayload(new Rest.Payloads.UnpinChannelMessage() { ChannelID = this.ChannelID, MessageID = this.ID });
+            Discord.Rest.SendPayload(new Rest.Payloads.UnpinChannelMessage() { ChannelID = this.Channel.ID, MessageID = this.ID });
             Pinned = false;
         }
         #endregion
@@ -293,10 +292,10 @@ namespace Thylacine.Models
             if (discord == null) throw new DiscordMissingException();
             if (messages.Length <= 0) return;
 
-            var channelGrouping = messages.GroupBy(m => m.ChannelID);
+            var channelGrouping = messages.GroupBy(m => m.Channel.ID);
             foreach (var cg in channelGrouping)
             {
-                ulong channel = cg.First().ChannelID;
+                ulong channel = cg.First().Channel.ID;
                 ulong[] snowflakes = cg.Select(m => m.ID).ToArray();
 
                 discord.Rest.SendPayload(new Rest.Payloads.DeleteBulkMessages() { ChannelID = channel, Snowflakes = snowflakes });
