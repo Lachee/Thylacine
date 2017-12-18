@@ -1,4 +1,7 @@
 # Thylacine
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/800796cf1afa4e70b40676f1b6f043e4)](https://www.codacy.com/app/Lachee/Thylacine?utm_source=github.com&utm_medium=referral&utm_content=Lachee/Thylacine&utm_campaign=badger)
+
 A simple Discord API
 
 Thylacine (or Tasmanian Tiger) is a C# library for Discord to make bots. It has been designed with my own use in mind and has some features to make it easier. Its requirements where to simplify the Message recieve events and work on Mono 4.6. It must also intergrate with another project of mine so it uses specific versions of Json.net and Restsharp and must be easily interchanged without confusing project setups or redundant features.
