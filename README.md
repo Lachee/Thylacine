@@ -1,5 +1,7 @@
 # Thylacine
 
+### This is a dead library. It was built using v5 of the API and hasn't fully been completed. Use this as a reference for your own library if you wish as only some of the models are broken (still can connect and receive most events).
+
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/800796cf1afa4e70b40676f1b6f043e4)](https://www.codacy.com/app/Lachee/Thylacine?utm_source=github.com&utm_medium=referral&utm_content=Lachee/Thylacine&utm_campaign=badger)
 
 A simple Discord API
